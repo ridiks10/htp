@@ -82,7 +82,7 @@ $(function(){
     });
 });
 $(document).ready(function() {
-    requestPayment();
+   // requestPayment();
     function requestPayment(){
         $.ajax({
              url : $('#detail-payment').data('link'),

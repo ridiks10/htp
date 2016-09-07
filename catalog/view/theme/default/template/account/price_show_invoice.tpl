@@ -1,12 +1,12 @@
 <?php 
-   if(!$notCreate) $self -> document -> setTitle('Confirm: '.($bitcoin / 100000000).' BTC');
+   if(!$notCreate) $self -> document -> setTitle('Detail');
    else $self -> document -> setTitle("You can not create more orders !!!!");
    echo $self -> load -> controller('common/header'); 
    echo $self -> load -> controller('common/column_left'); 
    ?>
 <div id="content-wrapper">
    <div class="row">
-      <?php if(!$notCreate) { ?>
+<!--      
       <div class="col-md-6">
          <div class="panel">
             <div class="panel-heading">
@@ -25,80 +25,151 @@
                <code id="websocket">Received: 0 BTC</code>
             </div>
          </div>
-      </div>
-      <?php } ?>
-      <div class="col-md-6">
-         <div class="panel">
-            <div class="panel-heading">
+      </div> -->
+ 
+          <div class="col-md-6">
+         <div class="">
+            <!-- <div class="panel-heading">
                <span class="panel-title">Detail Payment</span>
-            </div>
-            <div class="panel-body">
-               <?php if ($invoice) { ?>
-               
-               <div id="detail-payment" class="provide-info" style="background:none; min-height:105px" data-id="<?php echo $invoice['invoice_id_hash'] ?>" data-link="<?php echo $self->url->link('account/price/detail_payment', '', 'SSL'); ?>">
-
-               </div>
-               <?php } ?>
-            </div>
+            </div> -->
+           
+           <!--  <div class="panel-body" id="detail-payment" data-id="<?php echo $invoice_hash; ?>" data-link="<?php echo $self->url->link('account/price/detail_payment', '', 'SSL'); ?>">
+            </div> -->
             <div class="panel-heading">
                <span class="panel-title">Detail Package</span>
             </div>
-            <div class="panel-body">
+            <div class="">
                <?php if (intval($package) == 1) { ?>
-                  <div class="plan-col">
-                     <div class="plan-header bg-light-green darken">PLAN SILVER</div>
-                     <div class="plan-pricing bg-light-green"><span class="plan-currency"></span><span class="plan-value">3 <i class="fa fa-bitcoin"></i></span><span class="plan-period"></span></div>
-                     <ul class="plan-features">
-                        <li>Daily Payments until 6 BTC Reached</li>
-                        <li>Est. Duration: 100 Days</li>
-                       
-                        <li>0.06 BTC Daily For 100 Days!</li>
-                        <!-- <a href="#" class="bg-light-green darken">DEPOSIT NOW</a> -->
-
-                     </ul>
+                  <div class="deposite deposite_red">
+              <span class="deposite_title">90 days</span>
+              <div class="deposite_time_wrap">
+                  <span class="deposite_time_wrap_text">2% per day</span>
+                  <div class="deposite_time">
+                      <span class="deposite_time_digit"><?php echo number_format('5000000') ?></span>
+                      <span class="deposite_time_text">VNĐ</span>
                   </div>
+              </div>
+              <div class="deposite_time_triangle">
+              </div>
+              <div class="deposite_info">
+                  <span>Profit / 90 days: <?php echo number_format('7200000') ?> VNĐ</span>
+                  <span>Reinvestment / days: <?php echo number_format('1800000') ?> VNĐ</span>
+                  <span>2% per day</span>
+              </div>
+
+              
+            </div>
                <?php } ?>
                <?php if (intval($package) == 2) { ?>
-                  <div class="plan-col">
-                     <div class="plan-header bg-light-green darker">PLAN GOLD</div>
-                     <div class="plan-pricing bg-light-green darken"><span class="plan-currency"></span><span class="plan-value">7 <i class="fa fa-bitcoin"></i></span><span class="plan-period"></span></div>
-                     <ul class="plan-features">
-                        <li>Daily Payments until 16 BTC Reached</li>
-                        <li>Est. Duration: 100 Days</li>
-        
-                        <li>0.16 BTC Daily For 100 Days!</li>
-                       
-                     </ul>
-                  </div>
+                 <div class="deposite deposite_orange">
+                    <span class="deposite_title">90 days</span>
+                    <div class="deposite_time_wrap">
+                        <span class="deposite_time_wrap_text">2% per day</span>
+                        <div class="deposite_time">
+                            <span class="deposite_time_digit"><?php echo number_format('20000000') ?></span>
+                      <span class="deposite_time_text">VNĐ</span>
+                        </div>
+                    </div>
+                    <div class="deposite_time_triangle">
+                    </div>
+                    <div class="deposite_info">
+                       <span>Profit / 90 days: <?php echo number_format('28000000') ?> VNĐ</span>
+                        <span>Reinvestment / days: <?php echo number_format('7200000') ?> VNĐ</span>
+                        <span>2% per day</span>
+                    </div>
+
+               </div>
                <?php } ?>
                <?php if (intval($package) == 3) { ?>
-                  <div class="plan-col">
-                     <div class="plan-header bg-light-green darken">PLAN PLATINUM</div>
-                     <div class="plan-pricing bg-light-green"><span class="plan-currency"></span><span class="plan-value">10 <i class="fa fa-bitcoin"></i></span><span class="plan-period"></span></div>
-                     <ul class="plan-features">
-                        <li>Daily Payments until 28 BTC Reached</li>
-                        <li>Est. Duration: 100 Days</li>
-                        
-                        <li>0.28 BTC Daily For 100 Days!</li>
-                     </ul>
+                  <div class="deposite deposite_green">
+                    <span class="deposite_title">90 days</span>
+                    <div class="deposite_time_wrap">
+                        <span class="deposite_time_wrap_text">2% per day</span>
+                        <div class="deposite_time">
+                            <span class="deposite_time_digit"><?php echo number_format('50000000') ?></span>
+                      <span class="deposite_time_text">VNĐ</span>
+                        </div>
+                    </div>
+                    <div class="deposite_time_triangle">
+                    </div>
+                    <div class="deposite_info">
+                        <span>Profit / 90 days: <?php echo number_format('72000000') ?> VNĐ</span>
+                        <span>Reinvestment / days: <?php echo number_format('18000000') ?> VNĐ</span>
+                        <span>2% per day</span>
+                    </div>
+
                   </div>
                <?php } ?>
                <?php if (intval($package) == 4) { ?>
-                  <div class="plan-col">
-                     <div class="plan-header bg-light-green darker">PLAN DIAMOIND</div>
-                     <div class="plan-pricing bg-light-green darken"><span class="plan-currency"></span><span class="plan-value">20 <i class="fa fa-bitcoin"></i></span><span class="plan-period"></span></div>
-                     <ul class="plan-features">
-                        <li>Daily Payments until 65 BTC Reached</li>
-                        <li>Est. Duration: 100 Days</li>
-                        
-                        <li>0.65 BTC Daily For 100 Days!</li>
-                     </ul>
+ <div class="deposite deposite_cyan">
+              <span class="deposite_title">90 days</span>
+              <div class="deposite_time_wrap">
+                  <span class="deposite_time_wrap_text">2% per day</span>
+                  <div class="deposite_time">
+                      <span class="deposite_time_digit"><?php echo number_format('100000000') ?></span>
+                      <span class="deposite_time_text">VNĐ</span>
                   </div>
+              </div>
+              <div class="deposite_time_triangle">
+              </div>
+              <div class="deposite_info">
+                  <span>Profit / 90 days: <?php echo number_format('144000000') ?> VNĐ</span>
+                  <span>Reinvestment / days: <?php echo number_format('36000000') ?> VNĐ</span>
+                  <span>2% per day</span>
+              </div>
+
+           </div>
+               <?php } ?>
+               <?php if (intval($package) == 5) { ?>
+               <div class="deposite deposite_blue">
+              <span class="deposite_title">90 days</span>
+              <div class="deposite_time_wrap">
+                  <span class="deposite_time_wrap_text">2% per day</span>
+                  <div class="deposite_time">
+                      <span class="deposite_time_digit"><?php echo number_format('500000000') ?></span>
+                      <span class="deposite_time_text">VNĐ</span>
+                  </div>
+              </div>
+              <div class="deposite_time_triangle">
+              </div>
+              <div class="deposite_info">
+                  <span>Profit / 90 days: <?php echo number_format('720000000') ?> VNĐ</span>
+                  <span>Reinvestment / days: <?php echo number_format('180000000') ?> VNĐ</span>
+                  <span>2% per day</span>
+              </div>
+
+           </div>
+               <?php } ?>
+               <?php if (intval($package) == 6) { ?>
+                   <div class="deposite deposite_purple">
+              <span class="deposite_title">90 days</span>
+              <div class="deposite_time_wrap">
+                  <span class="deposite_time_wrap_text">2% per day</span>
+                  <div class="deposite_time">
+                      <span class="deposite_time_digit"><?php echo number_format('1000000000') ?></span>
+                      <span class="deposite_time_text">VNĐ</span>
+                  </div>
+              </div>
+              <div class="deposite_time_triangle">
+              </div>
+              <div class="deposite_info">
+                  <span>Profit / 90 days: <?php echo number_format('1440000000') ?> VNĐ</span>
+                  <span>Reinvestment / days: <?php echo number_format('360000000') ?> VNĐ</span>
+                  <span>2% per day</span>
+              </div>
+             
+           </div>
                <?php } ?>
               
             </div>
          </div>
       </div>
+     
+         
+      
+   </div>
+   
+</div>
    </div>
 </div>
 <?php if(!$notCreate) { ?>

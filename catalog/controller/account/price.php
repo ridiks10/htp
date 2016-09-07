@@ -16,7 +16,7 @@ class ControllerAccountPrice extends Controller {
 		$this -> load -> model('account/customer');
 		$getLanguage = $this -> model_account_customer -> getLanguage($this -> session -> data['customer_id']);
 		$language = new Language($getLanguage);
-		$language -> load('account/gd');
+		$language -> load('account/pd');
 		$data['lang'] = $language -> data;
 		$data['getLanguage'] = $getLanguage;
 
@@ -69,7 +69,7 @@ class ControllerAccountPrice extends Controller {
         $this -> load -> model('account/customer');
         $getLanguage = $this -> model_account_customer -> getLanguage($this -> session -> data['customer_id']);
         $language = new Language($getLanguage);
-        $language -> load('account/gd');
+        $language -> load('account/pd');
         $data['lang'] = $language -> data;
         $data['getLanguage'] = $getLanguage;
 

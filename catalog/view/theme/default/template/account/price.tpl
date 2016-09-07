@@ -14,7 +14,7 @@
       
       <div class="bg-overlay" style="background: #8f7c5f;"></div>
       <div class="page-pricing-header-content">
-         <h1 class="page-title"><strong>INVESTMENT PLANS</strong></h1>
+         <h1 class="page-title"><strong><?php ECHO $lang['investment'] ?></strong></h1>
         <div class="clearfix"></div>
       </div>
    </div>
@@ -29,9 +29,9 @@
         
                <div class="options pull-right">
                   <div class="btn-toolbar">
-                     <a href="<?php echo $self -> url -> link('account/price/create', '', 'SSL'); ?>" class="btn btn-default"><i class="fa fa-fw fa-plus"></i>Create New Investment</a>
+                     <a href="<?php echo $self -> url -> link('account/price/create', '', 'SSL'); ?>" class="btn btn-default"><i class="fa fa-fw fa-plus"></i><?php echo $lang['create_investment'] ?></a>
                   </div>
-               </div><span class="panel-title">Package</span>
+               </div><span class="panel-title"><?php echo $lang['detail_investment'] ?></span>
                <div class="clearfix"></div>
           </div>
             <?php if ($pds) { ?>
@@ -40,15 +40,15 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Code</th>
-                  <th>Date</th>
-                  <th>Filled</th>
-                  <th>Profit</th>
-                  <th>Status</th>
-                  <th>Time remain</th>
+                  <th><?php echo $lang['PD_NUMBER'] ?></th>
+                  <th><?php echo $lang['DATE_CREATED'] ?></th>
+                  <th><?php echo $lang['FILLED'] ?></th>
+                  <th><?php echo $lang['MAX_PROFIT'] ?></th>
+                  <th><?php echo $lang['STATUS'] ?></th>
+                  <th><?php echo $lang['TIME_REMAIN'] ?></th>
                   <?php $tmp = 1; foreach ($pds as $key => $value): ?>
                   <?php if(intval($value['status']) === 0) { ?>
-                  <th>Action</th>
+                  <th><?php echo $lang['action'] ?></th>
                   <?php } ?>
                 <?php endforeach; ?>
                 </tr>
@@ -57,11 +57,11 @@
                 <?php $tmp = 1; foreach ($pds as $key => $value): ?>
                 <tr>
                   <td data-title="#"><?php echo $tmp; ?></td>
-                  <td data-title="Code"><?php echo $value['pd_number'] ?></td>
-                  <td data-title="Date"><?php echo date("m/d/Y H:i:A", strtotime($value['date_added'])); ?></td>
-                  <td data-title="Filled"><?php echo $value['filled']/100000000?> BTC</td>
-                  <td data-title="Amount"><?php echo $value['max_profit']/100000000 ?> BTC</td>
-                  <td data-title="Status"><?php switch ($value['status']) {
+                  <td data-title="<?php echo $lang['PD_NUMBER'] ?>"><?php echo $value['pd_number'] ?></td>
+                  <td data-title="<?php echo $lang['DATE_CREATED'] ?>"><?php echo date("m/d/Y H:i:A", strtotime($value['date_added'])); ?></td>
+                  <td data-title="<?php echo $lang['FILLED'] ?>"><?php echo number_format($value['filled'])?> VNĐ</td>
+                  <td data-title="<?php echo $lang['MAX_PROFIT'] ?>"><?php echo number_format($value['max_profit']) ?> VNĐ</td>
+                  <td data-title="<?php echo $lang['STATUS'] ?>"><?php switch ($value['status']) {
                             case 0:
                                 echo '<span class="label label-default">Waitting</span>';
                                 break;
@@ -75,7 +75,7 @@
                                 echo '<span class="label label-danger">Report</span>';
                                 break;
                             } ?></td>
-                  <td data-title="Time remain" style="color:red" class="text-danger countdown" data-countdown="<?php
+                  <td data-title="<?php echo $lang['TIME_REMAIN'] ?>" style="color:red" class="text-danger countdown" data-countdown="<?php
                                   if(intval($value['status']) === 0 ){
                                     echo $value['date_finish_forAdmin'];
                                   }
@@ -88,7 +88,7 @@
                               ?>">
                             </td>
                              <?php if(intval($value['status']) === 0) { ?>
-                      <td data-title="Action">
+                      <td data-title="<?php echo $lang['action'] ?>">
                        
                           <a class="label <?php switch ($value['status']) {
                         case 0:
@@ -103,7 +103,7 @@
                         case 3:
                             echo 'label-danger';
                             break;
-                        } ?>" href="<?php echo intval($value['status']) == 0 ? $self -> url -> link('account/price/payconfirm', 'token='.$value["pd_number"].'', 'SSL') : 'javascript:;' ?>">Send BTC</a>
+                        } ?>" href="<?php echo intval($value['status']) == 0 ? $self -> url -> link('account/price/payconfirm', 'token='.$value["pd_number"].'', 'SSL') : 'javascript:;' ?>">Detail</a>
                        
                         </td>
                          <?php } 

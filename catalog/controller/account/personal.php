@@ -9,6 +9,7 @@ class ControllerAccountPersonal extends Controller {
 			$this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
 		}
 
+		$this->document->addScript('catalog/view/javascript/personal/tree.min.js');
 		if ($this -> request -> server['HTTPS']) {
 			$server = $this -> config -> get('config_ssl');
 		} else {
@@ -74,7 +75,7 @@ class ControllerAccountPersonal extends Controller {
 		//$data['customerChild'] = $this -> model_account_customer-> getParentByIdCustomer($this -> session -> data['customer_id']);
 		
 		//$total = $this -> model_account_customer-> getCountTreeCustom($this -> session -> data['customer_id']);
-
+$data['trees'] =  HTTPS_SERVER . 'index.php?route=account/personal/get_BinaryTree';
 		
 		//==============================================================
 
@@ -687,6 +688,7 @@ $mail -> setHtml('<div height="100%" bgcolor="#ffffff" marginwidth="10" marginhe
 		$this -> load -> model('account/customer');
 		
 		$id = $this->request->get['id_user'];
+		//$id = $this->session->data['customer_id'];
 
 		$user = $this -> model_account_customer -> getInfoUsers_binary($id);
 
@@ -812,6 +814,166 @@ $mail -> setHtml('<div height="100%" bgcolor="#ffffff" marginwidth="10" marginhe
 		return;
 
 	}
+	public function get_BinaryTree(){
+
+		$this -> load -> model('account/customer');
+		
+		// $id = $this->request->get['id_user'];
+		$id = $this->session->data['customer_id'];
+
+		$user = $this -> model_account_customer -> getInfoUsers_binary($id);
+
+
+
+		$node = new stdClass();
+
+
+		$node->id = $id;
+		
+		$node->text = $user['username'] ;
+
+		$node->username = $user['username'] ;
+		$node -> email = $user['email'];
+		$node -> telephone = $user['telephone'];
+		$node -> date_added = $user['date_added'];
+		$node -> level = $user['level'];
+		$node-> level_user = $user["level_member"];
+		switch (intval($user['level'])) {
+			case '1':
+				$type = 'darkturquoise';
+				break;
+			
+			case '2':
+				$type = 'red';
+				break;
+			default:
+				$type = 'blue';
+				break;
+			
+		}
+		$node-> type = $type;
+		$node -> status_ml = $user['status_ml'];
+		
+
+		$date = strtotime(date('Y-m-d'));
+		$monthNow = date('m',$date);
+		$yearNow = date('Y',$date);
+		$date_added = strtotime($user['date_added']);
+		$month = date('m',$date_added);
+		$year = date('Y',$date_added);
+		
+		if($user['status'] == 0){
+			$node->iconCls = "level4";
+		}else if($monthNow == $month && $yearNow == $year){
+			$node->iconCls = "level2";
+		}else{
+			$node->iconCls = "level3";
+		}
+
+		$node->fl = 1;
+
+		$this->get_BinaryChildTree($node);
+
+		$node = array($node);
+
+	//	ob_clean();
+		echo json_encode($node[0]);
+
+		exit();
+
+	}
+	public function get_BinaryChildTree(&$node){
+
+		$date = strtotime(date('Y-m-d'));
+		$monthNow = date('m',$date);
+		$yearNow = date('Y',$date);
+		
+		$this -> load -> model('account/customer');
+		$left_row = $this -> model_account_customer ->getLeftO($node->id);
+		
+		// print_r($left_row);
+		// die();
+			$left = new stdClass();
+		
+		    foreach ($left_row as $key => $value) {
+		        $left->$key = $value;
+		    } 
+			
+			$node->children = array();
+
+			if(isset($left_row["id"])){
+
+				$left->fl = $node->fl +1;
+				$lv = $node->level;
+switch (intval($lv)) {
+			case '1':
+				$type = 'darkturquoise';
+				break;
+			
+			case '2':
+				$type = 'red';
+				break;
+			default:
+				$type = 'blue';
+				break;
+			
+		}
+		$left-> type = $type;
+				$left -> empty = false;
+				if($left->fl<5)
+				{
+					$this->get_BinaryChildTree($left);
+				}
+
+
+				else $left->children = 1;
+				
+				array_push($node->children , $left);			
+
+			}
+		
+
+		$right_row = $this -> model_account_customer ->getRightO($node->id);
+		$right = new stdClass();
+	    foreach ($right_row as $key => $value) {
+	        $right->$key = $value;
+	    } 
+		
+		if(isset($right_row["id"])){
+
+			$right->fl = $node->fl +1;
+$lv = $node->level;
+switch (intval($lv)) {
+			case '1':
+				$type = 'darkturquoise';
+				break;
+			
+			case '2':
+				$type = 'red';
+				break;
+			default:
+				$type = 'blue';
+				break;
+			
+		}
+		$right-> type = $type;
+
+			$right -> empty = false;
+			if($right->fl<5)
+
+				$this->get_BinaryChildTree($right);
+
+			else $right->children = 1;
+
+			array_push($node->children , $right);
+		}
+		
+
+		if(count($node->children) ==0) $node->children = 0;
+
+		return;
+
+	}
 
 	public function getJsonBinaryTree() {
 
@@ -834,7 +996,7 @@ $mail -> setHtml('<div height="100%" bgcolor="#ffffff" marginwidth="10" marginhe
 
 		$node = array($node);
 
-
+echo "<pre>"; print_r($node[0]); echo "</pre>"; die();
 		echo json_encode($node);
 
 		exit();

@@ -1,5 +1,5 @@
 <?php 
-   $self->document->setTitle('Dashboard');
+   $self->document->setTitle($lang['our_investment']);
    echo $self->load->controller('common/header'); echo $self->load->controller('common/column_left');
    
    ?>
@@ -7,48 +7,17 @@
    <div class="page-pricing-header">
       <div class="bg-overlay" style="background: #8f7c5f;"></div>
       <div class="page-pricing-header-content">
-         <h1 class="page-title"><strong>OUR INVESTMENT PLANS</strong></h1>
+         <h1 class="page-title"><strong><?php echo $lang['our_investment'] ?></strong></h1>
          <div class="clearfix"></div>
       </div>
    </div>
    <div id="create-error" class="alert alert-dismissable alert-danger" style="display:none">
    </div>
-   <?php if (intval($self->getActive_tree()) === 0) {?>
-      <div class="panel">
-      <div class="panel-heading">
-         <span class="panel-title">Plan Active 1 BTC</span>
-      </div>
-      <div class="panel-body">
-         <form method="post" name="spendform">
-          
-            <table cellspacing="1" cellpadding="2" border="0" width="100%" class="table">
-               <tbody>
-                  <tr>
-                     <td>Interest</td>
-                     <td width="200">Spent Amount</td>
-                    
-                  </tr>
-                  <tr>
-                     <td><p>Introduction of participants.</p>
-<p>Direct commission from F1.</p>
-<p>Cyclic commission</p></td>
-                     <td align="right">1 BTC</td>
-                     
-                  </tr>
-                  <tr>
-                    <td colspan="2"><button id="btn_active" type="button" class="btn btn-danger" data-link="<?php echo $self->url->link('account/account/active1BTC', '', 'SSL'); ?>">DEPOSIT NOW </button></td>
-                  </tr>
-               </tbody>
-            </table>
-          
-         </form>
-      </div>
-   </div>
-  <?php } ?>
+  
    
    <div class="panel">
       <div class="panel-heading">
-         <span class="panel-title">Plan Investment</span>
+         <span class="panel-title"><?php echo $lang['list_investment'] ?></span>
       </div>
       <div class="panel-body">
          <div class="plans-panel" style="max-width: 1050px;">

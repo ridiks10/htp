@@ -331,7 +331,7 @@ $(document).ready(function() {
     });
 
     funDaskboard.ajaxGetR_Wallet(function(result) {
-        _.has(result, 'success') && $('.r-wallet').html(_.values(result)[0] + ' BTC');
+        _.has(result, 'success') && $('.r-wallet').html(_.values(result)[0] + ' VND');
         _.each($('.r-wallet').data(), function(v, e) {
             $('.r-wallet').removeAttr('data-' + e);
         });
@@ -342,7 +342,7 @@ $(document).ready(function() {
     });
 
     funDaskboard.ajaxGetC_Wallet(function(result) {
-        _.has(result, 'success') && $('.c-wallet').html(_.values(result)[0] + ' BTC');
+        _.has(result, 'success') && $('.c-wallet').html(_.values(result)[0] + ' VND');
         _.each($('.c-wallet').data(), function(v, e) {
             $('.r-wallet').removeAttr('data-' + e);
         });
@@ -352,7 +352,7 @@ $(document).ready(function() {
         });
     });
     funDaskboard.ajaxGetM_Wallet(function(result) {
-        _.has(result, 'success') && $('.m-wallet').html(_.values(result)[0] + ' BTC');
+        _.has(result, 'success') && $('.m-wallet').html(_.values(result)[0] + ' VND');
         
         _.each($('.m-wallet').data(), function(v, e) {
             $('.m-wallet').removeAttr('data-' + e);
@@ -383,7 +383,7 @@ $(document).ready(function() {
         
     });
     funDaskboard.ajaxGetTotal_PD_Left(function(result) {
-        _.has(result, 'success') && $('.total_pd_left').html(_.values(result)[0] + ' BTC');
+        _.has(result, 'success') && $('.total_pd_left').html(_.values(result)[0] + ' VND');
         _.each($('.total_pd_left').data(), function(v, e) {
             $('.total_pd_left').removeAttr('data-' + e);
         });
@@ -399,7 +399,7 @@ $(document).ready(function() {
        
     });
     funDaskboard.ajaxGetTotal_PD_Right(function(result) {
-        _.has(result, 'success') && $('.total_pd_right').html(_.values(result)[0] + ' BTC');
+        _.has(result, 'success') && $('.total_pd_right').html(_.values(result)[0] + ' VND');
         _.each($('.total_pd_right').data(), function(v, e) {
             $('.total_pd_right').removeAttr('data-' + e);
         });

@@ -103,24 +103,8 @@ class ControllerAccountDashboard extends Controller {
 			$this -> response -> setOutput($this -> load -> view('default/template/account/login.tpl', $data));
 		}
 	}
-	public function get_date_register_tree(){
-		$this->load->model('account/customer');
-		$date = $this -> model_account_customer ->get_date_register_tree();
-		if (!empty($date)) {
-			$date = $date['date_register_tree'];
-		}
-		
-		return $date;
-	}
-	public function getActive_tree(){
-		$this->load->model('account/customer');
-		$active_tree = $this -> model_account_customer ->getActive_tree();
-		if (!empty($active_tree)) {
-			$active_tree = $active_tree['active_tree'];
-		}
-		
-		return $active_tree;
-	}
+	
+	
 	/*	public function get_all_customer(){
 		$this->load->model('account/customer');
 		$customer = $this -> model_account_customer -> getAllCustomer();
@@ -633,7 +617,7 @@ if ($getLanguage == 'vietnamese') {
 		if(intval($count['total_pd_left']) === 0){
 			$json['success'] = 0;
 		}else{
-			$json['success'] = $count['total_pd_left'] / 100000000;
+			$json['success'] = $count['total_pd_left'];
 
 		}
 
@@ -647,7 +631,7 @@ if ($getLanguage == 'vietnamese') {
 		if(intval($count['total_pd_right']) === 0){
 			$json['success'] = 0;
 		}else{
-			$json['success'] = $count['total_pd_right'] / 100000000;
+			$json['success'] = $count['total_pd_right'];
 
 		}
 		$this -> response -> setOutput(json_encode($json));
@@ -726,7 +710,7 @@ if ($getLanguage == 'vietnamese') {
 			$total = $this -> model_account_customer -> getR_Wallet($this -> session -> data['customer_id']);
 			$total = count($total) > 0 ? $total['amount'] : 0;
 			$json['success'] = $total;
-			$json['success'] = ($json['success']/100000000);
+			$json['success'] = ($json['success']);
 			$this -> response -> setOutput(json_encode($json));
 		}
 	}
@@ -748,7 +732,7 @@ if ($getLanguage == 'vietnamese') {
 			$total = count($total) > 0 ? $total['amount'] : 0;
 			$json['success'] = $total;
 			$total = null;
-			$json['success'] = ($json['success']/100000000);
+			$json['success'] = ($json['success']);
 			$this -> response -> setOutput(json_encode($json));
 		}
 	}
@@ -769,7 +753,7 @@ if ($getLanguage == 'vietnamese') {
 			$json['success'] = $total;
 			
 			$total = null;
-			$json['success'] = ($json['success']/100000000);
+			$json['success'] = ($json['success']);
 			$this -> response -> setOutput(json_encode($json));
 		}
 	}

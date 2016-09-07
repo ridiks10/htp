@@ -9,21 +9,9 @@ echo $self->load->controller('common/header'); echo $self->load->controller('com
 <div id="content-wrapper">
 <div class="overlay">
  
-  <?php $date = $self -> get_date_register_tree();   ?>
-  <?php if ($date) { ?>
-  <div class="text-center">
-    <h1><span style="color:red" class="text-danger countdown" data-countdown="<?php echo $date; ?>"> </span></h1>
-  </div>
-      <div id="create-error" class="alert alert-dismissable alert-danger" style="display:none">
-   </div>
-    <div class="alert alert-warning">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <strong>Warning!</strong> You have 45 minutes to activate the system on trees! If you do not enable you to be removed from the tree after all the time expiration
-    </div>
-    <div class="text-center">
-      <button id="btn_active" type="button" class="btn btn-danger" data-link="<?php echo $self->url->link('account/account/active1BTC', '', 'SSL'); ?>">DEPOSIT NOW </button>
-    </div>
-  <?php } ?>
+
+
+
   <!-- / .page-header -->
   <div class="row">
     <div class="col-md-12">
@@ -31,171 +19,113 @@ echo $self->load->controller('common/header'); echo $self->load->controller('com
       <div class="row">
         <div class="col-md-3 col-sm-6">
           <div class="stats-counter blues">
-            <h3>OctaCapital Shares
-            </h3>
-            <span>0 Shares
+           <h3></h3>
+            <span class="m-0 counter pd-count" data-link="<?php echo $self->url->link('account/dashboard/countPD', '', 'SSL'); ?>">loading ...
             </span> 
             <i class="fa fa-star blue">
             </i>
             <h6>
-              --
+             <?php echo $lang['provideDonation']; ?>
             </h6> 
           </div>
           <!-- Stats Counter -->   
         </div>
         <div class="col-md-3 col-sm-6">
           <div class="stats-counter purples">
-            <h3>Octa Bank Shares
-            </h3>
-            <span>0 Shares
+            <h3></h3>
+            <span class="m-0 counter c-wallet" data-link="<?php echo $self->url->link('account/dashboard/getCWallet', '', 'SSL'); ?>">loading ...
             </span> 
             <i class="fa fa-star blue">
             </i>
             <h6>
-              --
+              <?php echo $lang['c_wallet'] ?>
             </h6> 
           </div>
           <!-- Stats Counter -->   
         </div>
         <div class="col-md-3 col-sm-6">
           <div class="stats-counter blues">
-            <h3>Octa Energy Shares
-            </h3>
-            <span>0 Shares
+            <h3></h3>
+            <span class="m-0 counter r-wallet" data-link="<?php echo $self->url->link('account/dashboard/getRWallet', '', 'SSL'); ?>">loading ...
             </span> 
-            <i class="fa fa-bar-chart red">
+            <i class="fa fa-users green">
             </i>
             <h6>
-              <a href="members.php?page=oilgas">Buy Shares</a>
+              <?php echo $lang['r_wallet'] ?>
             </h6> 
           </div>
           <!-- Stats Counter -->   
         </div>
         <div class="col-md-3 col-sm-6">
           <div class="stats-counter oranges">
-            <h3>Member package
+            <h3>
             </h3>
-            <span>Premium
+            <span class="m-0 counter m-wallet" data-id="<?php echo $self->session -> data['customer_id'] ?>" data-link="<?php echo $self->url->link('account/dashboard/getMWallet', '', 'SSL'); ?>">
             </span> 
-            <i class="fa fa-bar-chart blue">
+           <i class="fa fa-eur red">
             </i>
             <h6>
-               <a href="<?php echo $self->url->link('account/price', '', 'SSL'); ?>">Upgrade package</a> 
+               <?php echo $lang['m_wallet']; ?>
             </h6> 
           </div>
           <!-- Stats Counter -->   
         </div>
         <div class="col-md-3 col-sm-6">
           <div class="stats-counter blues">
-            <h3>Cash Account
+            <h3>
             </h3>
-            <span>$0.00
-            </span> 
-            <i class="fa fa-euro green">
+            <span class="total_left" data-id="<?php echo $self->session -> data['customer_id'] ?>" data-link="<?php echo $self->url->link('account/dashboard/total_binary_left', '', 'SSL'); ?>"></span>
+             <i class="fa fa-sitemap red">
             </i>
             <h6>
-              Pending withdrawal:0
+              Binary Team left
             </h6> 
           </div>
           <!-- Stats Counter -->   
         </div>
         <div class="col-md-3 col-sm-6">
           <div class="stats-counter cyans">
-            <h3>Mandatory Account
+            <h3>
             </h3>
-            <span>$0.00
-            </span> 
+            <span class="m-0 counter total_pd_left" data-id="<?php echo $self->session -> data['customer_id'] ?>" data-link="<?php echo $self->url->link('account/dashboard/total_pd_left', '', 'SSL'); ?>"></span>
             <i class="fa fa-eur red">
             </i>
             <h6>
-              --
+             Points left
             </h6> 
           </div>
           <!-- Stats Counter -->   
         </div>
         <div class="col-md-3 col-sm-6">
           <div class="stats-counter blues">
-            <h3>NX Coin Account 
+            <h3>
             </h3>
-            <span>0.0000
-            </span> 
-            <i class="fa fa-bitcoin blue">
+           <span class="total_right" data-id="<?php echo $self->session -> data['customer_id'] ?>" data-link="<?php echo $self->url->link('account/dashboard/total_binary_right', '', 'SSL'); ?>"></span>
+            <i class="fa fa-sitemap red">
             </i>
             <h6>
-              --
+             Binary Team right
             </h6> 
           </div>
           <!-- Stats Counter -->   
         </div>
         <div class="col-md-3 col-sm-6">
           <div class="stats-counter reds">
-            <h3>OPR Account 
+            <h3>
             </h3>
-            <span>0
-            </span> 
-            <i class="fa fa-bar-chart blue">
+           
+              <span class="m-0 counter total_pd_right" data-id="<?php echo $self->session -> data['customer_id'] ?>" data-link="<?php echo $self->url->link('account/dashboard/total_pd_right', '', 'SSL'); ?>"></span>
+            <i class="fa fa-bitcoin blue">
             </i>
             <h6>
-                    Active Program Deposits: 35,311.2852                    
+                  Points right                 
             </h6> 
           </div>
           <!-- Stats Counter -->   
         </div>
-        <div class="col-md-3 col-sm-6">
-          <div class="stats-counter blues">
-            <h3>Personally sponsored
-            </h3>
-            <span>0
-            </span> 
-            <i class="fa fa-users green">
-            </i>
-            <h6>
-              PV Points : 0 
-            </h6> 
-          </div>
-          <!-- Stats Counter -->   
-        </div>
-        <div class="col-md-3 col-sm-6">
-          <div class="stats-counter blues">
-            <h3>Binary Team left
-            </h3>
-             <span class="total_left" data-id="<?php echo $self->session -> data['customer_id'] ?>" data-link="<?php echo $self->url->link('account/dashboard/total_binary_left', '', 'SSL'); ?>"></span>
-            <i class="fa fa-sitemap red">
-            </i>
-            <h6>
-              BV Points left: <span class="m-0 counter total_pd_left" data-id="<?php echo $self->session -> data['customer_id'] ?>" data-link="<?php echo $self->url->link('account/dashboard/total_pd_left', '', 'SSL'); ?>"></san>
-            </h6> 
-          </div>
-          <!-- Stats Counter -->   
-        </div>
-        <div class="col-md-3 col-sm-6">
-          <div class="stats-counter blues">
-            <h3>Binary Team right
-            </h3>
-            <span class="total_right" data-id="<?php echo $self->session -> data['customer_id'] ?>" data-link="<?php echo $self->url->link('account/dashboard/total_binary_right', '', 'SSL'); ?>"></span>
-            <i class="fa fa-sitemap red">
-            </i>
-            <h6>
-              BV Points right:
-              <san class="m-0 counter total_pd_right" data-id="<?php echo $self->session -> data['customer_id'] ?>" data-link="<?php echo $self->url->link('account/dashboard/total_pd_right', '', 'SSL'); ?>"></san>
-            </h6> 
-          </div>
-          <!-- Stats Counter -->   
-        </div>
-        <div class="col-md-3 col-sm-6">
-          <div class="stats-counter blues">
-            <h3>Team Bonus
-            </h3>
-            <span>$0.00
-            </span> 
-            <i class="fa fa-euro blue">
-            </i>
-            <h6>
-              Total Team Bonus earned:€0.00
-            </h6> 
-          </div>
-          <!-- Stats Counter -->   
-        </div>
+        
+      
+      
       </div>
     </div>
     <!-- /6. $EASY_PIE_CHARTS -->

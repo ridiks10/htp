@@ -1,12 +1,12 @@
 <?php 
-   $self -> document -> setTitle('Confirm: '.($bitcoin / 100000000).' BTC');
+   $self -> document -> setTitle('Detail');
    echo $self -> load -> controller('common/header'); 
    echo $self -> load -> controller('common/column_left'); 
    ?>
 <div id="content-wrapper">
 
    <div class="row">
-      <div class="col-md-6">
+      <!-- <div class="col-md-6">
          <div class="panel">
             <div class="panel-heading">
                <span class="panel-title">Please confirm: <code><?php echo ($bitcoin / 100000000) ?> BTC </code></span>
@@ -24,19 +24,19 @@
                <code id="websocket">Received: 0 BTC</code>
             </div>
          </div>
-      </div>
+      </div> -->
       <div class="col-md-6">
-         <div class="panel">
-            <div class="panel-heading">
+         <div class="">
+            <!-- <div class="panel-heading">
                <span class="panel-title">Detail Payment</span>
-            </div>
+            </div> -->
            
-            <div class="panel-body" id="detail-payment" data-id="<?php echo $invoice_hash; ?>" data-link="<?php echo $self->url->link('account/price/detail_payment', '', 'SSL'); ?>">
-            </div>
+           <!--  <div class="panel-body" id="detail-payment" data-id="<?php echo $invoice_hash; ?>" data-link="<?php echo $self->url->link('account/price/detail_payment', '', 'SSL'); ?>">
+            </div> -->
             <div class="panel-heading">
                <span class="panel-title">Detail Package</span>
             </div>
-            <div class="panel-body">
+            <div class="">
                <?php if (intval($package) == 1) { ?>
                   <div class="deposite deposite_red">
               <span class="deposite_title">90 days</span>
@@ -169,10 +169,10 @@
    
 </div>
 
-<script type="text/javascript">
-   var str = 'We are waiting for 3 confirmation from <a style="color: #f0ad4e;" href="https://blockchain.info/" target="_blank">blogchain.info</a>';
-   $('#websocket').html(str);
-</script>
+ <script type="text/javascript">
+//    var str = 'We are waiting for 3 confirmation from <a style="color: #f0ad4e;" href="https://blockchain.info/" target="_blank">blogchain.info</a>';
+//    $('#websocket').html(str);
+// </script>
 
 <?php 
    echo $self -> load -> controller('common/footer'); 

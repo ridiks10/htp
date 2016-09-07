@@ -10,18 +10,24 @@ $_['text_button_create']            = 'Thêm Một PD';
 $_['NO']            = 'STT';
 
 $_['ACCOUNT']            = 'TÀI KHOẢN';
+$_['investment']            = 'ĐẦU TƯ';
+$_['create_investment']            = 'Tạo Gói Đầu Tư Mới';
+
+$_['detail_investment']            = 'Chi Tiết Gói Đầu Tư';
 
 
 $_['DATE_CREATED']            = 'NGÀY TẠO';
 
-$_['PD_NUMBER']            = 'MÃ PD';
+$_['PD_NUMBER']            = 'MÃ';
 
-$_['FILLED']            = 'SỐ LƯỢNG';
+$_['FILLED']            = 'SỐ TIỀN';
 
 $_['MAX_PROFIT']            = 'LỢI NHUẬN';
 
 $_['STATUS']            = 'TRẠNG THÁI';
-
+$_['action']            = 'HÀNH ĐỘNG';
+$_['our_investment'] ='GÓI ĐẦU TƯ';
+$_['list_investment'] ='DANH SÁCH GÓI ĐẦU TƯ';
 $_['TRANSFER']            = 'Danh sách chuyển';
 $_['VND']            = 'VNĐ';
 $_['TIME_REMAIN']            = 'THỜI GIAN CHỜ';

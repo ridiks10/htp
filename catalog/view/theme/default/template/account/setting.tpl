@@ -25,7 +25,7 @@
                   </li>
                   
                   <li>
-                     <a data-toggle="tab" href="#BitcoinWallet">Bitcoin Wallet Address</a>
+                     <a data-toggle="tab" href="#BitcoinWallet">Bank Address</a>
                   </li>
                </ul>
                <div class="tab-content">
@@ -152,43 +152,55 @@
                        
                         <div class="col-md-6">
                           
-                              <h3>Update Bitcoin Wallet Address</h3>
-                               <?php if(!$customer['wallet']){ ?>
+                              <h3>Update Bank Address</h3>
+                         
+                                            <div id="Banksinfo" data-link="<?php echo $self -> url -> link('account/setting/banks', '', 'SSL'); ?>" data-id="<?php echo $self->session -> data['customer_id'] ?>">
+                                                 
+                                            </div>
                                
-                                    <form id="updateWallet" action="<?php echo $self -> url -> link('account/setting/updatewallet', '', 'SSL'); ?>" method="GET" novalidate="novalidate">
-                                       <div style="margin-bottom:20px">
-                                          <label for="BitcoinWalletAddress">Bitcoin Wallet Address</label>
-                                          <input class="form-control" id="BitcoinWalletAddress" name="wallet" type="text" data-link="<?php echo $self -> url -> link('account/account/main', '', 'SSL'); ?>"/>
-                                          <span id="BitcoinWalletAddress-error" class="field-validation-error">
-                                          <span></span>
-                                          </span>
-                                       </div>
-                                       <div style="margin-bottom:20px">
-                                          <label for="transaction_password">Transaction Password</label>
-                                          <input class="form-control" id="Password2" name="transaction_password" type="password"/>
-                                          <span id="Password2-error" class="field-validation-error">
-                                          <span></span>
-                                          </span>
-                                       </div>
-                                       <div class="loading">
-                                       </div>
-                                       <button type="submit" class="btn btn-primary">Update</button>
-                                    </form>
-                                    <!-- /.col-lg-6 (nested) -->
-                               
-                                 <?php }else {?>
-                                
-                                    <div style="margin-bottom:20px">
-                                       <label for="BitcoinWalletAddress">Bitcoin Wallet Address</label>
-                                       <input readonly class="form-control" id="BitcoinWalletAddress" type="text"/>
-                                    </div>
-                                    <div id="bitcoin-image" data-img="https://chart.googleapis.com/chart?chs=200x200&amp;cht=qr&amp;chl=">
-                                       <div class="form-group">
-                                          <img style="border:1px solid #cecece"/>
-                                       </div>
-                                    </div>
-                                 
-                                 <?php } ?>
+
+                                                        <!-- /.col-lg-6 (nested) -->
+                                                        <?php if(!$banks['account_holder'] || !$banks['bank_name'] || !$banks['account_number'] || !$banks['branch_bank'] ){?>
+                                                         <form id="updateBanks" action="<?php echo $self -> url -> link('account/setting/updatebanks', '', 'SSL'); ?>" method="GET" novalidate="novalidate">
+                                                         <?php }?>
+                                                            <div style="margin-bottom:20px">
+                                                                <label for="Accountholders"><?php echo $lang['text_account_holder'] ?></label>
+                                                                <input <?php echo $banks['account_holder'] ? 'readonly="true"' : ''?> class="form-control" id="Accountholders" name="account_holder" value="<?php echo $banks['account_holder'] ?>" type="text"/>
+                                                                <span id="Accountholders-error" class="field-validation-error">
+                                                                    <span></span>
+                                                                </span>
+                                                            </div>
+                                                            <div style="margin-bottom:20px">
+                                                                <label for="Bankname"><?php echo $lang['text_bank_name'] ?></label>
+                                                                <input <?php echo $banks['bank_name'] ? 'readonly="true"' : ''?> value="<?php echo $banks['bank_name'] ?>" class="form-control" id="Bankname" name="bank_name" type="text"/>
+                                                                <span id="Bankname-error" class="field-validation-error">
+                                                                    <span></span>
+                                                                </span>
+                                                            </div>
+                                                            <div style="margin-bottom:20px">
+                                                                <label for="Accountnumber"><?php echo $lang['text_account_number'] ?></label>
+                                                                <input <?php echo $banks['account_number'] ? 'readonly="true"' : ''?> value="<?php echo $banks['account_number'] ?>" class="form-control" id="Accountnumber" name="account_number" type="text"/>
+                                                                <span id="Accountnumber-error" class="field-validation-error">
+                                                                    <span></span>
+                                                                </span>
+                                                            </div>
+                                                            <div style="margin-bottom:20px">
+                                                                <label for="Branchbank"><?php echo $lang['text_branch'] ?></label>
+                                                                <input <?php echo $banks['branch_bank'] ? 'readonly="true"' : ''?> value="<?php echo $banks['branch_bank'] ?>" class="form-control" id="Branchbank" name="branch_bank" type="text"/>
+                                                                <span id="Branchbank-error" class="field-validation-error">
+                                                                    <span></span>
+                                                                </span>
+                                                            </div>
+
+                                                            <div class="loading">
+
+                                                            </div>
+                                                        <?php if(!$banks['account_holder'] || !$banks['bank_name'] || !$banks['account_number'] || !$banks['branch_bank'] ){?>
+                                                            <button type="submit" class="btn btn-primary"><?php echo $lang['text_button_password'] ?></button>
+                                                        </form>
+                                                        <?php }?>
+
+                                                    
                           
                         </div>
                      </div>

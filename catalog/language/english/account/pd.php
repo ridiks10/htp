@@ -10,10 +10,14 @@ $_['text_button_create']            = 'Create Provide Donation';
 $_['NO']            = 'NO';
 
 $_['ACCOUNT']            = 'ACCOUNT';
+$_['investment']            = 'INVESTMENT PLAN';
+$_['create_investment']            = 'Create New Investment';
 
-
+$_['detail_investment']            = 'Investment Plan Detail';
+$_['action']            = 'Action';
 $_['DATE_CREATED']            = 'DATE CREATED	';
-
+$_['our_investment'] ='OUR INVESTMENT PLANS';
+$_['list_investment'] ='LIST INVESTMENT PLANS';
 $_['PD_NUMBER']            = 'PD NUMBER';
 
 $_['FILLED']            = 'FILLED';

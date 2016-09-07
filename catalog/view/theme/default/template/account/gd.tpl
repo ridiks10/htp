@@ -13,10 +13,10 @@
       <div class="col-md-12">
          <div class="panel panel-default">
             <div class="panel-heading">
-               <h3 class="panel-title pull-left"><?php echo $lang['text_register_user'] ?></h3>
-               <div class="btn-toolbar pull-right">
+               <h3 class="panel-title"><?php echo $lang['text_register_user'] ?></h3>
+              <!--  <div class="btn-toolbar pull-right">
                   <a href="<?php echo $self -> url -> link('account/gd/create', '', 'SSL'); ?>" class="btn btn-default"><i class="fa fa-fw fa-plus"></i><?php echo $lang['text_button_create'] ?></a>
-               </div>
+               </div> -->
                <div class="clearfix"></div>
             </div>
             <?php if($gds){ ?>
