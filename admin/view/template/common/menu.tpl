@@ -1,7 +1,9 @@
 <ul id="menu">
   <li id="dashboard"><a href="<?php echo $home; ?>"><i class="fa fa-dashboard fa-fw"></i> <span><?php echo $text_dashboard; ?></span></a></li>
 
+
   <li id="news" ><a href="<?php echo $simple_blog_article; ?>"><i class="fa fa-dashboard fa-fw"></i> <span><?php echo $text_simple_blog_article; ?></span></a></li>
+  <li id="mn_statistical" ><a href="<?php echo $thongke; ?>"><i class="fa fa-dashboard fa-fw"></i> <span> Statistical </span></a></li>
   <?php /* ?>
   <li id="news"><a class="parent"><i class="fa fa-puzzle-piece fa-fw"></i> <span><?php echo $text_simple_blog; ?></span></a>
     <ul>

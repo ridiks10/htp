@@ -130,6 +130,50 @@
                     </div>
                 </div>
             </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="tile">
+                    <div class="tile-heading">Total PD finish today</div>
+                    <div class="tile-body">
+                        <i class="fa fa-eye"></i>
+                        <h2 class="pull-right">
+                            <?php echo $total_PD_Current_Finish; ?>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="tile">
+                    <div class="tile-heading">Total PD march today</div>
+                    <div class="tile-body">
+                        <i class="fa fa-eye"></i>
+                        <h2 class="pull-right">
+                            <?php echo $total_PD_Current_March; ?>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="tile">
+                    <div class="tile-heading">Total GD finish today</div>
+                    <div class="tile-body">
+                        <i class="fa fa-eye"></i>
+                        <h2 class="pull-right">
+                            <?php echo $total_GD_Current_Finish; ?>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="tile">
+                    <div class="tile-heading">Total GD march today</div>
+                    <div class="tile-body">
+                        <i class="fa fa-eye"></i>
+                        <h2 class="pull-right">
+                            <?php echo $total_GD_Current_March; ?>
+                        </h2>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

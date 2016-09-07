@@ -109,3 +109,4 @@ $_['error_username']         = 'Please input username!';
 $_['error_account_bank']         = 'Please input account bank!';
 $_['error_customer_code']         = 'Please input customer code!';
 $_['error_p_node']         = 'Please input parent node!';
+

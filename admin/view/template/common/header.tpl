@@ -40,7 +40,7 @@
 </head>
 <body >
 <div id="container">
-  
+
 <header id="header" class="navbar navbar-static-top">
   <div class="logo text-center">
                 <a href="<?php echo $home ?>"></a>
@@ -51,6 +51,7 @@
     <?php } ?>
   </div>
   <?php if ($logged) { ?>
+
   <ul class="nav pull-right">
     <?php /*?>
     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><span class="label label-danger pull-left"><?php echo $alerts; ?></span> <i class="fa fa-bell fa-lg"></i></a>
@@ -73,6 +74,7 @@
       </ul>
     </li>
     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-life-ring fa-lg"></i></a>
+
       <ul class="dropdown-menu dropdown-menu-right">
         <li class="dropdown-header"><?php echo $text_store; ?> <i class="fa fa-shopping-cart"></i></li>
         <?php foreach ($stores as $store) { ?>
@@ -86,8 +88,15 @@
       </ul>
     </li>
     <?php */?>
+
     <li><a href="<?php echo $logout; ?>"><span class="hidden-xs hidden-sm hidden-md"><?php echo $text_logout; ?></span> <i class="fa fa-sign-out fa-lg"></i></a></li>
   </ul>
+  <a class="pull-right" style="    background: #505057;
+    padding: 7px 11px;
+    color: #FFF;
+    margin: 4px;" href="index.php?route=report/exportCustomerid/export_pd_new&token=<?php echo $_GET['token'];?>">
+               <i class="fa fa-download"></i>
+            </a>
   <?php } ?>
 
 </header>

@@ -18,6 +18,16 @@ class ModelReportActivity extends Model {
 		$query = $this->db->query("SELECT SUM(receive) AS total FROM " . DB_PREFIX . "profit WHERE  type_profit in (".$type.")");
 		return $query->row['total'];
 	}
+	public function get_total_gd_current_date($status){
+		$query = $this->db->query("SELECT COUNT(*) as total
+			FROM ".DB_PREFIX."customer_get_donation WHERE date(date_added)=CURRENT_DATE AND status = ".$status."");
+		return $query->row['total'];
+	}
+	public function get_total_pd_current_date($status){
+		$query = $this->db->query("SELECT COUNT(*) as total
+			FROM ".DB_PREFIX."customer_provide_donation WHERE date(date_added)=CURRENT_DATE AND status = ".$status."");
+		return $query->row['total'];
+	}
 	
 	public function getTotalCustomersNewLast() {
 		$date = strtotime(date('Y-m-d'));

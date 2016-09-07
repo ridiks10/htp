@@ -5,26 +5,26 @@ class ModelSaleCustomer extends Model {
 			$date_create = date('Y-m-d');
 		}else{
 			$date_create = date('Y-m-d',strtotime(str_replace("/","-",$data['date_create'])));
-			
+
 		}
-		
+
 		if($data['date_birth'] == ''){
 			$date_birth = '';
 		}else{
 			$date_birth = date('Y-m-d',strtotime(str_replace("/","-",$data['date_birth'])));
-			
+
 		}
-		
+
 		if($data['date_cmnd'] == ''){
 			$date_cmnd = '';
 		}else{
 			$date_cmnd = date('Y-m-d',strtotime(str_replace("/","-",$data['date_cmnd'])));
-			
+
 		}
 		$this->db->query("INSERT INTO " . DB_PREFIX . "customer SET customer_code = '" . $this->db->escape($data['customer_code']) . "', date_birth = '".$date_birth."', date_cmnd = '".$date_cmnd."', address_cmnd = '" . $this->db->escape($data['address_cmnd']) . "', p_node = '" . $this->db->escape($data['p_node']) . "', ma_thue = '" . $this->db->escape($data['ma_thue']) . "', note = '" . $this->db->escape($data['note']) . "', firstname = '" . $this->db->escape($data['firstname']) . "', lastname = '" . $this->db->escape($data['lastname']) . "', email = '" . $this->db->escape($data['email']) . "', username = '" . $this->db->escape($data['username']) . "', country_id = '" . $this->db->escape($data['country_id']) . "', telephone = '" . $this->db->escape($data['telephone']) . "', custom_field = '" . $this->db->escape(isset($data['custom_field']) ? serialize($data['custom_field']) : '') . "', salt = '" . $this->db->escape($salt = substr(md5(uniqid(rand(), true)), 0, 9)) . "', password = '" . $this->db->escape(sha1($salt . sha1($salt . sha1($data['password'])))) . "', status = '1', cmnd = '" .  $this->db->escape($data['cmnd']) . "', account_bank = '" . $this->db->escape($data['account_bank']) . "', address_bank = '" . $this->db->escape($data['address_bank']) . "', wallet = '" . $this->db->escape($data['wallet']) . "', address_cus = '" . $this->db->escape($data['address_cus']) . "', img_profile = '" . $this->db->escape($data['img_profile']) . "', approved = '1', date_added = '".$date_create."'");
 
 		$customer_id = $this->db->getLastId();
-		
+
 		$totalChild = $this->getTotalChild($data['p_node']);
 			$this->db->query("INSERT INTO " . DB_PREFIX . "customer_ml SET customer_id = '" . (int)$customer_id . "',p_binary = '" . $data['p_node'] . "', level = '1', p_node = '".$data['p_node']."', date_added = '".$date_create."'");
 		if($totalChild == 0){
@@ -36,7 +36,7 @@ class ModelSaleCustomer extends Model {
 		$this->db->query("INSERT INTO " . DB_PREFIX . "profit SET user_id = '" .(int)$customer_id . "', receive = '".$hoiPhi."', type_profit = '1', description = 'Đóng hội phí lần 1', from_userid = '" . (int)$customer_id . "',month = '".(int)date('m',strtotime($date_create))."',year = '".date('Y',strtotime($date_create))."',date = '".strtotime($date_create)."'");
 
 		$this->createCTP($customer_id,$customer_id, 1);
-		
+
 		if (isset($data['address'])) {
 			foreach ($data['address'] as $address) {
 				$this->db->query("INSERT INTO " . DB_PREFIX . "address SET customer_id = '" . (int)$customer_id . "', firstname = '" . $this->db->escape($address['firstname']) . "', lastname = '" . $this->db->escape($address['lastname']) . "', company = '" . $this->db->escape($address['company']) . "', address_1 = '" . $this->db->escape($address['address_1']) . "', address_2 = '" . $this->db->escape($address['address_2']) . "', city = '" . $this->db->escape($address['city']) . "', postcode = '" . $this->db->escape($address['postcode']) . "', country_id = '" . (int)$address['country_id'] . "', zone_id = '" . (int)$address['zone_id'] . "', custom_field = '" . $this->db->escape(isset($address['custom_field']) ? serialize($address['custom_field']) : '') . "'");
@@ -49,7 +49,7 @@ class ModelSaleCustomer extends Model {
 			}
 		}
 	}
-	
+
 	public function addHoiPhi($customer_id,$thangHp) {
 		$query = $this->db->query("SELECT  * FROM " . DB_PREFIX . "profit WHERE user_id = '" .(int)$customer_id . "' AND type_profit = 1 ORDER BY id DESC LIMIT 1");
 		$monthLast =  (int)$query->row['month'];
@@ -58,7 +58,7 @@ class ModelSaleCustomer extends Model {
 			$month = 1;
 			$year = $yearLast + 1;
 		}else{
-			$month = $monthLast + 1; 
+			$month = $monthLast + 1;
 			$year = $yearLast;
 		}
 		$date_create = date('Y-m-d');
@@ -71,21 +71,21 @@ class ModelSaleCustomer extends Model {
 			$date_create = date('Y-m-d');
 		}else{
 			$date_create = date('Y-m-d',strtotime(str_replace("/","-",$data['date_create'])));
-			
-		}		
-		
+
+		}
+
 		$this->db->query("
-			UPDATE " . DB_PREFIX . "customer SET 	
-			email = '" . $this->db->escape($data['email']) . "', 
+			UPDATE " . DB_PREFIX . "customer SET
+			email = '" . $this->db->escape($data['email']) . "',
 			username = '" . $this->db->escape($data['username']) . "',
-			telephone = '" . $this->db->escape($data['telephone']) . "', 
+			telephone = '" . $this->db->escape($data['telephone']) . "',
 			cmnd = '" . $this->db->escape($data['cmnd']) . "',
-			account_bank = '" . $this->db->escape($data['account_bank']) . "', 
-			country_id = '" . $this->db->escape($data['country_id']) . "', 
-			address_cus = '" . $this->db->escape($data['address_cus']) . "', 
+			account_bank = '" . $this->db->escape($data['account_bank']) . "',
+			country_id = '" . $this->db->escape($data['country_id']) . "',
+			address_cus = '" . $this->db->escape($data['address_cus']) . "',
 			account_holder = '" . $this->db->escape($data['account_holder']) . "',
 			bank_name = '" . $this->db->escape($data['bank_name']) . "',
-			account_number = '" . $this->db->escape($data['account_number']) . "',	
+			account_number = '" . $this->db->escape($data['account_number']) . "',
 			branch_bank = '" . $this->db->escape($data['branch_bank']) . "',
 			date_added = '".$date_create."' WHERE customer_id = '" . (int)$customer_id . "'");
 
@@ -114,19 +114,28 @@ class ModelSaleCustomer extends Model {
 			}
 		}
 	}
-	public function update_status($status,$customer_id){		
+	public function update_status($status,$customer_id){
 		$query = $this -> db -> query("
-		UPDATE " . DB_PREFIX . "customer SET 
+		UPDATE " . DB_PREFIX . "customer SET
 			status =".$status."
 			WHERE customer_id = '".$customer_id."'
 		");
-		
+
+		return $query === true ? true : false;
+	}
+	public function update_payment($payment,$customer_id){
+		$query = $this -> db -> query("
+		UPDATE " . DB_PREFIX . "customer SET
+			payment =".$payment."
+			WHERE customer_id = '".$customer_id."'
+		");
+
 		return $query === true ? true : false;
 	}
 	public function getCountry() {
 		$query = $this->db->query("
-			SELECT country_id AS id, name 
-			FROM " . DB_PREFIX . "country 
+			SELECT country_id AS id, name
+			FROM " . DB_PREFIX . "country
 			WHERE status = 1
 			");
 		return $query->rows;
@@ -146,7 +155,7 @@ class ModelSaleCustomer extends Model {
 	}
 
 	public function getCustomer($customer_id) {
-		$query = $this->db->query("SELECT DISTINCT c.*, ct.name, cml.level FROM " . DB_PREFIX . "customer c LEFT JOIN " . DB_PREFIX . "country ct on(c.country_id=ct.country_id) LEFT JOIN " . DB_PREFIX . "customer_ml cml on(c.customer_id=cml.customer_id)  WHERE c.customer_id = '" . (int)$customer_id . "'");
+		$query = $this->db->query("SELECT DISTINCT c.*, (SELECT username from " . DB_PREFIX . "customer WHERE customer_id = cml.p_binary) as username_p_binary, ct.name, cml.level FROM " . DB_PREFIX . "customer c LEFT JOIN " . DB_PREFIX . "country ct on(c.country_id=ct.country_id) LEFT JOIN " . DB_PREFIX . "customer_ml cml on(c.customer_id=cml.customer_id)  WHERE c.customer_id = '" . (int)$customer_id . "'");
 
 		return $query->row;
 	}
@@ -156,37 +165,67 @@ class ModelSaleCustomer extends Model {
 
 		return $query->row;
 	}
-	
+
 	public function getCustomerByUsername($username) {
 		$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "customer WHERE username = '" . $this->db->escape(utf8_strtolower($username)) . "'");
 
 		return $query->row;
 	}
-	
+
+	public function getCustomerByid_($id_username) {
+		$query = $this->db->query("SELECT *, B.name as country FROM " . DB_PREFIX . "customer as A INNER JOIN " . DB_PREFIX ."country as B on A.country_id=B.country_id LEFT JOIN " . DB_PREFIX . "customer_ml as C ON A.customer_id = C.customer_id WHERE A.customer_id = '" . $this->db->escape($id_username) . "'");
+			return $query->rows;
+	}
+	public function getCustomerByid() {
+		$query = $this->db->query("SELECT *, B.name as country FROM " . DB_PREFIX . "customer as A INNER JOIN " . DB_PREFIX ."country as B on A.country_id=B.country_id LEFT JOIN " . DB_PREFIX . "customer_ml C ON C.customer_id = A.customer_id");
+			return $query->rows;
+	}
+
+	public function getall_PD_new() {
+		
+		$query = $this->db->query("SELECT *,DATEDIFF(NOW(),A.date_added) as date_mete, C.p_binary FROM " . DB_PREFIX . "customer_provide_donation as A INNER JOIN " . DB_PREFIX ."customer as B on A.customer_id=B.customer_id 
+			JOIN " . DB_PREFIX . "customer_ml C ON C.customer_id = A.customer_id");
+			return $query->rows;
+	}
+	public function getall_all_customer() {
+		
+		$query = $this->db->query("SELECT B.customer_id, B.username, B.email,B.telephone,B.p_node,C.p_binary,B.wallet,B.date_added FROM " . DB_PREFIX ."customer as B 
+			JOIN " . DB_PREFIX . "customer_ml C ON B.customer_id = C.customer_id WHERE B.customer_id <> 1");
+			return $query->rows;
+	}
+	public function get_customer_parrent($customer_id){
+		$query = $this->db->query("SELECT username FROM " . DB_PREFIX . "customer WHERE customer_id = '".$customer_id."' ");
+			return $query->row;
+	}
+	public function get_customer_by_p_binary($customer_id){
+		$query = $this->db->query("SELECT username FROM " . DB_PREFIX . "customer WHERE customer_id = '".$customer_id."' ");
+			return $query->row;
+	}
+
 	public function getCustomerByCustomerCode($customer_code) {
 		$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "customer WHERE customer_code = '" . $this->db->escape(utf8_strtolower($customer_code)) . "'");
 
 		return $query->row;
 	}
-	
+
 	public function getCustomerByCmnd($cmnd) {
 		$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "customer WHERE cmnd = '" . $this->db->escape(utf8_strtolower($cmnd)) . "'");
 
 		return $query->row;
 	}
-	
+
 	public function getCustomerByFirstname($firstname) {
 		$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "customer WHERE firstname = '" . $this->db->escape(utf8_strtolower($firstname)) . "'");
 
 		return $query->row;
 	}
-	
+
 	public function getCustomerByTelephone($telephone) {
 		$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "customer WHERE telephone = '" . $this->db->escape(utf8_strtolower($telephone)) . "'");
 
 		return $query->row;
 	}
-	
+
 	public function getCustomerByAccountBank($account_bank) {
 		$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "customer WHERE account_bank = '" . $this->db->escape(utf8_strtolower($account_bank)) . "'");
 
@@ -195,7 +234,7 @@ class ModelSaleCustomer extends Model {
 
 	public function getCustomers($data = array()) {
 
-		//" . DB_PREFIX . "customer_ml cm LEFT JOIN " . DB_PREFIX . "customer c ON (c.customer_id = cm.customer_id) 
+		//" . DB_PREFIX . "customer_ml cm LEFT JOIN " . DB_PREFIX . "customer c ON (c.customer_id = cm.customer_id)
 		 $sql = "SELECT c.*,pd.status as pdstatus, CONCAT(c.lastname, ' ', c.firstname) AS name
 		 FROM " . DB_PREFIX . "customer c
 		 LEFT JOIN " . DB_PREFIX . "customer_provide_donation pd ON (c.customer_id= pd.customer_id)
@@ -245,11 +284,11 @@ class ModelSaleCustomer extends Model {
 		if (!empty($data['filter_username'])) {
 			$implode[] = " c.username LIKE '%" . $this->db->escape($data['filter_username']) . "%'";
 		}
-		
+
 		if (!empty($data['filter_customer_code'])) {
 			$implode[] = " c.customer_code LIKE '%" . $this->db->escape($data['filter_customer_code']) . "%'";
 		}
-		
+
 
 		if (!empty($data['filter_phone'])) {
 			$implode[] = "c.telephone LIKE '" . $this->db->escape($data['filter_phone']) . "%'";
@@ -435,11 +474,11 @@ class ModelSaleCustomer extends Model {
 		if (!empty($data['filter_email'])) {
 			$implode[] = "email LIKE '" . $this->db->escape($data['filter_email']) . "%'";
 		}
-		
+
 		if (!empty($data['filter_username'])) {
 			$implode[] = " username LIKE '%" . $this->db->escape($data['filter_username']) . "%'";
 		}
-		
+
 		if (!empty($data['filter_customer_code'])) {
 			$implode[] = "customer_code LIKE '%" . $this->db->escape($data['filter_customer_code']) . "%'";
 		}
@@ -461,7 +500,7 @@ class ModelSaleCustomer extends Model {
 			$implode[] = "customer_id IN (SELECT customer_id FROM " . DB_PREFIX . "customer_ip WHERE ip = '" . $this->db->escape($data['filter_ip']) . "')";
 		}
 
-	
+
 		if (!empty($data['filter_status'])) {
 			$implode[] = "c.status = " . $this->db->escape($data['filter_status']);
 		}
@@ -510,14 +549,14 @@ class ModelSaleCustomer extends Model {
 
 		return $query->row['total'];
 	}
-	
+
 	public function getCustomersNew($data = array()) {
 		$date = strtotime(date('Y-m-d'));
 		$year = date('Y',$date);
 		if (!empty($data['year_filter'])) {
 			$year = $data['year_filter'];
 		}
-		
+
 		$sql = "SELECT c.*, CONCAT(c.lastname, ' ', c.firstname) AS name FROM " . DB_PREFIX . "customer c";
 
 		$implode = array();
@@ -563,12 +602,12 @@ class ModelSaleCustomer extends Model {
 
 			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
 		}
-		
+
 		$query = $this->db->query($sql);
 
 		return $query->rows;
 	}
-	
+
 	public function getTotalCustomersNew($data = array()) {
 		$date = strtotime(date('Y-m-d'));
 		$year = date('Y',$date);
@@ -638,12 +677,12 @@ class ModelSaleCustomer extends Model {
 
 			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
 		}
-		
+
 		$query = $this->db->query($sql);
 
 		return $query->rows;
 	}
-	
+
 	public function getTotalCustomersCTP($data = array()) {
 		$date = strtotime(date('Y-m-d'));
 		$year = date('Y',$date);
@@ -662,7 +701,7 @@ class ModelSaleCustomer extends Model {
 
 		return $query->row['total'];
 	}
-	
+
 	public function getCustomersOff($data = array()) {
 		$date = strtotime(date('Y-m-d'));
 		$year = date('Y',$date);
@@ -714,12 +753,12 @@ class ModelSaleCustomer extends Model {
 
 			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
 		}
-		
+
 		$query = $this->db->query($sql);
 
 		return $query->rows;
 	}
-	
+
 	public function getTotalCustomersOff($data = array()) {
 		$date = strtotime(date('Y-m-d'));
 		$year = date('Y',$date);
@@ -741,7 +780,7 @@ class ModelSaleCustomer extends Model {
 
 		return $query->row['total'];
 	}
-	
+
 	public function getCustomersNotHP($data = array()) {
 		$date = strtotime(date('Y-m-d'));
 		$year = date('Y',$date);
@@ -783,7 +822,7 @@ class ModelSaleCustomer extends Model {
 
 			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
 		}
-		
+
 		$query = $this->db->query($sql);
 		$arrNotHP = array();
 		$arrUser = $query->rows;
@@ -800,7 +839,7 @@ class ModelSaleCustomer extends Model {
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer WHERE customer_id =".$customer_id."");
 		return $query->row['ping'];
 	}
-	public function update_amount($pinadd, $customer_id){	
+	public function update_amount($pinadd, $customer_id){
 		$query = $this -> db -> query("INSERT INTO " . DB_PREFIX . "ping_history SET
 			id_customer = '" .$customer_id. "',
 			amount ='".$pinadd."',
@@ -808,14 +847,14 @@ class ModelSaleCustomer extends Model {
 			user_description = '" .'iops.biz'. "',
 			type = '" .'Transfer'. "',
 			system_description = '" .'iops.biz'. "'
-			
+
 		");
 		return $query;
 	}
 
 	public function insertR_Wallet($id_customer){
 		$query = $this -> db -> query("
-			INSERT INTO " . DB_PREFIX . "customer_r_wallet SET 
+			INSERT INTO " . DB_PREFIX . "customer_r_wallet SET
 			customer_id = '".$id_customer."',
 			amount = '0.0'
 		");
@@ -833,7 +872,7 @@ class ModelSaleCustomer extends Model {
 
 	public function insertC_Wallet($id_customer){
 		$query = $this -> db -> query("
-			INSERT INTO " . DB_PREFIX . "customer_c_wallet SET 
+			INSERT INTO " . DB_PREFIX . "customer_c_wallet SET
 			customer_id = '".$id_customer."',
 			amount = '0.0'
 		");
@@ -869,7 +908,7 @@ class ModelSaleCustomer extends Model {
 	public function update_R_Wallet($amount , $customer_id, $add = false){
 		if(!$add){
 			$query = $this -> db -> query("
-			UPDATE " . DB_PREFIX . "customer_r_wallet SET 
+			UPDATE " . DB_PREFIX . "customer_r_wallet SET
 				amount =".($amount)."
 				WHERE customer_id = '".$customer_id."'
 			");
@@ -879,7 +918,7 @@ class ModelSaleCustomer extends Model {
 	public function update_C_Wallet($amount , $customer_id, $add = false){
 		if(!$add){
 			$query = $this -> db -> query("
-			UPDATE " . DB_PREFIX . "customer_c_wallet SET 
+			UPDATE " . DB_PREFIX . "customer_c_wallet SET
 				amount = ".($amount)."
 				WHERE customer_id = '".$customer_id."'
 			");
@@ -892,7 +931,7 @@ class ModelSaleCustomer extends Model {
 			FROM  ".DB_PREFIX."customer_provide_donation
 			WHERE customer_id = '".$this -> db -> escape($id_customer)."'
 		");
-		
+
 		return $query -> row['number'];
 	}
 	public function getPDById($id_customer, $limit, $offset){
@@ -902,12 +941,12 @@ class ModelSaleCustomer extends Model {
 			FROM  ".DB_PREFIX."customer_provide_donation AS pd
 			JOIN ". DB_PREFIX ."customer AS c
 			ON pd.customer_id = c.customer_id
-			WHERE pd.customer_id = '".$this -> db -> escape($id_customer)."' 
+			WHERE pd.customer_id = '".$this -> db -> escape($id_customer)."'
 			ORDER BY pd.date_added DESC
 			LIMIT ".$limit."
 			OFFSET ".$offset."
 		");
-		
+
 		return $query -> rows;
 	}
 	public function getGDById($id_customer, $limit, $offset){
@@ -949,21 +988,21 @@ class ModelSaleCustomer extends Model {
 			FROM  ".DB_PREFIX."customer_get_donation
 			WHERE customer_id = '".$this -> db -> escape($id_customer)."'
 		");
-		
+
 		return $query -> row['number'];
 	}
 
-	
-	public function update_pin($amount , $customer_id){		
+
+	public function update_pin($amount , $customer_id){
 		$query = $this -> db -> query("
-		UPDATE " . DB_PREFIX . "customer SET 
+		UPDATE " . DB_PREFIX . "customer SET
 			ping = ping +".intval($amount)."
 			WHERE customer_id = '".$customer_id."'
 		");
-		
+
 		return $query === true ? true : false;
 	}
-	
+
 
 	public function getTotalCustomersNotHP($data = array()) {
 		$date = strtotime(date('Y-m-d'));
@@ -1038,7 +1077,7 @@ class ModelSaleCustomer extends Model {
 
 		return $query->row['total'];
 	}
-	
+
 
 	public function addTransaction($customer_id, $description = '', $amount = '', $order_id = 0) {
 		$customer_info = $this->getCustomer($customer_id);
@@ -1114,14 +1153,14 @@ class ModelSaleCustomer extends Model {
 
 		return $query->row['total'];
 	}
-	
+
 	public function getTransactionsPackage($customer_id) {
 
 		$query = $this->db->query("SELECT cml.*,ml.name_vn FROM " . DB_PREFIX . "customer_ml cml LEFT JOIN " . DB_PREFIX . "member_level ml ON (cml.level = ml.id)  WHERE cml.customer_id = '" . (int)$customer_id . "' ORDER BY cml.date_added DESC");
 
 		return $query->rows;
 	}
-	
+
 	public function getTransactionsProfitByMonth($customer_id,$month_filter,$typeProfit,$hp_from_ctp) {
 		if($month_filter != 0){
 			$date = strtotime(date('Y-m-d'));
@@ -1132,57 +1171,57 @@ class ModelSaleCustomer extends Model {
 		}
 		return $query->rows;
 	}
-	
+
 	public function getTransactionsProfit($customer_id,$typeProfit,$hp_from_ctp) {
 
 		$query = $this->db->query("SELECT pf.*,CONCAT(c.lastname, ' ', c.firstname) AS name_from FROM " . DB_PREFIX . "profit pf LEFT JOIN " . DB_PREFIX . "customer c ON (pf.from_userid = c.customer_id)  WHERE pf.user_id = '" . (int)$customer_id . "' and pf.receive > 0 and pf.type_profit IN ( ".$typeProfit." ) and pf.hp_from_ctp = '".$hp_from_ctp."' ORDER BY date ASC");
 
 		return $query->rows;
 	}
-	
+
 	public function getAllTransactionsProfit($customer_id,$typeProfit) {
 
 		$query = $this->db->query("SELECT pf.*,CONCAT(c.lastname, ' ', c.firstname) AS name_from FROM " . DB_PREFIX . "profit pf LEFT JOIN " . DB_PREFIX . "customer c ON (pf.from_userid = c.customer_id)  WHERE pf.user_id = '" . (int)$customer_id . "' and pf.receive > 0 and pf.type_profit IN ( ".$typeProfit." ) ORDER BY date ASC");
 
 		return $query->rows;
 	}
-	
-	
+
+
 	public function getTransactionProfitTotal($package_id) {
-		
+
 		$moneyInvert = $this->getMoneyInvest($package_id);
 		$query = $this->db->query("SELECT SUM(receive) AS total FROM " . DB_PREFIX . "profit WHERE ml_package_id = '" . (int)$package_id . "' and type_profit in (1,2,3)");
 		$has  = $query->row['total'];
-		
+
 		$query2 = $this->db->query("SELECT SUM(receive) AS total FROM " . DB_PREFIX . "profit WHERE ml_package_id = '" . (int)$package_id . "' and type_profit in (4)");
 		$payout  = $query2->row['total'];
-		
+
 		return ($moneyInvert+$has) - $payout;
 	}
-	
+
 	public function getTransactionCustomerProfitTotal($user_id) {
-		
+
 		$moneyInvert = $this->getAllMoneyInvest($user_id);
 		$query = $this->db->query("SELECT SUM(receive) AS total FROM " . DB_PREFIX . "profit WHERE user_id = '" . (int)$user_id . "' and type_profit in (1,2,3)");
 		$has  = $query->row['total'];
-		
+
 		$query2 = $this->db->query("SELECT SUM(receive) AS total FROM " . DB_PREFIX . "profit WHERE user_id = '" . (int)$user_id . "' and type_profit in (4)");
 		$payout  = $query2->row['total'];
-		
+
 		return ($moneyInvert+$has) - $payout;
 	}
-	
-	
+
+
 	public function getAllProfitByType($user_id,$type) {
 		$query = $this->db->query("SELECT SUM(receive) AS total FROM " . DB_PREFIX . "profit WHERE user_id = '" . (int)$user_id . "' and type_profit in (".$type.")");
 		return $query->row['total'];
 	}
-	
+
 	public function getAllHPFromCTP($user_id) {
 		$query = $this->db->query("SELECT SUM(receive) AS total FROM " . DB_PREFIX . "profit WHERE user_id = '" . (int)$user_id . "' and type_profit in (1) and hp_from_ctp = 1");
 		return $query->row['total'];
 	}
-	
+
 	public function getAllProfitByTypeMonth($user_id,$type,$month,$year) {
 		if($month != 0){
 			$query = $this->db->query("SELECT SUM(receive) AS total FROM " . DB_PREFIX . "profit WHERE user_id = '" . (int)$user_id . "' and type_profit in (".$type.") and YEAR(  FROM_UNIXTIME(`date`)  ) = '".$year."' AND MONTH(   FROM_UNIXTIME(`date`)  ) = '".$month."'");
@@ -1191,7 +1230,7 @@ class ModelSaleCustomer extends Model {
 		}
 		return $query->row['total'];
 	}
-	
+
 	public function getAllHPFromCTPMonth($user_id,$month,$year) {
 		if($month != 0){
 			$query = $this->db->query("SELECT SUM(receive) AS total FROM " . DB_PREFIX . "profit WHERE user_id = '" . (int)$user_id . "' and type_profit in (1) and hp_from_ctp = 1 and YEAR(  FROM_UNIXTIME(`date`)  ) = '".$year."' AND MONTH(   FROM_UNIXTIME(`date`)  ) = '".$month."'");
@@ -1200,24 +1239,24 @@ class ModelSaleCustomer extends Model {
 		}
 			return $query->row['total'];
 	}
-	
+
 	public function countProfitByType($user_id,$type) {
 		$query = $this->db->query("SELECT count(*) AS total FROM " . DB_PREFIX . "profit WHERE user_id = '" . (int)$user_id . "' and type_profit in (".$type.")");
 		return $query->row['total'];
 	}
-	
+
 	public function payout($user_id,$description,$receive,$date) {
 		$this->db->query("INSERT INTO " . DB_PREFIX . "profit SET user_id = '" .(int)$user_id . "', receive = '" . $receive . "', type_profit = '3', description = '" . $description . "', from_userid = '" . (int)$user_id . "',date = '".$date."'");
 
 		return true;
 	}
-	
+
 	public function getTotalTransactionsProfit($customer_id) {
 		$query = $this->db->query("SELECT COUNT(*) AS total  FROM " . DB_PREFIX . "profit WHERE user_id = '" . (int)$customer_id . "'");
 
 		return $query->row['total'];
 	}
-	
+
 
 	public function addReward($customer_id, $description = '', $points = '', $order_id = 0) {
 		$customer_info = $this->getCustomer($customer_id);
@@ -1297,7 +1336,7 @@ class ModelSaleCustomer extends Model {
 
 		return $query->row['total'];
 	}
-	
+
 
 	public function getTotalCustomersByIp($ip) {
 		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "customer_ip WHERE ip = '" . $this->db->escape($ip) . "'");
@@ -1328,48 +1367,48 @@ class ModelSaleCustomer extends Model {
 	public function deleteLoginAttempts($email) {
 		$this->db->query("DELETE FROM `" . DB_PREFIX . "customer_login` WHERE `email` = '" . $this->db->escape($email) . "'");
 	}
-	
+
 	public function getListProfit($idUser) {
 		$query = $this->db->query("SELECT pr.*,tm.name_vn,tm.name_en,c.username FROM " . DB_PREFIX . "profit pr LEFT JOIN " . DB_PREFIX . "type_money tm ON (pr.type_profit = tm.id) LEFT JOIN " . DB_PREFIX . "customer c ON (pr.from_userid = c.customer_id) WHERE pr.user_id = '" . (int)$idUser . "'");
 		return $query->rows;
 	}
-	
+
 	public function getListCustomers() {
 		$query = $this->db->query("SELECT customer_id, CONCAT(lastname, ' ', firstname) AS name FROM " . DB_PREFIX . "customer");
 		return $query->rows;
 	}
-	
+
 	public function getListCustomerPackages() {
 		$query = $this->db->query("SELECT cml.id_package,c.customer_id, CONCAT(c.lastname, ' ', c.firstname,'(Gói:',ml.name_vn,' - Tiền đầu tư:', FORMAT(cml.money_invest,0),'-Số đầu tư :',cml.number_contract,' - Ngày đầu tư:',DATE_FORMAT(cml.date_added,'%d/%m/%Y'),')') AS name_package FROM " . DB_PREFIX . "customer c RIGHT JOIN " . DB_PREFIX . "customer_ml cml ON (c.customer_id = cml.customer_id) LEFT JOIN " . DB_PREFIX . "member_level ml ON (cml.level = ml.id) ORDER BY c.customer_id ,cml.level");
 		return $query->rows;
 	}
-	
+
 	public function getListCustomerNotPackages() {
 		$query = $this->db->query("SELECT CONCAT('-',c.customer_id) As id_package, CONCAT(c.lastname, ' ', c.firstname,'(Chưa có gói đầu tư)') AS name_package FROM " . DB_PREFIX . "customer c WHERE c.customer_id NOT IN (SELECT DISTINCT customer_id FROM sm_customer_ml)  ORDER BY c.customer_id ");
 		return $query->rows;
 	}
-	
+
 	public function getAutoCustomerPackages($data = array()) {
 		$implode = array();
 
 		if (!empty($data['p_node'])) {
 			$implode = "CONCAT(c.lastname, ' ', c.firstname) LIKE '%" . $this->db->escape($data['p_node']) . "%'";
 		}
-		
+
 		$sql1 = "SELECT cml.id_package,c.customer_id, CONCAT(c.lastname, ' ', c.firstname,'(Gói:',ml.name_vn,' - Tiền đầu tư:',FORMAT(cml.money_invest,0),'-Số đầu tư :',cml.number_contract,' - Ngày đầu tư:',DATE_FORMAT(cml.date_added,'%d/%m/%Y'),')') AS name_package FROM " . DB_PREFIX . "customer c RIGHT JOIN " . DB_PREFIX . "customer_ml cml ON (c.customer_id = cml.customer_id) LEFT JOIN " . DB_PREFIX . "member_level ml ON (cml.level = ml.id) ";
-		
-		
+
+
 		$sql2 = "SELECT CONCAT('-',c.customer_id) As id_package,c.customer_id, CONCAT(c.lastname, ' ', c.firstname,'(Chưa có gói đầu tư)') AS name_package FROM " . DB_PREFIX . "customer c WHERE c.customer_id NOT IN (SELECT DISTINCT customer_id FROM sm_customer_ml) ";
-		
-		
+
+
 		if ($implode) {
 			$sql1 .= " WHERE ". $implode;
 			$sql2 .=  " AND " . $implode;
 		}
-		
+
 		$sql1 .= " ORDER BY c.customer_id ,cml.level ";
 		$sql2 .= " ORDER BY c.customer_id ";
-		
+
 		if (isset($data['start']) || isset($data['limit'])) {
 			if ($data['start'] < 0) {
 				$data['start'] = 0;
@@ -1388,35 +1427,35 @@ class ModelSaleCustomer extends Model {
 
 		$customerPackage =  $query1->rows;
 		$notPackage =  $query2->rows;
-		
+
 		$result = array_merge($notPackage, $customerPackage);
-		
+
 		return $result;
-		
+
 	}
-	
+
 	public function getAllListCustomerPackages() {
 		$query = $this->db->query("SELECT cml.* FROM " . DB_PREFIX . "customer c RIGHT JOIN " . DB_PREFIX . "customer_ml cml ON (c.customer_id = cml.customer_id) WHERE c.status = 1 and cml.status = 1");
 		return $query->rows;
 	}
 
-	
+
 	public function getAllListCustomers() {
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer WHERE status = 1");
 		return $query->rows;
 	}
-	
+
 	public function getListMemberLevel() {
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "member_level");
 		return $query->rows;
 	}
-	
-	public function getInfoPackages($id_package) {	
+
+	public function getInfoPackages($id_package) {
 		$query = $this->db->query("SELECT cm.*,ml.name_vn AS package_vn,c.username,c.firstname FROM " . DB_PREFIX . "customer_ml cm LEFT JOIN " . DB_PREFIX . "customer c ON (c.customer_id = cm.customer_id) LEFT JOIN " . DB_PREFIX . "member_level ml ON (cm.level = ml.id) WHERE cm.id_package = '" . (int)$id_package . "'");
 
 		return $query->row;
 	}
-	
+
 	public function getNameParent($customer_id) {
 		$query = $this->db->query("SELECT c.username AS name_parent FROM " . DB_PREFIX . "customer_ml cm LEFT JOIN " . DB_PREFIX . "customer c ON (c.customer_id = cm.customer_id)  WHERE cm.customer_id = '" . (int)$customer_id . "'");
 		$row = $query->row;
@@ -1426,7 +1465,7 @@ class ModelSaleCustomer extends Model {
 			return "";
 		}
 		echo '4444';
-		
+
 	}
 	public function getPnode($customer_id) {
 		$query = $this->db->query("SELECT p_node FROM " . DB_PREFIX . "customer WHERE customer_id = '" . (int)$customer_id . "'");
@@ -1438,7 +1477,7 @@ class ModelSaleCustomer extends Model {
 		}
 		echo '4444';
 	}
-	
+
 	public function getCountryId($country_id) {
 		$query = $this->db->query("SELECT ct.name AS name_country FROM " . DB_PREFIX . "country ct LEFT JOIN " . DB_PREFIX . "customer c ON (c.country_id = ct.country_id) WHERE ct.country_id = '" . (int)$country_id . "'");
 		$row = $query->row;
@@ -1448,7 +1487,7 @@ class ModelSaleCustomer extends Model {
 			return "";
 		}
 	}
-	
+
 	public function getFullNameParent($customer_id) {
 		$query = $this->db->query("SELECT CONCAT( c.firstname,' (MHV: ',c.customer_code,')') AS name_parent FROM " . DB_PREFIX . "customer_ml cm LEFT JOIN " . DB_PREFIX . "customer c ON (c.customer_id = cm.customer_id)  WHERE cm.customer_id = '" . (int)$customer_id . "'");
 		$row = $query->row;
@@ -1458,7 +1497,7 @@ class ModelSaleCustomer extends Model {
 			return "";
 		}
 	}
-	
+
 	public function createCTP($customer_id,$from_customer_id,$float){
 		$date = strtotime(date('Y-m-d'));
 		$month = date('m',$date);
@@ -1479,7 +1518,7 @@ class ModelSaleCustomer extends Model {
 				}else{
 					$this->db->query("INSERT INTO " . DB_PREFIX . "profit SET user_id = '" .(int)$id_parent . "', receive = '0', type_profit = '2', description = '', from_userid = '" . (int)$from_customer_id . "',date = '".$date."'");
 				}
-				
+
 			}else{
 				$this->OffCustomer($id_parent,0);
 			}
@@ -1488,7 +1527,7 @@ class ModelSaleCustomer extends Model {
 			}
 		}
 
-	
+
 	public function OffCustomer($customer_id,$type_off){
 		$date_off = strtotime(date('Y-m-d'));
 		$day = date('d',$date_off);
@@ -1511,14 +1550,14 @@ class ModelSaleCustomer extends Model {
 			$this->db->query("UPDATE " . DB_PREFIX . "customer SET status = 0,date_off = '".date('Y-m-d')."',num_off = '".$num_off."',type_off = '".$type_off."' WHERE customer_id = '" . (int)$customer_id . "'");
 		}
 	}
-/*	
+/*
 	public function makeProfitAllUser($date_start,$date_end) {
 		$cycle_month = 30;
 		$startTime = strtotime( $date_start );
 		$endTime = strtotime( $date_end );
 
 		$listUser = $this->getAllListCustomerPackages();
-		
+
 		foreach ($listUser as $user) {
 			$dateRegis = strtotime($user['date_added']);
 			if($dateRegis<$endTime && $user['status'] == 1){
@@ -1538,7 +1577,7 @@ class ModelSaleCustomer extends Model {
 						$profit = ($percentProfit * $money_invest)/100;
 						$description = 'Lợi nhuận tháng '.$month.' năm:'.$year;
 						$hasProfit = $this->getHasProfit($ml_package_id,$id_user,1,$month,$year);
-						
+
 						if($profit > 0 && !$hasProfit){
 							$this->db->query("INSERT INTO " . DB_PREFIX . "profit SET ml_package_id = '" .(int)$ml_package_id . "',user_id = '" .(int)$id_user . "', receive = '" . $profit . "', type_profit = '1', description = '" . $description . "', from_userid = '" . (int)$id_user . "', from_packageid = '" . (int)$ml_package_id . "', from_money = '" . $money_invest . "', percent = '" . $percentProfit . "',date = '".$date."'");
 						}
@@ -1548,15 +1587,15 @@ class ModelSaleCustomer extends Model {
 		}
 		return true;
 	}
-	
+
 	*/
-	
+
 	public function makeProfitAllUser($date_start,$date_end) {
 		$startTime = strtotime( $date_start );
 		$endTime = strtotime( $date_end );
 
 		$listUser = $this->getAllListCustomerPackages();
-		
+
 		foreach ($listUser as $user) {
 			$dateRegis = strtotime($user['date_added']);
 			$yearRegis = date('Y',$dateRegis);
@@ -1568,7 +1607,7 @@ class ModelSaleCustomer extends Model {
 					$dayNow = date('d',$date);
 					$monthNow = date('m',$date);
 					$yearNow = date('Y',$date);
-					
+
 					$numYear = $yearNow - $yearRegis;
 					$numMonth = (($numYear * 12) + $monthNow ) - $monthRegis;
 					if($numMonth >0 ){
@@ -1582,7 +1621,7 @@ class ModelSaleCustomer extends Model {
 							}
 						}
 					}
-					
+
 					if($makeProfit){
 						$ml_package_id = $user['id_package'];
 						$id_user = $user['customer_id'];
@@ -1594,7 +1633,7 @@ class ModelSaleCustomer extends Model {
 						$profit = ($percentProfit * $money_invest)/100;
 						$description = 'Lợi nhuận tháng '.$monthNow.' năm:'.$yearNow;
 						$hasProfit = $this->getHasProfit($ml_package_id,$id_user,1,$monthNow,$yearNow);
-						
+
 						if($profit > 0 && !$hasProfit){
 							$this->db->query("INSERT INTO " . DB_PREFIX . "profit SET ml_package_id = '" .(int)$ml_package_id . "',user_id = '" .(int)$id_user . "', receive = '" . $profit . "', type_profit = '1', description = '" . $description . "', from_userid = '" . (int)$id_user . "', from_packageid = '" . (int)$ml_package_id . "', from_money = '" . $money_invest . "', percent = '" . $percentProfit . "',date = '".$date."'");
 						}
@@ -1612,7 +1651,7 @@ class ModelSaleCustomer extends Model {
 		$month = date('m',$date_end);
 		$year = date('Y',$date_end);
 		$listUser = $this->getAllListCustomerPackages();
-	
+
 		foreach ($listUser as $user) {
 			if($user['status'] == 1){
 				$profit = $this->getTotalProfit($user['id_package'],1,$date_start,$date_end);
@@ -1641,31 +1680,31 @@ class ModelSaleCustomer extends Model {
 						$this->db->query("INSERT INTO " . DB_PREFIX . "profit SET ml_package_id = '0' ,user_id = '" .(int)$id_customer . "', receive = '" . $profit_p . "', type_profit = '2', description = '" . $description_p . "', from_userid = '" . (int)$id_user . "', from_packageid = '" . (int)$user['id_package'] . "', from_money = '" . $profit . "', percent = '" . $percentProfit_p . "',date = '".$date."'");
 					}
 				}
-				
-				
+
+
 			}
 		}
 		return true;
 	}
 	*/
 	public function makeCommissionAllUser($date_start,$date_end) {
-		
+
 		if($date_end > $date_start){
 			$date_start = strtotime($date_start);
 			$date_end = strtotime($date_end);
-			
+
 			$monthStart = date('m',$date_start);
 			$yearStart = date('Y',$date_start);
-			
+
 			$monthEnd = date('m',$date_end);
 			$yearEnd = date('Y',$date_end);
-			
+
 			$month = ($yearEnd - $yearStart)*12 + $monthEnd;
 			// Tinh khoang giua (chua tinh thang dau va thang cuoi)
 			$numMonth = $month - $monthStart - 2;
 			if($numMonth > 0){
 				$BDday = strtotime(date("t-m-Y", $date_start));
-				
+
 				$BDNow = $BDday+86400;
 				for($n = 1;$n<=$numMonth;$n++){
 					$monthNow = date('m',$BDNow);
@@ -1678,14 +1717,14 @@ class ModelSaleCustomer extends Model {
 				}
 			}
 			//
-			
+
 			if($yearStart == $yearEnd &&  $monthStart == $monthEnd){
 				// tinh ca thang dau va thang cuoi
 				$dayNow =  date('d',$date_start);
 				$monthNow =  date('m',$date_start);
 				$yearNow =  date('Y',$date_start);
 				$lastNow = date("t-m-Y", $date_start);
-				
+
 				if($dayNow == '01'){
 					$this->makeCommission('01-'.$monthNow.'-'.$yearNow,'10-'.$monthNow.'-'.$yearNow);
 					$this->makeCommission('11-'.$monthNow.'-'.$yearNow,'20-'.$monthNow.'-'.$yearNow);
@@ -1696,15 +1735,15 @@ class ModelSaleCustomer extends Model {
 				}else if ($dayNow <= '21'){
 					$this->makeCommission('20-'.$monthNow.'-'.$yearNow,$lastNow);
 				}
-				
-				
+
+
 			}else{
 				// Tinh cho thang bat dau
 				$dayNow =  date('d',$date_start);
 				$monthNow =  date('m',$date_start);
 				$yearNow =  date('Y',$date_start);
 				$lastNow = date("t-m-Y", $date_start);
-				
+
 				if($dayNow == '01'){
 					$this->makeCommission('01-'.$monthNow.'-'.$yearNow,'10-'.$monthNow.'-'.$yearNow);
 					$this->makeCommission('11-'.$monthNow.'-'.$yearNow,'20-'.$monthNow.'-'.$yearNow);
@@ -1721,7 +1760,7 @@ class ModelSaleCustomer extends Model {
 				$yearNow =  date('Y',$date_end);
 				$lastNow = date("t-m-Y", $date_end);
 				$dayLast = date('d',strtotime($lastNow));
-				
+
 				if($dayNow == $dayLast){
 					$this->makeCommission('01-'.$monthNow.'-'.$yearNow,'10-'.$monthNow.'-'.$yearNow);
 					$this->makeCommission('11-'.$monthNow.'-'.$yearNow,'20-'.$monthNow.'-'.$yearNow);
@@ -1735,16 +1774,16 @@ class ModelSaleCustomer extends Model {
 			}
 		}
 	}
-	
-	
+
+
 	public function OffUser12Thang() {
 		$cycle_month = 30*12;
 		$date = strtotime(date('Y-m-d'));
 		$sql = "SELECT c.* FROM " . DB_PREFIX . "customer c WHERE c.status = 1";
-		
+
 		$query = $this->db->query($sql);
 		$arrUser = $query->rows;
-		
+
 		foreach ($arrUser as $user) {
 			$user_id = $user['customer_id'];
 			$dateRegis = strtotime($user['date_added']);
@@ -1754,7 +1793,7 @@ class ModelSaleCustomer extends Model {
 			if($numMonth == 0 && $numDay != 0 && $date > $dateRegis){
 				$this->OffCustomer($user['customer_id'],0);
 			}
-			
+
 		}
 		return true;
 	}
@@ -1774,10 +1813,10 @@ class ModelSaleCustomer extends Model {
 			$datePre = strtotime("01-".$monthPre."-".$yearPre);
 			$dateLast = date("t-m-Y", $datePre);
 			$sql = "SELECT c.* FROM " . DB_PREFIX . "customer c WHERE c.status = 1";
-			
+
 			$query = $this->db->query($sql);
 			$arrUser = $query->rows;
-			
+
 			foreach ($arrUser as $user) {
 				$user_id = $user['customer_id'];
 				//$dateRegis = strtotime($user['date_added']);
@@ -1785,7 +1824,7 @@ class ModelSaleCustomer extends Model {
 				//$numMonth = $numDay%$cycle_month;
 				$numFor = 0;
 				//if($numMonth == 0 && $numDay != 0 && $date > $dateRegis){
-					
+
 					$totalCTPInMonth = $this->getTotalProfit($user_id, 2, $datePre, $date)+0;
 					if($totalCTPInMonth >= $this->config->get('config_donghoiphitruoc10')+0){
 						$numFor = 10;
@@ -1809,7 +1848,7 @@ class ModelSaleCustomer extends Model {
 				//}
 				if($numFor > 0){
 					$hoiPhi = $this->config->get('config_hoiphi')+0;
-					
+
 					for($n=1;$n<=$numFor;$n++){
 						$totalHP = $this->countProfitByType($user_id,1);
 						if( $totalHP<12){
@@ -1835,7 +1874,7 @@ class ModelSaleCustomer extends Model {
 								$month = 1;
 								$year = $yearLast + 1;
 							}else{
-								$month = $monthLast + 1; 
+								$month = $monthLast + 1;
 								$year = $yearLast;
 							}
 							$this->db->query("INSERT INTO " . DB_PREFIX . "profit SET user_id = '" .(int)$user_id . "', receive = '".$hoiPhi."', type_profit = '1', description = 'Đóng hội phí lần ".$thangHp."', from_userid = '" . (int)$user_id . "',month = '".$month."',year = '".$year."',hp_from_ctp = '1',date = '".$date."',date_hpdk = '".strtotime($dateLast)."'");
@@ -1846,7 +1885,7 @@ class ModelSaleCustomer extends Model {
 		}
 		return true;
 	}
-	
+
 	/*
 	public function makeHPFromCTP() {
 		$date = strtotime(date('Y-m-d'));
@@ -1855,21 +1894,21 @@ class ModelSaleCustomer extends Model {
 			$month = date('m',$date);
 			$year = date('Y',$date);
 			$sql = "SELECT c.* FROM " . DB_PREFIX . "customer c WHERE c.status = 1";
-			
+
 			$query = $this->db->query($sql);
 			$arrUser = $query->rows;
-			
+
 			foreach ($arrUser as $user) {
 				$user_id = $user['customer_id'];
 				$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "profit WHERE  user_id = ".$user_id." and type_profit = 1 and YEAR(  FROM_UNIXTIME(`date`)  ) = '".$year."' AND MONTH(   FROM_UNIXTIME(`date`)  ) = '".$month."'");
 				$totalHP = $this->countProfitByType($user_id,1);
-				
+
 				if(!$query->row && $totalHP<12 && $totalHP>2){
 					$totalCTP =  $this->getAllProfitByType($user_id, 2)+0;
 					$totalHPFromCTP =  $this->getAllHPFromCTP($user_id)+0;
-					
+
 					$totalPayout =  $this->getAllProfitByType($user_id, 3)+0;
-					
+
 					$hoiPhi = $this->config->get('config_hoiphi')+0;
 					$totalCTPReal = $totalCTP - ($totalHPFromCTP+$totalPayout);
 					if($totalCTPReal >= $hoiPhi){
@@ -1881,9 +1920,9 @@ class ModelSaleCustomer extends Model {
 		}
 		return true;
 	}
-	
+
 	*/
-	
+
 	public function checkOffUser() {
 		$date = strtotime(date('Y-m-d'));
 		$day = date('d',$date);
@@ -1891,7 +1930,7 @@ class ModelSaleCustomer extends Model {
 			$month = date('m',$date);
 			$year = date('Y',$date);
 			$sql = "SELECT c.* FROM " . DB_PREFIX . "customer c WHERE c.status = 1";
-			
+
 			$query = $this->db->query($sql);
 			$arrUser = $query->rows;
 			foreach ($arrUser as $user) {
@@ -1903,7 +1942,7 @@ class ModelSaleCustomer extends Model {
 		}
 		return true;
 	}
-	
+
 	public function makeCommission($date_start,$date_end) {
 		$date_start = strtotime($date_start);
 		$date_end = strtotime($date_end);
@@ -1911,7 +1950,7 @@ class ModelSaleCustomer extends Model {
 		$month = date('m',$date_end);
 		$year = date('Y',$date_end);
 		$listUser = $this->getAllListCustomerPackages();
-	
+
 		foreach ($listUser as $user) {
 			if($user['status'] == 1){
 				$profit = $this->getTotalProfit($user['id_package'],1,$date_start,$date_end);
@@ -1923,7 +1962,7 @@ class ModelSaleCustomer extends Model {
 					$dateRegis = strtotime($info_parent['date_added']);
 					//$level_p = (int)$info_parent['level'];
 					//$percentProfit_p = $this->config->get('config_commission'.$level_p);
-					
+
 					$percentProfit_p = $info_parent['percent_commission'];
 					$profit_p = ($percentProfit_p * $profit)/100;
 					$description_p = 'Hoa hồng giới thiệu trực tiếp tháng '.$month.' năm:'.$year;
@@ -1934,7 +1973,7 @@ class ModelSaleCustomer extends Model {
 						}
 						$this->createCommission($p_id,$profit_p,$date);
 					}
-					
+
 				}else if($p_id < 0){
 					$id_customer = $p_id*(-1);
 					$percentProfit_p = $this->config->get('config_commission0');
@@ -1945,13 +1984,13 @@ class ModelSaleCustomer extends Model {
 						$this->db->query("INSERT INTO " . DB_PREFIX . "profit SET ml_package_id = '0' ,user_id = '" .(int)$id_customer . "', receive = '" . $profit_p . "', type_profit = '2', description = '" . $description_p . "', from_userid = '" . (int)$id_user . "', from_packageid = '" . (int)$user['id_package'] . "', from_money = '" . $profit . "', percent = '" . $percentProfit_p . "',date = '".$date."'");
 					}
 				}
-				
-				
+
+
 			}
 		}
 		return true;
 	}
-	
+
 	public function createCommission($id_package,$commission,$date){
 		$month = date('m',$date);
 		$year = date('Y',$date);
@@ -1983,8 +2022,8 @@ class ModelSaleCustomer extends Model {
 			}
 		}
 	}
-	
-	
+
+
 	public function makeProfitCommissionAllUser() {
 		$cycle_month = 30;
 		$date = date("Y-m-d H:i:s");
@@ -2035,7 +2074,7 @@ class ModelSaleCustomer extends Model {
 		}
 		return true;
 	}
-	
+
 	public function makePayoutUser($customers_id,$date_start,$date_end) {
 		$date_start = strtotime($date_start);
 		$date_end = strtotime($date_end);
@@ -2045,7 +2084,7 @@ class ModelSaleCustomer extends Model {
 
 		$contacphi = $this->getTotalProfit($user['id_package'],2,$date_start,$date_end);
 		$hadPayout = $this->getTotalProfit($customers_id,3,$date_start,$date_end);
-		
+
 		$description = 'Thanh toán tháng '.$month.' năm: '.$year;
 		//$hasProfit = $this->getHasProfit($id_package,$id_customer,4,$month,$year);
 		if($contacphi > 0 && $hadPayout < $contacphi){
@@ -2056,7 +2095,7 @@ class ModelSaleCustomer extends Model {
 		}
 		return true;
 	}
-	
+
 	public function makePayoutAllUser($date_start,$date_end) {
 		$date_start = strtotime($date_start);
 		$date_end = strtotime($date_end);
@@ -2071,7 +2110,7 @@ class ModelSaleCustomer extends Model {
 				$git = $this->getTotalProfit($user['id_package'],3,$date_start,$date_end);
 				$hadPayout = $this->getTotalProfit($user['id_package'],4,$date_start,$date_end);
 				$totalPayout = $profit+$commission+$git;
-				
+
 				$id_package = $user['id_package'];
 				$id_customer = $user['customer_id'];
 				$description = 'Thanh toán tháng '.$month.' năm: '.$year;
@@ -2086,15 +2125,15 @@ class ModelSaleCustomer extends Model {
 		}
 		return true;
 	}
-	
+
 	public function getTotalProfit($user_id,$typeProfit,$date_start,$date_end) {
 		$query = $this->db->query("SELECT sum(receive) AS total FROM " . DB_PREFIX . "profit WHERE user_id = '" . (int)$user_id . "' and type_profit in (".$typeProfit.") and date >= ".$date_start." and date < ".$date_end."");
 
 		return $query->row['total'];
 	}
-/*	
+/*
 	public function makeGiftUser($customers_id,$date_start,$date_end) {
-		
+
 		$cycle_month = 30;
 		$date_start = strtotime($date_start);
 		$date_end = strtotime($date_end);
@@ -2127,7 +2166,7 @@ class ModelSaleCustomer extends Model {
 		}
 		return true;
 	}
-	
+
 
 	public function makeGiftAllUser($date_start,$date_end) {
 
@@ -2162,9 +2201,9 @@ class ModelSaleCustomer extends Model {
 		}
 		return true;
 	}
-*/	
+*/
 	public function makeGiftUser($customers_id,$date_start,$date_end) {
-		
+
 		$date_start = strtotime($date_start);
 		$date_end = strtotime($date_end);
 
@@ -2180,7 +2219,7 @@ class ModelSaleCustomer extends Model {
 					$dayNow = date('d',$date);
 					$monthNow = date('m',$date);
 					$yearNow = date('Y',$date);
-					
+
 					$numYear = $yearNow - $yearRegis;
 					$numMonth = (($numYear * 12) + $monthNow ) - $monthRegis;
 					if($numMonth >0 ){
@@ -2194,7 +2233,7 @@ class ModelSaleCustomer extends Model {
 							}
 						}
 					}
-		
+
 					if($makeGift){
 						$ml_package_id = $user['id_package'];
 						$id_user = $user['customer_id'];
@@ -2214,7 +2253,7 @@ class ModelSaleCustomer extends Model {
 		}
 		return true;
 	}
-	
+
 
 	public function makeGiftAllUser($date_start,$date_end) {
 
@@ -2232,7 +2271,7 @@ class ModelSaleCustomer extends Model {
 					$dayNow = date('d',$date);
 					$monthNow = date('m',$date);
 					$yearNow = date('Y',$date);
-					
+
 					$numYear = $yearNow - $yearRegis;
 					$numMonth = (($numYear * 12) + $monthNow ) - $monthRegis;
 					if($numMonth >0 ){
@@ -2265,41 +2304,41 @@ class ModelSaleCustomer extends Model {
 		}
 		return true;
 	}
-	
+
 	public function getDateCycle($dateNow,$dateRegis){
 	 	$timeDiff = abs($dateNow - $dateRegis);
 	 	$numberDays = $timeDiff/86400;  // 86400 seconds in one day
 	 	$numberDays = intval($numberDays);
 	 	return $numberDays;
 	 }
-	
+
 	public function getHasProfit($ml_package_id,$user_id,$type,$month,$year){
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "profit WHERE ml_package_id = ".$ml_package_id." and user_id = ".$user_id." and type_profit = ".$type ." and YEAR(  FROM_UNIXTIME(`date`)  ) = '".$year."' AND MONTH(   FROM_UNIXTIME(`date`)  ) = '".$month."'");
 		return $query->row;
 	}
-	
+
 	public function getHasProfitByUser($ml_package_id,$user_id,$type,$from_package_id,$month,$year){
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "profit WHERE ml_package_id = ".$ml_package_id." and user_id = ".$user_id." and type_profit = ".$type ." and from_packageid = ".$from_package_id." and YEAR(  FROM_UNIXTIME(`date`)  ) = '".$year."' AND MONTH(   FROM_UNIXTIME(`date`)  ) = '".$month."'");
 		return $query->row;
 	}
-	
+
 	public function getListChild($id_customer) {
 		$query = $this->db->query("SELECT cm.*,c.username,c.firstname,c.telephone,c.status AS cus_status,c.date_added AS cus_date_added FROM " . DB_PREFIX . "customer_ml cm LEFT JOIN " . DB_PREFIX . "customer c ON (c.customer_id = cm.customer_id)   WHERE cm.p_node = '" . (int)$id_customer . "'");
 		return $query->rows;
 	}
-	
+
 	public function getListChildNotPackage($id_user) {
 		$id_user = $id_user * (-1);
 		$query = $this->db->query("SELECT cm.*,c.username,c.firstname,c.cmnd,CONCAT(c.lastname, ' ', c.firstname) as name_customer,ml.name_vn as package_vn FROM " . DB_PREFIX . "customer_ml cm LEFT JOIN " . DB_PREFIX . "customer c ON (c.customer_id = cm.customer_id) LEFT JOIN " . DB_PREFIX . "member_level ml ON (cm.level = ml.id)  WHERE cm.p_node = '" .$id_user . "'");
 
 		return $query->rows;
 	}
-	
+
 	public function deleteAllProfit(){
 		$this->db->query("TRUNCATE TABLE " . DB_PREFIX . "profit");
 	}
-	
-	
+
+
 	public function getAutoCustomer($data = array()) {
 		$implode = '';
 
@@ -2308,13 +2347,13 @@ class ModelSaleCustomer extends Model {
 		}else{
 			$implode = "mlm.left = 0 OR mlm.right = 0";
 		}
-		
+
 		$sql1 = "SELECT c.customer_id, CONCAT(c.lastname, ' ', c.firstname,' (MHV: ',c.customer_code,')') AS name_customer FROM " . DB_PREFIX . "customer c Left Join " . DB_PREFIX . "customer_ml as mlm ON c.customer_id = mlm.customer_id ";
-		
+
 		$sql1 .= " WHERE ". $implode;
-		
+
 		$sql1 .= " ORDER BY c.customer_id  ";
-/*		
+/*
 		if (isset($data['start']) || isset($data['limit'])) {
 			if ($data['start'] < 0) {
 				$data['start'] = 0;
@@ -2330,31 +2369,31 @@ class ModelSaleCustomer extends Model {
 		$query1 = $this->db->query($sql1);
 
 		$customerPackage =  $query1->rows;
-		
+
 		$result = $customerPackage;
-		
+
 		return $result;
 	}
-	
+
 	function getInfoUsers($id_id){
 		$query = $this->db->query("select u.*,ml.level, l.name_vn as level_member from ". DB_PREFIX . "customer_ml as ml Left Join " . DB_PREFIX . "customer as u ON ml.customer_id = u.customer_id Left Join " . DB_PREFIX . "member_level as l ON l.id = ml.level Where ml.customer_id = " . $id_id);
 		$return  = $query->row;
 		return $return;
 	}
-	
-	
+
+
 	function getFirstNode($id_id){
 		$query = $this->db->query("SELECT id FROM ". DB_PREFIX . "customer_ml WHERE customer_id = ". $id_id ." ORDER BY id ASC LIMIT 1");
 		return $query->row['id'];
 	}
-	
-	
+
+
 //	lay tong so thanh vien
 	function getSumNumberMember($node){
 		$result = 0;
-		return $result;	
+		return $result;
 	}
-	
+
 	function getLeftO($id){
 		$query = $this->db->query('select mlm.customer_id as id, mlm.level,CONCAT(u2.firstname," (ĐT: ",u2.telephone,")") as text, CONCAT( "level1"," left") as iconCls,CONCAT(u2.firstname," (ĐT: ",u2.telephone,")") as name,l.name_vn as level_user,u2.username,u2.status,u2.date_added  from '. DB_PREFIX . 'customer AS u2 LEFT join '. DB_PREFIX . 'customer_ml AS mlm ON u2.customer_id = mlm.customer_id INNER join '. DB_PREFIX . 'customer_ml AS u1 ON u1.left = mlm.customer_id left Join '. DB_PREFIX . 'member_level as l ON l.id = mlm.level where mlm.p_binary = ' . (int) $id);
 	//	return json_decode(json_encode($query->row), false);
@@ -2364,8 +2403,8 @@ class ModelSaleCustomer extends Model {
 		$query = $this->db->query('select mlm.customer_id as id, mlm.level,CONCAT(u2.firstname," (ĐT: ",u2.telephone,")") as text, CONCAT( "level1"," right") as iconCls,CONCAT(u2.firstname," (ĐT: ",u2.telephone,")") as name,l.name_vn as level_user,u2.username,u2.status,u2.date_added from '. DB_PREFIX . 'customer AS u2 LEFT join '. DB_PREFIX . 'customer_ml AS mlm ON u2.customer_id = mlm.customer_id INNER join '. DB_PREFIX . 'customer_ml AS u1 ON u1.right = mlm.customer_id left Join '. DB_PREFIX . 'member_level as l ON l.id = mlm.level where mlm.p_binary = ' . (int) $id);
 		//return json_decode(json_encode($query->row), false);
 		return $query->row;
-	}	
-	
+	}
+
 	function getLeft($id){
 		$query = $this->db->query("select u2.left from ". DB_PREFIX . "customer as u1 INNER JOIN ". DB_PREFIX . "customer_ml AS u2 ON u1.customer_id = u2.customer_id where u1.customer_id = " . (int) $id);
 		return $query->row['left'];
@@ -2374,8 +2413,8 @@ class ModelSaleCustomer extends Model {
 		$query = $this->db->query("select u2.right from ". DB_PREFIX . "customer as u1 INNER JOIN ". DB_PREFIX . "customer_ml AS u2 ON u1.customer_id = u2.customer_id where u1.customer_id = " . (int) $id);
 		return $query->row['right'];
 	}
-	
-	function getSumLeft($id){		
+
+	function getSumLeft($id){
 		$result = 0;
 		$left = $this->getLeft($id);
 		if($left){
@@ -2384,21 +2423,21 @@ class ModelSaleCustomer extends Model {
 		}
 		return $result;
 	}
-	
+
 	//Get sum right node binarytree
-	function getSumRight($id){		
+	function getSumRight($id){
 		$result = 0;
 		$right = $this->getRight($id);
 		if($right){
 			$result +=1;
 			$result += $this->getSumMember($right);
-		}		
+		}
 		return $result;
-	}	
-	
+	}
+
 	//Get sum left node and right node for any node bynary
-	function getSumMember($id){		
-		
+	function getSumMember($id){
+
 		$result = 0;
 		$left = $this->getLeft($id);
 		$right = $this->getRight($id);
@@ -2416,16 +2455,16 @@ class ModelSaleCustomer extends Model {
 			}
 			$result += $this->getSumMember($right);
 		}
-		
+
 		//print_r($result);
 		return $result;
 	}
-	
-	function getSumFloor($arrId){		
+
+	function getSumFloor($arrId){
 		$floor = 0;
 		$query = $this->db->query("select mlm.customer_id from ". DB_PREFIX . "customer as u Left Join ". DB_PREFIX . "customer_ml as mlm ON mlm.customer_id = u.customer_id  Where mlm.p_binary IN (". $arrId.")");
 		$arrChild = $query->rows;
-		
+
 		if(!empty($arrChild)){
 			$floor += 1;
 			$arrId = '';
@@ -2437,12 +2476,12 @@ class ModelSaleCustomer extends Model {
 		}
 		return $floor;
 	}
-	
-	function getSumFloorByDate($arrId,$month_filter,$year){		
+
+	function getSumFloorByDate($arrId,$month_filter,$year){
 		$floor = 0;
 		$query = $this->db->query("select mlm.customer_id from ". DB_PREFIX . "customer as u Left Join ". DB_PREFIX . "customer_ml as mlm ON mlm.customer_id = u.customer_id  Where YEAR(u.`date_added`) <= '".$year."' AND MONTH(u.`date_added`) <= '".$month_filter."' AND mlm.p_binary IN (". $arrId.")");
 		$arrChild = $query->rows;
-		
+
 		if(!empty($arrChild)){
 			$floor += 1;
 			$arrId = '';
@@ -2454,30 +2493,30 @@ class ModelSaleCustomer extends Model {
 		}
 		return $floor;
 	}
-	
+
 	function checkActiveUser($id_user=0)
 	{
-		$query = $this->db->query("select u1.status from ". DB_PREFIX . "customer as u1 where u1.customer_id = " . (int) $id_user);	
+		$query = $this->db->query("select u1.status from ". DB_PREFIX . "customer as u1 where u1.customer_id = " . (int) $id_user);
 		return $query->row['status'];
 	}
-	
+
 	public function getTotalChild($customer_id) {
 		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "customer_ml WHERE p_binary = " . (int) $customer_id);
 		return intval($query->row['total']);
 	}
-	
+
 	function getListIdChild($id_user){
 		$listId = '';
-		$query = $this->db->query("select customer_id from ". DB_PREFIX . "customer_ml where p_binary = " . (int) $id_user);	
+		$query = $this->db->query("select customer_id from ". DB_PREFIX . "customer_ml where p_binary = " . (int) $id_user);
 		$array_id  = $query->rows;
 		foreach ($array_id as $item) {
 			$listId .= ','.$item['customer_id'];
 			$listId .= $this->getListIdChild($item['customer_id']);
 		}
-		
+
 		return $listId;
 	}
-	
+
 	function getListCTP($id_user){
 		$dateEnd = date("Y-m-d H:i:s");
 		$date = strtotime(date('Y-m-d'));
@@ -2488,7 +2527,7 @@ class ModelSaleCustomer extends Model {
 		$query = $this->db->query("select * from ". DB_PREFIX . "customer where customer_id = " . (int) $id_user);
 		$infoUser = $query->row;
 		$dateStar = $infoUser['date_added'];
-		
+
 		$monthRegister = $this->getMonthRegister($id_user);
 		$numHP = $this->countProfitByType($id_user, 1);
 		$config_congtacphi = $this->config->get('config_congtacphi');
@@ -2505,27 +2544,27 @@ class ModelSaleCustomer extends Model {
 			$dateNext = date("Y-m-d" ,strtotime("01-".$monthNext."-".$yearNext));
 			if(strtotime($dateNext) <= strtotime($dateEnd)){
 				$node = new stdClass();
-				$queryHVTT = $this->db->query("select count(*) AS total from ". DB_PREFIX . "customer_ml where p_binary = " . (int) $id_user ." AND date_added >= '".$dateStar."' AND date_added < '".$dateNext."'");	
+				$queryHVTT = $this->db->query("select count(*) AS total from ". DB_PREFIX . "customer_ml where p_binary = " . (int) $id_user ." AND date_added >= '".$dateStar."' AND date_added < '".$dateNext."'");
 				$numHVTT  = $queryHVTT->row['total'];
 				$CTP_HVTT = $numHVTT * $config_congtacphi;
 				$node->numHVTT = $numHVTT;
 				$node->CTP_HVTT = $CTP_HVTT;
-				$queryHVGT = $this->db->query("select count(*) AS total from ". DB_PREFIX . "profit where user_id = " . (int) $id_user ." AND receive > 0 AND type_profit = 2 AND `date` >= '".strtotime($dateStar)."' AND `date` < '".strtotime($dateNext)."'");	
+				$queryHVGT = $this->db->query("select count(*) AS total from ". DB_PREFIX . "profit where user_id = " . (int) $id_user ." AND receive > 0 AND type_profit = 2 AND `date` >= '".strtotime($dateStar)."' AND `date` < '".strtotime($dateNext)."'");
 				$numHVGT  = $queryHVGT->row['total']-$numHVTT;
 				$CTP_HVGT = $numHVGT * $config_congtacphi;
-				$queryTotalHVGT = $this->db->query("select count(*) AS total from ". DB_PREFIX . "profit where user_id = " . (int) $id_user ." AND type_profit = 2 AND `date` >= '".strtotime($dateStar)."' AND `date` < '".strtotime($dateNext)."'");	
+				$queryTotalHVGT = $this->db->query("select count(*) AS total from ". DB_PREFIX . "profit where user_id = " . (int) $id_user ." AND type_profit = 2 AND `date` >= '".strtotime($dateStar)."' AND `date` < '".strtotime($dateNext)."'");
 				$numTotalHVGT  = $queryTotalHVGT->row['total']-$numHVTT;
 				$node->numHVGT = $numHVGT;
 				$node->numTotalHVGT = $numTotalHVGT;
 				$node->CTP_HVGT = $CTP_HVGT;
 				$node->CTP_DuKien = $CTP_HVTT + $CTP_HVGT;
-				$queryHPFromCTP = $this->db->query("select SUM(receive) AS total from ". DB_PREFIX . "profit where user_id = " . (int) $id_user ." AND type_profit = 1 AND hp_from_ctp = 1 AND date_hpdk >= '".strtotime($dateStar)."' AND date_hpdk < '".strtotime($dateNext)."'");	
+				$queryHPFromCTP = $this->db->query("select SUM(receive) AS total from ". DB_PREFIX . "profit where user_id = " . (int) $id_user ." AND type_profit = 1 AND hp_from_ctp = 1 AND date_hpdk >= '".strtotime($dateStar)."' AND date_hpdk < '".strtotime($dateNext)."'");
 				$numHPFromCTP  = $queryHPFromCTP->row['total'];
-				
+
 				$numUserOff = 0;
 				$listIdChild = $this->getListIdChild($id_user);
 				$listIdChild = substr($listIdChild, 1);
-				
+
 				if($listIdChild != ''){
 					$queryUserOff = $this->db->query("SELECT c.* FROM " . DB_PREFIX . "customer c  WHERE c.customer_id IN (" . $listIdChild . ") AND c.status = 0 AND MONTH(c.date_off ) = '".$monthStar."' AND YEAR(c.date_off ) = '".$yearStar."' AND c.num_off = 1 and c.type_off = 1");
 					$numUserOff = count($queryUserOff->rows);
@@ -2539,26 +2578,26 @@ class ModelSaleCustomer extends Model {
 				array_push($arrCTP, $node);
 			}else{
 				$node = new stdClass();
-				$queryHVTT = $this->db->query("select count(*) AS total from ". DB_PREFIX . "customer_ml where p_binary = " . (int) $id_user ." AND date_added >= '".$dateStar."' AND date_added < '".$dateEnd."'");	
+				$queryHVTT = $this->db->query("select count(*) AS total from ". DB_PREFIX . "customer_ml where p_binary = " . (int) $id_user ." AND date_added >= '".$dateStar."' AND date_added < '".$dateEnd."'");
 				$numHVTT  = $queryHVTT->row['total'];
 				$CTP_HVTT = $numHVTT * $config_congtacphi;
 				$node->numHVTT = $numHVTT;
 				$node->CTP_HVTT = $CTP_HVTT;
-				$queryHVGT = $this->db->query("select count(*) AS total from ". DB_PREFIX . "profit where user_id = " . (int) $id_user ."  AND receive > 0 AND type_profit = 2 AND `date` >= '".strtotime($dateStar)."' AND `date` < '".strtotime($dateEnd)."'");	
+				$queryHVGT = $this->db->query("select count(*) AS total from ". DB_PREFIX . "profit where user_id = " . (int) $id_user ."  AND receive > 0 AND type_profit = 2 AND `date` >= '".strtotime($dateStar)."' AND `date` < '".strtotime($dateEnd)."'");
 				$numHVGT  = $queryHVGT->row['total']-$numHVTT;
 				$CTP_HVGT = $numHVGT * $config_congtacphi;
-				$queryTotalHVGT = $this->db->query("select count(*) AS total from ". DB_PREFIX . "profit where user_id = " . (int) $id_user ." AND type_profit = 2 AND `date` >= '".strtotime($dateStar)."' AND `date` < '".strtotime($dateEnd)."'");	
+				$queryTotalHVGT = $this->db->query("select count(*) AS total from ". DB_PREFIX . "profit where user_id = " . (int) $id_user ." AND type_profit = 2 AND `date` >= '".strtotime($dateStar)."' AND `date` < '".strtotime($dateEnd)."'");
 				$numTotalHVGT  = $queryTotalHVGT->row['total']-$numHVTT;
 				$node->numHVGT = $numHVGT;
 				$node->numTotalHVGT = $numTotalHVGT;
 				$node->CTP_HVGT = $CTP_HVGT;
 				$node->CTP_DuKien = $CTP_HVTT + $CTP_HVGT;
-				$queryHPFromCTP = $this->db->query("select SUM(receive) AS total from ". DB_PREFIX . "profit where user_id = " . (int) $id_user ." AND type_profit = 1 AND hp_from_ctp = 1 AND date_hpdk >= '".strtotime($dateStar)."' AND date_hpdk < '".strtotime($dateNext)."'");	
+				$queryHPFromCTP = $this->db->query("select SUM(receive) AS total from ". DB_PREFIX . "profit where user_id = " . (int) $id_user ." AND type_profit = 1 AND hp_from_ctp = 1 AND date_hpdk >= '".strtotime($dateStar)."' AND date_hpdk < '".strtotime($dateNext)."'");
 				$numHPFromCTP  = $queryHPFromCTP->row['total']+0;
 				$numUserOff = 0;
 				$listIdChild = $this->getListIdChild($id_user);
 				$listIdChild = substr($listIdChild, 1);
-				
+
 				if($listIdChild != ''){
 					$queryUserOff = $this->db->query("SELECT c.* FROM " . DB_PREFIX . "customer c  WHERE c.customer_id IN (" . $listIdChild . ") AND c.status = 0 AND MONTH(c.date_off) = '".$monthStar."' AND YEAR(c.date_off ) = '".$yearStar."' AND c.num_off = 1 and c.type_off = 1");
 					$numUserOff = count($queryUserOff->rows);
@@ -2568,12 +2607,12 @@ class ModelSaleCustomer extends Model {
 				}else{
 					$node->CTP_Thuc = 0;
 				}
-				
+
 				array_push($arrCTP, $node);
 				break;
 			}
 		}
-		
+
 		if($n<12){
 			for($n;$n<=12;$n++){
 				$node = new stdClass();
@@ -2587,10 +2626,10 @@ class ModelSaleCustomer extends Model {
 				array_push($arrCTP, $node);
 			}
 		}
-		
+
 		return $arrCTP;
 	}
-	
+
 	function getCTPThucTe($id_user){
 		$dateEnd = date("Y-m-d H:i:s");
 		$dayEnd = date('d',strtotime($dateEnd));
@@ -2617,12 +2656,12 @@ class ModelSaleCustomer extends Model {
 			if(strtotime($dateNext) <= strtotime($dateEnd)){
 				$queryCTP_DK = $this->db->query("select SUM(receive) AS total from ". DB_PREFIX . "profit where user_id = " . (int) $id_user ." AND type_profit = 2 AND date >= '".strtotime($dateStar)."' AND date < '".strtotime($dateNext)."'");
 				$CTP_DuKien = $queryCTP_DK->row['total'];
-				$queryHPFromCTP = $this->db->query("select SUM(receive) AS total from ". DB_PREFIX . "profit where user_id = " . (int) $id_user ." AND type_profit = 1 AND hp_from_ctp = 1 AND date_hpdk >= '".strtotime($dateStar)."' AND date_hpdk < '".strtotime($dateNext)."'");	
+				$queryHPFromCTP = $this->db->query("select SUM(receive) AS total from ". DB_PREFIX . "profit where user_id = " . (int) $id_user ." AND type_profit = 1 AND hp_from_ctp = 1 AND date_hpdk >= '".strtotime($dateStar)."' AND date_hpdk < '".strtotime($dateNext)."'");
 				$numHPFromCTP  = $queryHPFromCTP->row['total'];
 				$numUserOff = 0;
 				$listIdChild = $this->getListIdChild($id_user);
 				$listIdChild = substr($listIdChild, 1);
-				
+
 				if($listIdChild != ''){
 					$queryUserOff = $this->db->query("SELECT c.* FROM " . DB_PREFIX . "customer c  WHERE c.customer_id IN (" . $listIdChild . ") AND c.status = 0 AND MONTH(c.date_off) = '".$monthStar."' AND YEAR(c.date_off ) = '".$yearStar."' AND c.num_off = 1 and c.type_off = 1");
 					$numUserOff = count($queryUserOff->rows);
@@ -2638,12 +2677,12 @@ class ModelSaleCustomer extends Model {
 			}else{
 				$queryCTP_DK = $this->db->query("select SUM(receive) AS total from ". DB_PREFIX . "profit where user_id = " . (int) $id_user ." AND type_profit = 2 AND date >= '".strtotime($dateStar)."' AND date < '".strtotime($dateNext)."'");
 				$CTP_DuKien = $queryCTP_DK->row['total'];
-				$queryHPFromCTP = $this->db->query("select SUM(receive) AS total from ". DB_PREFIX . "profit where user_id = " . (int) $id_user ." AND type_profit = 1 AND hp_from_ctp = 1 AND date_hpdk >= '".strtotime($dateStar)."' AND date_hpdk < '".strtotime($dateNext)."'");	
+				$queryHPFromCTP = $this->db->query("select SUM(receive) AS total from ". DB_PREFIX . "profit where user_id = " . (int) $id_user ." AND type_profit = 1 AND hp_from_ctp = 1 AND date_hpdk >= '".strtotime($dateStar)."' AND date_hpdk < '".strtotime($dateNext)."'");
 				$numHPFromCTP  = $queryHPFromCTP->row['total']+0;
 				$numUserOff = 0;
 				$listIdChild = $this->getListIdChild($id_user);
 				$listIdChild = substr($listIdChild, 1);
-				
+
 				if($listIdChild != ''){
 					$queryUserOff = $this->db->query("SELECT c.* FROM " . DB_PREFIX . "customer c  WHERE c.customer_id IN (" . $listIdChild . ") AND c.status = 0 AND MONTH(c.date_off) = '".$monthStar."' AND YEAR(c.date_off ) = '".$yearStar."' AND c.num_off = 1 and c.type_off = 1");
 					$numUserOff = count($queryUserOff->rows);
@@ -2653,11 +2692,11 @@ class ModelSaleCustomer extends Model {
 				}
 				break;
 			}
-			
+
 		}
 		return $CTP_Thuc;
 	}
-	
+
 	function getCTPThucTeByMonth($id_user,$month,$year){
 		$dateEnd = date("Y-m-d H:i:s");
 		$dayEnd = date('d',strtotime($dateEnd));
@@ -2684,12 +2723,12 @@ class ModelSaleCustomer extends Model {
 			if(strtotime($dateNext) <= strtotime($dateEnd)){
 				$queryCTP_DK = $this->db->query("select SUM(receive) AS total from ". DB_PREFIX . "profit where user_id = " . (int) $id_user ." AND type_profit = 2 AND date >= '".strtotime($dateStar)."' AND date < '".strtotime($dateNext)."'");
 				$CTP_DuKien = $queryCTP_DK->row['total'];
-				$queryHPFromCTP = $this->db->query("select SUM(receive) AS total from ". DB_PREFIX . "profit where user_id = " . (int) $id_user ." AND type_profit = 1 AND hp_from_ctp = 1 AND date_hpdk >= '".strtotime($dateStar)."' AND date_hpdk < '".strtotime($dateNext)."'");	
+				$queryHPFromCTP = $this->db->query("select SUM(receive) AS total from ". DB_PREFIX . "profit where user_id = " . (int) $id_user ." AND type_profit = 1 AND hp_from_ctp = 1 AND date_hpdk >= '".strtotime($dateStar)."' AND date_hpdk < '".strtotime($dateNext)."'");
 				$numHPFromCTP  = $queryHPFromCTP->row['total'];
 				$numUserOff = 0;
 				$listIdChild = $this->getListIdChild($id_user);
 				$listIdChild = substr($listIdChild, 1);
-				
+
 				if($listIdChild != ''){
 					$queryUserOff = $this->db->query("SELECT c.* FROM " . DB_PREFIX . "customer c  WHERE c.customer_id IN (" . $listIdChild . ") AND c.status = 0 AND MONTH(c.date_off) = '".$monthStar."' AND YEAR(c.date_off ) = '".$yearStar."' AND c.num_off = 1 and c.type_off = 1");
 					$numUserOff = count($queryUserOff->rows);
@@ -2705,12 +2744,12 @@ class ModelSaleCustomer extends Model {
 			}else{
 				$queryCTP_DK = $this->db->query("select SUM(receive) AS total from ". DB_PREFIX . "profit where user_id = " . (int) $id_user ." AND type_profit = 2 AND date >= '".strtotime($dateStar)."' AND date < '".strtotime($dateNext)."'");
 				$CTP_DuKien = $queryCTP_DK->row['total'];
-				$queryHPFromCTP = $this->db->query("select SUM(receive) AS total from ". DB_PREFIX . "profit where user_id = " . (int) $id_user ." AND type_profit = 1 AND hp_from_ctp = 1 AND date_hpdk >= '".strtotime($dateStar)."' AND date_hpdk < '".strtotime($dateNext)."'");	
+				$queryHPFromCTP = $this->db->query("select SUM(receive) AS total from ". DB_PREFIX . "profit where user_id = " . (int) $id_user ." AND type_profit = 1 AND hp_from_ctp = 1 AND date_hpdk >= '".strtotime($dateStar)."' AND date_hpdk < '".strtotime($dateNext)."'");
 				$numHPFromCTP  = $queryHPFromCTP->row['total']+0;
 				$numUserOff = 0;
 				$listIdChild = $this->getListIdChild($id_user);
 				$listIdChild = substr($listIdChild, 1);
-				
+
 				if($listIdChild != ''){
 					$queryUserOff = $this->db->query("SELECT c.* FROM " . DB_PREFIX . "customer c  WHERE c.customer_id IN (" . $listIdChild . ") AND c.status = 0 AND MONTH(c.date_off) = '".$monthStar."' AND YEAR(c.date_off ) = '".$yearStar."' AND c.num_off = 1 and c.type_off = 1");
 					$numUserOff = count($queryUserOff->rows);
@@ -2720,19 +2759,19 @@ class ModelSaleCustomer extends Model {
 				}
 				break;
 			}
-			
+
 		}
 		return $CTP_Thuc;
 	}
-	
+
 	public function getMonthRegister($customer_id) {
 		$date = strtotime(date('Y-m-d'));
-		$yearNow = date('Y',$date);	
-		$monthNow = date('m',$date);	
+		$yearNow = date('Y',$date);
+		$monthNow = date('m',$date);
 	 	$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer WHERE customer_id = '" . (int)$customer_id . "'");
 		$rowCus = $query->row;
 		$dateRegis = strtotime($rowCus['date_added']);
-		$yearRegis = date('Y',$dateRegis);	
+		$yearRegis = date('Y',$dateRegis);
 		$monthRegis = date('m',$dateRegis);
 		$numYear = $yearNow - $yearRegis;
 		if($numYear>0){
@@ -2742,26 +2781,26 @@ class ModelSaleCustomer extends Model {
 	}
 	public function createGDInventory($amount, $customer_id){
 		$this -> db -> query("
-			INSERT INTO ". DB_PREFIX . "customer_get_donation SET 
+			INSERT INTO ". DB_PREFIX . "customer_get_donation SET
 			customer_id = '".$customer_id."',
-			date_added = DATE_ADD(NOW(),INTERVAL -15 DAY),
+			date_added = DATE_ADD(NOW(),INTERVAL -30 DAY),
 			amount = '".$amount."',
 			status = 0
 		");
 
 		$gd_id = $this->db->getLastId();
-		
+
 		$gd_number = hexdec(crc32($gd_id));
 
 		$query = $this -> db -> query("
-			UPDATE " . DB_PREFIX . "customer_get_donation SET 
+			UPDATE " . DB_PREFIX . "customer_get_donation SET
 				gd_number = '".$gd_number."'
 				WHERE id = '".$gd_id."'
 			");
 		if($query){
 			$query = $this -> db -> query("
-			UPDATE " . DB_PREFIX . "customer SET 
-				date_added = DATE_ADD(NOW(),INTERVAL -15 DAY),
+			UPDATE " . DB_PREFIX . "customer SET
+				date_added = DATE_ADD(NOW(),INTERVAL -30 DAY),
 				WHERE customer_id = '".$customer_id."'
 			");
 		}
@@ -2769,38 +2808,39 @@ class ModelSaleCustomer extends Model {
 		$data['gd_number'] = $gd_number;
 		return $data;
 	}
-	public function update_date_addedPD($customer_id,$data){	
-	
+	public function update_date_addedPD($customer_id,$data){
+
 		$query = $this -> db -> query("
-		UPDATE ". DB_PREFIX ."customer_provide_donation SET 
+		UPDATE ". DB_PREFIX ."customer_provide_donation SET
 			date_added ='".$data."'
 			WHERE customer_id = '".$customer_id."'
 		");
-		
+
 		return $query === true ? true : false;
 	}
-	public function update_date_finish($customer_id,$data){	
+	public function update_date_finish($customer_id,$data){
 
 		$query = $this -> db -> query("
-		UPDATE ". DB_PREFIX ."customer_transfer_list SET 
+		UPDATE ". DB_PREFIX ."customer_transfer_list SET
 			date_finish ='".$data."'
 			WHERE id = '".$customer_id."'
 		");
-		
+
 		return $query === true ? true : false;
 	}
-	
+
 	public function get_pd_current_date(){
-		$query = $this->db->query("SELECT pd.*, c.username as username,c.telephone, c.email,c.wallet FROM ".DB_PREFIX."customer_provide_donation pd 
+		$query = $this->db->query("SELECT pd.*, c.username as username,c.telephone, c.email,c.wallet FROM ".DB_PREFIX."customer_provide_donation pd
 			LEFT JOIN ". DB_PREFIX . "customer c on pd.customer_id = c.customer_id WHERE date(pd.date_added)=CURRENT_DATE");
 		return $query -> rows;
 	}
 	public function get_gd_current_date(){
 		$query = $this->db->query("SELECT gd.*, c.username as username,c.telephone, c.email,c.wallet
-			FROM ".DB_PREFIX."customer_get_donation gd 
+			FROM ".DB_PREFIX."customer_get_donation gd
 			LEFT JOIN ". DB_PREFIX . "customer c on gd.customer_id = c.customer_id WHERE date(gd.date_added)=CURRENT_DATE");
 		return $query->rows;
 	}
-	
-	
+
+
+
 }

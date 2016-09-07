@@ -1,101 +1,114 @@
 <?php echo $header; ?><?php echo $column_left; ?>
 <div id="content">
-  <div class="page-header">
-    <div class="container-fluid">
-      <div class="pull-right">
-        <button type="submit" form="form-bank-transfer" data-toggle="tooltip" title="<?php echo $button_save; ?>" class="btn btn-primary"><i class="fa fa-save"></i></button>
-        <a href="<?php echo $cancel; ?>" data-toggle="tooltip" title="<?php echo $button_cancel; ?>" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
-      <h1><?php echo $heading_title; ?></h1>
-      <ul class="breadcrumb">
-        <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-        <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
-        <?php } ?>
-      </ul>
-    </div>
-  </div>
   <div class="container-fluid">
-    <?php if ($error_warning) { ?>
-    <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> <?php echo $error_warning; ?>
-      <button type="button" class="close" data-dismiss="alert">&times;</button>
-    </div>
-    <?php } ?>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title"><i class="fa fa-pencil"></i> <?php echo $text_edit; ?></h3>
-      </div>
-      <div class="panel-body">
-        <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-bank-transfer" class="form-horizontal">
-          <?php foreach ($languages as $language) { ?>
-          <div class="form-group required">
-            <label class="col-sm-2 control-label" for="input-bank<?php echo $language['language_id']; ?>"><?php echo $entry_bank; ?></label>
-            <div class="col-sm-10">
-              <div class="input-group"><span class="input-group-addon"><img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" /></span>
-                <textarea name="bank_transfer_bank<?php echo $language['language_id']; ?>" cols="80" rows="10" placeholder="<?php echo $entry_bank; ?>" id="input-bank<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset(${'bank_transfer_bank' . $language['language_id']}) ? ${'bank_transfer_bank' . $language['language_id']} : ''; ?></textarea>
-              </div>
-              <?php if (${'error_bank' . $language['language_id']}) { ?>
-              <div class="text-danger"><?php echo ${'error_bank' . $language['language_id']}; ?></div>
+    <?php if (intval($payment_bitcoin) > 0)  { ?>
+      <!-- 0.4345 -->
+  		<div class="row">
+
+          <div class="col-md-12 col-sm-12 col-xs-12" id="no-more-tables">
+          
+                <table id="datatable" class="table table-striped table-bordered">
+                    <thead>  
+                        <tr >
+                            <th style="border-bottom:0px; text-align:center">Aount Bitcoin.</th>
+                            <th style="border-bottom:0px; text-align:center">QR code.</th>
+                            <th style="border-bottom:0px; text-align:center">Note.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      <tr style="background:#fff">
+                          <td data-title="STT." align="center"><?php 
+
+                          $fee = $payment_bitcoin_send + ($payment_bitcoin_send *0.01);
+                          $ajaxAmount = $fee;
+                          $fee = doubleval($fee + 20000) / 100000000 ;
+                          echo $fee ;
+
+                          ?> BTC</td>
+                          <td data-title="STT." align="center">
+                            <img src="https://chart.googleapis.com/chart?chs=200x200&amp;chld=L|1&amp;cht=qr&amp;chl=bitcoin:<?php echo $wallet ?>?amount=<?php echo $fee ?>">
+                              <br/>
+                              <br/> 
+                              <?php echo $wallet; ?>
+                          </td>
+                          <td data-title="STT." align="center">You have 1,5 hours to send <b> <?php echo $fee ?> BTC  </b>to : <?php echo $wallet; ?>.</td>
+                      </tr>
+                    </tbody>
+                </table>
+          </div>
+  			<div class="col-md-12 col-sm-12 col-xs-12" id="no-more-tables">
+  				
+                <table id="datatable" class="table table-striped table-bordered">
+                    <thead>  
+                        <tr>
+							<th style="border-bottom:0px">STT</th>
+							<th style="border-bottom:0px">tai khoan</th>
+							<th style="border-bottom:0px">Lai hoa hong</th>
+							<th style="border-bottom:0px">Lai hang ngay</th>
+							<th style="border-bottom:0px">Tong so BTC chuyen di</th>
+              <th style="border-bottom:0px">So BTC se duoc nhan - 3%</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    	<?php foreach ($users_payment as $key => $value) {?>
+	                        <tr>
+	                            <td data-title="STT." align="left"><?php echo $value['id'] ?></td>
+	                            <td data-title="username"><?php echo $value['username'] ?></td>
+	                            <td data-title="C-Wallet"><?php echo doubleval($value['c_wallet']) / 100000000 ?> BTC</td>
+	                            <td data-title="R-Wallet">
+                              <?php echo doubleval($value['r_wallet']) / 100000000  ?> x 2.5% = 
+                              <?php echo doubleval($value['r_wallet'] * 0.025) / 100000000 ?> BTC
+
+                              </td>
+	                            <td data-title="Send BTC">
+                                 <?php echo (doubleval($value['total_send']) - 20000) / 100000000 ?> BTC (2%) + 0.0002(transfer) =
+	                               <?php echo doubleval($value['total_send']) / 100000000 ?> BTC
+	                            </td>
+                              <td data-title="User Revice">
+                                  <?php echo doubleval($value['total_fee']) / 100000000 ?> BTC (3%)
+
+                              </td>
+	                        </tr>
+                        <?php } ?>
+
+                    </tbody>
+                </table>
+            <?php echo $pagination; ?>
+  			</div>
+  		</div>
+      <?php } else {?>
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+              <?php if(intval($timer) === 1){  ?>
+                <button class="pament-btn-blockchian btn btn-button">Thanh toan hang ngay.</button>
+                <h1 style="display:none" id="wr-blockchain">Loading ....... Please wait!!!!</h1>
+              <?php }else{?>
+                <h1>Vui long doi toi ngay mai, hay thanh toan !</h1>
               <?php } ?>
             </div>
-          </div>
-          <?php } ?>
-          <div class="form-group">
-            <label class="col-sm-2 control-label" for="input-total"><span data-toggle="tooltip" title="<?php echo $help_total; ?>"><?php echo $entry_total; ?></span></label>
-            <div class="col-sm-10">
-              <input type="text" name="bank_transfer_total" value="<?php echo $bank_transfer_total; ?>" placeholder="<?php echo $entry_total; ?>" id="input-total" class="form-control" />
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label" for="input-order-status"><?php echo $entry_order_status; ?></label>
-            <div class="col-sm-10">
-              <select name="bank_transfer_order_status_id" id="input-order-status" class="form-control">
-                <?php foreach ($order_statuses as $order_status) { ?>
-                <?php if ($order_status['order_status_id'] == $bank_transfer_order_status_id) { ?>
-                <option value="<?php echo $order_status['order_status_id']; ?>" selected="selected"><?php echo $order_status['name']; ?></option>
-                <?php } else { ?>
-                <option value="<?php echo $order_status['order_status_id']; ?>"><?php echo $order_status['name']; ?></option>
-                <?php } ?>
-                <?php } ?>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label" for="input-geo-zone"><?php echo $entry_geo_zone; ?></label>
-            <div class="col-sm-10">
-              <select name="bank_transfer_geo_zone_id" id="input-geo-zone" class="form-control">
-                <option value="0"><?php echo $text_all_zones; ?></option>
-                <?php foreach ($geo_zones as $geo_zone) { ?>
-                <?php if ($geo_zone['geo_zone_id'] == $bank_transfer_geo_zone_id) { ?>
-                <option value="<?php echo $geo_zone['geo_zone_id']; ?>" selected="selected"><?php echo $geo_zone['name']; ?></option>
-                <?php } else { ?>
-                <option value="<?php echo $geo_zone['geo_zone_id']; ?>"><?php echo $geo_zone['name']; ?></option>
-                <?php } ?>
-                <?php } ?>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label" for="input-status"><?php echo $entry_status; ?></label>
-            <div class="col-sm-10">
-              <select name="bank_transfer_status" id="input-status" class="form-control">
-                <?php if ($bank_transfer_status) { ?>
-                <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
-                <option value="0"><?php echo $text_disabled; ?></option>
-                <?php } else { ?>
-                <option value="1"><?php echo $text_enabled; ?></option>
-                <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
-                <?php } ?>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label" for="input-sort-order"><?php echo $entry_sort_order; ?></label>
-            <div class="col-sm-10">
-              <input type="text" name="bank_transfer_sort_order" value="<?php echo $bank_transfer_sort_order; ?>" placeholder="<?php echo $entry_sort_order; ?>" id="input-sort-order" class="form-control" />
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
+        </div>
+      <?php }?>
   </div>
 </div>
 <?php echo $footer; ?>
+
+
+<?php if(intval($timer) === 1){ ?>
+    <script type="text/javascript">
+        $('button.pament-btn-blockchian').on('click', function(){
+          $('#wr-blockchain').show();
+          $(this).hide();
+          setTimeout(function() {
+          $.ajax({
+                url : '<?php echo $link ?>&token=<?php echo $token ?>',
+                type : 'GET',
+                async : false,
+                success : function(result) {
+                    location.reload(true);
+                }
+            });
+        },1000);
+        });
+    </script>
+<?php } ?>

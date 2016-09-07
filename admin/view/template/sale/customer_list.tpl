@@ -7,7 +7,8 @@
       <?php if($getGroupId == 1){?>
       <a href="<?php echo $add; ?>" data-toggle="tooltip" title="<?php echo $button_add; ?>" class="btn btn-primary"><i class="fa fa-plus"></i></a>
      <?php }?>
-      <button type="button" data-toggle="tooltip" title="<?php echo $button_delete; ?>" class="btn btn-danger" onclick="confirm('<?php echo $text_confirm; ?>') ? $('#form-customer').submit() : false;"><i class="fa fa-trash-o"></i></button> 
+      <button type="button" data-toggle="tooltip" title="<?php echo $button_delete; ?>" class="btn btn-danger" onclick="confirm('<?php echo $text_confirm; ?>') ? $('#form-customer').submit() : false;"><i class="fa fa-trash-o"></i></button>
+      <button type="button" id="exportcustomer" data-toggle="tooltip" title="Export" class="btn btn-info" >Export Customer</i></button>
       <button type="button" id="exportgd" data-toggle="tooltip" title="Export" class="btn btn-info" >Export GD</i></button>
        <button type="button" id="exportpd" data-toggle="tooltip" title="Export" class="btn btn-primary" >Export PD</i></button>
       </div>
@@ -424,6 +425,10 @@ $('#button-filter').on('click', function() {
 	
 	location = url;
 });
+$('#exportcustomer').on('click', function() {
+    url = 'index.php?route=report/exportCustomer/exportcustomer&token=<?php echo $token; ?>';
+    location = url;
+  });
 $('#exportgd').on('click', function() {
     url = 'index.php?route=report/exportCustomer/exportgd&token=<?php echo $token; ?>';
     location = url;
