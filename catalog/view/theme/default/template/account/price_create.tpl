@@ -56,169 +56,546 @@
          <!-- Personal plan -->
          <?php $package = $self->get_package(); ?>
          <?php if (intval($package) === 0) { ?>
-         <div class="plan-col col-md-3">
-            <div class="plan-header bg-light-green darken">PLAN SILVER</div>
-            <div class="plan-pricing bg-light-green"><span class="plan-currency"></span><span class="plan-value">3 <i class="fa fa-bitcoin"></i></span><span class="plan-period"></span></div>
-            <ul class="plan-features">
-               <li>Daily Payments until 6 BTC Reached</li>
-               <li>Est. Duration: 100 Days</li>
-               <li>0.06 BTC Daily For 100 Days!</li>
-               <!-- <a href="#" class="bg-light-green darken">DEPOSIT NOW</a> -->
-               <form id="package1" class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
-                  <input type="hidden" name="amount"  class="form-control" value="3">
-                  <button class="btn-investment bg-light-green darken" type="submit">
-                  DEPOSIT NOW
-                  </button>
+         <div class="col-md-4">
+            <div class="deposite deposite_red">
+              <span class="deposite_title">90 days</span>
+              <div class="deposite_time_wrap">
+                  <span class="deposite_time_wrap_text">2% per day</span>
+                  <div class="deposite_time">
+                      <span class="deposite_time_digit"><?php echo number_format('5000000') ?></span>
+                      <span class="deposite_time_text">VNĐ</span>
+                  </div>
+              </div>
+              <div class="deposite_time_triangle">
+              </div>
+              <div class="deposite_info">
+                  <span>Profit / 90 days: <?php echo number_format('7200000') ?> VNĐ</span>
+                  <span>Reinvestment / days: <?php echo number_format('1800000') ?> VNĐ</span>
+                  <span>2% per day</span>
+              </div>
+               <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+                     <input type="hidden" name="amount"  class="form-control" value="1">
+                     <button class="deposite_registry" type="submit">
+                     DEPOSIT NOW
+                     </button>
                </form>
-            </ul>
-         </div>
-         <!-- Start Up plan -->
-         <div class="plan-col col-md-3">
-            <div class="plan-header bg-light-green darken">PLAN GOLD</div>
-            <div class="plan-pricing bg-light-green "><span class="plan-currency"></span><span class="plan-value">7 <i class="fa fa-bitcoin"></i></span><span class="plan-period"></span></div>
-            <ul class="plan-features">
-               <li>Daily Payments until 16 BTC Reached</li>
-               <li>Est. Duration: 100 Days</li>
-               <li>0.16 BTC Daily For 100 Days!</li>
-               <form id="package1" class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
-                  <input type="hidden" name="amount"  class="form-control" value="7">
-                  <button class="btn-investment bg-light-green darken" type="submit">
-                  DEPOSIT NOW
-                  </button>
+              
+            </div>
+          </div>
+          <div class=" col-md-4">
+               <div class="deposite deposite_orange">
+                    <span class="deposite_title">90 days</span>
+                    <div class="deposite_time_wrap">
+                        <span class="deposite_time_wrap_text">2% per day</span>
+                        <div class="deposite_time">
+                            <span class="deposite_time_digit"><?php echo number_format('20000000') ?></span>
+                      <span class="deposite_time_text">VNĐ</span>
+                        </div>
+                    </div>
+                    <div class="deposite_time_triangle">
+                    </div>
+                    <div class="deposite_info">
+                       <span>Profit / 90 days: <?php echo number_format('28000000') ?> VNĐ</span>
+                        <span>Reinvestment / days: <?php echo number_format('7200000') ?> VNĐ</span>
+                        <span>2% per day</span>
+                    </div>
+                     <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+                     <input type="hidden" name="amount"  class="form-control" value="2">
+                     <button class="deposite_registry" type="submit">
+                     DEPOSIT NOW
+                     </button>
                </form>
-            </ul>
-         </div>
-         <!-- Company plan -->
-         <div class="plan-col col-md-3">
-            <div class="plan-header bg-light-green darken">PLAN PLATINUM</div>
-            <div class="plan-pricing bg-light-green"><span class="plan-currency"></span><span class="plan-value">10 <i class="fa fa-bitcoin"></i></span><span class="plan-period"></span></div>
-            <ul class="plan-features">
-               <li>Daily Payments until 28 BTC Reached</li>
-               <li>Est. Duration: 100 Days</li>
-               <li>0.28 BTC Daily For 100 Days!</li>
-               <form id="package1" class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
-                  <input type="hidden" name="amount"  class="form-control" value="10">
-                  <button class="btn-investment bg-light-green darken" type="submit">
-                  DEPOSIT NOW
-                  </button>
+               </div>
+            </div>
+               <div class="col-md-4">
+                  <div class="deposite deposite_green">
+                    <span class="deposite_title">90 days</span>
+                    <div class="deposite_time_wrap">
+                        <span class="deposite_time_wrap_text">2% per day</span>
+                        <div class="deposite_time">
+                            <span class="deposite_time_digit"><?php echo number_format('50000000') ?></span>
+                      <span class="deposite_time_text">VNĐ</span>
+                        </div>
+                    </div>
+                    <div class="deposite_time_triangle">
+                    </div>
+                    <div class="deposite_info">
+                        <span>Profit / 90 days: <?php echo number_format('72000000') ?> VNĐ</span>
+                        <span>Reinvestment / days: <?php echo number_format('18000000') ?> VNĐ</span>
+                        <span>2% per day</span>
+                    </div>
+                     <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+                     <input type="hidden" name="amount"  class="form-control" value="3">
+                     <button class="deposite_registry" type="submit">
+                     DEPOSIT NOW
+                     </button>
                </form>
-            </ul>
-         </div>
-         <!-- Enterprice plan -->
-         <div class="plan-col col-md-3">
-            <div class="plan-header bg-light-green darken">PLAN DIAMOIND</div>
-            <div class="plan-pricing bg-light-green "><span class="plan-currency"></span><span class="plan-value">20 <i class="fa fa-bitcoin"></i></span><span class="plan-period"></span></div>
-            <ul class="plan-features">
-               <li>Daily Payments until 65 BTC Reached</li>
-               <li>Est. Duration: 100 Days</li>
-               <li>0.65 BTC Daily For 100 Days!</li>
-               <form id="package1" class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
-                  <input type="hidden" name="amount"  class="form-control" value="20">
-                  <button class="btn-investment bg-light-green darken" type="submit">
-                  DEPOSIT NOW
-                  </button>
+                  </div>
+               </div>
+            <div class="col-md-4">
+               <div class="deposite deposite_cyan">
+              <span class="deposite_title">90 days</span>
+              <div class="deposite_time_wrap">
+                  <span class="deposite_time_wrap_text">2% per day</span>
+                  <div class="deposite_time">
+                      <span class="deposite_time_digit"><?php echo number_format('100000000') ?></span>
+                      <span class="deposite_time_text">VNĐ</span>
+                  </div>
+              </div>
+              <div class="deposite_time_triangle">
+              </div>
+              <div class="deposite_info">
+                  <span>Profit / 90 days: <?php echo number_format('144000000') ?> VNĐ</span>
+                  <span>Reinvestment / days: <?php echo number_format('36000000') ?> VNĐ</span>
+                  <span>2% per day</span>
+              </div>
+               <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+                     <input type="hidden" name="amount"  class="form-control" value="4">
+                     <button class="deposite_registry" type="submit">
+                     DEPOSIT NOW
+                     </button>
                </form>
-            </ul>
-         </div>
+           </div>
+          </div>
+           <div class="col-md-4">
+               <div class="deposite deposite_blue">
+              <span class="deposite_title">90 days</span>
+              <div class="deposite_time_wrap">
+                  <span class="deposite_time_wrap_text">2% per day</span>
+                  <div class="deposite_time">
+                      <span class="deposite_time_digit"><?php echo number_format('500000000') ?></span>
+                      <span class="deposite_time_text">VNĐ</span>
+                  </div>
+              </div>
+              <div class="deposite_time_triangle">
+              </div>
+              <div class="deposite_info">
+                  <span>Profit / 90 days: <?php echo number_format('720000000') ?> VNĐ</span>
+                  <span>Reinvestment / days: <?php echo number_format('180000000') ?> VNĐ</span>
+                  <span>2% per day</span>
+              </div>
+               <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+                     <input type="hidden" name="amount"  class="form-control" value="5">
+                     <button class="deposite_registry" type="submit">
+                     DEPOSIT NOW
+                     </button>
+               </form>
+           </div>
+          </div>
+          <div class="col-md-4">
+               <div class="deposite deposite_purple">
+              <span class="deposite_title">90 days</span>
+              <div class="deposite_time_wrap">
+                  <span class="deposite_time_wrap_text">2% per day</span>
+                  <div class="deposite_time">
+                      <span class="deposite_time_digit"><?php echo number_format('1000000000') ?></span>
+                      <span class="deposite_time_text">VNĐ</span>
+                  </div>
+              </div>
+              <div class="deposite_time_triangle">
+              </div>
+              <div class="deposite_info">
+                  <span>Profit / 90 days: <?php echo number_format('1440000000') ?> VNĐ</span>
+                  <span>Reinvestment / days: <?php echo number_format('360000000') ?> VNĐ</span>
+                  <span>2% per day</span>
+              </div>
+               <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+                     <input type="hidden" name="amount"  class="form-control" value="6">
+                     <button class="deposite_registry" type="submit">
+                     DEPOSIT NOW
+                     </button>
+               </form>
+           </div>
+          </div>
+         
          <?php } 
             if (intval($package) === 1) { ?>
-         <div class="plan-col col-md-4">
-            <div class="plan-header bg-light-green darken">PLAN GOLD</div>
-            <div class="plan-pricing bg-light-green "><span class="plan-currency"></span><span class="plan-value">7 <i class="fa fa-bitcoin"></i></span><span class="plan-period"></span></div>
-            <ul class="plan-features">
-               <li>Daily Payments until 16 BTC Reached</li>
-               <li>Est. Duration: 100 Days</li>
-               <li>0.16 BTC Daily For 100 Days!</li>
-               <form id="package1" class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
-                  <input type="hidden" name="amount"  class="form-control" value="7">
-                  <button class="btn-investment bg-light-green darken" type="submit">
-                  DEPOSIT NOW
-                  </button>
+            <div class=" col-md-4">
+               <div class="deposite deposite_orange">
+                    <span class="deposite_title">90 days</span>
+                    <div class="deposite_time_wrap">
+                        <span class="deposite_time_wrap_text">2% per day</span>
+                        <div class="deposite_time">
+                            <span class="deposite_time_digit"><?php echo number_format('20000000') ?></span>
+                      <span class="deposite_time_text">VNĐ</span>
+                        </div>
+                    </div>
+                    <div class="deposite_time_triangle">
+                    </div>
+                    <div class="deposite_info">
+                       <span>Profit / 90 days: <?php echo number_format('28000000') ?> VNĐ</span>
+                        <span>Reinvestment / days: <?php echo number_format('7200000') ?> VNĐ</span>
+                        <span>2% per day</span>
+                    </div>
+                     <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+                     <input type="hidden" name="amount"  class="form-control" value="2">
+                     <button class="deposite_registry" type="submit">
+                     DEPOSIT NOW
+                     </button>
                </form>
-            </ul>
-         </div>
-         <!-- Company plan -->
-         <div class="plan-col col-md-4">
-            <div class="plan-header bg-light-green darken">PLAN PLATINUM</div>
-            <div class="plan-pricing bg-light-green"><span class="plan-currency"></span><span class="plan-value">10 <i class="fa fa-bitcoin"></i></span><span class="plan-period"></span></div>
-            <ul class="plan-features">
-               <li>Daily Payments until 28 BTC Reached</li>
-               <li>Est. Duration: 100 Days</li>
-               <li>0.28 BTC Daily For 100 Days!</li>
-               <form id="package1" class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
-                  <input type="hidden" name="amount"  class="form-control" value="10">
-                  <button class="btn-investment bg-light-green darken" type="submit">
-                  DEPOSIT NOW
-                  </button>
+               </div>
+            </div>
+               <div class="col-md-4">
+                  <div class="deposite deposite_green">
+                    <span class="deposite_title">90 days</span>
+                    <div class="deposite_time_wrap">
+                        <span class="deposite_time_wrap_text">2% per day</span>
+                        <div class="deposite_time">
+                            <span class="deposite_time_digit"><?php echo number_format('50000000') ?></span>
+                      <span class="deposite_time_text">VNĐ</span>
+                        </div>
+                    </div>
+                    <div class="deposite_time_triangle">
+                    </div>
+                    <div class="deposite_info">
+                        <span>Profit / 90 days: <?php echo number_format('72000000') ?> VNĐ</span>
+                        <span>Reinvestment / days: <?php echo number_format('18000000') ?> VNĐ</span>
+                        <span>2% per day</span>
+                    </div>
+                     <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+                     <input type="hidden" name="amount"  class="form-control" value="3">
+                     <button class="deposite_registry" type="submit">
+                     DEPOSIT NOW
+                     </button>
                </form>
-            </ul>
-         </div>
-         <!-- Enterprice plan -->
-         <div class="plan-col col-md-4">
-            <div class="plan-header bg-light-green darken">PLAN DIAMOIND</div>
-            <div class="plan-pricing bg-light-green "><span class="plan-currency"></span><span class="plan-value">20 <i class="fa fa-bitcoin"></i></span><span class="plan-period"></span></div>
-            <ul class="plan-features">
-               <li>Daily Payments until 65 BTC Reached</li>
-               <li>Est. Duration: 100 Days</li>
-               <li>0.65 BTC Daily For 100 Days!</li>
-               <form id="package1" class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
-                  <input type="hidden" name="amount"  class="form-control" value="20">
-                  <button class="btn-investment bg-light-green darken" type="submit">
-                  DEPOSIT NOW
-                  </button>
+                  </div>
+               </div>
+            <div class="col-md-4">
+               <div class="deposite deposite_cyan">
+              <span class="deposite_title">90 days</span>
+              <div class="deposite_time_wrap">
+                  <span class="deposite_time_wrap_text">2% per day</span>
+                  <div class="deposite_time">
+                      <span class="deposite_time_digit"><?php echo number_format('100000000') ?></span>
+                      <span class="deposite_time_text">VNĐ</span>
+                  </div>
+              </div>
+              <div class="deposite_time_triangle">
+              </div>
+              <div class="deposite_info">
+                  <span>Profit / 90 days: <?php echo number_format('144000000') ?> VNĐ</span>
+                  <span>Reinvestment / days: <?php echo number_format('36000000') ?> VNĐ</span>
+                  <span>2% per day</span>
+              </div>
+               <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+                     <input type="hidden" name="amount"  class="form-control" value="4">
+                     <button class="deposite_registry" type="submit">
+                     DEPOSIT NOW
+                     </button>
                </form>
-            </ul>
-         </div>
+           </div>
+          </div>
+           <div class="col-md-4">
+               <div class="deposite deposite_blue">
+              <span class="deposite_title">90 days</span>
+              <div class="deposite_time_wrap">
+                  <span class="deposite_time_wrap_text">2% per day</span>
+                  <div class="deposite_time">
+                      <span class="deposite_time_digit"><?php echo number_format('500000000') ?></span>
+                      <span class="deposite_time_text">VNĐ</span>
+                  </div>
+              </div>
+              <div class="deposite_time_triangle">
+              </div>
+              <div class="deposite_info">
+                  <span>Profit / 90 days: <?php echo number_format('720000000') ?> VNĐ</span>
+                  <span>Reinvestment / days: <?php echo number_format('180000000') ?> VNĐ</span>
+                  <span>2% per day</span>
+              </div>
+               <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+                     <input type="hidden" name="amount"  class="form-control" value="5">
+                     <button class="deposite_registry" type="submit">
+                     DEPOSIT NOW
+                     </button>
+               </form>
+           </div>
+          </div>
+          <div class="col-md-4">
+               <div class="deposite deposite_purple">
+              <span class="deposite_title">90 days</span>
+              <div class="deposite_time_wrap">
+                  <span class="deposite_time_wrap_text">2% per day</span>
+                  <div class="deposite_time">
+                      <span class="deposite_time_digit"><?php echo number_format('1000000000') ?></span>
+                      <span class="deposite_time_text">VNĐ</span>
+                  </div>
+              </div>
+              <div class="deposite_time_triangle">
+              </div>
+              <div class="deposite_info">
+                  <span>Profit / 90 days: <?php echo number_format('1440000000') ?> VNĐ</span>
+                  <span>Reinvestment / days: <?php echo number_format('360000000') ?> VNĐ</span>
+                  <span>2% per day</span>
+              </div>
+               <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+                     <input type="hidden" name="amount"  class="form-control" value="6">
+                     <button class="deposite_registry" type="submit">
+                     DEPOSIT NOW
+                     </button>
+               </form>
+           </div>
+          </div>
+         
          <?php  }
             if (intval($package) === 2) { ?>
-         <div class="plan-col col-sm-6">
-            <div class="plan-header bg-light-green darken">PLAN PLATINUM</div>
-            <div class="plan-pricing bg-light-green"><span class="plan-currency"></span><span class="plan-value">10 <i class="fa fa-bitcoin"></i></span><span class="plan-period"></span></div>
-            <ul class="plan-features">
-               <li>Daily Payments until 28 BTC Reached</li>
-               <li>Est. Duration: 100 Days</li>
-               <li>0.28 BTC Daily For 100 Days!</li>
-               <form id="package1" class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
-                  <input type="hidden" name="amount"  class="form-control" value="10">
-                  <button class="btn-investment bg-light-green darken" type="submit">
-                  DEPOSIT NOW
-                  </button>
+         <div class="col-md-4">
+                  <div class="deposite deposite_green">
+                    <span class="deposite_title">90 days</span>
+                    <div class="deposite_time_wrap">
+                        <span class="deposite_time_wrap_text">2% per day</span>
+                        <div class="deposite_time">
+                            <span class="deposite_time_digit"><?php echo number_format('50000000') ?></span>
+                      <span class="deposite_time_text">VNĐ</span>
+                        </div>
+                    </div>
+                    <div class="deposite_time_triangle">
+                    </div>
+                    <div class="deposite_info">
+                        <span>Profit / 90 days: <?php echo number_format('72000000') ?> VNĐ</span>
+                        <span>Reinvestment / days: <?php echo number_format('18000000') ?> VNĐ</span>
+                        <span>2% per day</span>
+                    </div>
+                     <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+                     <input type="hidden" name="amount"  class="form-control" value="3">
+                     <button class="deposite_registry" type="submit">
+                     DEPOSIT NOW
+                     </button>
                </form>
-            </ul>
-         </div>
-         <!-- Enterprice plan -->
-         <div class="plan-col col-sm-6">
-            <div class="plan-header bg-light-green darken">PLAN DIAMOIND</div>
-            <div class="plan-pricing bg-light-green "><span class="plan-currency"></span><span class="plan-value">20 <i class="fa fa-bitcoin"></i></span><span class="plan-period"></span></div>
-            <ul class="plan-features">
-               <li>Daily Payments until 65 BTC Reached</li>
-               <li>Est. Duration: 100 Days</li>
-               <li>0.65 BTC Daily For 100 Days!</li>
-               <form id="package1" class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
-                  <input type="hidden" name="amount"  class="form-control" value="20">
-                  <button class="btn-investment bg-light-green darken" type="submit">
-                  DEPOSIT NOW
-                  </button>
+                  </div>
+               </div>
+            <div class="col-md-4">
+               <div class="deposite deposite_cyan">
+              <span class="deposite_title">90 days</span>
+              <div class="deposite_time_wrap">
+                  <span class="deposite_time_wrap_text">2% per day</span>
+                  <div class="deposite_time">
+                      <span class="deposite_time_digit"><?php echo number_format('100000000') ?></span>
+                      <span class="deposite_time_text">VNĐ</span>
+                  </div>
+              </div>
+              <div class="deposite_time_triangle">
+              </div>
+              <div class="deposite_info">
+                  <span>Profit / 90 days: <?php echo number_format('144000000') ?> VNĐ</span>
+                  <span>Reinvestment / days: <?php echo number_format('36000000') ?> VNĐ</span>
+                  <span>2% per day</span>
+              </div>
+               <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+                     <input type="hidden" name="amount"  class="form-control" value="4">
+                     <button class="deposite_registry" type="submit">
+                     DEPOSIT NOW
+                     </button>
                </form>
-            </ul>
-         </div>
+           </div>
+          </div>
+           <div class="col-md-4">
+               <div class="deposite deposite_blue">
+              <span class="deposite_title">90 days</span>
+              <div class="deposite_time_wrap">
+                  <span class="deposite_time_wrap_text">2% per day</span>
+                  <div class="deposite_time">
+                      <span class="deposite_time_digit"><?php echo number_format('500000000') ?></span>
+                      <span class="deposite_time_text">VNĐ</span>
+                  </div>
+              </div>
+              <div class="deposite_time_triangle">
+              </div>
+              <div class="deposite_info">
+                  <span>Profit / 90 days: <?php echo number_format('720000000') ?> VNĐ</span>
+                  <span>Reinvestment / days: <?php echo number_format('180000000') ?> VNĐ</span>
+                  <span>2% per day</span>
+              </div>
+               <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+                     <input type="hidden" name="amount"  class="form-control" value="5">
+                     <button class="deposite_registry" type="submit">
+                     DEPOSIT NOW
+                     </button>
+               </form>
+           </div>
+          </div>
+          <div class="col-md-4">
+               <div class="deposite deposite_purple">
+              <span class="deposite_title">90 days</span>
+              <div class="deposite_time_wrap">
+                  <span class="deposite_time_wrap_text">2% per day</span>
+                  <div class="deposite_time">
+                      <span class="deposite_time_digit"><?php echo number_format('1000000000') ?></span>
+                      <span class="deposite_time_text">VNĐ</span>
+                  </div>
+              </div>
+              <div class="deposite_time_triangle">
+              </div>
+              <div class="deposite_info">
+                  <span>Profit / 90 days: <?php echo number_format('1440000000') ?> VNĐ</span>
+                  <span>Reinvestment / days: <?php echo number_format('360000000') ?> VNĐ</span>
+                  <span>2% per day</span>
+              </div>
+               <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+                     <input type="hidden" name="amount"  class="form-control" value="6">
+                     <button class="deposite_registry" type="submit">
+                     DEPOSIT NOW
+                     </button>
+               </form>
+           </div>
+          </div>
+
          <?php } if (intval($package) === 3) { ?>
-         <div class="plan-col col-sm-6 col-sm-offset-3">
-            <div class="plan-header bg-light-green darken">PLAN DIAMOIND</div>
-            <div class="plan-pricing bg-light-green "><span class="plan-currency"></span><span class="plan-value">20 <i class="fa fa-bitcoin"></i></span><span class="plan-period"></span></div>
-            <ul class="plan-features">
-               <li>Daily Payments until 65 BTC Reached</li>
-               <li>Est. Duration: 100 Days</li>
-               <li>0.65 BTC Daily For 100 Days!</li>
-               <form id="package1" class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
-                  <input type="hidden" name="amount"  class="form-control" value="20">
-                  <button class="btn-investment bg-light-green darken" type="submit">
-                  DEPOSIT NOW
-                  </button>
+          <div class="col-md-4">
+               <div class="deposite deposite_cyan">
+              <span class="deposite_title">90 days</span>
+              <div class="deposite_time_wrap">
+                  <span class="deposite_time_wrap_text">2% per day</span>
+                  <div class="deposite_time">
+                      <span class="deposite_time_digit"><?php echo number_format('100000000') ?></span>
+                      <span class="deposite_time_text">VNĐ</span>
+                  </div>
+              </div>
+              <div class="deposite_time_triangle">
+              </div>
+              <div class="deposite_info">
+                  <span>Profit / 90 days: <?php echo number_format('144000000') ?> VNĐ</span>
+                  <span>Reinvestment / days: <?php echo number_format('36000000') ?> VNĐ</span>
+                  <span>2% per day</span>
+              </div>
+               <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+                     <input type="hidden" name="amount"  class="form-control" value="4">
+                     <button class="deposite_registry" type="submit">
+                     DEPOSIT NOW
+                     </button>
                </form>
-            </ul>
-         </div>
+           </div>
+          </div>
+           <div class="col-md-4">
+               <div class="deposite deposite_blue">
+              <span class="deposite_title">90 days</span>
+              <div class="deposite_time_wrap">
+                  <span class="deposite_time_wrap_text">2% per day</span>
+                  <div class="deposite_time">
+                      <span class="deposite_time_digit"><?php echo number_format('500000000') ?></span>
+                      <span class="deposite_time_text">VNĐ</span>
+                  </div>
+              </div>
+              <div class="deposite_time_triangle">
+              </div>
+              <div class="deposite_info">
+                  <span>Profit / 90 days: <?php echo number_format('720000000') ?> VNĐ</span>
+                  <span>Reinvestment / days: <?php echo number_format('180000000') ?> VNĐ</span>
+                  <span>2% per day</span>
+              </div>
+               <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+                     <input type="hidden" name="amount"  class="form-control" value="5">
+                     <button class="deposite_registry" type="submit">
+                     DEPOSIT NOW
+                     </button>
+               </form>
+           </div>
+          </div>
+          <div class="col-md-4">
+               <div class="deposite deposite_purple">
+              <span class="deposite_title">90 days</span>
+              <div class="deposite_time_wrap">
+                  <span class="deposite_time_wrap_text">2% per day</span>
+                  <div class="deposite_time">
+                      <span class="deposite_time_digit"><?php echo number_format('1000000000') ?></span>
+                      <span class="deposite_time_text">VNĐ</span>
+                  </div>
+              </div>
+              <div class="deposite_time_triangle">
+              </div>
+              <div class="deposite_info">
+                  <span>Profit / 90 days: <?php echo number_format('1440000000') ?> VNĐ</span>
+                  <span>Reinvestment / days: <?php echo number_format('360000000') ?> VNĐ</span>
+                  <span>2% per day</span>
+              </div>
+               <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+                     <input type="hidden" name="amount"  class="form-control" value="6">
+                     <button class="deposite_registry" type="submit">
+                     DEPOSIT NOW
+                     </button>
+               </form>
+           </div>
+          </div>
+      
+          <?php } if (intval($package) === 4) { ?>
+         <div class="col-md-4">
+               <div class="deposite deposite_blue">
+              <span class="deposite_title">90 days</span>
+              <div class="deposite_time_wrap">
+                  <span class="deposite_time_wrap_text">2% per day</span>
+                  <div class="deposite_time">
+                      <span class="deposite_time_digit"><?php echo number_format('500000000') ?></span>
+                      <span class="deposite_time_text">VNĐ</span>
+                  </div>
+              </div>
+              <div class="deposite_time_triangle">
+              </div>
+              <div class="deposite_info">
+                  <span>Profit / 90 days: <?php echo number_format('720000000') ?> VNĐ</span>
+                  <span>Reinvestment / days: <?php echo number_format('180000000') ?> VNĐ</span>
+                  <span>2% per day</span>
+              </div>
+               <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+                     <input type="hidden" name="amount"  class="form-control" value="5">
+                     <button class="deposite_registry" type="submit">
+                     DEPOSIT NOW
+                     </button>
+               </form>
+           </div>
+          </div>
+          <div class="col-md-4">
+               <div class="deposite deposite_purple">
+              <span class="deposite_title">90 days</span>
+              <div class="deposite_time_wrap">
+                  <span class="deposite_time_wrap_text">2% per day</span>
+                  <div class="deposite_time">
+                      <span class="deposite_time_digit"><?php echo number_format('1000000000') ?></span>
+                      <span class="deposite_time_text">VNĐ</span>
+                  </div>
+              </div>
+              <div class="deposite_time_triangle">
+              </div>
+              <div class="deposite_info">
+                  <span>Profit / 90 days: <?php echo number_format('1440000000') ?> VNĐ</span>
+                  <span>Reinvestment / days: <?php echo number_format('360000000') ?> VNĐ</span>
+                  <span>2% per day</span>
+              </div>
+               <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+                     <input type="hidden" name="amount"  class="form-control" value="6">
+                     <button class="deposite_registry" type="submit">
+                     DEPOSIT NOW
+                     </button>
+               </form>
+           </div>
+          </div>
+    
+          <?php } if (intval($package) === 5) { ?>
+        <div class="col-md-4">
+               <div class="deposite deposite_purple">
+              <span class="deposite_title">90 days</span>
+              <div class="deposite_time_wrap">
+                  <span class="deposite_time_wrap_text">2% per day</span>
+                  <div class="deposite_time">
+                      <span class="deposite_time_digit"><?php echo number_format('1000000000') ?></span>
+                      <span class="deposite_time_text">VNĐ</span>
+                  </div>
+              </div>
+              <div class="deposite_time_triangle">
+              </div>
+              <div class="deposite_info">
+                  <span>Profit / 90 days: <?php echo number_format('1440000000') ?> VNĐ</span>
+                  <span>Reinvestment / days: <?php echo number_format('360000000') ?> VNĐ</span>
+                  <span>2% per day</span>
+              </div>
+               <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+                     <input type="hidden" name="amount"  class="form-control" value="6">
+                     <button class="deposite_registry" type="submit">
+                     DEPOSIT NOW
+                     </button>
+               </form>
+           </div>
+          </div>
          <?php } ?>
+
       </div>
    </div>
       </div>

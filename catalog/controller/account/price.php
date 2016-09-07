@@ -127,26 +127,32 @@ class ControllerAccountPrice extends Controller {
 
             if ($json['check_status_pd'] === 1 ) {
                 
-                	$amount = $this->request->get['amount'];
-                	switch ($amount) {
-                		case 3:
-                			$package = 1;
+                	$package = $this->request->get['amount'];
+                	switch ($package) {
+                		case 1:
+                			$amount = 5000000;
                 			break;
-                		case 7:
-                			$package = 2;
+                		case 2:
+                			$amount = 20000000;
                             break;
-                		case 10:
-                			$package = 3;
+                		case 3:
+                			$amount = 50000000;
                 			break;
-                		case 20:
-                			$package = 4;
+                		case 4:
+                			$amount = 100000000;
                 			break;
+                        case 5:
+                            $amount = 500000000;
+                            break;
+                        case 6:
+                            $amount = 1000000000;
+                            break;
 
                 	}
                 	$max_profit = 0;
-                	 $amount = $amount * 100000000;
+                	
                     $pd_query = $this->model_account_customer->createPD($amount, $max_profit);
-                    $this->model_account_customer->update_package($this->session->data['customer_id'], $package);
+                    $this->model_account_customer->update_package($this->session->data['customer_id'], $this->request->get['amount']);
 
                    
 
@@ -223,7 +229,7 @@ class ControllerAccountPrice extends Controller {
         $data['package'] = $this -> model_account_customer -> get_package();
         $count_invoice     = $count_invoice['number'];
         $data['notCreate'] = false;
-        if ($count_invoice > 6) {
+        if ($count_invoice > 7) {
             $data['notCreate'] = true;
             $data['invoice']   = $this->model_account_pd->getAllInvoiceByCustomer_notCreateOrder($this->session->data['customer_id']);
         } else {

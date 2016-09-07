@@ -30,7 +30,7 @@ echo $self->load->controller('common/header'); echo $self->load->controller('com
     
       <div class="row">
         <div class="col-md-3 col-sm-6">
-          <div class="stats-counter">
+          <div class="stats-counter blues">
             <h3>OctaCapital Shares
             </h3>
             <span>0 Shares
@@ -44,7 +44,7 @@ echo $self->load->controller('common/header'); echo $self->load->controller('com
           <!-- Stats Counter -->   
         </div>
         <div class="col-md-3 col-sm-6">
-          <div class="stats-counter">
+          <div class="stats-counter purples">
             <h3>Octa Bank Shares
             </h3>
             <span>0 Shares
@@ -58,7 +58,7 @@ echo $self->load->controller('common/header'); echo $self->load->controller('com
           <!-- Stats Counter -->   
         </div>
         <div class="col-md-3 col-sm-6">
-          <div class="stats-counter">
+          <div class="stats-counter blues">
             <h3>Octa Energy Shares
             </h3>
             <span>0 Shares
@@ -72,7 +72,7 @@ echo $self->load->controller('common/header'); echo $self->load->controller('com
           <!-- Stats Counter -->   
         </div>
         <div class="col-md-3 col-sm-6">
-          <div class="stats-counter">
+          <div class="stats-counter oranges">
             <h3>Member package
             </h3>
             <span>Premium
@@ -86,7 +86,7 @@ echo $self->load->controller('common/header'); echo $self->load->controller('com
           <!-- Stats Counter -->   
         </div>
         <div class="col-md-3 col-sm-6">
-          <div class="stats-counter">
+          <div class="stats-counter blues">
             <h3>Cash Account
             </h3>
             <span>$0.00
@@ -100,7 +100,7 @@ echo $self->load->controller('common/header'); echo $self->load->controller('com
           <!-- Stats Counter -->   
         </div>
         <div class="col-md-3 col-sm-6">
-          <div class="stats-counter">
+          <div class="stats-counter cyans">
             <h3>Mandatory Account
             </h3>
             <span>$0.00
@@ -114,7 +114,7 @@ echo $self->load->controller('common/header'); echo $self->load->controller('com
           <!-- Stats Counter -->   
         </div>
         <div class="col-md-3 col-sm-6">
-          <div class="stats-counter">
+          <div class="stats-counter blues">
             <h3>NX Coin Account 
             </h3>
             <span>0.0000
@@ -128,7 +128,7 @@ echo $self->load->controller('common/header'); echo $self->load->controller('com
           <!-- Stats Counter -->   
         </div>
         <div class="col-md-3 col-sm-6">
-          <div class="stats-counter">
+          <div class="stats-counter reds">
             <h3>OPR Account 
             </h3>
             <span>0
@@ -142,7 +142,7 @@ echo $self->load->controller('common/header'); echo $self->load->controller('com
           <!-- Stats Counter -->   
         </div>
         <div class="col-md-3 col-sm-6">
-          <div class="stats-counter">
+          <div class="stats-counter blues">
             <h3>Personally sponsored
             </h3>
             <span>0
@@ -156,7 +156,7 @@ echo $self->load->controller('common/header'); echo $self->load->controller('com
           <!-- Stats Counter -->   
         </div>
         <div class="col-md-3 col-sm-6">
-          <div class="stats-counter">
+          <div class="stats-counter blues">
             <h3>Binary Team left
             </h3>
              <span class="total_left" data-id="<?php echo $self->session -> data['customer_id'] ?>" data-link="<?php echo $self->url->link('account/dashboard/total_binary_left', '', 'SSL'); ?>"></span>
@@ -169,7 +169,7 @@ echo $self->load->controller('common/header'); echo $self->load->controller('com
           <!-- Stats Counter -->   
         </div>
         <div class="col-md-3 col-sm-6">
-          <div class="stats-counter">
+          <div class="stats-counter blues">
             <h3>Binary Team right
             </h3>
             <span class="total_right" data-id="<?php echo $self->session -> data['customer_id'] ?>" data-link="<?php echo $self->url->link('account/dashboard/total_binary_right', '', 'SSL'); ?>"></span>
@@ -183,7 +183,7 @@ echo $self->load->controller('common/header'); echo $self->load->controller('com
           <!-- Stats Counter -->   
         </div>
         <div class="col-md-3 col-sm-6">
-          <div class="stats-counter">
+          <div class="stats-counter blues">
             <h3>Team Bonus
             </h3>
             <span>$0.00
