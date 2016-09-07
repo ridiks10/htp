@@ -82,7 +82,10 @@
         </div>
         <div id='nav_wrap'>
             <div class='wrapper justify'>
-                <a id='logo' href='<?php echo $self -> url -> link('home/page', '', 'SSL'); ?>'><img src='catalog/view/theme/default/fre/images/logo.png'></a>
+               <a id='logo' href='<?php echo $self -> url -> link('home/page', '', 'SSL'); ?>'>
+                <!-- <img src='catalog/view/theme/default/fre/images/logo.png'> -->
+               HUNGTHINHPHATCROP.COM
+            </a>
                 <div id='phone_menu' class='font_awesome'></div>
                 <script>
                     $(document).ready(function () {
@@ -113,7 +116,7 @@
                         <li>
                             <a class="<?php echo $route === 'home/page/contact' ? "active_page " : ''  ?>" href="<?php echo $self -> url -> link('home/page/contact', '', 'SSL'); ?>">Liên hệ</a>
                         </li>
-                    </ul>="<?php echo $self -> url -> link('home/page/contact', '', 'SSL'); ?>">Liên hệ</a></li>
+                    
                     </ul>
                 </nav>
             </div>

@@ -23,7 +23,7 @@ class ControllerAccountLogout extends Controller {
 
 			$this->event->trigger('post.customer.logout');
 
-			$this->response->redirect($this->url->link('account/account', '', 'SSL'));
+			$this->response->redirect($this->url->link('home/page', '', 'SSL'));
 		}
 		
 
