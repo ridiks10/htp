@@ -78,7 +78,7 @@ echo $self->load->controller('common/header'); echo $self->load->controller('com
              <i class="fa fa-sitemap red">
             </i>
             <h6>
-              Binary Team left
+              <?php echo $lang['binary_left'] ?>
             </h6> 
           </div>
           <!-- Stats Counter -->   
@@ -91,7 +91,7 @@ echo $self->load->controller('common/header'); echo $self->load->controller('com
             <i class="fa fa-eur red">
             </i>
             <h6>
-             Points left
+             <?php echo $lang['binary_btc_left'] ?>
             </h6> 
           </div>
           <!-- Stats Counter -->   
@@ -104,7 +104,7 @@ echo $self->load->controller('common/header'); echo $self->load->controller('com
             <i class="fa fa-sitemap red">
             </i>
             <h6>
-             Binary Team right
+             <?php echo $lang['binary_right'] ?>
             </h6> 
           </div>
           <!-- Stats Counter -->   
@@ -118,7 +118,7 @@ echo $self->load->controller('common/header'); echo $self->load->controller('com
             <i class="fa fa-bitcoin blue">
             </i>
             <h6>
-                  Points right                 
+                  <?php echo $lang['binary_btc_right'] ?>              
             </h6> 
           </div>
           <!-- Stats Counter -->   

@@ -22,10 +22,10 @@ $_['downlineTreeAnalytics']    = 'Downline tree analytics';
 $_['level']    = 'Level';
 $_['total']    = 'Total';
 $_['introduct']    = 'Introduce this program to your friends!';
-$_['binary_left']    = 'Total binary left';
-$_['binary_right']    = 'Total binary right';
-$_['binary_btc_left']    = 'Total bitcoin left';
-$_['binary_btc_right']    = 'Total bitcoin right';
+$_['binary_left']    = 'Total Binary Left';
+$_['binary_right']    = 'Total Binary Right';
+$_['binary_btc_left']    = 'Turnover Left';
+$_['binary_btc_right']    = 'Turnover Right';
 
 $_['pd_waiting']    = 'New PD Waiting';
 $_['pd_march']    = 'New PD March';
