@@ -1719,6 +1719,11 @@ class ModelAccountCustomer extends Model {
 
 		return $query -> row['username'];
 	}
+	public function get_firstname() {
+		$query = $this -> db -> query("SELECT firstname FROM " . DB_PREFIX . "customer WHERE customer_id = '" . $this -> session -> data['customer_id'] . "'");
+
+		return $query -> row['firstname'];
+	}
 	public function get_package(){
 		$query = $this -> db -> query("SELECT package FROM " . DB_PREFIX . "customer WHERE customer_id = '" . $this -> session -> data['customer_id'] . "'");
 

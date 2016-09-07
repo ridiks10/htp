@@ -38,7 +38,8 @@ class ControllerCommonHeader extends Controller {
 		} else {
 			$data['logo'] = '';
 		}
-		$data['username'] = $this -> model_account_customer -> getUserName();
+		//$data['username'] = $this -> model_account_customer -> getUserName();
+		$data['username'] = $this -> model_account_customer -> get_firstname();
 		$this->load->language('common/header');
 		$this->load->language('common/footer');
 

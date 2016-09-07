@@ -32,7 +32,7 @@ class ControllerModuleAccountleft extends Controller {
 		$data['self'] = $this;
 		$this->load->model('account/customer');
 		$customer = $this -> model_account_customer -> getCustomer($this -> session -> data['customer_id']);			
-		$data['username'] = $customer['username'];
+		$data['username'] = $customer['firstname'];
 		if ($this->request->server['HTTPS']) {
 			$server = $this->config->get('config_ssl');
 		} else {
