@@ -20,7 +20,7 @@
                   <th class="text-center"><?php echo $lang['NO'] ?>.</th>
                   <th><?php echo $lang['USERNAME'] ?></th>
                   <!-- <th>Level</th> -->
-                  <th><?php echo $lang['WALLET'] ?></th>
+                  <!-- <th><?php echo $lang['WALLET'] ?></th> -->
                   <th><?php echo $lang['TELEPHONE'] ?></th>
                   <th><?php echo $lang['EMAIL'] ?></th>
                   <th><?php echo $lang['COUNTRY'] ?></th>
@@ -35,9 +35,9 @@
                      <!-- <td data-title="LEVEL">
                         <?php echo "L".(intval($value['level']) - 1) ?>
                      </td> -->
-                     <td data-title="<?php echo $lang['WALLET'] ?>" >
+                     <!-- <td data-title="<?php echo $lang['WALLET'] ?>" >
                         <?php echo $value['wallet']; ?>
-                     </td>
+                     </td> -->
                      <td data-title="<?php echo $lang['TELEPHONE'] ?>" >
                         <?php echo $value['telephone']; ?>
                      </td>

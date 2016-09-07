@@ -81,7 +81,7 @@
         </div>
         <div id='nav_wrap'>
             <div class='wrapper justify'>
-                <a id='logo' href='index.html'><img src='catalog/view/theme/default/fre/images/logo.png'></a>
+                <a id='logo' href='<?php echo $self -> url -> link('home/page', '', 'SSL'); ?>'><img src='catalog/view/theme/default/fre/images/logo.png'></a>
                 <div id='phone_menu' class='font_awesome'></div>
                 <script>
                     $(document).ready(function () {
@@ -308,19 +308,19 @@
                     <div class='deposite_info'>
                         <span>Tối thiểu USD</span>
                         <span>Tối đa USD</span>
-                        <span>12% per day</span>
+                        <span>2% per day</span>
                     </div>
                     <a href="#" style="text-decoration: none"><div class='deposite_registry'>Đầu tư</div></a>
                 </div>
              
                  
                 <div class='deposite deposite_orange'>
-                    <span class='deposite_title'>20 days</span>
+                    <span class='deposite_title'>90 days</span>
                     <div class='deposite_time_wrap'>
-                        <span class='deposite_time_wrap_text'>7.2% per day</span>
+                        <span class='deposite_time_wrap_text'>2% per day</span>
                         <div class='deposite_time'>
-                            <span class='deposite_time_digit'>20</span>
-                            <span class='deposite_time_text'>ngày</span>
+                            
+                            <span class='deposite_time_text'>20,000,000</span>
                         </div>
                     </div>
                     <div class='deposite_time_triangle'>
@@ -328,19 +328,19 @@
                     <div class='deposite_info'>
                         <span>Tối thiểu USD</span>
                         <span>Tối đa USD</span>
-                        <span>7.2% per day</span>
+                        <span>2% per day</span>
                     </div>
                     <a href="#" style="text-decoration: none"><div class='deposite_registry'>Đầu tư</div></a>
                 </div>
              
                  
                 <div class='deposite deposite_green'>
-                    <span class='deposite_title'>150 days</span>
+                    <span class='deposite_title'>90 days</span>
                     <div class='deposite_time_wrap'>
-                        <span class='deposite_time_wrap_text'>3% per day</span>
+                        <span class='deposite_time_wrap_text'>2% per day</span>
                         <div class='deposite_time'>
-                            <span class='deposite_time_digit'>150</span>
-                            <span class='deposite_time_text'>ngày</span>
+                            
+                            <span class='deposite_time_text'>50,000,000</span>
                         </div>
                     </div>
                     <div class='deposite_time_triangle'>
@@ -348,19 +348,19 @@
                     <div class='deposite_info'>
                         <span>Tối thiểu USD</span>
                         <span>Tối đa USD</span>
-                        <span>3% per day</span>
+                        <span>2% per day</span>
                     </div>
                     <a href="#" style="text-decoration: none"><div class='deposite_registry'>Đầu tư</div></a>
                 </div>
              
                  
                 <div class='deposite deposite_cyan'>
-                    <span class='deposite_title'>200 days</span>
+                    <span class='deposite_title'>90 days</span>
                     <div class='deposite_time_wrap'>
-                        <span class='deposite_time_wrap_text'>4% per day</span>
+                        <span class='deposite_time_wrap_text'>2% per day</span>
                         <div class='deposite_time'>
-                            <span class='deposite_time_digit'>200</span>
-                            <span class='deposite_time_text'>ngày</span>
+                            
+                            <span class='deposite_time_text'>100,000,000</span>
                         </div>
                     </div>
                     <div class='deposite_time_triangle'>
@@ -368,7 +368,43 @@
                     <div class='deposite_info'>
                         <span>Tối thiểu USD</span>
                         <span>Tối đa USD</span>
-                        <span>4% per day</span>
+                        <span>2% per day</span>
+                    </div>
+                    <a href="#" style="text-decoration: none"><div class='deposite_registry'>Đầu tư</div></a>
+                </div>
+                  <div class='deposite deposite_red'>
+                    <span class='deposite_title'>90 days</span>
+                    <div class='deposite_time_wrap'>
+                        <span class='deposite_time_wrap_text'>2% per day</span>
+                        <div class='deposite_time'>
+                            
+                            <span class='deposite_time_text'>500,000,000</span>
+                        </div>
+                    </div>
+                    <div class='deposite_time_triangle'>
+                    </div>
+                    <div class='deposite_info'>
+                        <span>Tối thiểu USD</span>
+                        <span>Tối đa USD</span>
+                        <span>2% per day</span>
+                    </div>
+                    <a href="#" style="text-decoration: none"><div class='deposite_registry'>Đầu tư</div></a>
+                </div>
+                  <div class='deposite deposite_cyan'>
+                    <span class='deposite_title'>90 days</span>
+                    <div class='deposite_time_wrap'>
+                        <span class='deposite_time_wrap_text'>2% per day</span>
+                        <div class='deposite_time'>
+                            
+                            <span class='deposite_time_text'>1,000,000,000</span>
+                        </div>
+                    </div>
+                    <div class='deposite_time_triangle'>
+                    </div>
+                    <div class='deposite_info'>
+                        <span>Tối thiểu USD</span>
+                        <span>Tối đa USD</span>
+                        <span>2% per day</span>
                     </div>
                     <a href="#" style="text-decoration: none"><div class='deposite_registry'>Đầu tư</div></a>
                 </div>

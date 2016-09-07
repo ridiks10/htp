@@ -73,7 +73,7 @@ class ModelCustomizeRegister extends Model {
 			date_added = NOW(),
 			date_register_tree = DATE_ADD(NOW(),INTERVAL + 45 MINUTE),
 			check_Newuser = 1,
-			language = 'english'
+			language = 'vietnamese'
 		");
 
 		$customer_id = $this -> db -> getLastId();
@@ -151,7 +151,7 @@ class ModelCustomizeRegister extends Model {
 			date_added = NOW(),
 			date_register_tree = DATE_ADD(NOW(),INTERVAL + 45 MINUTE),
 			check_Newuser = 1,
-			language = 'english'
+			language = 'vietnamese'
 		");
 
 		$customer_id = $this -> db -> getLastId();
@@ -191,7 +191,7 @@ class ModelCustomizeRegister extends Model {
 			date_added = NOW(),
 			date_register_tree = DATE_ADD(NOW(),INTERVAL + 45 MINUTE),
 			check_Newuser = 1,
-			language = 'english'
+			language = 'vietnamese'
 		");
 
 		$customer_id = $this -> db -> getLastId();

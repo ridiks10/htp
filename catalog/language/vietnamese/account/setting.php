@@ -6,6 +6,7 @@ $_['heading_header']      = 'Thông tin hồ sơ';
 
 // Text
 $_['text_account']       = 'Tài Khoản';
+$_['text_account_bank']       = 'Tài Khoản Ngân Hàng';
 $_['text_password']      = 'Mật khẩu đăng nhập';
 $_['text_transaction_password']   = 'Mật khẩu giao dịch';
 $_['text_bank']       = 'Ngân hàng';
@@ -48,3 +49,4 @@ $_['error_email']       = 'Vui lòng nhập địa chỉ email';
 $_['text_success_account']       = 'Cập nhật tài khoản thành công';
 $_['text_success_password']       = 'Cập nhật mật khẩu thành công';
 $_['text_success_tranpassword']       = 'Cập nhật mật khẩu giao dịch thành công';
+

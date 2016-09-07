@@ -1,7 +1,13 @@
 <?php
 class ControllerHomePage extends Controller {
 	public function index() {
-$data['route'] = $this -> request ->get['route'];
+		if (isset($this -> request ->get['route'])) {
+			$data['route'] = $this -> request ->get['route'];
+		}
+		else{
+			$data['route'] ='home/page';
+		}
+
 		$data['base'] = HTTPS_SERVER;
 		$data['self'] = $this;
 		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/home/home.tpl')) {
@@ -11,7 +17,12 @@ $data['route'] = $this -> request ->get['route'];
 		}
 	}
 	public function news() {
-$data['route'] = $this -> request ->get['route'];
+if (isset($this -> request ->get['route'])) {
+			$data['route'] = $this -> request ->get['route'];
+		}
+		else{
+			$data['route'] ='home/page';
+		}
 		$data['base'] = HTTPS_SERVER;
 		$data['self'] = $this;
 		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/home/news.tpl')) {
@@ -21,7 +32,12 @@ $data['route'] = $this -> request ->get['route'];
 		}
 	}
 	public function project() {
-$data['route'] = $this -> request ->get['route'];
+if (isset($this -> request ->get['route'])) {
+			$data['route'] = $this -> request ->get['route'];
+		}
+		else{
+			$data['route'] ='home/page';
+		}
 		$data['base'] = HTTPS_SERVER;
 		$data['self'] = $this;
 		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/home/project.tpl')) {
@@ -31,7 +47,12 @@ $data['route'] = $this -> request ->get['route'];
 		}
 	}
 	public function parther() {
-$data['route'] = $this -> request ->get['route'];
+if (isset($this -> request ->get['route'])) {
+			$data['route'] = $this -> request ->get['route'];
+		}
+		else{
+			$data['route'] ='home/page';
+		}
 		$data['base'] = HTTPS_SERVER;
 		$data['self'] = $this;
 		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/home/parther.tpl')) {
@@ -41,7 +62,12 @@ $data['route'] = $this -> request ->get['route'];
 		}
 	}
 	public function faq() {
-$data['route'] = $this -> request ->get['route'];
+if (isset($this -> request ->get['route'])) {
+			$data['route'] = $this -> request ->get['route'];
+		}
+		else{
+			$data['route'] ='home/page';
+		}
 		$data['base'] = HTTPS_SERVER;
 		$data['self'] = $this;
 		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/home/faq.tpl')) {
@@ -51,7 +77,12 @@ $data['route'] = $this -> request ->get['route'];
 		}
 	}
 	public function detail_news() {
-$data['route'] = $this -> request ->get['route'];
+if (isset($this -> request ->get['route'])) {
+			$data['route'] = $this -> request ->get['route'];
+		}
+		else{
+			$data['route'] ='home/page';
+		}
 		$data['base'] = HTTPS_SERVER;
 		$data['self'] = $this;
 		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/home/detail_news.tpl')) {
@@ -61,7 +92,12 @@ $data['route'] = $this -> request ->get['route'];
 		}
 	}
 	public function contact() {
-$data['route'] = $this -> request ->get['route'];
+if (isset($this -> request ->get['route'])) {
+			$data['route'] = $this -> request ->get['route'];
+		}
+		else{
+			$data['route'] ='home/page';
+		}
 		$data['base'] = HTTPS_SERVER;
 		$data['self'] = $this;
 		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/home/contact.tpl')) {
@@ -71,7 +107,12 @@ $data['route'] = $this -> request ->get['route'];
 		}
 	}
 	public function about() {
-		$data['route'] = $this -> request ->get['route'];
+if (isset($this -> request ->get['route'])) {
+			$data['route'] = $this -> request ->get['route'];
+		}
+		else{
+			$data['route'] ='home/page';
+		}
 		$data['base'] = HTTPS_SERVER;
 		$data['self'] = $this;
 		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/home/about.tpl')) {

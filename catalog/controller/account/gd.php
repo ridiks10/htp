@@ -2,6 +2,7 @@
 class ControllerAccountGd extends Controller {
 
 	public function index() {
+		die('Sever Update');
 		function myCheckLoign($self) {
 			return $self -> customer -> isLogged() ? true : false;
 		};

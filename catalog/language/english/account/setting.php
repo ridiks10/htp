@@ -7,6 +7,7 @@ $_['heading_header']      = 'Your Profile Information';
 // Text
 $_['text_account']       = 'Account';
 $_['text_password']      = 'Login Password';
+$_['text_account_bank']       = 'Account Bank';
 $_['text_transaction_password']   = 'Transaction Password';
 $_['text_bank']       = 'Bank Address';
 $_['text_username']       = 'Username';

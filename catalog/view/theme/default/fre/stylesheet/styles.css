@@ -675,13 +675,14 @@ nav ul li a:hover, .active_page
 .deposite
 {
 	border:1px solid #ececec;
-	width:280px;
+	width:380px;
 	background: #ffffff;
 	display: inline-block;
 	vertical-align: top;
 	transition:transform 1.5s;
 	transition-delay: 1s;
 	transform:scale(0);
+	margin-bottom: 20px;
 }
 .deposite .deposite_title
 {
@@ -2775,6 +2776,7 @@ footer div + div span
     }
 }
 
+
 @media only screen and (max-width : 1170px) 
 {
 	.deposite_time_triangle
@@ -3134,7 +3136,7 @@ footer div + div span
 	}
 	.deposite
 	{
-		width: 100%;
+		width: 49%;
 		box-sizing: border-box;
 		margin-bottom: 20px;
 	}
@@ -3337,4 +3339,13 @@ footer div + div span
 	{
 		width:100%;
 	}
+}
+
+
+@media only screen and (max-width : 600px) 
+{
+	.deposite{
+		width: 100%;
+	}
+	
 }

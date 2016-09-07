@@ -81,7 +81,7 @@
         </div>
         <div id='nav_wrap'>
             <div class='wrapper justify'>
-                <a id='logo' href='index.html'><img src='catalog/view/theme/default/fre/images/logo.png'></a>
+                <a id='logo' href='<?php echo $self -> url -> link('home/page', '', 'SSL'); ?>'><img src='catalog/view/theme/default/fre/images/logo.png'></a>
                 <div id='phone_menu' class='font_awesome'></div>
                 <script>
                     $(document).ready(function () {

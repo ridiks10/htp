@@ -126,7 +126,7 @@
       <div class="navbar-header">
         <!-- Logo -->
         <a href="<?php echo $self -> url -> link('account/dashboard', '', 'SSL'); ?>" class="navbar-brand">
-          <strong>Dash</strong>Board
+          Hungthinhphatcorp.com
         </a>
         <!-- Main navbar toggle -->
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar-collapse"><i class="navbar-icon fa fa-bars"></i></button>

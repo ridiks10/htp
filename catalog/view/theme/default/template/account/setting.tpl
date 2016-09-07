@@ -21,11 +21,11 @@
                      <a data-toggle="tab" href="#EditProfile" ><?php echo $lang['text_account'] ?></a>
                   </li>
                   <li>
-                     <a data-toggle="tab" href="#ChangePassword"><?php echo 'Password';//echo $lang['text_password'] ?></a>
+                     <a data-toggle="tab" href="#ChangePassword"><?php echo $lang['text_password'] ?></a>
                   </li>
                   
                   <li>
-                     <a data-toggle="tab" href="#BitcoinWallet">Bank Address</a>
+                     <a data-toggle="tab" href="#BitcoinWallet"><?php echo $lang['text_bank'] ?></a>
                   </li>
                </ul>
                <div class="tab-content">
@@ -35,7 +35,7 @@
                            
                               <h3>Account Details</h3>
                               <ul class="list-group">
-                                 <li class="list-group-item" id="UserName">Username: <span>huuthanhphuyen</span></li>
+                                 <li class="list-group-item" id="UserName"><?php echo $lang['text_username'] ?>: <span>huuthanhphuyen</span></li>
                                  <li class="list-group-item">Affiliate Status: <span>Premium</span></li>
                                  <li class="list-group-item" id="Date">Affiliate Since: <span>28/12/2015</span></li>
                                  <li class="list-group-item" id="LastIP">Last Login IP: <span>171.250.123.121</span></li>
@@ -152,7 +152,7 @@
                        
                         <div class="col-md-6">
                           
-                              <h3>Update Bank Address</h3>
+                              <h3><?php echo $lang['text_account_bank'] ?></h3>
                          
                                             <div id="Banksinfo" data-link="<?php echo $self -> url -> link('account/setting/banks', '', 'SSL'); ?>" data-id="<?php echo $self->session -> data['customer_id'] ?>">
                                                  

@@ -96,7 +96,7 @@
                <div class="logobox" style="margin-bottom:20px;">
                 <p class="text-center">
                     <a href="#">
-                        <img src="catalog/view/theme/default/image/no_logo.png" width="100">
+                        <!-- <img src="catalog/view/theme/default/image/no_logo.png" width="100"> -->HUNGTHINHPHATCORP.COM
                     </a>
                 </p>
             </div>

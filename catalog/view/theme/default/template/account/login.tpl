@@ -35,7 +35,7 @@
         <div class="wrapper-page animated fadeInDown" id="frm_lg">
             <div class="panel panel-color panel-primary frm_login">
                 <div class="panel-heading"> 
-                   <h3 class="text-center m-t-10"> Sign In to <strong>MM</strong> </h3>
+                   <h3 class="text-center m-t-10"> HUNGTHINHPHATCORP.COM</h3>
                 </div> 
 
                 <form action="<?php echo $action; ?>" method="post" class="form-horizontal m-t-40">

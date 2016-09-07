@@ -5,9 +5,9 @@ $_['heading_title']      = 'Tổng Quan';
 // Text
 $_['text_dashboard']       = 'Tổng Quan';
 
-$_['c_wallet'] = 'Ví - C';
-$_['r_wallet'] = 'Ví - R';
-$_['m_wallet'] = 'Ví - M';
+$_['c_wallet'] = 'Hoa Hồng';
+$_['r_wallet'] = 'Lợi Nhuận';
+$_['m_wallet'] = 'Tái Đầu Tư';
 $_['insurance_fund'] = 'Quỹ Bảo Hiểm';
 $_['provideDonation']    = 'Đầu tư';
 $_['detail_investment']    = 'Chi tiết đầu tư';

@@ -190,7 +190,7 @@ echo $self->load->controller('common/header'); echo $self->load->controller('com
                 <tbody>
                   <tr>
                     <td rowspan="2" width="60" align="center"> 
-                      <img src="image/flag_icon/<?php echo $value['iso_code_2'];?>.svg" width="30" height="20">
+                      <img src="catalog/view/theme/default/img/flag_icon/<?php echo $value['iso_code_2'];?>.svg" width="30" height="20">
                     </td>
                     <td align="left" valign="bottom">
                       <font face="Cambria, Hoefler Text, Liberation Serif, Times, Times New Roman, serif" size="3px">
