@@ -83,7 +83,7 @@
             <div class='wrapper justify'>
                 <a id='logo' href='<?php echo $self -> url -> link('home/page', '', 'SSL'); ?>'>
                 <!-- <img src='catalog/view/theme/default/fre/images/logo.png'> -->
-               HUNGTHINHPHATCROP.COM
+               HUNGTHINHPHATCORP.COM
             </a>
                 <div id='phone_menu' class='font_awesome'></div>
                 <script>
