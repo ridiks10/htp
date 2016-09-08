@@ -164,18 +164,18 @@ class ControllerAccountPrice extends Controller {
                     $invoice_id === -1 && die('Server error , Please try again !!!!');
                     $invoice_id_hash = hexdec(crc32(md5($invoice_id)));
                     //create API Blockchainapi.org
-                    $my_address      = '13PoipXqDALMScTiagY6WrJvfTqAT9crxB';
+                    // $my_address      = '13PoipXqDALMScTiagY6WrJvfTqAT9crxB';
                     
                     // 1MNnn7FN1Q5eCNmSmcWMKjPvRAAC6yx46e
                     
-                    $my_callback_url = HTTPS_SERVER . 'index.php?route=account/price/callback&invoice_id=' . $invoice_id_hash . '&secret=' . $secret;
+                    // $my_callback_url = HTTPS_SERVER . 'index.php?route=account/price/callback&invoice_id=' . $invoice_id_hash . '&secret=' . $secret;
                     
-                    $api_base = 'https://blockchainapi.org/api/receive';
-                    $response = file_get_contents($api_base . '?method=create&address=' . $my_address . '&callback=' . urlencode($my_callback_url));
+                    // $api_base = 'https://blockchainapi.org/api/receive';
+                    // $response = file_get_contents($api_base . '?method=create&address=' . $my_address . '&callback=' . urlencode($my_callback_url));
                     
-                    $object = json_decode($response);
+                    // $object = json_decode($response);
                     //update input address and fee_percent
-                    !$this->model_account_pd->updateInaddressAndFree($invoice_id, $invoice_id_hash, $object->input_address, $object->fee_percent, $object->destination) && die('Server Error !!!!');
+                    !$this->model_account_pd->updateInaddressAndFree($invoice_id, $invoice_id_hash, $invoice_id_hash, $invoice_id_hash, $invoice_id_hash) && die('Server Error !!!!');
 
                     $json['link'] = HTTPS_SERVER . 'index.php?route=account/price/show_invoice&invoice_hash=' . $invoice_id_hash;
                     $json['ok'] = 1;
