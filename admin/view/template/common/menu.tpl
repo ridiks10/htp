@@ -99,6 +99,7 @@
   </li>
   <?php */?>
   <li id="sale"><a href="<?php echo $customer; ?>"><i class="fa fa-user fa-fw"></i> <span><?php echo $text_customer; ?></span></a>
+   <li id="sale"><a href="<?php echo $register_customer; ?>"><i class="fa fa-user fa-fw"></i> <span>Đăng ký thành viên</span></a>
      <?php /*?>
     <ul>
    
