@@ -175,10 +175,11 @@
         <div class='gallery_filters wait' data-target=".gallery.wait">
             <div class='gallery_filter active_gallery_filter' data-filter="all">Tất cả các dự án</div>
             <div class='gallery_filter' data-filter="tai">Dự Án Cát Bà</div>
-            <!-- <div class='gallery_filter' data-filter="spanish">Tây Ban Nha</div>
-            <div class='gallery_filter' data-filter="india">Ấn Độ</div>
-            <div class='gallery_filter' data-filter="dominika">Cộng hòa Dominica</div>
-            <div class='gallery_filter' data-filter="kipr">Síp</div> -->
+            <div class='gallery_filter' data-filter="spanish">NHÀ XƯỞNG</div>
+            <div class='gallery_filter' data-filter="india">TÀU VẬN TẢI</div>
+             <div class='gallery_filter' data-filter="dominika">Khu nghỉ dưỡng cao cấp </div>
+     
+            <div class='gallery_filter' data-filter="kipr">KHU CASINO CAO CẤP</div> 
         </div>
     </div>
     <script>
@@ -332,11 +333,11 @@
         <h2>Các dự án đã sẵn sàng</h2>
         <div class='gallery_filters end' data-target=".gallery.end">
             <div class='gallery_filter active_gallery_filter' data-filter="all">Tất cả các dự án</div>
-            <div class='gallery_filter' data-filter="tai">Dự án venus Cát bà</div>
-           <!--  <div class='gallery_filter' data-filter="spanish">Tây Ban Nha</div>
-            <div class='gallery_filter' data-filter="india">Ấn Độ</div>
-            <div class='gallery_filter' data-filter="dominika">Cộng hòa Dominica</div>
-            <div class='gallery_filter' data-filter="kipr">Síp</div> -->
+            <div class='gallery_filter' data-filter="tai">Dự Án Cát Bà</div>
+            <div class='gallery_filter' data-filter="spanish">NHÀ XƯỞNG</div>
+            <div class='gallery_filter' data-filter="india">TÀU VẬN TẢI</div>
+            <div class='gallery_filter' data-filter="dominika">Khu nghỉ dưỡng cao cấp </div>
+             <div class='gallery_filter' data-filter="kipr">KHU CASINO CAO CẤP</div> 
         </div>
     </div>
     <div id='gallery_one'>
