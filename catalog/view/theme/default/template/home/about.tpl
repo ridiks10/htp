@@ -152,7 +152,7 @@
         <div class='wrapper'>
             <h1 id='inner_page_title'>Giới thiệu về chúng tôi</h1>
              
-                <p>Công ty CÔNG TY TNHH SX TM VẬN TẢI BIỂN HTP hoạt động trong lĩnh vực bất động sản có tính thanh khoản cao ở các khu vực nghỉ dưỡng trên toàn thế giới. Bằng việc làm việc với chúng tôi bạn luôn có thể chắc chắn về sự thành công của các khoản đầu tư của mình.</p>
+                <p>Công ty CÔNG TY TNHH SX TM VẬN TẢI BIỂN HƯNG THỊNH PHÁT hoạt động trong lĩnh vực đóng tàu vận tải biển quốc tế và bất động. Bằng việc làm việc với chúng tôi bạn luôn có thể chắc chắn về sự thành công của các khoản đầu tư của mình.</p>
              
         </div>
     </div>
