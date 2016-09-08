@@ -50,3 +50,14 @@ $_['error_email']       = 'Please enter email address';
 $_['text_success_account']       = 'Edit account successfull';
 $_['text_success_password']       = 'Edit login password successfull';
  $_['text_success_tranpassword']       = 'Edit transaction password successfull';
+
+ $_['Affiliate_Status'] = 'Affiliate Status';
+$_['Affiliate_Since'] = 'Affiliate Since';
+$_['Last_Login_IP']= 'Last_Login IP';
+$_['Last_Login_Time'] = 'Last Login Timet';
+$_['full_name'] ='Fullname';
+$_['address'] = 'Address';
+$_['country'] = 'Ccountry';
+$_['phone'] ='Phone number';
+$_['account_detail'] ='Account Details';
+$_['personal_detail'] ='Personal Details';

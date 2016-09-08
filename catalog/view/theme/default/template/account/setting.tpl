@@ -33,29 +33,29 @@
                      <div class="row">
                         <div class="col-md-6">
                            
-                              <h3>Account Details</h3>
+                              <h3><?php echo $lang['account_detail'] ?></h3>
                               <ul class="list-group">
                                  <li class="list-group-item" id="UserName"><?php echo $lang['text_username'] ?>: <span>huuthanhphuyen</span></li>
-                                 <li class="list-group-item">Affiliate Status: <span>Premium</span></li>
-                                 <li class="list-group-item" id="Date">Affiliate Since: <span>28/12/2015</span></li>
-                                 <li class="list-group-item" id="LastIP">Last Login IP: <span>171.250.123.121</span></li>
-                                 <li class="list-group-item" id="date_add_login">Last Login Time: <span>Accepted</span></li>
+                                 <li class="list-group-item"><?php echo $lang['Affiliate_Status'] ?>: <span>Premium</span></li>
+                                 <li class="list-group-item" id="Date"><?php echo $lang['Affiliate_Since'] ?>: <span>28/12/2015</span></li>
+                                 <li class="list-group-item" id="LastIP"><?php echo $lang['Last_Login_IP'] ?>: <span>171.250.123.121</span></li>
+                                 <li class="list-group-item" id="date_add_login"><?php echo $lang['Last_Login_Time'] ?>: <span>Accepted</span></li>
                               </ul>
                           
                         </div>
                         <div class="col-md-6">
                            
-                              <h3>Personal Details</h3>
+                              <h3><?php echo $lang['personal_detail'] ?></h3>
                               <ul class="list-group">
-                                 <li class="list-group-item" id="fullname">Full Name: <span></span></li>
+                                 <li class="list-group-item" id="fullname"><?php echo $lang['full_name'] ?>: <span></span></li>
                                  <li class="list-group-item" id="Email">E-mail: <span></span></li>
                                  <li class="list-group-item" id="Address">
-                                    Address: <span style="text-align: right;">
+                                    <?php echo $lang['address'] ?>: <span style="text-align: right;">
                                     </span>
                                     <div class="clearfix"></div>
                                  </li>
-                                 <li class="list-group-item" id="Country">Country: <span></span></li>
-                                 <li class="list-group-item" id="Phone">Phone: <span>+84913452268</span></li>
+                                 <li class="list-group-item" id="Country"><?php echo $lang['country'] ?>: <span></span></li>
+                                 <li class="list-group-item" id="Phone"><?php echo $lang['phone'] ?>: <span>+84913452268</span></li>
                               </ul>
                           
                         </div>

@@ -50,3 +50,14 @@ $_['text_success_account']       = 'Cập nhật tài khoản thành công';
 $_['text_success_password']       = 'Cập nhật mật khẩu thành công';
 $_['text_success_tranpassword']       = 'Cập nhật mật khẩu giao dịch thành công';
 
+
+$_['Affiliate_Status'] = 'Tình trạng thành viên';
+$_['Affiliate_Since'] = 'Thành viên kể từ';
+$_['Last_Login_IP']= 'IP đăng nhập gần nhất';
+$_['Last_Login_Time'] = 'Thời gian đăng nhập gần nhất';
+$_['full_name'] ='Họ và tên';
+$_['address'] = 'Địa chỉ';
+$_['country'] = 'Đất nước';
+$_['phone'] ='Số điện thoại';
+$_['account_detail'] ='Thông Tin Tài Khoản';
+$_['personal_detail'] ='Thông Tin Cá Nhân';
