@@ -152,7 +152,7 @@
         <div class='wrapper'>
             <h1 id='inner_page_title'>Giới thiệu về chúng tôi</h1>
              
-                <p>Công ty CÔNG TY TNHH TM VẬN TẢI BIỂN HTP hoạt động trong lĩnh vực bất động sản có tính thanh khoản cao ở các khu vực nghỉ dưỡng trên toàn thế giới. Bằng việc làm việc với chúng tôi bạn luôn có thể chắc chắn về sự thành công của các khoản đầu tư của mình.</p>
+                <p>Công ty CÔNG TY TNHH SX TM VẬN TẢI BIỂN HTP hoạt động trong lĩnh vực bất động sản có tính thanh khoản cao ở các khu vực nghỉ dưỡng trên toàn thế giới. Bằng việc làm việc với chúng tôi bạn luôn có thể chắc chắn về sự thành công của các khoản đầu tư của mình.</p>
              
         </div>
     </div>
@@ -258,7 +258,7 @@ Công ty của chúng tôi đánh giá cao danh tiếng của chính mình. Do �
         });
     </script>
     <div class='wrapper'>
-        <b>Tên công ty: </b><span>CÔNG TY TNHH TM VẬN TẢI BIỂN HTP</span><br>
+        <b>Tên công ty: </b><span>CÔNG TY TNHH SX TM VẬN TẢI BIỂN HTP</span><br>
         <div style="display: inline-block;vertical-align: top"><b>Địa chỉ:</b></div>
         <div style="display: inline-block"><span class="about_spaned">Số 8 Mỹ Phú 2C, Khu Mỹ Phú 2, P. Tân Phú, Q.7, TP.HCM</span></div>
     </div>
@@ -277,7 +277,7 @@ Công ty của chúng tôi đánh giá cao danh tiếng của chính mình. Do �
 
 <div  id='inner_page_map_screen'>
     <div class='wrapper'>
-        <span class='company_name'>CÔNG TY TNHH TM VẬN TẢI BIỂN HTP</span>
+        <span class='company_name'>CÔNG TY TNHH SX TM VẬN TẢI BIỂN HTP</span>
         <div class='title_divider'></div>
         <h2>&nbsp;</h2>
     </div>

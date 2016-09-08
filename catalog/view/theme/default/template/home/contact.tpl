@@ -243,7 +243,7 @@
 
 <div  id='inner_page_map_screen'>
     <div class='wrapper'>
-        <span class='company_name'>CÔNG TY TNHH TM VẬN TẢI BIỂN HTP</span>
+        <span class='company_name'>CÔNG TY TNHH SX TM VẬN TẢI BIỂN HTP</span>
         <div class='title_divider'></div>
         <h2>Liên hệ</h2>
     </div>

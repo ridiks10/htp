@@ -128,36 +128,12 @@
     </script>
 
  
-    <div style="display: none;">
-        <div class="box-modal" id="auth_modal">
-            <div class="box-modal_close arcticmodal-close font_awesome"> </div>
-             
-<form method="POST" action="#" formcacher >
-    <div style="margin-top:15px">
-        <div class='form_input'>
-            <input name="user_login" type="text" placeholder="Đăng nhập *">
-        </div>
-        <div class='form_input'>
-            <input name="user_pass" type="password" placeholder="Mật khẩu *">
-        </div>
-        <button class="form_button" type="submit">Đăng nhập</button>
-        <button class="form_button" type="button" style="background-color: orange;float:right" onclick="#';">Tôi quên mật khẩu của mình</button>
-    </div>
-</form> 
-        </div>
-    </div>
+
  
 
 
  
 
-
-<div>
-     
-    <noscript><div class="alert alert-danger">
-    <span class="font_awesome"> </span> Investment <a href='#' target=_blank >Investment</a> 
-</div></noscript>
-</div>
 
  
 <script>
@@ -206,8 +182,9 @@
         <div id='screen_one_text'>
             <h1>Đầu tư</h1><br>
             <h2>Vận tải tàu biển</h2><br>
+            <h2>Bất động sản</h2><br>
             <!-- <h2>thu nhập cao</h2> -->
-            <a href="#" style="text-decoration: none"><div id='screen_one_button'><span>Đăng ký</span></div></a>
+            <a href="<?php echo $self -> url -> link('account/login', '', 'SSL'); ?>" style="text-decoration: none"><div id='screen_one_button'><span>Đăng nhập</span></div></a>
         </div>
     </div>
     <img id='screen_one_mask' alt='' src='catalog/view/theme/default/fre/images/screen_one_mask.png'>
@@ -221,7 +198,7 @@
         <div class='screen_two_image'>
             <img alt='' src='catalog/view/theme/default/fre/images/screen_two_image.jpg'>
         </div>
-        <p>Công ty của chúng tôi chuyên về đầu tư bất động sản khu vực nghỉ dưỡng trên toàn thế giới. Không có gì bí mật rằng khu vực này ít bị ảnh hưởng nhất đối với các thay đổi trong nền kinh tế thế giới. Mọi người luôn mơ ước về việc mua một ngôi nhà cạnh biển, điều mà không nghi ngờ gì nữa đã được phản ánh trong nhu cầu cho các dịch vụ mà chúng tôi cung cấp. Điều đáng lưu ý là chúng tôi tham gia việc triển khai xây dựng cả các công trình mới cũng như mua/bán các công trình hiện có. Chúng tôi cũng quan tâm đến việc cho thuê dài hạn/ngắn hạn các bất động sản dân cư và thương mại.</p>
+        <p>Công ty của chúng tôi chuyên về đóng tàu vận tải biển quốc tế và đầu tư bất động sản khu vực nghỉ dưỡng trên toàn thế giới. Không có gì bí mật rằng khu vực này ít bị ảnh hưởng nhất đối với các thay đổi trong nền kinh tế thế giới. Mọi người luôn mơ ước về việc mua một ngôi nhà cạnh biển, điều mà không nghi ngờ gì nữa đã được phản ánh trong nhu cầu cho các dịch vụ mà chúng tôi cung cấp. Điều đáng lưu ý là chúng tôi tham gia việc triển khai xây dựng cả các công trình mới cũng như mua/bán các công trình hiện có. Chúng tôi cũng quan tâm đến việc cho thuê dài hạn/ngắn hạn các bất động sản dân cư và thương mại.</p>
         <div class='justify'>
             <div class='investition'>
                 <h3>Đầu tư<br> vào bất động sản dân cư chính</h3>
@@ -280,7 +257,7 @@
             <div class='advantage'>
                 <img alt='' src='catalog/view/theme/default/fre/images/advantage_6.jpg'>
                 <span>KHẢ NĂNG THAM GIA</span>
-                <p>Bạn có thể thử chỉ với 10 đô la Mỹ.</p>
+                <p>Bạn có thể thử chỉ với 250 đô la Mỹ.</p>
             </div>
         </div>
     </div>

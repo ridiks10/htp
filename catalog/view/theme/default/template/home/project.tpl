@@ -173,12 +173,12 @@
 
         <h2>Các dự án hiện tại đang được xây dựng</h2>
         <div class='gallery_filters wait' data-target=".gallery.wait">
-            <div class='gallery_filter active_gallery_filter' data-filter="all">Tất cả các quốc gia</div>
-            <div class='gallery_filter' data-filter="tai">Thái Lan</div>
-            <div class='gallery_filter' data-filter="spanish">Tây Ban Nha</div>
+            <div class='gallery_filter active_gallery_filter' data-filter="all">Tất cả các dự án</div>
+            <div class='gallery_filter' data-filter="tai">Dự Án Cát Bà</div>
+            <!-- <div class='gallery_filter' data-filter="spanish">Tây Ban Nha</div>
             <div class='gallery_filter' data-filter="india">Ấn Độ</div>
             <div class='gallery_filter' data-filter="dominika">Cộng hòa Dominica</div>
-            <div class='gallery_filter' data-filter="kipr">Síp</div>
+            <div class='gallery_filter' data-filter="kipr">Síp</div> -->
         </div>
     </div>
     <script>
@@ -234,17 +234,21 @@
     <div id='gallery_one'>
         <div class='gallery wait'>
             <div class='gallery_slide tai'>
-                <img alt='' src='catalog/view/theme/default/fre/images/projects/1-1_small.jpg'>
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/26DMXoYpFWY" frameborder="0" allowfullscreen></iframe>
+           
+            </div>
+            <div class='gallery_slide tai'>
+                <img alt='' src='catalog/view/theme/default/fre/images/projects/venuscb_.jpg'>
                 <div class='gallery_mask'>
-                    <a href='catalog/view/theme/default/fre/images/projects/1-1.jpg'><div class='gallery_zoom'>
+                    <a href='catalog/view/theme/default/fre/images/projects/venuscb.jpg'><div class='gallery_zoom'>
                         </div></a>
                     <div class='gallery_text'>
-                        <span>Thái Lan</span>
-                        <p>Các căn hộ tại The Orient Resort & Spa (Orient) tại khu vực bãi biển Jomtein.</p>
+                        <span>Venus Cát Bà</span>
+                        <p>Dự án Venus Cát Bà.</p>
                     </div>
                 </div>
             </div>
-            <div class='gallery_slide tai'>
+           <!--  <div class='gallery_slide tai'>
                 <img alt='' src='catalog/view/theme/default/fre/images/projects/2-1_small.jpg'>
                 <div class='gallery_mask'>
                     <a href='catalog/view/theme/default/fre/images/projects/2-1.jpg'>
@@ -255,8 +259,8 @@
                         <p>Bất động sản ở Pattaya, công trình xây dựng mới tại Laguna Beach 3 The Maldives</p>
                     </div>
                 </div>
-            </div>
-            <div class='gallery_slide spanish'>
+            </div> -->
+            <!-- <div class='gallery_slide spanish'>
                 <img alt='' src='catalog/view/theme/default/fre/images/projects/3-1_small.jpg'>
                 <div class='gallery_mask'>
                     <a href='catalog/view/theme/default/fre/images/projects/3-1.jpg'><div class='gallery_zoom'>
@@ -321,34 +325,38 @@
                         <p>các căn hộ hai phòng ngủ trong khu phức hợp theo phong cách Victoria được xây dựng tuyệt đẹp tọa lạc gần bãi biển thơ mộng Sosua.</p>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
     <div class='wrapper'>
         <h2>Các dự án đã sẵn sàng</h2>
         <div class='gallery_filters end' data-target=".gallery.end">
-            <div class='gallery_filter active_gallery_filter' data-filter="all">Tất cả các quốc gia</div>
-            <div class='gallery_filter' data-filter="tai">Thái Lan</div>
-            <div class='gallery_filter' data-filter="spanish">Tây Ban Nha</div>
+            <div class='gallery_filter active_gallery_filter' data-filter="all">Tất cả các dự án</div>
+            <div class='gallery_filter' data-filter="tai">Dự án venus Cát bà</div>
+           <!--  <div class='gallery_filter' data-filter="spanish">Tây Ban Nha</div>
             <div class='gallery_filter' data-filter="india">Ấn Độ</div>
             <div class='gallery_filter' data-filter="dominika">Cộng hòa Dominica</div>
-            <div class='gallery_filter' data-filter="kipr">Síp</div>
+            <div class='gallery_filter' data-filter="kipr">Síp</div> -->
         </div>
     </div>
     <div id='gallery_one'>
         <div class='gallery end'>
             <div class='gallery_slide tai'>
-                <img alt='' src='catalog/view/theme/default/fre/images/projects/9-1_small.jpg'>
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/26DMXoYpFWY" frameborder="0" allowfullscreen></iframe>
+           
+            </div>
+            <div class='gallery_slide tai'>
+                <img alt='' src='catalog/view/theme/default/fre/images/projects/venuscb_.jpg'>
                 <div class='gallery_mask'>
-                    <a href='catalog/view/theme/default/fre/images/projects/9-1.jpg'><div class='gallery_zoom'>
+                    <a href='catalog/view/theme/default/fre/images/projects/venuscb.jpg'><div class='gallery_zoom'>
                         </div></a>
                     <div class='gallery_text'>
-                        <span>Thái Lan</span>
-                        <p>Ku dân cư Atlantis Condo Resort ở Pattaya</p>
+                        <span>Venus Cát Bà</span>
+                        <p>Dự án Venus Cát Bà.</p>
                     </div>
                 </div>
             </div>
-            <div class='gallery_slide tai'>
+    <!--         <div class='gallery_slide tai'>
                 <img alt='' src='catalog/view/theme/default/fre/images/projects/10-1_small.jpg'>
                 <div class='gallery_mask'>
                     <a href='catalog/view/theme/default/fre/images/projects/10-1.jpg'><div class='gallery_zoom'>
@@ -468,7 +476,7 @@
                         <p>Khu căn hộ trên bờ biển Sosua, với một bể bơi lớn và bể sục; có bãi biển riêng, khu đậu xe và phòng giặt là</p>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
@@ -477,7 +485,7 @@
 
 <div  id='inner_page_map_screen'>
     <div class='wrapper'>
-        <span class='company_name'>CÔNG TY TNHH TM VẬN TẢI BIỂN HTP</span>
+        <span class='company_name'>CÔNG TY TNHH SX TM VẬN TẢI BIỂN HTP</span>
         <div class='title_divider'></div>
         <h2>&nbsp;</h2>
     </div>
