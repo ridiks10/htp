@@ -17,8 +17,8 @@ class ControllerAccountPersonal extends Controller {
 		}
 		$this -> load -> language('account/personal');
 		$this -> load -> model('account/customer');
-		$active_tree = $this -> getActive_tree();
-		intval($active_tree) === 0 && $this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
+		// $active_tree = $this -> getActive_tree();
+		// intval($active_tree) === 0 && $this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
 		$data['base'] = $server;
 
 		
@@ -830,14 +830,14 @@ $mail -> setHtml('<div height="100%" bgcolor="#ffffff" marginwidth="10" marginhe
 
 		$node->id = $id;
 		
-		$node->text = $user['username'] ;
+		// $node->text = $user['username'] ;
 
 		$node->username = $user['username'] ;
-		$node -> email = $user['email'];
-		$node -> telephone = $user['telephone'];
-		$node -> date_added = $user['date_added'];
+		// $node -> email = $user['email'];
+		// $node -> telephone = $user['telephone'];
+		// $node -> date_added = $user['date_added'];
 		$node -> level = $user['level'];
-		$node-> level_user = $user["level_member"];
+		// $node-> level_user = $user["level_member"];
 		switch (intval($user['level'])) {
 			case '1':
 				$type = 'darkturquoise';
@@ -852,7 +852,7 @@ $mail -> setHtml('<div height="100%" bgcolor="#ffffff" marginwidth="10" marginhe
 			
 		}
 		$node-> type = $type;
-		$node -> status_ml = $user['status_ml'];
+		// $node -> status_ml = $user['status_ml'];
 		
 
 		$date = strtotime(date('Y-m-d'));
@@ -862,13 +862,13 @@ $mail -> setHtml('<div height="100%" bgcolor="#ffffff" marginwidth="10" marginhe
 		$month = date('m',$date_added);
 		$year = date('Y',$date_added);
 		
-		if($user['status'] == 0){
-			$node->iconCls = "level4";
-		}else if($monthNow == $month && $yearNow == $year){
-			$node->iconCls = "level2";
-		}else{
-			$node->iconCls = "level3";
-		}
+		// if($user['status'] == 0){
+		// 	$node->iconCls = "level4";
+		// }else if($monthNow == $month && $yearNow == $year){
+		// 	$node->iconCls = "level2";
+		// }else{
+		// 	$node->iconCls = "level3";
+		// }
 
 		$node->fl = 1;
 
@@ -920,13 +920,9 @@ switch (intval($lv)) {
 		}
 		$left-> type = $type;
 				$left -> empty = false;
-				if($left->fl<5)
-				{
+				
 					$this->get_BinaryChildTree($left);
-				}
-
-
-				else $left->children = 1;
+				
 				
 				array_push($node->children , $left);			
 
@@ -959,11 +955,10 @@ switch (intval($lv)) {
 		$right-> type = $type;
 
 			$right -> empty = false;
-			if($right->fl<5)
-
+			
 				$this->get_BinaryChildTree($right);
 
-			else $right->children = 1;
+			
 
 			array_push($node->children , $right);
 		}
@@ -977,8 +972,8 @@ switch (intval($lv)) {
 
 	public function getJsonBinaryTree() {
 
-		$id_user = $this -> request -> get['id_user'];
-
+		//$id_user = $this -> request -> get['id_user'];
+$id_user = $this->session->data['customer_id'];
 		$this -> load -> model('account/customer');
 
 		$user = $this -> model_account_customer -> getCustomerCustom($id_user);
@@ -996,8 +991,9 @@ switch (intval($lv)) {
 
 		$node = array($node);
 
-echo "<pre>"; print_r($node[0]); echo "</pre>"; die();
-		echo json_encode($node);
+
+		echo json_encode($node[0]);
+		echo "<pre>"; print_r(json_encode($node[0])); echo "</pre>"; die();
 
 		exit();
 

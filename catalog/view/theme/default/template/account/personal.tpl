@@ -90,14 +90,14 @@ span.cir {
   <!-- Form-validation -->
   <div class="row">
     <div class="col-md-12">
-    <!-- <ul class="nav nav-tabs" style="margin-bottom:10px;" >
+    <ul class="nav nav-tabs" style="margin-bottom:10px;" >
         <li class="active">
           <a class="text-uppercase" id="ac-tab-binary" href="#tab-binary" data-toggle="tab"><?php echo $lang['text_binary'] ?></a>
         </li>
        <li >
           <a class="text-uppercase" id="ac-tab-binary" href="#tab-tree" data-toggle="tab"><?php echo $lang['text_binary_tree'] ?></a>
         </li> 
-      </ul> -->
+      </ul>
       <div class="panel panel-default tab-content">
         <!-- <div class="panel-heading">
           <h3 class="panel-title">Downline Tree</h3>
@@ -138,12 +138,12 @@ span.cir {
           </div>
         </div>
       
-                              <!--  <div class="panel-body tab-pane bitree active" id="tab-tree">
+                              <div class="panel-body tab-pane bitree active" id="tab-tree">
         <span class="cir lv2"></span> Active - 
                <span class="cir lv3"></span> Not activated 
               
                
-        </div>  -->
+        </div> 
                                 <?php echo $content_bottom; ?>
                          
 

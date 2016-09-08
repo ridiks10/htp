@@ -866,7 +866,11 @@ class ModelAccountCustomer extends Model {
 	}
 
 	public function getListChild($id_package) {
-		$query = $this -> db -> query("SELECT cm.*,c.username,c.telephone,c.status AS status_cus,c.firstname,c.cmnd,CONCAT(c.firstname, ' ', c.lastname) as name_customer,ml.name_vn as package_vn FROM " . DB_PREFIX . "customer_ml cm LEFT JOIN " . DB_PREFIX . "customer c ON (c.customer_id = cm.customer_id) LEFT JOIN " . DB_PREFIX . "member_level ml ON (cm.level = ml.id)  WHERE cm.p_node = '" . (int)$id_package . "'");
+		$query = $this -> db -> query("SELECT cm.*,c.username,c.telephone,c.status AS status_cus,
+			c.firstname,c.cmnd,CONCAT(c.firstname, ' ', c.lastname) as name_customer,
+			ml.name_vn as package_vn FROM " . DB_PREFIX . "customer_ml cm 
+			LEFT JOIN " . DB_PREFIX . "customer c ON (c.customer_id = cm.customer_id) 
+			LEFT JOIN " . DB_PREFIX . "member_level ml ON (cm.level = ml.id)  WHERE cm.p_node = '" . (int)$id_package . "'");
 
 		return $query -> rows;
 	}
@@ -1031,13 +1035,29 @@ class ModelAccountCustomer extends Model {
 	}
 
 	function getLeftO($id) {
-		$query = $this -> db -> query('select u2.email, u2.telephone, u2.date_added,  mlm.p_binary as p_binary_ml, mlm.status as status_ml, mlm.customer_id as id, mlm.level,CONCAT(u2.firstname," (ĐT: ",u2.telephone,")") as text, CONCAT( "level1"," left") as iconCls,CONCAT(u2.firstname," (ĐT: ",u2.telephone,")") as name,l.name_vn as level_user,u2.username,u2.status,u2.date_added  from ' . DB_PREFIX . 'customer AS u2 LEFT join ' . DB_PREFIX . 'customer_ml AS mlm ON u2.customer_id = mlm.customer_id INNER join ' . DB_PREFIX . 'customer_ml AS u1 ON u1.left = mlm.customer_id left Join ' . DB_PREFIX . 'member_level as l ON l.id = mlm.level where mlm.p_binary = ' . (int)$id);
+		$query = $this -> db -> query('SELECT u2.email, u2.telephone, 
+			u2.date_added,  mlm.p_binary as p_binary_ml, 
+			mlm.status as status_ml, mlm.customer_id as id, 
+			mlm.level,CONCAT(u2.firstname," (ĐT: ",u2.telephone,")") as text, 
+			CONCAT( "level1"," left") as iconCls,CONCAT(u2.firstname," (ĐT: ",u2.telephone,")") as name,
+			l.name_vn as level_user,u2.username,u2.status,u2.date_added  
+			from ' . DB_PREFIX . 'customer AS u2 
+			LEFT join ' . DB_PREFIX . 'customer_ml AS mlm ON u2.customer_id = mlm.customer_id 
+			INNER join ' . DB_PREFIX . 'customer_ml AS u1 ON u1.left = mlm.customer_id 
+			left Join ' . DB_PREFIX . 'member_level as l ON l.id = mlm.level where mlm.p_binary = ' . (int)$id);
 		//	return json_decode(json_encode($query->row), false);
 		return $query -> row;
 	}
 
 	function getRightO($id) {
-		$query = $this -> db -> query('select u2.email, u2.telephone,u2.date_added, mlm.p_binary as p_binary_ml, mlm.status as status_ml, mlm.customer_id as id, mlm.level,CONCAT(u2.firstname," (ĐT: ",u2.telephone,")") as text, CONCAT( "level1"," right") as iconCls,CONCAT(u2.firstname," (ĐT: ",u2.telephone,")") as name,l.name_vn as level_user,u2.username,u2.status,u2.date_added from ' . DB_PREFIX . 'customer AS u2 LEFT join ' . DB_PREFIX . 'customer_ml AS mlm ON u2.customer_id = mlm.customer_id INNER join ' . DB_PREFIX . 'customer_ml AS u1 ON u1.right = mlm.customer_id left Join ' . DB_PREFIX . 'member_level as l ON l.id = mlm.level where mlm.p_binary = ' . (int)$id);
+		$query = $this -> db -> query('SELECT u2.email, u2.telephone,u2.date_added, 
+			mlm.p_binary as p_binary_ml, mlm.status as status_ml, mlm.customer_id as id, 
+			mlm.level,CONCAT(u2.firstname," (ĐT: ",u2.telephone,")") as text, CONCAT( "level1"," right") as iconCls,
+			CONCAT(u2.firstname," (ĐT: ",u2.telephone,")") as name,l.name_vn as level_user,
+			u2.username,u2.status,u2.date_added from ' . DB_PREFIX . 'customer AS u2 
+			LEFT join ' . DB_PREFIX . 'customer_ml AS mlm ON u2.customer_id = mlm.customer_id 
+			INNER join ' . DB_PREFIX . 'customer_ml AS u1 ON u1.right = mlm.customer_id 
+			left Join ' . DB_PREFIX . 'member_level as l ON l.id = mlm.level where mlm.p_binary = ' . (int)$id);
 		//return json_decode(json_encode($query->row), false);
 		return $query -> row;
 	}
