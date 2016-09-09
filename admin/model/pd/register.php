@@ -33,6 +33,60 @@ class ModelPdRegister extends Model {
 		");
 		return $query;
 	}
+	public function update_C_Wallet($amount , $customer_id){
+		$query = $this -> db -> query("
+		UPDATE " . DB_PREFIX . "customer_c_wallet SET
+			amount = amount + ".intval($amount)."
+			WHERE customer_id = '".$customer_id."'
+		");
+	}
+	public function saveTranstionHistory($customer_id, $wallet, $text_amount, $system_decsription){
+		$query = $this -> db -> query("
+			INSERT INTO ".DB_PREFIX."customer_transaction_history SET
+			customer_id = '".$customer_id."',
+			wallet = '".$wallet."',
+			text_amount = '".$text_amount."',
+			system_decsription = '".$system_decsription."',
+			date_added = NOW()
+		");
+		return $query;
+	}
+	public function getCustomerCustom($customer_id) {
+		$query = $this -> db -> query("SELECT c.username, c.firstname, c.telephone,c.p_node, c.customer_id ,c.package, ml.level FROM ". DB_PREFIX ."customer AS c
+				JOIN ". DB_PREFIX ."customer_ml AS ml
+				ON ml.customer_id = c.customer_id
+				WHERE c.customer_id = '" . (int)$customer_id . "'");
+		return $query -> row;
+	}
+
+	public function createPD($customer_id, $amount){
+		$this -> db -> query("
+			INSERT INTO ". DB_PREFIX . "customer_provide_donation SET 
+			customer_id = '".$customer_id."',
+			date_added = NOW(),
+			filled = '".$amount."',
+			date_finish ='0000-00-00 00:00:00',
+			date_finish_forAdmin = DATE_ADD(NOW(),INTERVAL +1 DAY),
+			status = 1
+		");
+		//update max_profit and pd_number
+		$pd_id = $this->db->getLastId();
+
+		//$max_profit = (float)($amount * $this->config->get('config_pd_profit')) / 100;
+		
+		$pd_number = hexdec( crc32($pd_id) );
+		$query = $this -> db -> query("
+			UPDATE " . DB_PREFIX . "customer_provide_donation SET 
+			
+				pd_number = '".$pd_number."'
+				WHERE id = '".$pd_id."'
+			");
+		$data['query'] = $query ? true : false;
+		$data['pd_number'] = $pd_number;
+		$data['pd_id'] = $pd_id;
+		return $data;
+	}
+
 	public function checkExitUserName($username) {
 		$query = $this -> db -> query("
 			SELECT EXISTS(SELECT 1 FROM " . DB_PREFIX . "customer WHERE username = '" . $username . "')  AS 'exit'
@@ -80,17 +134,26 @@ class ModelPdRegister extends Model {
 
 		return $query -> row['customer_id'];
 	}
+	public function get_customer_Id_by_username($username) {
+		$query = $this -> db -> query("
+			SELECT customer_id FROM " . DB_PREFIX . "customer WHERE username = '" . $this -> db -> escape($username) . "'
+			");
+
+		return $query -> row;
+	}
 
 	public function addCustomer_custom($data){
 		
 		
 
-		//$data['p_node'] = $this -> session -> data['customer_id'];
-
+		$p_node = $this->get_customer_Id_by_username($data['p_node']);
+		$p_node= $p_node['customer_id'];
+		$p_binary = $this->get_customer_Id_by_username($data['p_binary']);
+$p_binary= $p_binary['customer_id'];
 		$this -> db -> query("
 			INSERT INTO " . DB_PREFIX . "customer SET
-			p_node = '" . $this -> db -> escape($data['p_node']) . "',
-			customer_code = '".hexdec(crc32(md5($data['username'])))."',
+			p_node = '" . $this -> db -> escape($p_node) . "',
+		
 			email = '" . $this -> db -> escape($data['email']) . "', 
 			firstname = '" . $this -> db -> escape($data['firstname']) . "', 
 			address_cmnd = '" . $this -> db -> escape($data['address']) . "',
@@ -109,7 +172,8 @@ class ModelPdRegister extends Model {
 			date_added = NOW(),
 			date_register_tree = NOW(),
 			check_Newuser = 1,
-			language = 'vietnamese'
+			language = 'vietnamese',
+			package = '" . $this -> db -> escape($data['investment']) . "'
 		");
 
 		$customer_id = $this -> db -> getLastId();
@@ -120,18 +184,44 @@ class ModelPdRegister extends Model {
 			customer_id = '" . (int)$customer_id . "',
 			customer_code = '".hexdec(crc32(md5($data['email'])))."',
 			level = '1', 
-			p_binary = '" . $data['p_binary'] . "', 
-			p_node = '" . $data['p_node'] . "',
+			p_binary = '" . $p_binary . "', 
+			p_node = '" . $p_node . "',
 			date_added = NOW()");
 
 		//update p_binary
 
 		if($data['postion'] === 'right'){
-			$this -> db -> query("UPDATE " . DB_PREFIX . "customer_ml SET `right` = '" . (int)$customer_id . "' WHERE customer_id = '" . $data['p_binary'] . "'");
+			$this -> db -> query("UPDATE " . DB_PREFIX . "customer_ml SET `right` = '" . (int)$customer_id . "' WHERE customer_id = '" . $p_binary . "'");
 		}else{
-			$this -> db -> query("UPDATE " . DB_PREFIX . "customer_ml SET `left` = '" . (int)$customer_id . "' WHERE customer_id = '" . $data['p_binary'] . "'");
+			$this -> db -> query("UPDATE " . DB_PREFIX . "customer_ml SET `left` = '" . (int)$customer_id . "' WHERE customer_id = '" . $p_binary . "'");
 		}
 		return $customer_id;
+	}
+	public function check_p_binary($id){
+		$query = $this -> db -> query("
+			SELECT COUNT(p_binary) AS number
+			FROM  ".DB_PREFIX."customer_ml
+			WHERE p_binary = '".$this -> db -> escape($id)."'
+		");
+		return $query -> row;
+	}
+	public function count_p_binary($p_binary){
+		$query = $this -> db -> query("
+			SELECT `left`,`right` FROM ". DB_PREFIX ."customer_ml WHERE `customer_id` ='".$p_binary."' AND status <> -1
+		");
+		return $query -> row;
+	}
+	public function checkBinaryLeft($id){
+		$query = $this -> db -> query("
+			SELECT `left` FROM ". DB_PREFIX ."customer_ml WHERE `customer_id` ='".$id."' AND status <> -1
+		");
+		return $query -> row;
+	}
+	public function checkBinaryRight($id){
+		$query = $this -> db -> query("
+			SELECT `right` FROM ". DB_PREFIX ."customer_ml WHERE `customer_id` ='".$id."' AND status <> -1
+		");
+		return $query -> row;
 	}
 	public function get_customer_ml_by_customer_id($customer_id){
 		$query = $this -> db -> query("SELECT * FROM `sm_customer_ml` 
@@ -144,7 +234,7 @@ class ModelPdRegister extends Model {
 		return $query;
 	}
 	public function update_username_customer($customer_id,$username){
-		$query = $this -> db -> query("UPDATE " . DB_PREFIX . "customer SET username= '".$username."' 
+		$query = $this -> db -> query("UPDATE " . DB_PREFIX . "customer SET username= '".$username."', 	customer_code = '".hexdec(crc32(md5($username)))."'
 			WHERE customer_id = '" . $customer_id . "'");
 		return $query;
 	}

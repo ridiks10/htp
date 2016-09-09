@@ -13,55 +13,55 @@
     
     </div>
     <div class="panel-body">
-      <form action="<?php echo $action_dangky; ?>" method="POST" role="form">
+      <form id="register-account" action="<?php echo $action_dangky; ?>" method="POST" role="form">
         
       
       <div class="col-md-6">
         <div class="form-group">
           <label for="">Họ và tên</label>
-          <input type="text" class="form-control" name="firstname" id="firstname" placeholder="Họ và tên">
+          <input type="text" class="form-control" name="firstname" id="firstname" placeholder="Họ và tên" required="required">
           <span id="firstname-error" class="text-danger" style="display:none;">
               <span id="firstname-error">Please enter Full Name</span>
           </span>
         </div>
         <div class="form-group">
           <label for="">Địa chỉ</label>
-          <input type="text" class="form-control" name="address" id="address" placeholder="Địa chỉ">
+          <input type="text" class="form-control" name="address" id="address" placeholder="Địa chỉ" required="required">
           <span id="address-error" class="text-dangerr" style="display: none;">
            <span id="address-error">Please enter Address</span>
            </span>
         </div>
         <div class="form-group">
           <label for="">Email</label>
-          <input type="text" class="form-control" id="email" name="email" placeholder="Email">
+          <input type="text" class="form-control" id="email" name="email" placeholder="Email" required="required">
            <span id="email-error" class="text-danger" style="display: none;">
            <span id="Email-error">Please enter Email Address</span>
            </span>
         </div>
         <div class="form-group">
           <label for="">Số điện thoại</label>
-          <input type="text" class="form-control" name="telephone" id="phone" placeholder="Số điện thoại">
+          <input type="text" class="form-control" name="telephone" id="phone" placeholder="Số điện thoại" required="required">
            <span id="phone-error" class="text-danger" style="display: none;">
            <span>Please enter Phone Number</span>
            </span>
         </div>
         <div class="form-group">
           <label for="">Số CMND</label>
-          <input type="text" class="form-control" id="cmnd" name="cmnd" placeholder="Số CMND">
+          <input type="text" class="form-control" id="cmnd" name="cmnd" placeholder="Số CMND" required="required">
           <span id="cmnd-error" class="text-danger" style="display: none;">
            <span id="CardId-error">The Citizenship card/passport no field is required.</span>
            </span>
         </div>
         <div class="form-group">
           <label for="">Mật khẩu</label>
-          <input type="password" class="form-control" id="password" name="password" placeholder="Mật khẩu">
+          <input type="password" class="form-control" id="password" name="password" placeholder="Mật khẩu" required="required">
            <span id="password-error" class="text-danger" style="display: none;">
            <span>Please enter password for login</span>
            </span>
         </div> 
         <div class="form-group">
           <label for="">Nhập lại mật khẩu</label>
-          <input type="password" class="form-control" id="confirmpassword" placeholder="Nhập lại mật khẩu">
+          <input type="password" class="form-control" id="confirmpassword" placeholder="Nhập lại mật khẩu" required="required">
           <span id="confirmpassword-error" class="text-danger" style="display: none;">
            <span>Repeat Password For Login not correct</span>
            </span>
@@ -71,52 +71,51 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="">Tên tài khoản</label>
-          <input type="text" class="form-control" name="account_holder" id="Accountholders" placeholder="Tên tài khoản">
+          <input type="text" class="form-control" name="account_holder" id="Accountholders" placeholder="Tên tài khoản" required="required">
           <span id="Accountholders-error" class="text-danger">
             <span></span>
           </span>
         </div>
         <div class="form-group">
           <label for="">Số tài khoản</label>
-          <input type="text" class="form-control" id="Accountnumber" name="account_number" placeholder="Số tài khoản">
+          <input type="text" class="form-control" id="Accountnumber" name="account_number" placeholder="Số tài khoản" required="required">
           <span id="Accountnumber-error" class="field-validation-error">
               <span></span>
           </span>
         </div>
         <div class="form-group">
           <label for="">Ngân hàng</label>
-          <input type="text" class="form-control" id="Bankname" name="bank_name" placeholder="Ngân hàng">
+          <input type="text" class="form-control" id="Bankname" name="bank_name" placeholder="Ngân hàng" required="required">
           <span id="Bankname-error" class="field-validation-error">
               <span></span>
           </span>
         </div>
         <div class="form-group">
           <label for="">Chi nhánh</label>
-          <input type="text" class="form-control" id="Branchbank" name="branch_bank" placeholder="Chi nhánh">
+          <input type="text" class="form-control" id="Branchbank" name="branch_bank" placeholder="Chi nhánh" required="required">
           <span id="Branchbank-error" class="field-validation-error">
               <span></span>
           </span>
         </div>
         <div class="form-group">
           <label for="">Người bảo trợ</label>
-          <input type="text" class="form-control" id="p_node" name="p_node" placeholder="Người bảo trợ">
+          <input type="text" class="form-control" id="p_node" name="p_node" placeholder="Người bảo trợ" required="required">
            <span id="p_node-error" class="field-validation-error">
               <span></span>
           </span>
         </div>
         <div class="form-group">
           <label for="">Nhánh</label>
-          <input type="text" class="form-control" id="p_binary" name="p_binary" placeholder="Nhánh">
+          <input type="text" class="form-control" id="p_binary" name="p_binary" placeholder="Nhánh" required="required">
           <span id="p_binary-error" class="field-validation-error">
               <span></span>
           </span>
         </div>
         <div class="form-group">
           <label for="">Vị trí</label>
-          <select name="postion" id="postion" class="form-control" required="required">
+          <select name="postion" id="postion" class="form-control" required="required" data-link="<?php echo $check_p_binary; ?>">
             <option value="">Chọn vị trí</option>
-            <option value="left">Trái</option>
-            <option value="right">Phải</option>
+           
           </select>
         </div>
         <div class="form-group">
@@ -142,5 +141,26 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+$(function() {
+    $('#p_binary').on('keyup', function() {
+       $('#postion').empty();
 
+        $.ajax({
+             url: $('#postion').data('link'),
+            type : 'GET',
+             data : {
+                         p_binary : $('#p_binary').val()
+                    },
+          
+            success : function(result) {
+               result = $.parseJSON(result);
+$('#postion').empty();
+               $('#postion').append(result.html);
+            }
+        });
+        return false;
+    });
+});
+</script>
 <?php echo $footer; ?>
