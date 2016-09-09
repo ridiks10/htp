@@ -904,21 +904,22 @@ $mail -> setHtml('<div height="100%" bgcolor="#ffffff" marginwidth="10" marginhe
 			if(isset($left_row["id"])){
 
 				$left->fl = $node->fl +1;
+				$left -> position ='left';
 				$lv = $node->level;
-switch (intval($lv)) {
-			case '1':
-				$type = 'darkturquoise';
-				break;
+// switch (intval($lv)) {
+// 			case '1':
+// 				$type = 'darkturquoise';
+// 				break;
 			
-			case '2':
-				$type = 'red';
-				break;
-			default:
-				$type = 'blue';
-				break;
+// 			case '2':
+// 				$type = 'red';
+// 				break;
+// 			default:
+// 				$type = 'blue';
+// 				break;
 			
-		}
-		$left-> type = $type;
+// 		}
+		$left-> type = 'blue';
 				$left -> empty = false;
 				
 					$this->get_BinaryChildTree($left);
@@ -938,21 +939,22 @@ switch (intval($lv)) {
 		if(isset($right_row["id"])){
 
 			$right->fl = $node->fl +1;
+			$right -> position ='right';
 $lv = $node->level;
-switch (intval($lv)) {
-			case '1':
-				$type = 'darkturquoise';
-				break;
+// switch (intval($lv)) {
+// 			case '1':
+// 				$type = 'darkturquoise';
+// 				break;
 			
-			case '2':
-				$type = 'red';
-				break;
-			default:
-				$type = 'blue';
-				break;
+// 			case '2':
+// 				$type = 'red';
+// 				break;
+// 			default:
+// 				$type = 'blue';
+// 				break;
 			
-		}
-		$right-> type = $type;
+// 		}
+		$right-> type = 'darkturquoise';
 
 			$right -> empty = false;
 			
