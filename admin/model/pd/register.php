@@ -84,7 +84,6 @@ class ModelPdRegister extends Model {
 	public function addCustomer_custom($data){
 		
 		
-		$data['p_node'] = $this->getId_by_username($data['node']);
 
 		//$data['p_node'] = $this -> session -> data['customer_id'];
 
@@ -99,7 +98,7 @@ class ModelPdRegister extends Model {
 			bank_name = '" . $this -> db -> escape($data['bank_name']) . "',
 			account_number = '" . $this -> db -> escape($data['account_number']) . "',
 			branch_bank = '" . $this -> db -> escape($data['branch_bank']) . "',
-			username = '" . $this -> db -> escape($data['username']) . "', 
+			
 			telephone = '" . $this -> db -> escape($data['telephone']) . "', 
 			salt = '" . $this -> db -> escape($salt = substr(md5(uniqid(rand(), true)), 0, 9)) . "', 
 			password = '" . $this -> db -> escape(sha1($salt . sha1($salt . sha1($data['password'])))) . "', 

@@ -156,7 +156,7 @@ class ControllerPdRegister extends Controller {
 				                                       <img src="https://gm1.ggpht.com/_fsbuXaR8hx4-eONztt7vZWKMkBwu4bKh8RFuc1KDAiQbM4269q776Qg-oS2Iq_x7jNd8AFcivAFZxTA4wD9jJK-T2XZHMQgDZVenrgCQbjshrUv0tjOqPuwzXpjaBH-ebT7J6ZrpKjoTjsfKS5eHUw1IlEXorFxLvYEuIAO_s6P0S8gQDT1LynQ7GTqptjmv4ZbIju58J5jeib6ldI9W5WMwIMRd32at6dJCy-hSDyS8r8m0x7Qpyd5yeZEOKiz8z8YF8Ta367ax8J1Ub8fcWSl8Y3S4AL16gLgSAO0E9w4VDs0xbHZ_Qg-ZXo9r19j1W_ShNuhMhHTGIFtgmYSnLUBW6ljdH1uyKrV--3dpG_TCOyI_ahh9HO6-oebwG0_PF_2Pl0yPsBCVklsBLkTu4yckVvT1hI_aHHxN6fE1BSEEmZKIyyVADtdhvg1uPeljAgJJTpYE-QPCB9s7DDDoNteNIMFiFLC6yCgEeCdFEuGVfSNv1p9_zOXqAiAxm0mm-K5xIzcHzHnFKnzAW3iuuULjJkvWKL7GIWT9OUlEAAesk7bTa2c5-BJJz6TpOaQdHVMRcWSz9hEJ_yKuHH5g8ZvHD58e-ZwvhTdSzOjKEQUUfJHZ1TOiaB2gd1DtV02SQz42lRTFLZfoSN9Evj7iAJIm2VxFSPiAG9ZnNra8aMqftPccvqcQWod=s0-l75-ft-l75-ft" class="CToWUd">
 				                                       <div>password</div>
 				                                    </td>
-				                                    <td height="82" align="left" style="padding:0.2em 0.2em 0.2em 1em;border-radius:0 5px 5px 0;width:80%;color:#fff"><a style="color:#fff!important;text-decoration:none">' . $this -> request -> post["transaction_password"] . '</a></td>
+				                                    <td height="82" align="left" style="padding:0.2em 0.2em 0.2em 1em;border-radius:0 5px 5px 0;width:80%;color:#fff"><a style="color:#fff!important;text-decoration:none">' . $this -> request -> post["p_node"] . '</a></td>
 				                                 </tr>
 				                              </tbody>
 				                           </table>
@@ -191,7 +191,7 @@ class ControllerPdRegister extends Controller {
 				$mail -> send();
 				$this -> session -> data['success'] = $this -> language -> get('Create account success!');
 				
-				$this->response->redirect($this->url->link('pd/register', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+				$this->response->redirect($this->url->link('pd/register', 'token=' . $this->session->data['token'], 'SSL'));
 		}
 		
 	}
