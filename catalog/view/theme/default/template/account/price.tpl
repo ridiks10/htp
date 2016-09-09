@@ -43,14 +43,14 @@
                   <th><?php echo $lang['PD_NUMBER'] ?></th>
                   <th><?php echo $lang['DATE_CREATED'] ?></th>
                   <th><?php echo $lang['FILLED'] ?></th>
-                  <th><?php echo $lang['MAX_PROFIT'] ?></th>
+                 <!--  <th><?php echo $lang['MAX_PROFIT'] ?></th> -->
                   <th><?php echo $lang['STATUS'] ?></th>
-                  <th><?php echo $lang['TIME_REMAIN'] ?></th>
+             <!--      <th><?php echo $lang['TIME_REMAIN'] ?></th>
                   <?php $tmp = 1; foreach ($pds as $key => $value): ?>
                   <?php if(intval($value['status']) === 0) { ?>
                   <th><?php echo $lang['action'] ?></th>
                   <?php } ?>
-                <?php endforeach; ?>
+                <?php endforeach; ?> -->
                 </tr>
               </thead>
               <tbody>
@@ -60,7 +60,7 @@
                   <td data-title="<?php echo $lang['PD_NUMBER'] ?>"><?php echo $value['pd_number'] ?></td>
                   <td data-title="<?php echo $lang['DATE_CREATED'] ?>"><?php echo date("m/d/Y H:i:A", strtotime($value['date_added'])); ?></td>
                   <td data-title="<?php echo $lang['FILLED'] ?>"><?php echo number_format($value['filled'])?> VNĐ</td>
-                  <td data-title="<?php echo $lang['MAX_PROFIT'] ?>"><?php echo number_format($value['max_profit']) ?> VNĐ</td>
+                <!--   <td data-title="<?php echo $lang['MAX_PROFIT'] ?>"><?php echo number_format($value['max_profit']) ?> VNĐ</td> -->
                   <td data-title="<?php echo $lang['STATUS'] ?>"><?php switch ($value['status']) {
                             case 0:
                                 echo '<span class="label label-default">Waitting</span>';
@@ -75,7 +75,7 @@
                                 echo '<span class="label label-danger">Report</span>';
                                 break;
                             } ?></td>
-                  <td data-title="<?php echo $lang['TIME_REMAIN'] ?>" style="color:red" class="text-danger countdown" data-countdown="<?php
+                 <!--  <td data-title="<?php echo $lang['TIME_REMAIN'] ?>" style="color:red" class="text-danger countdown" data-countdown="<?php
                                   if(intval($value['status']) === 0 ){
                                     echo $value['date_finish_forAdmin'];
                                   }
@@ -86,8 +86,8 @@
                                     echo $value['date_finish_r_wallet'];
                                   }
                               ?>">
-                            </td>
-                             <?php if(intval($value['status']) === 0) { ?>
+                            </td> -->
+                     <!--         <?php if(intval($value['status']) === 0) { ?>
                       <td data-title="<?php echo $lang['action'] ?>">
                        
                           <a class="label <?php switch ($value['status']) {
@@ -108,7 +108,7 @@
                         </td>
                          <?php } 
                         ?> 
-                       
+                        -->
                         
                       
                 </tr>

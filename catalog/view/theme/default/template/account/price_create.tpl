@@ -42,12 +42,12 @@
                   <span>Reinvestment / days: <?php echo number_format('1800000') ?> VNĐ</span>
                   <span>2% per day</span>
               </div>
-               <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+<!--                <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="1">
                      <button class="deposite_registry" type="submit">
                      DEPOSIT NOW
                      </button>
-               </form>
+               </form> -->
               
             </div>
           </div>
@@ -68,12 +68,12 @@
                         <span>Reinvestment / days: <?php echo number_format('7200000') ?> VNĐ</span>
                         <span>2% per day</span>
                     </div>
-                     <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+<!--                      <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="2">
                      <button class="deposite_registry" type="submit">
                      DEPOSIT NOW
                      </button>
-               </form>
+               </form> -->
                </div>
             </div>
                <div class="col-md-4">
@@ -93,12 +93,12 @@
                         <span>Reinvestment / days: <?php echo number_format('18000000') ?> VNĐ</span>
                         <span>2% per day</span>
                     </div>
-                     <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+<!--                      <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="3">
                      <button class="deposite_registry" type="submit">
                      DEPOSIT NOW
                      </button>
-               </form>
+               </form> -->
                   </div>
                </div>
             <div class="col-md-4">
@@ -118,12 +118,12 @@
                   <span>Reinvestment / days: <?php echo number_format('36000000') ?> VNĐ</span>
                   <span>2% per day</span>
               </div>
-               <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+<!--                <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="4">
                      <button class="deposite_registry" type="submit">
                      DEPOSIT NOW
                      </button>
-               </form>
+               </form> -->
            </div>
           </div>
            <div class="col-md-4">
@@ -143,12 +143,12 @@
                   <span>Reinvestment / days: <?php echo number_format('180000000') ?> VNĐ</span>
                   <span>2% per day</span>
               </div>
-               <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+<!--                <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="5">
                      <button class="deposite_registry" type="submit">
                      DEPOSIT NOW
                      </button>
-               </form>
+               </form> -->
            </div>
           </div>
           <div class="col-md-4">
@@ -168,17 +168,17 @@
                   <span>Reinvestment / days: <?php echo number_format('360000000') ?> VNĐ</span>
                   <span>2% per day</span>
               </div>
-               <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+<!--                <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="6">
                      <button class="deposite_registry" type="submit">
                      DEPOSIT NOW
                      </button>
-               </form>
+               </form> -->
            </div>
           </div>
          
          <?php } 
-            if (intval($package) === 1) { ?>
+            if (intval($package) === 5000000) { ?>
             <div class=" col-md-4">
                <div class="deposite deposite_orange">
                     <span class="deposite_title">90 days</span>
@@ -196,12 +196,12 @@
                         <span>Reinvestment / days: <?php echo number_format('7200000') ?> VNĐ</span>
                         <span>2% per day</span>
                     </div>
-                     <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+<!--                      <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="2">
                      <button class="deposite_registry" type="submit">
                      DEPOSIT NOW
                      </button>
-               </form>
+               </form> -->
                </div>
             </div>
                <div class="col-md-4">
@@ -221,12 +221,12 @@
                         <span>Reinvestment / days: <?php echo number_format('18000000') ?> VNĐ</span>
                         <span>2% per day</span>
                     </div>
-                     <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+<!--                      <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="3">
                      <button class="deposite_registry" type="submit">
                      DEPOSIT NOW
                      </button>
-               </form>
+               </form> -->
                   </div>
                </div>
             <div class="col-md-4">
@@ -246,12 +246,12 @@
                   <span>Reinvestment / days: <?php echo number_format('36000000') ?> VNĐ</span>
                   <span>2% per day</span>
               </div>
-               <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+<!--                <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="4">
                      <button class="deposite_registry" type="submit">
                      DEPOSIT NOW
                      </button>
-               </form>
+               </form> -->
            </div>
           </div>
            <div class="col-md-4">
@@ -271,12 +271,12 @@
                   <span>Reinvestment / days: <?php echo number_format('180000000') ?> VNĐ</span>
                   <span>2% per day</span>
               </div>
-               <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+<!--                <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="5">
                      <button class="deposite_registry" type="submit">
                      DEPOSIT NOW
                      </button>
-               </form>
+               </form> -->
            </div>
           </div>
           <div class="col-md-4">
@@ -296,17 +296,17 @@
                   <span>Reinvestment / days: <?php echo number_format('360000000') ?> VNĐ</span>
                   <span>2% per day</span>
               </div>
-               <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+<!--                <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="6">
                      <button class="deposite_registry" type="submit">
                      DEPOSIT NOW
                      </button>
-               </form>
+               </form> -->
            </div>
           </div>
          
          <?php  }
-            if (intval($package) === 2) { ?>
+            if (intval($package) === 20000000) { ?>
          <div class="col-md-4">
                   <div class="deposite deposite_green">
                     <span class="deposite_title">90 days</span>
@@ -324,12 +324,12 @@
                         <span>Reinvestment / days: <?php echo number_format('18000000') ?> VNĐ</span>
                         <span>2% per day</span>
                     </div>
-                     <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+<!--                      <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="3">
                      <button class="deposite_registry" type="submit">
                      DEPOSIT NOW
                      </button>
-               </form>
+               </form> -->
                   </div>
                </div>
             <div class="col-md-4">
@@ -349,12 +349,12 @@
                   <span>Reinvestment / days: <?php echo number_format('36000000') ?> VNĐ</span>
                   <span>2% per day</span>
               </div>
-               <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+      <!--          <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="4">
                      <button class="deposite_registry" type="submit">
                      DEPOSIT NOW
                      </button>
-               </form>
+               </form> -->
            </div>
           </div>
            <div class="col-md-4">
@@ -374,12 +374,12 @@
                   <span>Reinvestment / days: <?php echo number_format('180000000') ?> VNĐ</span>
                   <span>2% per day</span>
               </div>
-               <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+           <!--     <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="5">
                      <button class="deposite_registry" type="submit">
                      DEPOSIT NOW
                      </button>
-               </form>
+               </form> -->
            </div>
           </div>
           <div class="col-md-4">
@@ -399,16 +399,16 @@
                   <span>Reinvestment / days: <?php echo number_format('360000000') ?> VNĐ</span>
                   <span>2% per day</span>
               </div>
-               <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+        <!--        <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="6">
                      <button class="deposite_registry" type="submit">
                      DEPOSIT NOW
                      </button>
-               </form>
+               </form> -->
            </div>
           </div>
 
-         <?php } if (intval($package) === 3) { ?>
+         <?php } if (intval($package) === 50000000) { ?>
           <div class="col-md-4">
                <div class="deposite deposite_cyan">
               <span class="deposite_title">90 days</span>
@@ -426,12 +426,12 @@
                   <span>Reinvestment / days: <?php echo number_format('36000000') ?> VNĐ</span>
                   <span>2% per day</span>
               </div>
-               <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+             <!--   <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="4">
                      <button class="deposite_registry" type="submit">
                      DEPOSIT NOW
                      </button>
-               </form>
+               </form> -->
            </div>
           </div>
            <div class="col-md-4">
@@ -451,12 +451,12 @@
                   <span>Reinvestment / days: <?php echo number_format('180000000') ?> VNĐ</span>
                   <span>2% per day</span>
               </div>
-               <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+        <!--        <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="5">
                      <button class="deposite_registry" type="submit">
                      DEPOSIT NOW
                      </button>
-               </form>
+               </form> -->
            </div>
           </div>
           <div class="col-md-4">
@@ -476,16 +476,16 @@
                   <span>Reinvestment / days: <?php echo number_format('360000000') ?> VNĐ</span>
                   <span>2% per day</span>
               </div>
-               <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+           <!--     <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="6">
                      <button class="deposite_registry" type="submit">
                      DEPOSIT NOW
                      </button>
-               </form>
+               </form> -->
            </div>
           </div>
       
-          <?php } if (intval($package) === 4) { ?>
+          <?php } if (intval($package) === 100000000) { ?>
          <div class="col-md-4">
                <div class="deposite deposite_blue">
               <span class="deposite_title">90 days</span>
@@ -528,16 +528,16 @@
                   <span>Reinvestment / days: <?php echo number_format('360000000') ?> VNĐ</span>
                   <span>2% per day</span>
               </div>
-               <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+              <!--  <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="6">
                      <button class="deposite_registry" type="submit">
                      DEPOSIT NOW
                      </button>
-               </form>
+               </form> -->
            </div>
           </div>
     
-          <?php } if (intval($package) === 5) { ?>
+          <?php } if (intval($package) === 500000000) { ?>
         <div class="col-md-4">
                <div class="deposite deposite_purple">
               <span class="deposite_title">90 days</span>
@@ -555,12 +555,12 @@
                   <span>Reinvestment / days: <?php echo number_format('360000000') ?> VNĐ</span>
                   <span>2% per day</span>
               </div>
-               <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
+        <!--        <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="6">
                      <button class="deposite_registry" type="submit">
                      DEPOSIT NOW
                      </button>
-               </form>
+               </form> -->
            </div>
           </div>
          <?php } ?>

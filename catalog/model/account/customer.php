@@ -622,7 +622,7 @@ class ModelAccountCustomer extends Model {
 
 	public function getRefferalByID($id_customer ,$limit, $offset){
 		$query = $this -> db -> query("
-			SELECT c.email , c.username,c.telephone,c.cmnd,c.wallet,c.country_id, c.customer_id, ml.level, c.date_added
+			SELECT c.email , c.username,c.firstname, c.telephone,c.cmnd,c.wallet,c.country_id, c.customer_id, ml.level, c.date_added
 			FROM ".DB_PREFIX."customer_ml AS ml
 			JOIN ". DB_PREFIX ."customer AS c
 			ON ml.customer_id = c.customer_id

@@ -710,7 +710,7 @@ if ($getLanguage == 'vietnamese') {
 			$total = $this -> model_account_customer -> getR_Wallet($this -> session -> data['customer_id']);
 			$total = count($total) > 0 ? $total['amount'] : 0;
 			$json['success'] = $total;
-			$json['success'] = ($json['success']);
+			$json['success'] = number_format($json['success']);
 			$this -> response -> setOutput(json_encode($json));
 		}
 	}
@@ -732,7 +732,7 @@ if ($getLanguage == 'vietnamese') {
 			$total = count($total) > 0 ? $total['amount'] : 0;
 			$json['success'] = $total;
 			$total = null;
-			$json['success'] = ($json['success']);
+			$json['success'] = number_format($json['success']);
 			$this -> response -> setOutput(json_encode($json));
 		}
 	}
@@ -753,7 +753,7 @@ if ($getLanguage == 'vietnamese') {
 			$json['success'] = $total;
 			
 			$total = null;
-			$json['success'] = ($json['success']);
+			$json['success'] = number_format($json['success']);
 			$this -> response -> setOutput(json_encode($json));
 		}
 	}

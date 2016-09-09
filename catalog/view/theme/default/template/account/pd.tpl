@@ -89,8 +89,8 @@
                            <th><?php echo $lang['FILLED'] ?></th>
                            <th><?php echo $lang['MAX_PROFIT'] ?></th>
                            <th><?php echo $lang['STATUS'] ?></th>
-                           <th><?php echo $lang['TIME_REMAIN'] ?></th>
-                           <th><?php echo $lang['action'] ?></th>
+                 <!--           <th><?php echo $lang['TIME_REMAIN'] ?></th> -->
+                           <!-- <th><?php echo $lang['action'] ?></th> -->
                         </tr>
                      </thead>
                      <tbody>
@@ -121,11 +121,11 @@
                                  ?> 
                            </td>
                             
-                           <td data-title="<?php echo $lang['TIME_REMAIN'] ?>"> <span style="color:red; font-size:15px;" class="text-danger countdown" data-countdown="<?php echo intval($key['status']) == 0 ? $key['date_finish_forAdmin'] : $key['date_finish']; ?>">
+                          <!--  <td data-title="<?php echo $lang['TIME_REMAIN'] ?>"> <span style="color:red; font-size:15px;" class="text-danger countdown" data-countdown="<?php echo intval($key['status']) == 0 ? $key['date_finish_forAdmin'] : $key['date_finish']; ?>">
                               </span> 
-                           </td>
+                           </td> -->
                            
-                        <td>
+                       <!--  <td>
                         <?php if(intval($key['status']) === 0) { ?>
                           <a class="label <?php switch ($key['status']) {
                         case 0:
@@ -145,7 +145,7 @@
                             &nbsp;
                         <?php }?>
                         
-                      </td>
+                      </td> -->
                         </tr>
                         <?php $num++; } ?>
                      </tbody>

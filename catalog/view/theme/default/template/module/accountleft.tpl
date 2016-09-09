@@ -20,10 +20,10 @@
             </li>
           </ul>
         </li>
-         <li class="<?php echo $route === 'account/gd' ? "active" : ''  ?>">
+        <!--  <li class="<?php echo $route === 'account/gd' ? "active" : ''  ?>">
           <a href="<?php echo $self -> url -> link('account/gd', '', 'SSL'); ?>"><i class="menu-icon fa fa-check-square"></i><span class="mm-text"><?php echo $lang['getDonation'] ?></span></a>
          
-        </li>
+        </li> -->
         <li class="<?php echo $route === 'account/setting' || $route === 'account/change_password' || $route === 'account/change_security_pin' || $route === 'account/upload_kyc_documents' || $route === 'account/account_linking' ? "active open" : ''  ?>">
           <a href="<?php echo $self -> url -> link('account/setting', '', 'SSL'); ?>"><i class="menu-icon fa fa-check-square"></i><span class="mm-text"><?php echo $lang['proFile'] ?></span></a>
          

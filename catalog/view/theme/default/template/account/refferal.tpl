@@ -31,7 +31,7 @@
                 <?php $count = 1; foreach ($refferals as $key => $value) { ?>
                   <tr>
                      <td data-title="<?php echo $lang['NO'] ?>." align="center"><?php echo $count ?></td>
-                     <td data-title="<?php echo $lang['USERNAME'] ?>"><?php echo $value['username'] ?></td>
+                     <td data-title="<?php echo $lang['USERNAME'] ?>"><?php echo $value['firstname'] ?></td>
                      <!-- <td data-title="LEVEL">
                         <?php echo "L".(intval($value['level']) - 1) ?>
                      </td> -->
