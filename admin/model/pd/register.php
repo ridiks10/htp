@@ -456,4 +456,19 @@ $p_binary= $p_binary['customer_id'];
 
 		return $customer_id;
 	}
+	public function getCustomLike($name) {
+		$listId = '';
+		$query = $this -> db -> query("
+			SELECT username AS name FROM ". DB_PREFIX ."customer
+			WHERE username Like '%".$this->db->escape($name)."%'
+			LIMIT 12
+		") ;
+		$array_id = $query -> rows;
+
+		return $array_id;
+	}
+	public function getCustomer($customer_id) {
+		$query = $this -> db -> query("SELECT c.* FROM " . DB_PREFIX . "customer c  WHERE c.customer_id = '" . (int)$customer_id . "'");
+		return $query -> row;
+	}
 }

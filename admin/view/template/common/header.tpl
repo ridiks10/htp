@@ -100,4 +100,9 @@
   <?php } ?>
 
 </header>
-
+<img src="../images/logo.png" style=" position: absolute;
+    z-index: 9999;
+    width: 180px;
+    top: 17px;
+    left: 29px;
+" alt="">

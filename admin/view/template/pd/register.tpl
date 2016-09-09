@@ -99,7 +99,10 @@
         </div>
         <div class="form-group">
           <label for="">Người bảo trợ</label>
-          <input type="text" class="form-control" id="p_node" name="p_node" placeholder="Người bảo trợ" required="required">
+
+          <input type="text" autocomplete="off" class="form-control" id="p_node" name="p_node" placeholder="Người bảo trợ">
+          <ul id="suggesstion-box" class="list-group"></ul>
+
            <span id="p_node-error" class="field-validation-error">
               <span></span>
           </span>
@@ -141,7 +144,9 @@
     </div>
   </div>
 </div>
+
 <script type="text/javascript">
+
 $(function() {
     $('#p_binary').on('keyup', function() {
        $('#postion').empty();
@@ -162,5 +167,32 @@ $('#postion').empty();
         return false;
     });
 });
+
+     $(document).ready(function(){
+        $("#p_node").keyup(function(){
+            $.ajax({
+            type: "POST",
+            url: "<?php echo $getaccount;?>",
+            data:'keyword='+$(this).val(),        
+            success: function(data){
+                $("#suggesstion-box").show();
+                $("#suggesstion-box").html(data);
+                $("#p_node").css("background","#FFF");            
+            }
+            });
+        });
+    }); 
+    function selectU(val) {
+        $("#p_node").val(val);
+        $("#suggesstion-box").hide();
+    }
 </script>
 <?php echo $footer; ?>
+<style type="text/css" media="screen">
+  ul#suggesstion-box li:hover {
+    cursor: pointer;
+    background-color: #E27225;
+    color: #fff;
+}
+</style>
+

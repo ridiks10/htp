@@ -3,7 +3,12 @@ class ControllerPdRegister extends Controller {
 	public function index() {
 		$this->document->setTitle('Provide Donation');
 		$this->load->model('pd/pd');
+
 	$this -> document -> addScript('view/javascript/register/register.js');
+
+		$this -> document -> addScript('../catalog/view/javascript/autocomplete/jquery.easy-autocomplete.min.js');
+		$this -> document -> addStyle('../catalog/view/theme/default/stylesheet/autocomplete/easy-autocomplete.min.css');
+
 		if (($this->request->server['REQUEST_METHOD'] == 'POST')) {
 			
 			$url = '';
@@ -18,7 +23,11 @@ class ControllerPdRegister extends Controller {
 
 		
 		$data['action_dangky'] = $this->url->link('pd/register/submit', 'token=' . $this->session->data['token'], 'SSL');
+
 		$data['check_p_binary'] = $this->url->link('pd/register/get_position', 'token=' . $this->session->data['token'], 'SSL');
+
+
+		$data['getaccount'] = $this->url->link('pd/register/getaccount&token='.$this->session->data['token']);
 
 		$data['token'] = $this->session->data['token'];
 		$data['header'] = $this->load->controller('common/header');
@@ -58,6 +67,19 @@ class ControllerPdRegister extends Controller {
 		
 	}
 	
+	public function getaccount() {
+		if ($this -> request -> post['keyword']) {
+			$this -> load -> model('pd/register');
+			$tree = $this -> model_pd_register -> getCustomLike($this -> request -> post['keyword']);
+			
+			if (count($tree) > 0) {
+				foreach ($tree as $value) {
+					 echo '<li class="list-group-item" onClick="selectU(' . "'" . $value['name'] . "'" . ');">' . $value['name'] . '</li>';
+				}
+			}
+		}
+	}
+
 	public function submit(){
 		$this->load->model('pd/register');
 		if ($this->request->server['REQUEST_METHOD'] === 'POST'){
