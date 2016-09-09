@@ -212,6 +212,7 @@ class ControllerCommonMenu extends Controller {
 		$data['openbay_link_amazonus_settings'] = $this->url->link('openbay/amazonus/settings', 'token=' . $this->session->data['token'], 'SSL');
 		$data['openbay_link_amazonus_links'] = $this->url->link('openbay/amazonus/itemlinks', 'token=' . $this->session->data['token'], 'SSL');
 		$data['thongke'] = $this->url->link('pd/pd', 'token=' . $this->session->data['token'], 'SSL');
+		$data['dangky'] = $this->url->link('pd/register', 'token=' . $this->session->data['token'], 'SSL');
 
 		$data['openbay_markets'] = array(
 			'ebay' => $this->config->get('ebay_status'),
