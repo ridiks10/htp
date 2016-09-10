@@ -617,7 +617,7 @@ if ($getLanguage == 'vietnamese') {
 		if(intval($count['total_pd_left']) === 0){
 			$json['success'] = 0;
 		}else{
-			$json['success'] = $count['total_pd_left'];
+			$json['success'] = number_format($count['total_pd_left']);
 
 		}
 
@@ -631,7 +631,7 @@ if ($getLanguage == 'vietnamese') {
 		if(intval($count['total_pd_right']) === 0){
 			$json['success'] = 0;
 		}else{
-			$json['success'] = $count['total_pd_right'];
+			$json['success'] = number_format($count['total_pd_right']);
 
 		}
 		$this -> response -> setOutput(json_encode($json));

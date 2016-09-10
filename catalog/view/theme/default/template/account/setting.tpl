@@ -103,9 +103,9 @@
                 
                  
                  </div>
-                 <div class="col-md-6">
+                <!-- <div class="col-md-6">
                    
-                              <h3><?php echo $lang['text_transaction_password'] ?></h3>
+                            <!--   <h3><?php echo $lang['text_transaction_password'] ?></h3>
                      <form id="changePasswdTransaction" action="<?php echo $self -> url -> link('account/setting/edittransactionpasswd', '', 'SSL'); ?>" class="form-horizontal" method="post" novalidate="novalidate">
                         
                            <div class="controls">
@@ -139,11 +139,11 @@
                               <button type="submit" class="btn btn-primary"><?php echo $lang['text_button_password'] ?></button>
 
                             <!--   <a data-link="<?php echo $self -> url -> link('account/forgotten/resetPasswdTran', '', 'SSL'); ?>" data-id="<?php echo $self->session -> data['customer_id'] ?>" id="reset_passwdTran" href="javascript:;" class="btn btn-danger"><?php echo $lang['text_button_transaction_password'] ?></a> -->
-                           </div>
+                          <!-- </div>
                         </div>
                      </form>
                  
-                 </div>
+                 </div> -->
              </div>
                   </div>
                   
