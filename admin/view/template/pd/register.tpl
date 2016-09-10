@@ -110,6 +110,7 @@
         <div class="form-group">
           <label for="">Nhánh</label>
           <input type="text" class="form-control" id="p_binary" name="p_binary" placeholder="Nhánh" required="required">
+           <ul id="p_binary-box" class="list-group"></ul>
           <span id="p_binary-error" class="field-validation-error">
               <span></span>
           </span>
@@ -185,6 +186,25 @@ $('#postion').empty();
     function selectU(val) {
         $("#p_node").val(val);
         $("#suggesstion-box").hide();
+    }
+
+     $(document).ready(function(){
+        $("#p_binary").keyup(function(){
+            $.ajax({
+            type: "POST",
+            url: "<?php echo $getaccount;?>",
+            data:'keyword='+$(this).val(),        
+            success: function(data){
+                $("#suggesstion-box").show();
+                $("#suggesstion-box").html(data);
+                $("#p_node").css("background","#FFF");            
+            }
+            });
+        });
+    }); 
+    function selectU(val) {
+        $("#p_binary").val(val);
+        $("#p_binary-box").hide();
     }
 </script>
 <?php echo $footer; ?>
