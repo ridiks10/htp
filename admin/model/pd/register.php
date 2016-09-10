@@ -1,5 +1,31 @@
 <?php
 class ModelPdRegister extends Model {
+
+	public function get_customer_print($id_customer){
+		$query = $this -> db -> query("
+			SELECT c.*, pd.filled, pd.date_finish_forAdmin, pd.date_finish as pd_date_finish, pd.date_added as pd_date_added, ml.p_binary
+			FROM  ".DB_PREFIX."customer c JOIN sm_customer_provide_donation pd on c.customer_id = pd.customer_id
+			JOIN sm_customer_ml ml ON c.customer_id = ml.customer_id
+			WHERE c.customer_id = '".$this -> db -> escape($id_customer)."'
+		");
+		return $query -> row;
+	}
+	public function get_username_by_id($id_customer){
+		$query = $this -> db -> query("
+			SELECT username
+			FROM  ".DB_PREFIX."customer
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."'
+		");
+		return $query -> row;
+	}
+	public function get_filled_by_id($id_customer){
+		$query = $this -> db -> query("
+			SELECT SUM(filled) as sum_filled
+			FROM  ".DB_PREFIX."customer_provide_donation
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND date_finish >= NOW()
+		");
+		return $query -> row;
+	}
 	public function insertC_Wallet($id_customer){
 		$query = $this -> db -> query("
 			INSERT INTO " . DB_PREFIX . "customer_c_wallet SET
@@ -65,8 +91,8 @@ class ModelPdRegister extends Model {
 			customer_id = '".$customer_id."',
 			date_added = NOW(),
 			filled = '".$amount."',
-			date_finish ='0000-00-00 00:00:00',
-			date_finish_forAdmin = DATE_ADD(NOW(),INTERVAL +1 DAY),
+			date_finish =DATE_ADD(NOW(),INTERVAL +90 DAY),
+			date_finish_forAdmin = DATE_ADD(NOW(),INTERVAL +90 DAY),
 			status = 1
 		");
 		//update max_profit and pd_number
@@ -143,8 +169,6 @@ class ModelPdRegister extends Model {
 	}
 
 	public function addCustomer_custom($data){
-		
-		
 
 		$p_node = $this->get_customer_Id_by_username($data['p_node']);
 		$p_node= $p_node['customer_id'];
@@ -490,6 +514,32 @@ $p_binary= $p_binary['customer_id'];
 				pd_number = '".$pd_number."'
 				WHERE id = '".$pd_id."'
 			");
+		return $query;
+	}
+
+	public function getTableCustomerMLByUsername($customer_id){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer_ml
+			WHERE customer_id = '".$customer_id."'
+		");
+
+		return $query -> row;
+	}
+	public function update_pd_binary($left = true, $customer_id, $total_pd){
+		if($left){
+			$query = $this -> db -> query("
+				UPDATE ".DB_PREFIX."customer
+				SET total_pd_left = total_pd_left + ".$total_pd."
+				WHERE customer_id = '".$customer_id."'
+			");
+		}else{
+			$query = $this -> db -> query("
+				UPDATE ".DB_PREFIX."customer
+				SET total_pd_right = total_pd_right + ".$total_pd."
+				WHERE customer_id = '".$customer_id."'
+			");
+		}
 		return $query;
 	}
 }

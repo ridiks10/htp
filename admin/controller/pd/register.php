@@ -155,8 +155,12 @@ class ControllerPdRegister extends Controller {
 				
 				$this -> session -> data['success'] = $this -> language -> get('Create account success!');
 				
-				$this->response->redirect($this->url->link('pd/register', 'token=' . $this->session->data['token'], 'SSL'));
+
+				//$this->response->redirect($this->url->link('pd/register', 'token=' . $this->session->data['token'], 'SSL'));
 				
+
+				$this->response->redirect($this->url->link('pd/register/prints', 'token=' . $this->session->data['token'].'&id_customer='.$cus_id, 'SSL'));
+
 			} else{
 				die('Không tồn tại nhánh hoặc người bảo trợ!');
 			}
@@ -211,41 +215,131 @@ class ControllerPdRegister extends Controller {
 		$customer = $this -> model_pd_register -> getCustomerCustom($customer_id);
 
         $partent = $this -> model_pd_register -> getCustomerCustom($customer['p_node']);
+        $investment_parrent = $this -> model_pd_register -> get_filled_by_id($partent['customer_id']);
 
-    	switch (intval($partent['package'])) {
-    		case 5000000:
-    			$per = 10;
-    			break;
-    		
-    		case 20000000:
-    			$per = 15;
-    			break;
-    		case 50000000:
-    			$per = 18;
-    			break;
-    		case 100000000:
-    			$per = 20;
-    			break;
-    		case 500000000:
-    			$per = 25;
-    			break;
-    		case 1000000000:
-    			$per = 32;
-    			break;
+    	if (intval($investment_parrent['sum_filled']) <= intval($customer['package'])) {
+    		switch (intval($investment_parrent['sum_filled'])) {
+	    		case 5000000:
+	    			$per = 10;
+	    			break;
+	    		case 20000000:
+	    			$per = 15;
+	    			break;
+	    		case 50000000:
+	    			$per = 18;
+	    			break;
+	    		case 100000000:
+	    			$per = 20;
+	    			break;
+	    		case 500000000:
+	    			$per = 25;
+	    			break;
+	    		case 1000000000:
+	    			$per = 32;
+	    			break;
+    		}
+    	
+    		$price = (intval($customer['package']) * $per) / 100;
+    	} else{
+    		switch (intval($customer['package'])) {
+	    		case 5000000:
+	    			$per = 10;
+	    			break;
+	    		case 20000000:
+	    			$per = 15;
+	    			break;
+	    		case 50000000:
+	    			$per = 18;
+	    			break;
+	    		case 100000000:
+	    			$per = 20;
+	    			break;
+	    		case 500000000:
+	    			$per = 25;
+	    			break;
+	    		case 1000000000:
+	    			$per = 32;
+	    			break;
+    		}
+    		$price = (intval($customer['package']) * $per) / 100;
     	}
     	
-		$price = (intval($customer['package']) * $per) / 100;
-
-		$double = intval($partent['package'])*2;
+		$double = intval($investment_parrent['sum_filled'])*2;
 
 		if ($price > $double) {
 			$per_comission = $double;
-		} else{
+		}else {
 			$per_comission = $price;
 		}
 		
 
 		$this -> model_pd_register -> update_C_Wallet($per_comission, $partent['customer_id']);
 		$this -> model_pd_register -> saveTranstionHistory($partent['customer_id'], 'Ví Hoa hồng', '+ ' . number_format($per_comission) . ' VND', "Thưởng trực tiếp ".$per." % từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
+		$this -> update_vnd_binary($customer_id, $customer['package']);
+	}
+	public function update_vnd_binary($customer_id, $amount){
+		$customer_ml = $this -> model_pd_register -> getTableCustomerMLByUsername($customer_id);
+			
+			$customer_first = true ;
+			if(intval($customer_ml['p_binary']) !== 0){
+				while (true) {
+					//lay thang cha trong ban Ml
+					$customer_ml_p_binary = $this -> model_pd_register -> getTableCustomerMLByUsername($customer_ml['p_binary']);
+
+					if($customer_first){
+						//kiem tra la customer dau tien vi day la gia tri callback mac dinh
+						if(intval($customer_ml_p_binary['left']) === intval($customer_id))  {
+							//nhanh trai
+							$this -> model_pd_register -> update_pd_binary(true, $customer_ml_p_binary['customer_id'], $amount );
+							$this -> model_pd_register -> saveTranstionHistory($customer_ml_p_binary['customer_id'], 'Doanh thu nhánh trái', '+ ' . number_format($amount) . ' VNĐ', "từ thành viên tuyến dưới ".$customer['username']." đầu tư gói (".number_format($amount)." VNĐ)");
+						}else{
+							//nhanh phai
+							$this -> model_pd_register -> update_pd_binary(false, $customer_ml_p_binary['customer_id'], $amount );
+							$this -> model_pd_register -> saveTranstionHistory($customer_ml_p_binary['customer_id'], 'Doanh thu nhánh phải', '+ ' . number_format($amount) . ' VNĐ', "từ thành viên tuyến dưới ".$customer['username']." đầu tư gói (".number_format($amount)." VNĐ)");
+						}
+						$customer_first = false;
+					}else{
+			
+						if(intval($customer_ml_p_binary['left']) === intval($customer_ml['customer_id']) ) {
+							//nhanh trai
+							$this -> model_pd_register -> update_pd_binary(true, $customer_ml_p_binary['customer_id'], $amount );
+							$this -> model_pd_register -> saveTranstionHistory($customer_ml_p_binary['customer_id'], 'Doanh thu nhánh trái', '+ ' . number_format($amount) . ' VNĐ', "từ thành viên tuyến dưới ".$customer['username']." đầu tư gói (".number_format($amount)." VNĐ)");
+							
+						}else{
+							//nhanh phai
+							$this -> model_pd_register -> update_pd_binary(false, $customer_ml_p_binary['customer_id'], $amount );
+							$this -> model_pd_register -> saveTranstionHistory($customer_ml_p_binary['customer_id'], 'Doanh thu nhánh phải', '+ ' . number_format($amount) . ' VNĐ', "từ thành viên tuyến dưới ".$customer['username']." đầu tư gói (".number_format($amount)." VNĐ)");
+						}
+					}
+					
+					
+
+					if(intval($customer_ml_p_binary['customer_id']) === 1){
+						break;
+					}
+					//lay tiep customer de chay len tren lay thang cha
+					$customer_ml = $this -> model_pd_register -> getTableCustomerMLByUsername($customer_ml_p_binary['customer_id']);
+
+				} 
+			}
+	}
+	public function prints(){
+		$cus_id = $this->request->get['id_customer'];
+		$this->load->model('pd/register');
+		$data['info_customer'] = $this -> model_pd_register -> get_customer_print($cus_id);
+		$data['self'] = $this;
+		$data['token'] = $this->session->data['token'];
+		$data['header'] = $this->load->controller('common/header');
+		$data['column_left'] = $this->load->controller('common/column_left');
+		$data['footer'] = $this->load->controller('common/footer');
+
+		$this->response->setOutput($this->load->view('pd/print.tpl', $data));
+	}
+	public function get_username($customer_id){
+		$this->load->model('pd/register');
+		$username = $this -> model_pd_register -> get_username_by_id($customer_id);
+		
+		return $username['username'];
+
 	}
 }
