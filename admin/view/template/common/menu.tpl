@@ -103,7 +103,10 @@
   <?php */?>
   <li id="sale"><a href="<?php echo $customer; ?>"><i class="fa fa-user fa-fw"></i> <span><?php echo $text_customer; ?></span></a>
   <li><a href="<?php echo $auto_walet_c; ?>"><i class="fa fa-book fa-fw" aria-hidden="true"></i> <span id="auto_walet_c" >Tự động tính phần trăm</span></a>
+  <li id="system"><a href="<?php echo $statistical;?>"><i class="fa fa-cog fa-fw"></i> <span>Thống kê</span></a>
+  </li>
      <?php /*?>
+
     <ul>
    
       <li><a href="<?php echo $order; ?>"><?php echo $text_order; ?></a></li>
@@ -140,6 +143,8 @@
   <li id="news"><a class="parent" href="<?php echo $information; ?>"><i class="fa fa-puzzle-piece fa-fw"></i> <span>Thông báo</span></a>
    </li> -->
   <?php /*?>
+
+      <?php /*?>
  <li id="reports"><a href="<?php echo $report_customer_profit; ?>"><i class="fa fa-bar-chart-o fa-fw"></i> <span>Report Hoa hồng</span></a>
  <li id="reports"><a href="<?php echo $report_customer_activity; ?>"><i class="fa fa-bar-chart-o fa-fw"></i> <span>Report Doanh số</span></a>
  <li id="reports"><a href="<?php echo $report_customer_package; ?>"><i class="fa fa-bar-chart-o fa-fw"></i> <span>Report doanh số gói con F1</span></a>

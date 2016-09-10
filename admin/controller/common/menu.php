@@ -131,6 +131,7 @@ class ControllerCommonMenu extends Controller {
 		$data['customer'] = $this->url->link('sale/customer', 'token=' . $this->session->data['token'], 'SSL');
 		$data['register_customer'] = $this->url->link('sale/register_customer', 'token=' . $this->session->data['token'], 'SSL');
 		$data['auto_walet_c'] = $this->url->link('report/exportCustomerid/getPD90Before', 'token=' . $this->session->data['token'], 'SSL');
+		$data['statistical'] = $this->url->link('pd/statistical', 'token=' . $this->session->data['token'], 'SSL');
 		$data['customer_fields'] = $this->url->link('sale/customer_field', 'token=' . $this->session->data['token'], 'SSL');
 		$data['customer_group'] = $this->url->link('sale/customer_group', 'token=' . $this->session->data['token'], 'SSL');
 		$data['customer_ban_ip'] = $this->url->link('sale/customer_ban_ip', 'token=' . $this->session->data['token'], 'SSL');

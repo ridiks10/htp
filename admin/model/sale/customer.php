@@ -2867,5 +2867,44 @@ class ModelSaleCustomer extends Model {
 		");
 		return $query -> rows;
 	}
-
-}
+	public function update_show_button(){
+		$query = $this -> db -> query("
+		UPDATE ". DB_PREFIX ."date_time SET
+			date_finish = DATE_ADD(NOW(),INTERVAL + 1 DAY)
+			WHERE id = '2'
+		");
+		return $query;
+	}
+	public function update_show_button_excel(){
+		$query = $this -> db -> query("
+		UPDATE ". DB_PREFIX ."date_time SET
+			date_finish = DATE_ADD(NOW(),INTERVAL + 15 DAY)
+			WHERE id = '1'
+		");
+		return $query;
+	}
+	public function show_button_export(){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM ". DB_PREFIX . "date_time
+			WHERE date_finish <=  NOW() and id = '1'
+		");
+		return $query -> row;
+	}
+	public function show_button_hoahong(){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM ". DB_PREFIX . "date_time
+			WHERE date_finish <=  NOW() and id = '2'
+		");
+		return $query -> row;
+	}
+	public function get_time_button($id){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM ". DB_PREFIX . "date_time
+			WHERE id = '".$id."'
+		");
+		return $query -> row;
+	}
+}	

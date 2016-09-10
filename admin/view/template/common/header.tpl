@@ -22,6 +22,9 @@
 <script type="text/javascript" src="view/javascript/summernote/summernote.js"></script>
 <script src="view/javascript/jquery/datetimepicker/moment.js" type="text/javascript"></script>
 <script src="view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+
+<script src="view/javascript/jquery.countdown.min.js" type="text/javascript"></script>
+
 <link href="view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.css" type="text/css" rel="stylesheet" media="screen" />
 <link type="text/css" href="view/stylesheet/stylesheet.css" rel="stylesheet" media="screen" />
 <link type="text/css" href="view/stylesheet/jquery-ui.css" rel="stylesheet">
@@ -93,12 +96,7 @@
 
     <li><a href="<?php echo $logout; ?>"><span class="hidden-xs hidden-sm hidden-md"><?php echo $text_logout; ?></span> <i class="fa fa-sign-out fa-lg"></i></a></li>
   </ul>
-  <a class="pull-right" style="    background: #505057;
-    padding: 7px 11px;
-    color: #FFF;
-    margin: 4px;" href="index.php?route=report/exportCustomerid/export_pd_new&token=<?php echo $_GET['token'];?>">
-               <i class="fa fa-download"></i>
-            </a>
+  
   <?php } ?>
 
 </header>
