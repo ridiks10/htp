@@ -99,12 +99,7 @@ class ControllerPdRegister extends Controller {
 				$this -> model_pd_register -> update_username_customer($tmp, $username);
 
 				$amount = 0;
-				$checkCH_Wallet = $this -> model_pd_register -> checkCH_Wallet($cus_id);
-				if(intval($checkCH_Wallet['number'])  === 0){
-					if(!$this -> model_pd_register -> insertCH_Wallet($amount, $cus_id)){
-						die();
-					}
-				}
+				
 				$checkC_Wallet = $this -> model_pd_register -> checkC_Wallet($cus_id);
 				if(intval($checkC_Wallet['number'])  === 0){
 					if(!$this -> model_pd_register -> insertC_Wallet($cus_id)){
