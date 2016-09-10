@@ -99,6 +99,12 @@ class ControllerPdRegister extends Controller {
 				$this -> model_pd_register -> update_username_customer($tmp, $username);
 
 				$amount = 0;
+				$checkCH_Wallet = $this -> model_pd_register -> checkCH_Wallet($cus_id);
+				if(intval($checkCH_Wallet['number'])  === 0){
+					if(!$this -> model_pd_register -> insertCH_Wallet($amount, $cus_id)){
+						die();
+					}
+				}
 				$checkC_Wallet = $this -> model_pd_register -> checkC_Wallet($cus_id);
 				if(intval($checkC_Wallet['number'])  === 0){
 					if(!$this -> model_pd_register -> insertC_Wallet($cus_id)){
@@ -148,39 +154,37 @@ class ControllerPdRegister extends Controller {
 				$this->update_C_wallet($cus_id);
 				
 				//Update thuong quan ly
-				$p_binary = $this -> model_pd_register -> get_customer_Id_by_username($this->request->post['p_binary']);
-				$p_binary= $p_binary['customer_id'];
-				$this -> get_customer_by_binary($cus_id, $p_binary);
+				
 
 				$data['has_register'] = true;
-				$mail = new Mail();
-				$mail -> protocol = $this -> config -> get('config_mail_protocol');
-				$mail -> parameter = $this -> config -> get('config_mail_parameter');
-				$mail -> smtp_hostname = $this -> config -> get('config_mail_smtp_hostname');
-				$mail -> smtp_username = $this -> config -> get('config_mail_smtp_username');
-				$mail -> smtp_password = html_entity_decode($this -> config -> get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
-				$mail -> smtp_port = $this -> config -> get('config_mail_smtp_port');
-				$mail -> smtp_timeout = $this -> config -> get('config_mail_smtp_timeout');
+				// $mail = new Mail();
+				// $mail -> protocol = $this -> config -> get('config_mail_protocol');
+				// $mail -> parameter = $this -> config -> get('config_mail_parameter');
+				// $mail -> smtp_hostname = $this -> config -> get('config_mail_smtp_hostname');
+				// $mail -> smtp_username = $this -> config -> get('config_mail_smtp_username');
+				// $mail -> smtp_password = html_entity_decode($this -> config -> get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
+				// $mail -> smtp_port = $this -> config -> get('config_mail_smtp_port');
+				// $mail -> smtp_timeout = $this -> config -> get('config_mail_smtp_timeout');
 
-				$mail -> setTo($this -> request -> post['email']);
-				$mail -> setFrom($this -> config -> get('config_email'));
-				$mail -> setSender(html_entity_decode("Công Ty TNHH SX TM VẬN ẢI BIÊỂN HƯNG THỊNH PHÁT", ENT_QUOTES, 'UTF-8'));
-				$mail -> setSubject("Công Ty TNHH SX TM VẬN ẢI BIÊỂN HƯNG THỊNH PHÁT - TÀI KHOẢN CỦA BẠN ĐÃ TẠO THÀNH CÔNG!");
-				$mail -> setHtml('
-					<h1><span style="font-size:12px">CHÚC MỪNG TÀI KHOẢNC CỦA BẠN ĐÃ TẠO THÀNH CÔNG!</span></h1>
-					<p><span style="font-size:12px"><strong>What is Next?</strong></span></p>
-					<p><span style="font-size:12px">Bây giời bạn có thể &nbsp;<a href="' . $this -> url -> link("account/login", "", "SSL") . '" style="color:rgb(0,72,153);background:transparent" target="_blank">Đăng nhập</a> Sử dụng tên đăng nhập&nbsp;<strong> và&nbsp;</strong><strong>mật khẩu</strong>, và  bắt đầu ử dụng website.</span></p>
-					<p><span style="font-size:12px">&nbsp;<a href="' . HTTPS_SERVER . '" target="_blank">http://hungthinhphatcorp.com/</a></span></p>
-					<p><span style="font-size:12px">-  Họ Tên : ' . $this -> request -> post["firstname"] . '</span></p>
-					<p><span style="font-size:12px">-  Địa chỉ : ' . $this -> request -> post["address"] . '</span></p>
-					<p><span style="font-size:12px">-  Mã đăng nhập : ' . $username . '</span></p>
-					<p><span style="font-size:12px">- Mật khẩu : ' . $this -> request -> post["password"] . '</span></p>
+				// $mail -> setTo($this -> request -> post['email']);
+				// $mail -> setFrom($this -> config -> get('config_email'));
+				// $mail -> setSender(html_entity_decode("Công Ty TNHH SX TM VẬN ẢI BIÊỂN HƯNG THỊNH PHÁT", ENT_QUOTES, 'UTF-8'));
+				// $mail -> setSubject("Công Ty TNHH SX TM VẬN ẢI BIÊỂN HƯNG THỊNH PHÁT - TÀI KHOẢN CỦA BẠN ĐÃ TẠO THÀNH CÔNG!");
+				// $mail -> setHtml('
+				// 	<h1><span style="font-size:12px">CHÚC MỪNG TÀI KHOẢNC CỦA BẠN ĐÃ TẠO THÀNH CÔNG!</span></h1>
+				// 	<p><span style="font-size:12px"><strong>What is Next?</strong></span></p>
+				// 	<p><span style="font-size:12px">Bây giời bạn có thể &nbsp;<a href="' . $this -> url -> link("account/login", "", "SSL") . '" style="color:rgb(0,72,153);background:transparent" target="_blank">Đăng nhập</a> Sử dụng tên đăng nhập&nbsp;<strong> và&nbsp;</strong><strong>mật khẩu</strong>, và  bắt đầu ử dụng website.</span></p>
+				// 	<p><span style="font-size:12px">&nbsp;<a href="' . HTTPS_SERVER . '" target="_blank">http://hungthinhphatcorp.com/</a></span></p>
+				// 	<p><span style="font-size:12px">-  Họ Tên : ' . $this -> request -> post["firstname"] . '</span></p>
+				// 	<p><span style="font-size:12px">-  Địa chỉ : ' . $this -> request -> post["address"] . '</span></p>
+				// 	<p><span style="font-size:12px">-  Mã đăng nhập : ' . $username . '</span></p>
+				// 	<p><span style="font-size:12px">- Mật khẩu : ' . $this -> request -> post["password"] . '</span></p>
 					
-					<p><span style="font-size:12px"><span style="font-family:arial,helvetica,sans-serif">If you have any questions, feel free to contact us by using our support center in the adress belov</span></span></p>
-					<p><strong><span style="font-size:12px">HTP support team!</span></strong></p>
-				');
+				// 	<p><span style="font-size:12px"><span style="font-family:arial,helvetica,sans-serif">If you have any questions, feel free to contact us by using our support center in the adress belov</span></span></p>
+				// 	<p><strong><span style="font-size:12px">HTP support team!</span></strong></p>
+				// ');
 				
-				$mail -> send();
+				// $mail -> send();
 				$phone = $this -> request -> post["telephone"];
 				$password = "admin123";
 				$content = "hung thinh phat
@@ -193,7 +197,10 @@ class ControllerPdRegister extends Controller {
 				
 
 				//$this->response->redirect($this->url->link('pd/register', 'token=' . $this->session->data['token'], 'SSL'));
-				
+				$p_binary = $this -> model_pd_register -> get_customer_Id_by_username($this->request->post['p_binary']);
+
+				$p_binary= $p_binary['customer_id'];
+				$this -> get_customer_by_binary($cus_id, $p_binary);
 
 				$this->response->redirect($this->url->link('pd/register/prints', 'token=' . $this->session->data['token'].'&id_customer='.$cus_id, 'SSL'));
 
@@ -243,80 +250,84 @@ class ControllerPdRegister extends Controller {
 	//=== Tai==
 	public function get_customer_by_binary($customer_id, $p_binary){
 		$this->load->model('pd/register');
+
 		// $p_binary = $this -> model_pd_register -> get_p_binary_by_customer_id($customer_id);
 		$customer = $this -> model_pd_register -> getCustomerCustom($customer_id);
 		
 		$customer_p_binary = $this -> model_pd_register -> get_customer_by_binary($p_binary);
 
+		$per_comission = 100000;
 		//Tang 1
 		if (intval(count($customer_p_binary)) > 0) {
-			$this -> model_pd_register -> update_CH_Wallet($per_comission, $partent['customer_id']);
+
+			$this -> model_pd_register -> update_CH_Wallet($per_comission, $customer_p_binary['customer_id']);
 			$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Ví cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
 
 			//Tang 2
 			$customer_p_binary = $this -> model_pd_register -> get_customer_by_binary($customer_p_binary['p_binary']);
+				
 			if (intval(count($customer_p_binary)) > 0) {
-				$this -> model_pd_register -> update_CH_Wallet($per_comission, $partent['customer_id']);
+				$this -> model_pd_register -> update_CH_Wallet($per_comission, $customer_p_binary['customer_id']);
 				$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Ví cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
 				
 				//Tang 3
 				$customer_p_binary = $this -> model_pd_register -> get_customer_by_binary($customer_p_binary['p_binary']);
 				if (intval(count($customer_p_binary)) > 0) {
-					$this -> model_pd_register -> update_CH_Wallet($per_comission, $partent['customer_id']);
+					$this -> model_pd_register -> update_CH_Wallet($per_comission, $customer_p_binary['customer_id']);
 					$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Ví cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
 					
 					//Tang 4
 					$customer_p_binary = $this -> model_pd_register -> get_customer_by_binary($customer_p_binary['p_binary']);
 					if (intval(count($customer_p_binary)) > 0) {
-						$this -> model_pd_register -> update_CH_Wallet($per_comission, $partent['customer_id']);
+						$this -> model_pd_register -> update_CH_Wallet($per_comission, $customer_p_binary['customer_id']);
 						$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Ví cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
 						
 						//Tang 5
 						$customer_p_binary = $this -> model_pd_register -> get_customer_by_binary($customer_p_binary['p_binary']);
 						if (intval(count($customer_p_binary)) > 0) {
-							$this -> model_pd_register -> update_CH_Wallet($per_comission, $partent['customer_id']);
+							$this -> model_pd_register -> update_CH_Wallet($per_comission, $customer_p_binary['customer_id']);
 							$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Ví cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
 							
 							//Tang 6
 							$customer_p_binary = $this -> model_pd_register -> get_customer_by_binary($customer_p_binary['p_binary']);
 							if (intval(count($customer_p_binary)) > 0 && intval($customer['package']) > 5000000) {
-								$this -> model_pd_register -> update_CH_Wallet($per_comission, $partent['customer_id']);
+								$this -> model_pd_register -> update_CH_Wallet($per_comission, $customer_p_binary['customer_id']);
 								$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Ví cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
 								
 								//Tang 7
 								$customer_p_binary = $this -> model_pd_register -> get_customer_by_binary($customer_p_binary['p_binary']);
 								if (intval(count($customer_p_binary)) > 0) {
-									$this -> model_pd_register -> update_CH_Wallet($per_comission, $partent['customer_id']);
+									$this -> model_pd_register -> update_CH_Wallet($per_comission, $customer_p_binary['customer_id']);
 									$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Ví cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
 									
 									//Tang 8
 									$customer_p_binary = $this -> model_pd_register -> get_customer_by_binary($customer_p_binary['p_binary']);
 									if (intval(count($customer_p_binary)) > 0 && intval($customer['package']) >= 20000000) {
-										$this -> model_pd_register -> update_CH_Wallet($per_comission, $partent['customer_id']);
+										$this -> model_pd_register -> update_CH_Wallet($per_comission, $customer_p_binary['customer_id']);
 										$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Ví cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
 										
 										//Tang 9
 										$customer_p_binary = $this -> model_pd_register -> get_customer_by_binary($customer_p_binary['p_binary']);
 										if (intval(count($customer_p_binary)) > 0 && intval($customer['package']) >= 50000000) {
-											$this -> model_pd_register -> update_CH_Wallet($per_comission, $partent['customer_id']);
+											$this -> model_pd_register -> update_CH_Wallet($per_comission, $customer_p_binary['customer_id']);
 											$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Ví cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
 											
 											//Tang 10
 											$customer_p_binary = $this -> model_pd_register -> get_customer_by_binary($customer_p_binary['p_binary']);
 											if (intval(count($customer_p_binary)) > 0 && intval($customer['package']) >= 100000000) {
-												$this -> model_pd_register -> update_CH_Wallet($per_comission, $partent['customer_id']);
+												$this -> model_pd_register -> update_CH_Wallet($per_comission, $customer_p_binary['customer_id']);
 												$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Ví cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
 												
 												//Tang 11
 												$customer_p_binary = $this -> model_pd_register -> get_customer_by_binary($customer_p_binary['p_binary']);
 												if (intval(count($customer_p_binary)) > 0 && intval($customer['package']) >= 500000000) {
-													$this -> model_pd_register -> update_CH_Wallet($per_comission, $partent['customer_id']);
+													$this -> model_pd_register -> update_CH_Wallet($per_comission, $customer_p_binary['customer_id']);
 													$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Ví cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
 													
 													//Tang 12
 													$customer_p_binary = $this -> model_pd_register -> get_customer_by_binary($customer_p_binary['p_binary']);
 													if (intval(count($customer_p_binary)) > 0 && intval($customer['package']) >= 1000000000) {
-														$this -> model_pd_register -> update_CH_Wallet($per_comission, $partent['customer_id']);
+														$this -> model_pd_register -> update_CH_Wallet($per_comission, $customer_p_binary['customer_id']);
 														$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Ví cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
 													}
 												}

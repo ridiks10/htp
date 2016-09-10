@@ -105,8 +105,8 @@ span.cir {
 <script>
 
 
-var width = 2000,
-    height = 2000;
+var width = 1000,
+    height = 600;
 
 var tree = d3.layout.tree()
     .size([height, width - 160]);

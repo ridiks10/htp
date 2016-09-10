@@ -148,6 +148,22 @@ class ModelPdRegister extends Model {
 			WHERE customer_id = '".$customer_id."'
 		");
 	}
+	public function checkCH_Wallet($id_customer){
+		$query = $this -> db -> query("
+			SELECT COUNT(*) AS number
+			FROM  ".DB_PREFIX."customer_r_wallet
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."'
+		");
+		return $query -> row;
+	}
+	public function insertCH_Wallet($id_customer){
+		$query = $this -> db -> query("
+			INSERT INTO " . DB_PREFIX . "customer_r_wallet SET
+			customer_id = '".$this -> db -> escape($id_customer)."',
+			amount = '0'
+		");
+		return $query;
+	}
 	public function update_CH_Wallet($amount , $customer_id){
 		$query = $this -> db -> query("
 		UPDATE " . DB_PREFIX . "customer_ch_wallet SET
