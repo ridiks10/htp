@@ -65,7 +65,22 @@
           <span id="confirmpassword-error" class="text-danger" style="display: none;">
            <span>Repeat Password For Login not correct</span>
            </span>
-        </div>      
+        </div> 
+         <div class="form-group">
+          <label for="">Nhánh</label>
+          <input type="text" class="form-control" id="p_binary" name="p_binary" placeholder="Nhánh" required="required">
+           <ul id="p_binary-box" class="list-group"></ul>
+          <span id="p_binary-error" class="field-validation-error">
+              <span></span>
+          </span>
+        </div>
+        <div class="form-group">
+          <label for="">Vị trí</label>
+          <select name="postion" id="postion" class="form-control" required="required" data-link="<?php echo $check_p_binary; ?>">
+            <option value="">Chọn vị trí</option>
+           
+          </select>
+        </div>    
         
       </div>
       <div class="col-md-6">
@@ -107,21 +122,7 @@
               <span></span>
           </span>
         </div>
-        <div class="form-group">
-          <label for="">Nhánh</label>
-          <input type="text" class="form-control" id="p_binary" name="p_binary" placeholder="Nhánh" required="required">
-           <ul id="p_binary-box" class="list-group"></ul>
-          <span id="p_binary-error" class="field-validation-error">
-              <span></span>
-          </span>
-        </div>
-        <div class="form-group">
-          <label for="">Vị trí</label>
-          <select name="postion" id="postion" class="form-control" required="required" data-link="<?php echo $check_p_binary; ?>">
-            <option value="">Chọn vị trí</option>
-           
-          </select>
-        </div>
+
         <div class="form-group">
           <label for="">Gói đầu tư</label>
           <select name="investment" id="investment" class="form-control" required="required">
@@ -188,24 +189,24 @@ $('#postion').empty();
         $("#suggesstion-box").hide();
     }
 
-     $(document).ready(function(){
-        $("#p_binary").keyup(function(){
-            $.ajax({
-            type: "POST",
-            url: "<?php echo $getaccount;?>",
-            data:'keyword='+$(this).val(),        
-            success: function(data){
-                $("#suggesstion-box").show();
-                $("#suggesstion-box").html(data);
-                $("#p_node").css("background","#FFF");            
-            }
-            });
-        });
-    }); 
-    function selectU(val) {
-        $("#p_binary").val(val);
-        $("#p_binary-box").hide();
-    }
+    //  $(document).ready(function(){
+    //     $("#p_binary").keyup(function(){
+    //         $.ajax({
+    //         type: "POST",
+    //         url: "<?php echo $getaccounts;?>",
+    //         data:'keyword='+$(this).val(),        
+    //         success: function(data){
+    //             $("#p_binary-box").show();
+    //             $("#p_binary-box").html(data);
+    //             $("#p_binary").css("background","#FFF");            
+    //         }
+    //         });
+    //     });
+    // }); 
+    // function selectUs(val) {
+    //     $("#p_binary").val(val);
+    //     $("#p_binary-box").hide();
+    // }
 </script>
 <?php echo $footer; ?>
 <style type="text/css" media="screen">

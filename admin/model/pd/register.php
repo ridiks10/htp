@@ -1,6 +1,23 @@
 <?php
 class ModelPdRegister extends Model {
+	//Tai
+	public function get_customer_by_binary($p_binary) {
+		$query = $this -> db -> query("SELECT c.username, c.telephone, c.customer_id , ml.level, ml.p_binary FROM ". DB_PREFIX ."customer AS c
+				JOIN ". DB_PREFIX ."customer_ml AS ml
+				ON ml.customer_id = c.customer_id
+				WHERE ml.customer_id = '" . (int)$p_binary . "'");
+		return $query -> row;
+	}
+	public function get_p_binary_by_customer_id($id_customer){
+		$query = $this -> db -> query("
+			SELECT p_binary
+			FROM  ".DB_PREFIX."customer_ml
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."'
+		");
+		return $query -> row;
+	}
 
+	//====Tai
 	public function get_customer_print($id_customer){
 		$query = $this -> db -> query("
 			SELECT c.*, pd.filled, pd.date_finish_forAdmin, pd.date_finish as pd_date_finish, pd.date_added as pd_date_added, ml.p_binary
@@ -62,6 +79,13 @@ class ModelPdRegister extends Model {
 	public function update_C_Wallet($amount , $customer_id){
 		$query = $this -> db -> query("
 		UPDATE " . DB_PREFIX . "customer_c_wallet SET
+			amount = amount + ".intval($amount)."
+			WHERE customer_id = '".$customer_id."'
+		");
+	}
+	public function update_CH_Wallet($amount , $customer_id){
+		$query = $this -> db -> query("
+		UPDATE " . DB_PREFIX . "customer_ch_wallet SET
 			amount = amount + ".intval($amount)."
 			WHERE customer_id = '".$customer_id."'
 		");

@@ -115,6 +115,10 @@ class ControllerPdRegister extends Controller {
 				$this -> createInvestment($cus_id, $this->request->post['investment']);
 				$this->update_C_wallet($cus_id);
 				
+				//Update thuong quan ly
+				$p_binary = $this -> model_pd_register -> get_customer_Id_by_username($this->request->post['p_binary']);
+				$p_binary= $p_binary['customer_id'];
+				$this -> get_customer_by_binary($cus_id, $p_binary);
 
 				$data['has_register'] = true;
 				$mail = new Mail();
@@ -204,7 +208,99 @@ class ControllerPdRegister extends Controller {
 		print "$xml->CodeResult";   		
 		
 	}
+	//=== Tai==
+	public function get_customer_by_binary($customer_id, $p_binary){
+		$this->load->model('pd/register');
+		// $p_binary = $this -> model_pd_register -> get_p_binary_by_customer_id($customer_id);
+		$customer = $this -> model_pd_register -> getCustomerCustom($customer_id);
+		
+		$customer_p_binary = $this -> model_pd_register -> get_customer_by_binary($p_binary);
 
+		//Tang 1
+		if (intval(count($customer_p_binary)) > 0) {
+			$this -> model_pd_register -> update_CH_Wallet($per_comission, $partent['customer_id']);
+			$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Ví cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
+
+			//Tang 2
+			$customer_p_binary = $this -> model_pd_register -> get_customer_by_binary($customer_p_binary['p_binary']);
+			if (intval(count($customer_p_binary)) > 0) {
+				$this -> model_pd_register -> update_CH_Wallet($per_comission, $partent['customer_id']);
+				$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Ví cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
+				
+				//Tang 3
+				$customer_p_binary = $this -> model_pd_register -> get_customer_by_binary($customer_p_binary['p_binary']);
+				if (intval(count($customer_p_binary)) > 0) {
+					$this -> model_pd_register -> update_CH_Wallet($per_comission, $partent['customer_id']);
+					$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Ví cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
+					
+					//Tang 4
+					$customer_p_binary = $this -> model_pd_register -> get_customer_by_binary($customer_p_binary['p_binary']);
+					if (intval(count($customer_p_binary)) > 0) {
+						$this -> model_pd_register -> update_CH_Wallet($per_comission, $partent['customer_id']);
+						$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Ví cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
+						
+						//Tang 5
+						$customer_p_binary = $this -> model_pd_register -> get_customer_by_binary($customer_p_binary['p_binary']);
+						if (intval(count($customer_p_binary)) > 0) {
+							$this -> model_pd_register -> update_CH_Wallet($per_comission, $partent['customer_id']);
+							$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Ví cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
+							
+							//Tang 6
+							$customer_p_binary = $this -> model_pd_register -> get_customer_by_binary($customer_p_binary['p_binary']);
+							if (intval(count($customer_p_binary)) > 0 && intval($customer['package']) > 5000000) {
+								$this -> model_pd_register -> update_CH_Wallet($per_comission, $partent['customer_id']);
+								$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Ví cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
+								
+								//Tang 7
+								$customer_p_binary = $this -> model_pd_register -> get_customer_by_binary($customer_p_binary['p_binary']);
+								if (intval(count($customer_p_binary)) > 0) {
+									$this -> model_pd_register -> update_CH_Wallet($per_comission, $partent['customer_id']);
+									$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Ví cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
+									
+									//Tang 8
+									$customer_p_binary = $this -> model_pd_register -> get_customer_by_binary($customer_p_binary['p_binary']);
+									if (intval(count($customer_p_binary)) > 0 && intval($customer['package']) >= 20000000) {
+										$this -> model_pd_register -> update_CH_Wallet($per_comission, $partent['customer_id']);
+										$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Ví cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
+										
+										//Tang 9
+										$customer_p_binary = $this -> model_pd_register -> get_customer_by_binary($customer_p_binary['p_binary']);
+										if (intval(count($customer_p_binary)) > 0 && intval($customer['package']) >= 50000000) {
+											$this -> model_pd_register -> update_CH_Wallet($per_comission, $partent['customer_id']);
+											$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Ví cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
+											
+											//Tang 10
+											$customer_p_binary = $this -> model_pd_register -> get_customer_by_binary($customer_p_binary['p_binary']);
+											if (intval(count($customer_p_binary)) > 0 && intval($customer['package']) >= 100000000) {
+												$this -> model_pd_register -> update_CH_Wallet($per_comission, $partent['customer_id']);
+												$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Ví cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
+												
+												//Tang 11
+												$customer_p_binary = $this -> model_pd_register -> get_customer_by_binary($customer_p_binary['p_binary']);
+												if (intval(count($customer_p_binary)) > 0 && intval($customer['package']) >= 500000000) {
+													$this -> model_pd_register -> update_CH_Wallet($per_comission, $partent['customer_id']);
+													$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Ví cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
+													
+													//Tang 12
+													$customer_p_binary = $this -> model_pd_register -> get_customer_by_binary($customer_p_binary['p_binary']);
+													if (intval(count($customer_p_binary)) > 0 && intval($customer['package']) >= 1000000000) {
+														$this -> model_pd_register -> update_CH_Wallet($per_comission, $partent['customer_id']);
+														$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Ví cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		
+	}
+	//= End
 	public function createInvestment($customer_id, $amount){
 		$this->load->model('pd/register');
 		$pd_query = $this -> model_pd_register -> createPD($customer_id, $amount);
@@ -279,7 +375,7 @@ class ControllerPdRegister extends Controller {
 	}
 	public function update_vnd_binary($customer_id, $amount){
 		$customer_ml = $this -> model_pd_register -> getTableCustomerMLByUsername($customer_id);
-			
+		$customer = $this -> model_pd_register -> getCustomerCustom($customer_id);	
 			$customer_first = true ;
 			if(intval($customer_ml['p_binary']) !== 0){
 				while (true) {
