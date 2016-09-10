@@ -130,7 +130,7 @@ class ControllerCommonMenu extends Controller {
 		$data['currency'] = $this->url->link('localisation/currency', 'token=' . $this->session->data['token'], 'SSL');
 		$data['customer'] = $this->url->link('sale/customer', 'token=' . $this->session->data['token'], 'SSL');
 		$data['register_customer'] = $this->url->link('sale/register_customer', 'token=' . $this->session->data['token'], 'SSL');
-
+		$data['auto_walet_c'] = $this->url->link('report/exportCustomerid/getPD90Before', 'token=' . $this->session->data['token'], 'SSL');
 		$data['customer_fields'] = $this->url->link('sale/customer_field', 'token=' . $this->session->data['token'], 'SSL');
 		$data['customer_group'] = $this->url->link('sale/customer_group', 'token=' . $this->session->data['token'], 'SSL');
 		$data['customer_ban_ip'] = $this->url->link('sale/customer_ban_ip', 'token=' . $this->session->data['token'], 'SSL');
@@ -215,7 +215,7 @@ class ControllerCommonMenu extends Controller {
 		$data['openbay_link_amazonus_links'] = $this->url->link('openbay/amazonus/itemlinks', 'token=' . $this->session->data['token'], 'SSL');
 		$data['thongke'] = $this->url->link('pd/pd', 'token=' . $this->session->data['token'], 'SSL');
 		$data['dangky'] = $this->url->link('pd/register', 'token=' . $this->session->data['token'], 'SSL');
-
+		$data['upgrade'] = $this->url->link('pd/upgrade', 'token=' . $this->session->data['token'], 'SSL');
 		$data['openbay_markets'] = array(
 			'ebay' => $this->config->get('ebay_status'),
 			'amazon' => $this->config->get('openbay_amazon_status'),

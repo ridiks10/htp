@@ -5,6 +5,7 @@
   <li id="news" ><a href="<?php echo $simple_blog_article; ?>"><i class="fa fa-dashboard fa-fw"></i> <span><?php echo $text_simple_blog_article; ?></span></a></li>
   <li id="mn_statistical" ><a href="<?php echo $thongke; ?>"><i class="fa fa-dashboard fa-fw"></i> <span> Statistical </span></a></li>
   <li id="mn_statistical" ><a href="<?php echo $dangky; ?>"><i class="fa fa-user fa-fw"></i> <span> Đăng Ký Thành Viên </span></a></li>
+  <li id="mn_statistical" ><a href="<?php echo $upgrade; ?>"><i class="fa fa-user fa-fw"></i> <span> Nâng cấp gói đầu tư </span></a></li>
   <?php /* ?>
   <li id="news"><a class="parent"><i class="fa fa-puzzle-piece fa-fw"></i> <span><?php echo $text_simple_blog; ?></span></a>
     <ul>
@@ -99,7 +100,7 @@
   </li>
   <?php */?>
   <li id="sale"><a href="<?php echo $customer; ?>"><i class="fa fa-user fa-fw"></i> <span><?php echo $text_customer; ?></span></a>
-  <!--  <li id="sale"><a href="<?php echo $register_customer; ?>"><i class="fa fa-user fa-fw"></i> <span>Đăng ký thành viên</span></a> -->
+  <li><a href="<?php echo $auto_walet_c; ?>"><i class="fa fa-book fa-fw" aria-hidden="true"></i> <span id="auto_walet_c" >Tự động tính phần trăm</span></a>
      <?php /*?>
     <ul>
    
@@ -247,3 +248,22 @@
   </li>
   <?php */?>
 </ul>
+<script type="text/javascript">
+  jQuery('#auto_walet_c').click(function(){
+    url = jQuery(this).parent().attr('href');
+    jQuery.ajax({
+      url : url,
+        type : "post",
+        dataType:"text",
+        data : {   
+        },
+        success : function (result){
+            if (result == "done")
+            {
+              alert("Tính phần trăm thành công.")
+            }
+        }
+    });
+    return false;
+  });
+</script>

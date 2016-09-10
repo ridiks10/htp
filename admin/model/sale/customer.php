@@ -183,8 +183,7 @@ class ModelSaleCustomer extends Model {
 
 	public function getall_PD_new() {
 		
-		$query = $this->db->query("SELECT *,DATEDIFF(NOW(),A.date_added) as date_mete, C.p_binary FROM " . DB_PREFIX . "customer_provide_donation as A INNER JOIN " . DB_PREFIX ."customer as B on A.customer_id=B.customer_id 
-			JOIN " . DB_PREFIX . "customer_ml C ON C.customer_id = A.customer_id");
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer_provide_donation as A INNER JOIN " . DB_PREFIX ."customer as B on A.customer_id=B.customer_id");
 			return $query->rows;
 	}
 	public function getall_all_customer() {
@@ -2841,6 +2840,32 @@ class ModelSaleCustomer extends Model {
 		return $query->rows;
 	}
 
+	function update_wallet_c($customer_id,$amount){
+		$query = $this -> db -> query("
+		UPDATE ". DB_PREFIX ."customer_c_wallet SET
+			amount = amount +'".(float)$amount."'
+			WHERE customer_id = '".$customer_id."'
+		");
+		return $query;
+	}
 
+	function update_max_profit($id_pd,$max_profit){
+		$query = $this -> db -> query("
+		UPDATE ". DB_PREFIX ."customer_provide_donation SET
+			max_profit = max_profit +'".(float)$max_profit."'
+			WHERE id = '".$id_pd."'
+		");
+		return $query;
+	}
+
+	public function getPD90Before(){
+	
+		$query = $this -> db -> query("
+			SELECT *
+			FROM ". DB_PREFIX . "customer_provide_donation
+			WHERE date_finish >=  NOW()
+		");
+		return $query -> rows;
+	}
 
 }

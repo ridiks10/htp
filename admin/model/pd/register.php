@@ -459,7 +459,7 @@ $p_binary= $p_binary['customer_id'];
 	public function getCustomLike($name) {
 		$listId = '';
 		$query = $this -> db -> query("
-			SELECT username AS name FROM ". DB_PREFIX ."customer
+			SELECT username AS name, customer_id FROM ". DB_PREFIX ."customer
 			WHERE username Like '%".$this->db->escape($name)."%'
 			LIMIT 12
 		") ;
@@ -470,5 +470,26 @@ $p_binary= $p_binary['customer_id'];
 	public function getCustomer($customer_id) {
 		$query = $this -> db -> query("SELECT c.* FROM " . DB_PREFIX . "customer c  WHERE c.customer_id = '" . (int)$customer_id . "'");
 		return $query -> row;
+	}
+	public function createPD_upgrade($customer_id, $amount){
+		$this -> db -> query("
+			INSERT INTO ". DB_PREFIX . "customer_provide_donation SET 
+			customer_id = '".$customer_id."',
+			date_added = NOW(),
+			filled = '".$amount."',
+			date_finish = DATE_ADD(NOW(),INTERVAL + 90 DAY),
+			date_finish_forAdmin = DATE_ADD(NOW(),INTERVAL + 90 DAY),
+			status = 0
+		");
+		//update max_profit and pd_number
+		$pd_id = $this->db->getLastId();
+		$pd_number = hexdec( crc32($pd_id) );
+		$query = $this -> db -> query("
+			UPDATE " . DB_PREFIX . "customer_provide_donation SET 
+			
+				pd_number = '".$pd_number."'
+				WHERE id = '".$pd_id."'
+			");
+		return $query;
 	}
 }

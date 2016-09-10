@@ -18,6 +18,7 @@
 <link href="view/javascript/bootstrap/opencart/opencart.css" type="text/css" rel="stylesheet" />
 <link href="view/javascript/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
 <link href="view/javascript/summernote/summernote.css" rel="stylesheet" />
+<link href="../catalog/view/theme/default/stylesheet/fakeloader.css" rel="stylesheet">
 <script type="text/javascript" src="view/javascript/summernote/summernote.js"></script>
 <script src="view/javascript/jquery/datetimepicker/moment.js" type="text/javascript"></script>
 <script src="view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
@@ -39,6 +40,7 @@
 <?php } ?>
 </head>
 <body >
+
 <div id="container">
 
 <header id="header" class="navbar navbar-static-top">
@@ -100,9 +102,10 @@
   <?php } ?>
 
 </header>
+<!-- <a href="./">
 <img src="../images/logo.png" style=" position: absolute;
     z-index: 9999;
     width: 180px;
     top: 17px;
     left: 29px;
-" alt="">
+" alt=""></a> -->
