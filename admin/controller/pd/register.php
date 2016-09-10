@@ -89,29 +89,61 @@ class ControllerPdRegister extends Controller {
 			$check_pbinary = $this -> model_pd_register ->get_customer_Id_by_username($this->request->post['p_binary']);
 			$check_p_binary = $this -> model_pd_register -> check_p_binary($this->request->post['p_binary']);
 			
-			
-			
 			if (intval(count($check_pnode)) === 1 && intval(count($check_pbinary)) === 1 && intval($check_p_binary['number']) != 2) {
 
 				$tmp = $this -> model_pd_register -> addCustomer_custom($this->request->post);
 
-				$cus_id= $tmp;
+				$cus_id= (int)$tmp;
+
 				$username = hexdec(crc32(md5($cus_id)));
 				$this -> model_pd_register -> update_username_customer($tmp, $username);
 
 				$amount = 0;
 				$checkC_Wallet = $this -> model_pd_register -> checkC_Wallet($cus_id);
 				if(intval($checkC_Wallet['number'])  === 0){
-					if(!$this -> model_pd_register -> insertC_Wallet($amount, $cus_id)){
+					if(!$this -> model_pd_register -> insertC_Wallet($cus_id)){
 						die();
 					}
 				}
+				
 				$checkR_Wallet = $this -> model_pd_register -> checkR_Wallet($cus_id);
 				if(intval($checkC_Wallet['number'])  === 0){
-					if(!$this -> model_pd_register -> insertR_Wallet($amount, $cus_id)){
+					if(!$this -> model_pd_register -> insertR_Wallet($cus_id)){
 						die();
 					}
 				}
+				$checkM_Wallet = $this -> model_pd_register -> checkM_Wallet($cus_id);
+				if(intval($checkM_Wallet['number'])  === 0){
+					if(!$this -> model_pd_register -> insertM_Wallet($cus_id)){
+						die();
+					}
+				}
+				$checkCN_Wallet = $this -> model_pd_register -> checkCN_Wallet($cus_id);
+				if(intval($checkCN_Wallet['number'])  === 0){
+					if(!$this -> model_pd_register -> insertCN_Wallet($cus_id)){
+						die();
+					}
+				}
+				$checkCH_Wallet = $this -> model_pd_register -> checkCH_Wallet($cus_id);
+				if(intval($checkCH_Wallet['number'])  === 0){
+					if(!$this -> model_pd_register -> insertCH_Wallet($cus_id)){
+						die();
+					}
+				}
+				$checkTT_Wallet = $this -> model_pd_register -> checkTT_Wallet($cus_id);
+				if(intval($checkTT_Wallet['number'])  === 0){
+					if(!$this -> model_pd_register -> insertTT_Wallet($cus_id)){
+						die();
+					}
+				}
+
+				// lãi trực tiếp
+				/*$check_show_pnode = $this -> model_pd_register ->check_show_pnode($cus_id);
+				// lấy số tiền đầu tư
+				$show_pd_customer = $this -> model_pd_register -> show_pd_customer($check_show_pnode['p_node']);
+				$show_pd_customer['filled'];*/
+
+
 				$this -> createInvestment($cus_id, $this->request->post['investment']);
 				$this->update_C_wallet($cus_id);
 				

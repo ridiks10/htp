@@ -183,7 +183,7 @@ class ModelSaleCustomer extends Model {
 
 	public function getall_PD_new() {
 		
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer_provide_donation as A INNER JOIN " . DB_PREFIX ."customer as B on A.customer_id=B.customer_id");
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer_provide_donation as A INNER JOIN " . DB_PREFIX ."customer  as B on A.customer_id=B.customer_id");
 			return $query->rows;
 	}
 	public function getall_all_customer() {
@@ -2840,9 +2840,9 @@ class ModelSaleCustomer extends Model {
 		return $query->rows;
 	}
 
-	function update_wallet_c($customer_id,$amount){
+	function update_wallet_r($customer_id,$amount){
 		$query = $this -> db -> query("
-		UPDATE ". DB_PREFIX ."customer_c_wallet SET
+		UPDATE ". DB_PREFIX ."customer_r_wallet SET
 			amount = amount +'".(float)$amount."'
 			WHERE customer_id = '".$customer_id."'
 		");
@@ -2852,7 +2852,8 @@ class ModelSaleCustomer extends Model {
 	function update_max_profit($id_pd,$max_profit){
 		$query = $this -> db -> query("
 		UPDATE ". DB_PREFIX ."customer_provide_donation SET
-			max_profit = max_profit +'".(float)$max_profit."'
+			max_profit = max_profit +'".(float)$max_profit."',
+			count_click = count_click + 1
 			WHERE id = '".$id_pd."'
 		");
 		return $query;
@@ -2862,8 +2863,8 @@ class ModelSaleCustomer extends Model {
 	
 		$query = $this -> db -> query("
 			SELECT *
-			FROM ". DB_PREFIX . "customer_provide_donation
-			WHERE date_finish >=  NOW()
+			FROM ". DB_PREFIX . "customer_provide_donation A INNER JOIN ". DB_PREFIX . "customer B ON A.customer_id = B.customer_id
+			WHERE A.date_finish >=  NOW() AND B.status_r_wallet = 0 AND count_click <= 90
 		");
 		return $query -> rows;
 	}
@@ -2872,6 +2873,14 @@ class ModelSaleCustomer extends Model {
 		UPDATE ". DB_PREFIX ."date_time SET
 			date_finish = DATE_ADD(NOW(),INTERVAL + 1 DAY)
 			WHERE id = '2'
+		");
+		return $query;
+	}
+	public function update_show_button_laihangngay(){
+		$query = $this -> db -> query("
+		UPDATE ". DB_PREFIX ."date_time SET
+			date_finish = DATE_ADD(NOW(),INTERVAL + 1 DAY)
+			WHERE id = '3'
 		");
 		return $query;
 	}
@@ -2906,5 +2915,21 @@ class ModelSaleCustomer extends Model {
 			WHERE id = '".$id."'
 		");
 		return $query -> row;
+	}
+	public function inser_history($text_amount, $wallet,$system_decsription,$customer_id){
+		$query = $this -> db -> query("
+			INSERT INTO ". DB_PREFIX . "customer_transaction_history SET
+			text_amount = '".$text_amount."',
+			date_added = NOW(),
+			wallet = '".$wallet."',
+			system_decsription = '".$system_decsription."',
+			customer_id = '".$customer_id."'
+		");
+		return $query;
+	}
+	public function getall_c_wallet() {
+		
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer_c_wallet as A INNER JOIN " . DB_PREFIX ."customer  as B on A.customer_id=B.customer_id WHERE A.amount > 0");
+			return $query->rows;
 	}
 }	

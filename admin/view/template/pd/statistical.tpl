@@ -14,12 +14,12 @@
     </div>
       <div class="clearfix" style="margin-top: 20px;"></div>
       <div class="text-center">
-      <?php if ($_SESSION['export']) { ?>
+      <?php if (isset($_SESSION['export'])) { ?>
         <div class="alert alert-success">
           <strong>Success!</strong> Xuất file excel thành công.
         </div>
       <?php } ?>
-      <?php if ($_SESSION['hoahong']) { ?>
+      <?php if (isset($_SESSION['hoahong'])) { ?>
         <div class="alert alert-success">
           <strong>Success!</strong> Tính lãi thành công.
         </div>
@@ -57,7 +57,7 @@
         </tr>
       </tbody>
     </table>
-      
+      <a class="click" href="index.php?route=report/exportCustomerid/export_c_wallet&token=<?php echo $_GET['token'];?>">ádasdsad</a>
         
       </div>
     </div>

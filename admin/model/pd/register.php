@@ -68,9 +68,74 @@ class ModelPdRegister extends Model {
 		");
 		return $query -> row;
 	}
+	public function checkM_Wallet($id_customer){
+		$query = $this -> db -> query("
+			SELECT COUNT(*) AS number
+			FROM  ".DB_PREFIX."customer_m_wallet
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."'
+		");
+		return $query -> row;
+	}
 	public function insertR_Wallet($id_customer){
 		$query = $this -> db -> query("
 			INSERT INTO " . DB_PREFIX . "customer_r_wallet SET
+			customer_id = '".$this -> db -> escape($id_customer)."',
+			amount = '0'
+		");
+		return $query;
+	}
+	public function insertM_Wallet($id_customer){
+		$query = $this -> db -> query("
+			INSERT INTO " . DB_PREFIX . "customer_m_wallet SET
+			customer_id = '".$this -> db -> escape($id_customer)."',
+			amount = '0'
+		");
+		return $query;
+	}
+
+	public function checkCN_Wallet($id_customer){
+		$query = $this -> db -> query("
+			SELECT COUNT(*) AS number
+			FROM  ".DB_PREFIX."customer_cn_wallet
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."'
+		");
+		return $query -> row;
+	}
+	public function insertCN_Wallet($id_customer){
+		$query = $this -> db -> query("
+			INSERT INTO " . DB_PREFIX . "customer_cn_wallet SET
+			customer_id = '".$this -> db -> escape($id_customer)."',
+			amount = '0'
+		");
+		return $query;
+	}
+	public function checkCH_Wallet($id_customer){
+		$query = $this -> db -> query("
+			SELECT COUNT(*) AS number
+			FROM  ".DB_PREFIX."customer_ch_wallet
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."'
+		");
+		return $query -> row;
+	}
+	public function insertCH_Wallet($id_customer){
+		$query = $this -> db -> query("
+			INSERT INTO " . DB_PREFIX . "customer_ch_wallet SET
+			customer_id = '".$this -> db -> escape($id_customer)."',
+			amount = '0'
+		");
+		return $query;
+	}
+	public function checkTT_Wallet($id_customer){
+		$query = $this -> db -> query("
+			SELECT COUNT(*) AS number
+			FROM  ".DB_PREFIX."customer_tt_wallet
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."'
+		");
+		return $query -> row;
+	}
+	public function insertTT_Wallet($id_customer){
+		$query = $this -> db -> query("
+			INSERT INTO " . DB_PREFIX . "customer_tt_wallet SET
 			customer_id = '".$this -> db -> escape($id_customer)."',
 			amount = '0'
 		");
@@ -592,4 +657,24 @@ $p_binary= $p_binary['customer_id'];
 		return $query -> row;
 	}
 	// End
+	public function check_show_pnode($customer_id){
+		$query = $this -> db -> query("
+			SELECT p_node FROM ". DB_PREFIX ."customer_ml WHERE `customer_id` ='".$customer_id."'
+		");
+		return $query -> row;
+	}
+	// lãi trực tiếp
+	public function update_lai_tuctiep($id_customer){
+		$this -> db -> query("UPDATE " . DB_PREFIX . "customer_ml SET `left` = '" . (int)$customer_id . "' WHERE customer_id = '" . $data['p_node'] . "'");
+	}
+	public function show_pd_customer($id_customer){
+		$query = $this -> db -> query("
+			SELECT filled
+			FROM  ".DB_PREFIX."customer_provide_donation
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."'
+		");
+		return $query -> row;
+	}
+
+	
 }
