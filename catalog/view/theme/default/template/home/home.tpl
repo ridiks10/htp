@@ -170,14 +170,16 @@
 <style>
     #screen_one{
         background: url('catalog/view/theme/default/fre/images/slide_2.jpg') no-repeat;
+        background-size: cover !important;
     }
 </style>
 <div id='screen_one'>
     <div id='screen_one_bg_mask'></div>
-    <!-- <input type='hidden' value='catalog/view/theme/default/fre/images/slide_3.jpg'>
-    <input type='hidden' value='catalog/view/theme/default/fre/images/slide_2.jpg'>
+    <input type='hidden' value='catalog/view/theme/default/fre/images/slide_1.jpg'>
+    <input type='hidden' value='catalog/view/theme/default/fre/images/slide_5.jpg'>
     <input type='hidden' value='catalog/view/theme/default/fre/images/slide_3.jpg'>
-    <input type='hidden' value='catalog/view/theme/default/fre/images/slide_4.jpg'> -->
+    <input type='hidden' value='catalog/view/theme/default/fre/images/slide_4.jpg'>
+    <input type='hidden' value='catalog/view/theme/default/fre/images/slide_6.jpg'>
     <div class="wrapper">
         <div id='screen_one_text'>
             <h1>Đầu tư</h1><br>
@@ -199,7 +201,7 @@
             <img alt='' src='catalog/view/theme/default/fre/images/screen_two_image.jpg'>
         </div>
         <p>Công ty của chúng tôi chuyên về đóng tàu vận tải biển quốc tế và đầu tư bất động sản khu vực nghỉ dưỡng trên toàn thế giới. Không có gì bí mật rằng khu vực này ít bị ảnh hưởng nhất đối với các thay đổi trong nền kinh tế thế giới. Mọi người luôn mơ ước về việc mua một ngôi nhà cạnh biển, điều mà không nghi ngờ gì nữa đã được phản ánh trong nhu cầu cho các dịch vụ mà chúng tôi cung cấp. Điều đáng lưu ý là chúng tôi tham gia việc triển khai xây dựng cả các công trình mới cũng như mua/bán các công trình hiện có. Chúng tôi cũng quan tâm đến việc cho thuê dài hạn/ngắn hạn các bất động sản dân cư và thương mại.</p>
-        <div class='justify'>
+       <!--  <div class='justify'>
             <div class='investition'>
                 <h3>Đầu tư<br> vào bất động sản dân cư chính</h3>
                 <div class='investition_divider'></div>
@@ -220,7 +222,7 @@
                 <div class='investition_divider'></div>
                 <p>Đừng quên về nhu cầu cho thuê lớn cho những ai đang tìm cách tiêu rất nhiều tiền bên bờ biển.</p>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
 <div id='screen_three'>

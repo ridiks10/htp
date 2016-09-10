@@ -249,40 +249,97 @@
                     </div>
                 </div>
             </div>
-           <!--  <div class='gallery_slide tai'>
-                <img alt='' src='catalog/view/theme/default/fre/images/projects/2-1_small.jpg'>
+           <div class='gallery_slide tai'>
+                <img alt='' src='catalog/view/theme/default/fre/images/projects/catba.jpg'>
                 <div class='gallery_mask'>
-                    <a href='catalog/view/theme/default/fre/images/projects/2-1.jpg'>
+                    <a href='catalog/view/theme/default/fre/images/projects/catba.jpg'>
                     <div class='gallery_zoom'>
                     </div></a>
                     <div class='gallery_text'>
-                        <span>Thái Lan</span>
-                        <p>Bất động sản ở Pattaya, công trình xây dựng mới tại Laguna Beach 3 The Maldives</p>
+                        <span>Cát bà</span>
+                        <p>Dự án cát bà</p>
                     </div>
                 </div>
-            </div> -->
-            <!-- <div class='gallery_slide spanish'>
-                <img alt='' src='catalog/view/theme/default/fre/images/projects/3-1_small.jpg'>
+            </div>
+             <div class='gallery_slide tai'>
+                <img alt='' src='catalog/view/theme/default/fre/images/projects/catba1.jpg'>
                 <div class='gallery_mask'>
-                    <a href='catalog/view/theme/default/fre/images/projects/3-1.jpg'><div class='gallery_zoom'>
-                        </div></a>
+                    <a href='catalog/view/theme/default/fre/images/projects/catba1.jpg'>
+                    <div class='gallery_zoom'>
+                    </div></a>
                     <div class='gallery_text'>
-                        <span>Tây Ban Nha</span>
-                        <p>Khu dân cư «Mar de Pulpí Las Azucenas» tọa lạc tại một trong những khu vực đẹp nhất của Tây Ban Nha — tại tỉnh Andalusia, dọc Costa de Algeria.</p>
+                        <span>Cát bà</span>
+                        <p>Dự án cát bà</p>
                     </div>
                 </div>
             </div>
             <div class='gallery_slide spanish'>
-                <img alt='' src='catalog/view/theme/default/fre/images/projects/4-1_small.jpg'>
+                <img alt='' src='catalog/view/theme/default/fre/images/projects/nhaxuong.jpg'>
                 <div class='gallery_mask'>
-                    <a href='catalog/view/theme/default/fre/images/projects/4-1.jpg'><div class='gallery_zoom'>
+                    <a href='catalog/view/theme/default/fre/images/projects/nhaxuong.jpg'><div class='gallery_zoom'>
                         </div></a>
                     <div class='gallery_text'>
-                        <span>Tây Ban Nha</span>
-                        <p>Khu dân cư «Las Terrazas de Sotavento» - một cơ hội mới tại thị trường bất động sản nghỉ dưỡng của Tây Ban Nha. Nó được xây dựng ở phần phía nam của đảo Tenerife, nằm ở trung tâm của khu vực Sotavento khá lớn.</p>
+                        <span>Nhà xưởng</span>
+                        <p>Nhà xưởng.</p>
                     </div>
                 </div>
             </div>
+            <div class='gallery_slide spanish'>
+                <img alt='' src='catalog/view/theme/default/fre/images/projects/nhaxuong1.jpg'>
+                <div class='gallery_mask'>
+                    <a href='catalog/view/theme/default/fre/images/projects/nhaxuong1.jpg'><div class='gallery_zoom'>
+                        </div></a>
+                    <div class='gallery_text'>
+                        <span>Nhà xưởng</span>
+                        <p>Nhà xưởng.</p>
+                    </div>
+                </div>
+            </div>
+            <div class='gallery_slide spanish'>
+                <img alt='' src='catalog/view/theme/default/fre/images/projects/nhaxuong2.jpg'>
+                <div class='gallery_mask'>
+                    <a href='catalog/view/theme/default/fre/images/projects/nhaxuong2.jpg'><div class='gallery_zoom'>
+                        </div></a>
+                    <div class='gallery_text'>
+                        <span>Nhà xưởng</span>
+                        <p>Nhà xưởng.</p>
+                    </div>
+                </div>
+            </div>
+            <div class='gallery_slide spanish'>
+                <img alt='' src='catalog/view/theme/default/fre/images/projects/nhaxuong3.jpg'>
+                <div class='gallery_mask'>
+                    <a href='catalog/view/theme/default/fre/images/projects/nhaxuong3.jpg'><div class='gallery_zoom'>
+                        </div></a>
+                    <div class='gallery_text'>
+                        <span>Nhà xưởng</span>
+                        <p>Nhà xưởng.</p>
+                    </div>
+                </div>
+            </div>
+            <div class='gallery_slide india'>
+                <img alt='' src='catalog/view/theme/default/fre/images/projects/tau.jpg'>
+                <div class='gallery_mask'>
+                    <a href='catalog/view/theme/default/fre/images/projects/tau.jpg'><div class='gallery_zoom'>
+                        </div></a>
+                    <div class='gallery_text'>
+                        <span>Tàu vận tải</span>
+                        <p>Tàu vận tải</p>
+                    </div>
+                </div>
+            </div>
+             <div class='gallery_slide india'>
+                <img alt='' src='catalog/view/theme/default/fre/images/projects/tau1.jpg'>
+                <div class='gallery_mask'>
+                    <a href='catalog/view/theme/default/fre/images/projects/tau1.jpg'><div class='gallery_zoom'>
+                        </div></a>
+                    <div class='gallery_text'>
+                        <span>Tàu vận tải</span>
+                        <p>Tàu vận tải</p>
+                    </div>
+                </div>
+            </div>
+            <!-- 
             <div class='gallery_slide india'>
                 <img alt='' src='catalog/view/theme/default/fre/images/projects/5-1_small.jpg'>
                 <div class='gallery_mask'>
@@ -357,61 +414,97 @@
                     </div>
                 </div>
             </div>
-    <!--         <div class='gallery_slide tai'>
-                <img alt='' src='catalog/view/theme/default/fre/images/projects/10-1_small.jpg'>
+             <div class='gallery_slide tai'>
+                <img alt='' src='catalog/view/theme/default/fre/images/projects/catba.jpg'>
                 <div class='gallery_mask'>
-                    <a href='catalog/view/theme/default/fre/images/projects/10-1.jpg'><div class='gallery_zoom'>
-                        </div></a>
+                    <a href='catalog/view/theme/default/fre/images/projects/catba.jpg'>
+                    <div class='gallery_zoom'>
+                    </div></a>
                     <div class='gallery_text'>
-                        <span>Thái Lan</span>
-                        <p>Khu dân cư Amazon Residence với thiết kế ấn tượng trong khu vực bãi biển Jomtien.</p>
+                        <span>Cát bà</span>
+                        <p>Dự án cát bà</p>
                     </div>
                 </div>
             </div>
-            <div class='gallery_slide tai'>
-                <img alt='' src='catalog/view/theme/default/fre/images/projects/11-1_small.jpg'>
+             <div class='gallery_slide tai'>
+                <img alt='' src='catalog/view/theme/default/fre/images/projects/catba1.jpg'>
                 <div class='gallery_mask'>
-                    <a href='catalog/view/theme/default/fre/images/projects/11-1.jpg'><div class='gallery_zoom'>
-                        </div></a>
+                    <a href='catalog/view/theme/default/fre/images/projects/catba1.jpg'>
+                    <div class='gallery_zoom'>
+                    </div></a>
                     <div class='gallery_text'>
-                        <span>Thái Lan</span>
-                        <p>Cosy Beach View ở Pattaya tọa lạc gần trung tâm thương mại của khu nghỉ dưỡng uy tín của Pattay, được kết hợp thành công với cơ sở hạ tầng và hài hòa với cảnh quan xung quanh</p>
+                        <span>Cát bà</span>
+                        <p>Dự án cát bà</p>
                     </div>
                 </div>
             </div>
-            <div class='gallery_slide spanish'>
-                <img alt='' src='catalog/view/theme/default/fre/images/projects/12-1_small.jpg'>
+             <div class='gallery_slide spanish'>
+                <img alt='' src='catalog/view/theme/default/fre/images/projects/nhaxuong.jpg'>
                 <div class='gallery_mask'>
-                    <a href='catalog/view/theme/default/fre/images/projects/12-1.jpg'><div class='gallery_zoom'>
+                    <a href='catalog/view/theme/default/fre/images/projects/nhaxuong.jpg'><div class='gallery_zoom'>
                         </div></a>
                     <div class='gallery_text'>
-                        <span>Tây Ban Nha</span>
-                        <p>Các căn hộ mới, hiện đại ở Barcelona trong khu dân cư sang trọng có bể bơi. </p>
-                    </div>
-                </div>
-            </div>
-            <div class='gallery_slide spanish'>
-                <img alt='' src='catalog/view/theme/default/fre/images/projects/13-1_small.jpg'>
-                <div class='gallery_mask'>
-                    <a href='catalog/view/theme/default/fre/images/projects/13-1.jpg'><div class='gallery_zoom'>
-                        </div></a>
-                    <div class='gallery_text'>
-                        <span>Tây Ban Nha</span>
-                        <p>Khu dân cư ở ngay chính trung tâm của Alicante, cách bãi biển 200 mét, 5 phút đến trung tâm thành phố, sân bay, sân golf 18 lỗ và cạnh trường đại học Anh Quốc.</p>
+                        <span>Nhà xưởng</span>
+                        <p>Nhà xưởng.</p>
                     </div>
                 </div>
             </div>
             <div class='gallery_slide spanish'>
-                <img alt='' src='catalog/view/theme/default/fre/images/projects/14-1_small.jpg'>
+                <img alt='' src='catalog/view/theme/default/fre/images/projects/nhaxuong1.jpg'>
                 <div class='gallery_mask'>
-                    <a href='catalog/view/theme/default/fre/images/projects/14-1.jpg'><div class='gallery_zoom'>
+                    <a href='catalog/view/theme/default/fre/images/projects/nhaxuong1.jpg'><div class='gallery_zoom'>
                         </div></a>
                     <div class='gallery_text'>
-                        <span>Tây Ban Nha</span>
-                        <p>Khu dân cư tọa lạc trong khu vực dân cư hiện đại của Diagonal Mar Barcelona, ngay cạnh biển</p>
+                        <span>Nhà xưởng</span>
+                        <p>Nhà xưởng.</p>
                     </div>
                 </div>
             </div>
+            <div class='gallery_slide spanish'>
+                <img alt='' src='catalog/view/theme/default/fre/images/projects/nhaxuong2.jpg'>
+                <div class='gallery_mask'>
+                    <a href='catalog/view/theme/default/fre/images/projects/nhaxuong2.jpg'><div class='gallery_zoom'>
+                        </div></a>
+                    <div class='gallery_text'>
+                        <span>Nhà xưởng</span>
+                        <p>Nhà xưởng.</p>
+                    </div>
+                </div>
+            </div>
+            <div class='gallery_slide spanish'>
+                <img alt='' src='catalog/view/theme/default/fre/images/projects/nhaxuong3.jpg'>
+                <div class='gallery_mask'>
+                    <a href='catalog/view/theme/default/fre/images/projects/nhaxuong3.jpg'><div class='gallery_zoom'>
+                        </div></a>
+                    <div class='gallery_text'>
+                        <span>Nhà xưởng</span>
+                        <p>Nhà xưởng.</p>
+                    </div>
+                </div>
+            </div>
+             <div class='gallery_slide india'>
+                <img alt='' src='catalog/view/theme/default/fre/images/projects/tau.jpg'>
+                <div class='gallery_mask'>
+                    <a href='catalog/view/theme/default/fre/images/projects/tau.jpg'><div class='gallery_zoom'>
+                        </div></a>
+                    <div class='gallery_text'>
+                        <span>Tàu vận tải</span>
+                        <p>Tàu vận tải</p>
+                    </div>
+                </div>
+            </div>
+             <div class='gallery_slide india'>
+                <img alt='' src='catalog/view/theme/default/fre/images/projects/tau1.jpg'>
+                <div class='gallery_mask'>
+                    <a href='catalog/view/theme/default/fre/images/projects/tau1.jpg'><div class='gallery_zoom'>
+                        </div></a>
+                    <div class='gallery_text'>
+                        <span>Tàu vận tải</span>
+                        <p>Tàu vận tải</p>
+                    </div>
+                </div>
+            </div>
+    <!--         
             <div class='gallery_slide india'>
                 <img alt='' src='catalog/view/theme/default/fre/images/projects/15-1_small.jpg'>
                 <div class='gallery_mask'>

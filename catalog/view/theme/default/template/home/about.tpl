@@ -171,6 +171,9 @@
 <div id='about_screen'>
     <div id='timeline_wrap'>
         <div class='wrapper'>
+            <div class="screen_two_image">
+            <img alt="" src="catalog/view/theme/default/fre/images/cn.jpg" style="opacity: 1;">
+        </div>
             <div id='timeline_slider'>
                 <div class='timeline_slide'>
                     <div class='timeline_left_side' style="margin: 0 auto;display: block;width: 70%">

@@ -177,38 +177,19 @@
              
                  
 
-                    <div class="news_block">
-                        <div class='news_image'>
-                            <img alt="" src='catalog/view/theme/default/fre/images/news/news6.png'>
-                        </div>
-                        <h3>Trang Tin Tức đã được dich sang tiếng Việtnam</h3>
-                        <div class="news_divider"></div>
-                        <p></p>
-                        <button class='news_button' onclick="window.location.href='6.html';">Đọc toàn bộ tin tức</button>
-                    </div>
+                    
 
+                   
                  
 
-                    <div class="news_block">
-                        <div class='news_image'>
-                            <img alt="" src='catalog/view/theme/default/fre/images/news/news5.jpg'>
-                        </div>
-                        <h3>Đăng ký công ty con</h3>
-                        <div class="news_divider"></div>
-                        <p></p>
-                        <button class='news_button' onclick="window.location.href='5.html';">Đọc toàn bộ tin tức</button>
-                    </div>
-
-                 
-
-                    <div class="news_block">
+                    <!-- <div class="news_block">
                         <div class='news_image'>
                             <img alt="" src='catalog/view/theme/default/fre/images/news/news4.jpg'>
                         </div>
                         <h3>Phát hành số liệu dự án</h3>
                         <div class="news_divider"></div>
                         <p></p>
-                        <button class='news_button' onclick="window.location.href='4.html';">Đọc toàn bộ tin tức</button>
+                        <button class='news_button'>Đọc toàn bộ tin tức</button>
                     </div>
 
                  
@@ -220,7 +201,7 @@
                         <h3>Chuyển sang thanh toán tức thì</h3>
                         <div class="news_divider"></div>
                         <p></p>
-                        <button class='news_button' onclick="window.location.href='3.html';">Đọc toàn bộ tin tức</button>
+                        <button class='news_button'>Đọc toàn bộ tin tức</button>
                     </div>
 
                  
@@ -232,7 +213,7 @@
                         <h3>Dự án đã được dịch sang Tiếng Anh</h3>
                         <div class="news_divider"></div>
                         <p></p>
-                        <button class='news_button' onclick="window.location.href='2.html';">Đọc toàn bộ tin tức</button>
+                        <button class='news_button' >Đọc toàn bộ tin tức</button>
                     </div>
 
                  
@@ -244,8 +225,8 @@
                         <h3>Các kế hoạch phát triển trang web trong tương lai gần</h3>
                         <div class="news_divider"></div>
                         <p></p>
-                        <button class='news_button' onclick="window.location.href='1.html';">Đọc toàn bộ tin tức</button>
-                    </div>
+                        <button class='news_button'>Đọc toàn bộ tin tức</button>
+                    </div> -->
 
                  
              
