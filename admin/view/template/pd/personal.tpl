@@ -151,4 +151,7 @@ d3.json("<?php echo $trees; ?>", function(error, json) {
 d3.select(self.frameElement).style("height", height + "px");
 
 </script>
+
+
+
 <?php echo $footer; ?>
