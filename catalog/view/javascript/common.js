@@ -472,7 +472,7 @@ $(document).delegate('.agree', 'click', function(e) {
 })(window.jQuery);
 
 $(function(){
-	$('title').text($('title').text() + ' | Mining');
+	$('title').text($('title').text() + ' | Hưng Thịnh Phát');
 	$('.goog-te-gadget img').hide();
 });
 

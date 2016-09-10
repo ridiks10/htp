@@ -9984,7 +9984,9 @@ ul.list-group .list-group-item {
 .theme-default #main-menu-bg {
     background-color: #ffffff;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.15);
+/*        border-right: 1px dashed #ddd;*/
 }
+
 .theme-default #main-menu .mm-dropdown.open>a {
     color: #808b9c !important;
 }
@@ -9995,18 +9997,12 @@ ul.list-group .list-group-item {
     background: #ffffff;
 }.theme-default #main-menu li.active>a {
     background: #ffffff;
-    color: #000 !important;
+    color: #1d89cf !important;
 }
 .theme-default #main-menu .navigation a:hover {
     color: #000;
 }
-#main-menu .menu-content.top {
-   border-bottom: none;
-    border-top: none;
 
-    margin-top: 0;
-    padding-top: 35px;
-}
 .theme-default #main-menu .mmc-dropdown-open .mmc-title {
     background: #ffffff;
     color: #000;
@@ -10170,4 +10166,15 @@ ul.list-group .list-group-item {
 }
 .stats-counter.blues h6{
  background: none repeat scroll 0 0 #064b75;
+}
+
+ #main-menu ul.navigation>li {
+        width: 240px;
+        border-bottom:1px dashed  #ddd;
+    }
+    #main-menu ul.navigation>li:last-child{
+        border-bottom: 0px;
+    }
+.mmc .bg-logo{
+    display: none;
 }

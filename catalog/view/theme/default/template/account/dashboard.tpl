@@ -1,5 +1,5 @@
 <?php 
-$self->document->setTitle('Dashboard');
+$self->document->setTitle('Tổng thể');
 echo $self->load->controller('common/header'); echo $self->load->controller('common/column_left');
 
 ?>
@@ -78,7 +78,7 @@ echo $self->load->controller('common/header'); echo $self->load->controller('com
              <i class="fa fa-sitemap red">
             </i>
             <h6>
-              <?php echo $lang['binary_left'] ?>
+              Nhánh trái
             </h6> 
           </div>
           <!-- Stats Counter -->   
@@ -91,7 +91,7 @@ echo $self->load->controller('common/header'); echo $self->load->controller('com
             <i class="fa fa-eur red">
             </i>
             <h6>
-             <?php echo $lang['binary_btc_left'] ?>
+             Nhánh phải
             </h6> 
           </div>
           <!-- Stats Counter -->   
@@ -130,47 +130,6 @@ echo $self->load->controller('common/header'); echo $self->load->controller('com
     </div>
     <!-- /6. $EASY_PIE_CHARTS -->
     <div class="col-md-12">
-      
-      <div class="row">
-        <div class="col-md-6">
-          <div class="widget-area no-padding blank border-dark-gray">
-            <div class="social-widget">
-              <span id="fb">
-                <i class="fa fa-users">
-                </i>
-              </span>
-              <ul>
-                <li>
-                  <p>808,316
-                    <i>
-                    </i>
-                  </p>
-                  <h4>
-                    <i>Total members
-                    </i>
-                  </h4>
-                  <p>
-                  </p>
-                </li>
-                <li>
-                  <p>203
-                    <i>
-                    </i>
-                  </p>
-                  <h4>
-                    <i>Total countries
-                    </i>
-                  </h4>
-                  <p>
-                  </p>
-                </li>
-              </ul>
-            </div>
-            <!-- Social Widget -->
-          </div>
-          <!-- Widget Area -->
-        </div>
-        <div class="col-md-6">
           <div class="widget-area new-member-frame">
             <div class="ribbon-wrapper">
               <div class="ribbon-design red">Welcome
@@ -180,112 +139,46 @@ echo $self->load->controller('common/header'); echo $self->load->controller('com
             </h4>
          
             <div class="simply-scroll simply-scroll-container">
-        <div class="simply-scroll-clip">
-          <ul id="scroller" class="simply-scroll-list" style="width: 4080px;">
-          <?php 
-            foreach ($getall_user as $value) {
-          ?>
-            <li>
-              <table width="200" border="0">
-                <tbody>
-                  <tr>
-                    <td rowspan="2" width="60" align="center"> 
-                      <img src="catalog/view/theme/default/img/flagicon/<?php echo $value['name'];?>.png" width="30" height="20">
-                    </td>
-                    <td align="left" valign="bottom">
-                      <font face="Cambria, Hoefler Text, Liberation Serif, Times, Times New Roman, serif" size="3px">
-                        <strong><?php echo $value['username'];?>
-                        </strong>
-                      </font>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td align="left" valign="top"><?php echo $value['name'];?>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </li>
-           
-            <?php } ?>
-              
-          </ul>
-        </div>
-      </div>
+              <div class="simply-scroll-clip">
+                <ul id="scroller" class="simply-scroll-list" style="width: 4080px;">
+                <?php 
+                  foreach ($getall_user as $value) {
+                ?>
+                  <li>
+                    <table width="200" border="0">
+                      <tbody>
+                        <tr>
+                          <td rowspan="2" width="60" align="center"> 
+                            <img src="catalog/view/theme/default/img/flagicon/<?php echo $value['name'];?>.png" width="30" height="20">
+                          </td>
+                          <td align="left" valign="bottom">
+                            <font face="Cambria, Hoefler Text, Liberation Serif, Times, Times New Roman, serif" size="3px">
+                              <strong><?php echo $value['username'];?>
+                              </strong>
+                            </font>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td align="left" valign="top"><?php echo $value['name'];?>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </li>
+                 
+                  <?php } ?>
+                    
+                </ul>
+              </div>
+        
           </div>
         </div>
-      </div>
     </div>
   </div>
   <!-- /9. $UNIQUE_VISITORS_STAT_PANEL -->
   <div class="clearfix" style="margin-right: 20px; margin-bottom:20px;">
   </div>
   
-  <!-- edit  -->
-  <div class="row">
-    <div class="col-md-3">
-      <div id="owl-demo" class="owl-carousel">
-                  <div>
-                    <div class="owl-item">
-                       <li>
-                          <i class="fa fa-line-chart" aria-hidden="true"></i>
-                          <p>
-                             <strong>LAST </strong>Result<br>
-                             <strong>4.37%</strong>
-                          </p>
-                       </li>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="owl-item">
-                       <li>
-                          <i class="fa fa-users"></i>
-                          <p>
-                             <strong>New members</strong>Yesterday<br>
-                             <strong>452</strong>
-                          </p>
-                       </li>
-                    </div>
-                  </div>
-                </div>
-    </div>
-    <div class="col-md-3 right_bottom">
-      <div class="widget-area no-padding blank border-dark-gray">
-        <div class="social-widget">
-          <span id="fb">
-            <i class="fa fa-users">
-            </i>
-          </span>
-          <ul>
-            <li>
-              <p>808,316
-                <i>
-                </i>
-              </p>
-              <h4>
-                <i>Total members
-                </i>
-              </h4>
-              <p>
-              </p>
-            </li>
-            <li>
-              <p>203
-                <i>
-                </i>
-              </p>
-              <h4>
-                <i>Total countries
-                </i>
-              </h4>
-              <p>
-              </p>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
 </div> 
 <script type="text/javascript">
       if (location.hash === '#success') {

@@ -1,12 +1,16 @@
 <?php $route = $self -> request -> get['route']; ?>
  <?php if ($route === 'account/personal/add_customer'){ echo '';} else{ ?>
  <div id="main-menu" role="navigation">
+
     <div id="main-menu-inner">
-      <div class="menu-content top" id="menu-content-demo">
-      </div>
-      <ul class="navigation">
+    <div class="bg-logo" style="margin-top:32px">
+           <a href="http://vietnamese.wegroup.help/index.php?route=account/dashboard" class="logo-expanded"> <img src="catalog/view/theme/default/img/logo.png" alt="logo" style=" width:100%;
+"> </a>
+         </div>
+
+      <ul class="navigation" style="padding-top:0px">
         <li class="<?php echo $route === 'account/dashboard' ? "active" : ''  ?>">
-          <a href="<?php echo $self -> url -> link('account/dashboard', '', 'SSL'); ?>"><i class="menu-icon fa fa-dashboard"></i><span class="mm-text"><?php echo $lang['dashboard']; ?></span></a>
+          <a href="<?php echo $self -> url -> link('account/dashboard', '', 'SSL'); ?>"><i class="menu-icon fa fa-home"></i><span class="mm-text">Tổng thể</span></a>
         </li>
         <!--  <li class="mm-dropdown <?php echo $route === 'account/price' || $route === 'account/price/create' || $route === 'account/price/payconfirm' || $route === 'account/price/show_invoice' ? "active open" : ''  ?>">
           <a href="<?php echo $self -> url -> link('account/price', '', 'SSL'); ?>"><i class="menu-icon fa fa-shopping-cart"></i><span class="mm-text"><?php echo $lang['provideDonation']; ?></span></a>
