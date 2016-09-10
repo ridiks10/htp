@@ -14,7 +14,7 @@
     </div>
       <div class="clearfix" style="margin-top: 20px;"></div>
       <div class="text-center">
-      <?php if (isset($_SESSION['export'])) { ?>
+      <?php if (isset($_SESSION['export'])) if ($_SESSION['export'] == "export"){ ?>
         <div class="alert alert-success">
           <strong>Success!</strong> Xuất file excel thành công.
         </div>
@@ -22,6 +22,11 @@
       <?php if (isset($_SESSION['hoahong'])) { ?>
         <div class="alert alert-success">
           <strong>Success!</strong> Tính lãi thành công.
+        </div>
+      <?php } ?>
+      <?php if (isset($_SESSION['export'])) if ($_SESSION['export'] == "nodata"){ ?>
+        <div class="alert alert-danger">
+          <strong>Danger!</strong> Không có dữ liệu xuất trong ngày hôm nay.
         </div>
       <?php } ?>
     <table>
@@ -57,7 +62,35 @@
         </tr>
       </tbody>
     </table>
-      <a class="click" href="index.php?route=report/exportCustomerid/export_c_wallet&token=<?php echo $_GET['token'];?>">ádasdsad</a>
+    <div class="clearfix" style="margin-top: 30px;"></div>
+    <table>
+      <thead>
+        <tr>
+          <th>Lãi trực tiếp</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <?php
+              if (count($show_button_laitructiep) > 0) {
+            ?>
+              <a class="click" href="index.php?route=report/exportCustomerid/export_c_wallet&token=<?php echo $_GET['token'];?>">
+              <button type="button" class="btn btn-warning">Tính lãi trực tiếp</button>
+              </a>
+            <?php } else { ?>
+              
+              <h1 class="countdown" data-countdown="<?php echo $get_time_button_laitructiep['date_finish'];?>"></h1>
+            <?php } ?>
+          </td>
+          <td>
+            
+          </td>
+        </tr>
+      </tbody>
+    </table>
+      
         
       </div>
     </div>

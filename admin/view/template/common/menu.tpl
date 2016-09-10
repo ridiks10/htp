@@ -103,7 +103,7 @@
   <?php */?>
 
   <li id="sale"><a href="<?php echo $customer; ?>"><i class="fa fa-user fa-fw"></i> <span>Danh Sách Thành Viên</span></a>
-  <li><a href="<?php echo $auto_walet_c; ?>"><i class="fa fa-book fa-fw" aria-hidden="true"></i> <span id="auto_walet_c" >Tự động tính phần trăm</span></a>
+  <!-- <li><a href="<?php echo $auto_walet_c; ?>"><i class="fa fa-book fa-fw" aria-hidden="true"></i> <span id="auto_walet_c" >Tự động tính phần trăm</span></a> -->
   <li id="system"><a href="<?php echo $statistical;?>"><i class="fa fa-cog fa-fw"></i> <span>Thống kê</span></a>
 
   <li id="sale"><a href="<?php echo $customer; ?>"><i class="fa fa-user fa-fw"></i> <span><?php echo $text_customer; ?></span></a>

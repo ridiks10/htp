@@ -2908,6 +2908,14 @@ class ModelSaleCustomer extends Model {
 		");
 		return $query -> row;
 	}
+	public function show_button_laitructiep(){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM ". DB_PREFIX . "date_time
+			WHERE date_finish <=  NOW() and id = '3'
+		");
+		return $query -> row;
+	}
 	public function get_time_button($id){
 		$query = $this -> db -> query("
 			SELECT *
@@ -2931,5 +2939,22 @@ class ModelSaleCustomer extends Model {
 		
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer_c_wallet as A INNER JOIN " . DB_PREFIX ."customer  as B on A.customer_id=B.customer_id WHERE A.amount > 0");
 			return $query->rows;
+	}
+	public function update_wallet_m_20($amount,$customer_id){
+		$query = $this -> db -> query("
+		UPDATE ". DB_PREFIX ."customer_m_wallet SET
+			amount = amount + ".(float)$amount.",
+			date = NOW()
+			WHERE customer_id = '".$customer_id."'
+		");
+		return $query;
+	}
+	public function update_wallet_c_0($amount,$customer_id){
+		$query = $this -> db -> query("
+		UPDATE ". DB_PREFIX ."customer_c_wallet SET
+			amount = ".(float)$amount."
+			WHERE customer_id = '".$customer_id."'
+		");
+		return $query;
 	}
 }	
