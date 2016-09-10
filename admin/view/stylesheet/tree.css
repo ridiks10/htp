@@ -460,8 +460,8 @@
     color: #434343;
 }
 .heade-login.text-center {
-    background: #DF4B33;
-    border-bottom: 1px solid #DF4B33;
+    background: #064B75;
+    border-bottom: 1px solid #064B75;
         padding: 20px 20px 15px 20px;
     text-align: center;
     margin-top: -15px;
@@ -503,7 +503,7 @@
     }
 }
 form#register-account {
-    margin-top: 80px;
+  /*  margin-top: 80px;*/
 }
 .wrapper-page {
     width: 380px;
@@ -515,8 +515,8 @@ form#register-account {
 .w-md{
   min-width: 110px;
     width: 100%;
-    background: #d5473d;
-    border-color: #d5473d;
+    background: #064B75;
+    border-color: #064B75;
     color: #ffffff;
     font-size: 14px;
 }
