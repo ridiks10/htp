@@ -93,6 +93,7 @@
 			
 	   
 		<h5>Tên đăng nhập: <?php echo $info_customer['username'] ?></h5>
+		<h5>Mật khẩu Tên đăng nhập: 123</h5>
 	    <h5>Họ và tên: <?php echo $info_customer['firstname'] ?></h5>
 	      
 

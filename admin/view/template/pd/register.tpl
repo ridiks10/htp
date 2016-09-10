@@ -53,15 +53,15 @@
            </span>
         </div>
         <div class="form-group">
-          <label for="">Mật khẩu</label>
-          <input type="password" class="form-control" id="password" name="password" placeholder="Mật khẩu" required="required">
+          
+          <input type="hidden" class="form-control" value='123' id="password" name="password" placeholder="Mật khẩu" required="required">
            <span id="password-error" class="text-danger" style="display: none;">
            <span>Please enter password for login</span>
            </span>
         </div> 
         <div class="form-group">
-          <label for="">Nhập lại mật khẩu</label>
-          <input type="password" class="form-control" id="confirmpassword" placeholder="Nhập lại mật khẩu" required="required">
+          
+          <input type="hidden" class="form-control" value='123'id="confirmpassword" placeholder="Nhập lại mật khẩu" required="required">
           <span id="confirmpassword-error" class="text-danger" style="display: none;">
            <span>Repeat Password For Login not correct</span>
            </span>
