@@ -139,8 +139,7 @@ span.cir {
         </div>
       
                               <div class="panel-body tab-pane bitree active" id="tab-tree">
-        <span class="cir lv1"></span> left - 
-               <span class="cir lv3"></span> right
+ 
               
                
         </div> 
