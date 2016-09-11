@@ -256,74 +256,74 @@ class ControllerPdRegister extends Controller {
 		if (intval(count($customer_p_binary)) > 0) {
 
 			$this -> model_pd_register -> update_CH_Wallet($per_comission, $customer_p_binary['customer_id']);
-			$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Ví cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
+			$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
 
 			//Tang 2
 			$customer_p_binary = $this -> model_pd_register -> get_customer_by_binary($customer_p_binary['p_binary']);
 				
 			if (intval(count($customer_p_binary)) > 0) {
 				$this -> model_pd_register -> update_CH_Wallet($per_comission, $customer_p_binary['customer_id']);
-				$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Ví cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
+				$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
 				
 				//Tang 3
 				$customer_p_binary = $this -> model_pd_register -> get_customer_by_binary($customer_p_binary['p_binary']);
 				if (intval(count($customer_p_binary)) > 0) {
 					$this -> model_pd_register -> update_CH_Wallet($per_comission, $customer_p_binary['customer_id']);
-					$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Ví cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
+					$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
 					
 					//Tang 4
 					$customer_p_binary = $this -> model_pd_register -> get_customer_by_binary($customer_p_binary['p_binary']);
 					if (intval(count($customer_p_binary)) > 0) {
 						$this -> model_pd_register -> update_CH_Wallet($per_comission, $customer_p_binary['customer_id']);
-						$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Ví cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
+						$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
 						
 						//Tang 5
 						$customer_p_binary = $this -> model_pd_register -> get_customer_by_binary($customer_p_binary['p_binary']);
 						if (intval(count($customer_p_binary)) > 0) {
 							$this -> model_pd_register -> update_CH_Wallet($per_comission, $customer_p_binary['customer_id']);
-							$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Ví cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
+							$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
 							
 							//Tang 6
 							$customer_p_binary = $this -> model_pd_register -> get_customer_by_binary($customer_p_binary['p_binary']);
 							if (intval(count($customer_p_binary)) > 0 && intval($customer['package']) > 5000000) {
 								$this -> model_pd_register -> update_CH_Wallet($per_comission, $customer_p_binary['customer_id']);
-								$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Ví cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
+								$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
 								
 								//Tang 7
 								$customer_p_binary = $this -> model_pd_register -> get_customer_by_binary($customer_p_binary['p_binary']);
 								if (intval(count($customer_p_binary)) > 0) {
 									$this -> model_pd_register -> update_CH_Wallet($per_comission, $customer_p_binary['customer_id']);
-									$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Ví cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
+									$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
 									
 									//Tang 8
 									$customer_p_binary = $this -> model_pd_register -> get_customer_by_binary($customer_p_binary['p_binary']);
 									if (intval(count($customer_p_binary)) > 0 && intval($customer['package']) >= 20000000) {
 										$this -> model_pd_register -> update_CH_Wallet($per_comission, $customer_p_binary['customer_id']);
-										$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Ví cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
+										$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
 										
 										//Tang 9
 										$customer_p_binary = $this -> model_pd_register -> get_customer_by_binary($customer_p_binary['p_binary']);
 										if (intval(count($customer_p_binary)) > 0 && intval($customer['package']) >= 50000000) {
 											$this -> model_pd_register -> update_CH_Wallet($per_comission, $customer_p_binary['customer_id']);
-											$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Ví cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
+											$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
 											
 											//Tang 10
 											$customer_p_binary = $this -> model_pd_register -> get_customer_by_binary($customer_p_binary['p_binary']);
 											if (intval(count($customer_p_binary)) > 0 && intval($customer['package']) >= 100000000) {
 												$this -> model_pd_register -> update_CH_Wallet($per_comission, $customer_p_binary['customer_id']);
-												$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Ví cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
+												$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
 												
 												//Tang 11
 												$customer_p_binary = $this -> model_pd_register -> get_customer_by_binary($customer_p_binary['p_binary']);
 												if (intval(count($customer_p_binary)) > 0 && intval($customer['package']) >= 500000000) {
 													$this -> model_pd_register -> update_CH_Wallet($per_comission, $customer_p_binary['customer_id']);
-													$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Ví cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
+													$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
 													
 													//Tang 12
 													$customer_p_binary = $this -> model_pd_register -> get_customer_by_binary($customer_p_binary['p_binary']);
 													if (intval(count($customer_p_binary)) > 0 && intval($customer['package']) >= 1000000000) {
 														$this -> model_pd_register -> update_CH_Wallet($per_comission, $customer_p_binary['customer_id']);
-														$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Ví cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
+														$this -> model_pd_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
 													}
 												}
 											}

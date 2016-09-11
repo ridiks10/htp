@@ -15,6 +15,8 @@
 	  padding: 10px;
 	  margin-bottom: 0.5cm;
 	  box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+	  background: #fff url('view/stylesheet/images/logo.png') no-repeat 5px 5px;
+	  background-size: 175px;
 	}
 	page[size="A4"] {  
 	  width: 21cm;
@@ -83,6 +85,12 @@
 		font-weight: normal;
 		font-size: 16px;
 	}
+	h5 span {
+    font-size: 20px;
+}
+.info{
+	padding: 5px 20px;
+}
 	</style>
 </head>
 <body>
@@ -92,8 +100,8 @@
 		<div class="left">
 			
 	   
-		<h5>ID: <?php echo $info_customer['username'] ?></h5>
-		<h5>Mật khẩu Tên đăng nhập: 123</h5>
+		<h5>ID: <span><?php echo $info_customer['username'] ?></span></h5>
+		<h5>Mật khẩu Tên đăng nhập: <span>123</span></h5>
 	    <h5>Họ và tên: <?php echo $info_customer['firstname'] ?></h5>
 	      
 
@@ -130,6 +138,11 @@
 	    
 		</div>
 		<div class="clear"></div>
+		<div class="info">
+			<p>Quý khách vui lòng giữ lại giấy đăng ký này và các chứng từ có liên quan để phục vụ việc tra soát khiếu nại sau này (nếu có).</p>
+		<p>Để đảm bảo tính bảo mật của cá nhân, quý khách vui lòng đăng nhập và đổi mật khẩu trong vòng 24h.</p>
+		</div>
+		
 		<div id="signature">
 			<div class="left">
 				<h3><br>Người ghi số<br><i>(Ký, họ tên)</i></h3>

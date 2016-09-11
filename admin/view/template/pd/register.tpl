@@ -14,7 +14,7 @@
     </div>
     <div class="panel-body">
       <form id="register-account" action="<?php echo $action_dangky; ?>" method="POST" role="form">
-        
+        <h1>THÔNG TIN ĐĂNG KÝ</h1>
       
       <div class="col-md-6">
         <div class="form-group">
@@ -66,21 +66,7 @@
            <span>Repeat Password For Login not correct</span>
            </span>
         </div> 
-         <div class="form-group">
-          <label for="">Nhánh</label>
-          <input type="text" class="form-control" id="p_binary" name="p_binary" placeholder="Nhánh" required="required">
-           <ul id="p_binary-box" class="list-group"></ul>
-          <span id="p_binary-error" class="field-validation-error">
-              <span></span>
-          </span>
-        </div>
-        <div class="form-group">
-          <label for="">Vị trí</label>
-          <select name="postion" id="postion" class="form-control" required="required" data-link="<?php echo $check_p_binary; ?>">
-            <option value="">Chọn vị trí</option>
-           
-          </select>
-        </div>    
+             
         
       </div>
       <div class="col-md-6">
@@ -112,6 +98,11 @@
               <span></span>
           </span>
         </div>
+        
+      </div>
+      <div class="clearfix"></div>
+        <h1>THÔNG TIN ĐĂNG KÝ CÂY HỆ THỐNG</h1>
+      <div class="col-md-6">
         <div class="form-group">
           <label for="">Người bảo trợ</label>
 
@@ -122,7 +113,25 @@
               <span></span>
           </span>
         </div>
-
+        <div class="form-group">
+          <label for="">Nhánh</label>
+          <input type="text" class="form-control" id="p_binary" name="p_binary" placeholder="Nhánh" required="required">
+           <ul id="p_binary-box" class="list-group"></ul>
+          <span id="p_binary-error" class="field-validation-error">
+              <span></span>
+          </span>
+        </div>
+        <div class="form-group">
+          <label for="">Vị trí</label>
+          <select name="postion" id="postion" class="form-control" required="required" data-link="<?php echo $check_p_binary; ?>">
+            <option value="">Chọn vị trí</option>
+           
+          </select>
+        </div>
+        
+      </div>
+      <div class="col-md-6">
+          
         <div class="form-group">
           <label for="">Gói đầu tư</label>
           <select name="investment" id="investment" class="form-control" required="required">
