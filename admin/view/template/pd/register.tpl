@@ -148,7 +148,7 @@
           
           <div class="radio">
             <label>
-              <input type="radio" name="check_user" id="input" value="enable">
+              <input type="radio" name="check_user" id="input" value="enable" checked="checked">
               Không khóa
             </label>
           </div>
