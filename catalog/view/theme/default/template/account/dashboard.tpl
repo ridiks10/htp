@@ -38,7 +38,7 @@ echo $self->load->controller('common/header'); echo $self->load->controller('com
             <i class="fa fa-eur red">
             </i>
             <h6>
-              <?php echo $lang['c_wallet'] ?>
+              Hoa hồng trực tiếp
             </h6> 
           </div>
           <!-- Stats Counter -->   
