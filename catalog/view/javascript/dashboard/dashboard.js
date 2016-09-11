@@ -175,6 +175,21 @@ $(document).ready(function() {
                 }
             });
         },
+        ajaxtotal_ch_wallet : function(callback) {
+            $.ajax({
+                url : $('.total_ch_wallet').data('link'),
+                type : 'GET',
+                data : {
+                    'id' : $('.total_ch_wallet').data('id')
+                },
+                async : true,
+                success : function(result) {
+                    result = $.parseJSON(result);
+
+                    callback(result);
+                }
+            });
+        },
     }
 
     
@@ -253,6 +268,15 @@ $(document).ready(function() {
         _.each($('.total_pd_right').data(), function(v, e) {
             $('.total_pd_right').removeAttr('data-' + e);
         });
+
+       
+    });
+    funDaskboard.ajaxtotal_ch_wallet(function(result) {
+        _.has(result, 'success') && $('.total_ch_wallet').html(_.values(result)[0]  );
+        _.each($('.total_ch_wallet').data(), function(v, e) {
+            $('.total_ch_wallet').removeAttr('data-' + e);
+        });
+       $('.total_ch_wallet').html(result.amount);
 
        
     });

@@ -833,7 +833,7 @@ $mail -> setHtml('<div height="100%" bgcolor="#ffffff" marginwidth="10" marginhe
 		// $node->text = $user['username'] ;
 
 		$node->name = $user['username'] ;
-		// $node -> email = $user['email'];
+		$node ->account_holder = $user['account_holder'];
 		// $node -> telephone = $user['telephone'];
 		// $node -> date_added = $user['date_added'];
 		$node -> level = $user['level'];
@@ -896,6 +896,7 @@ $mail -> setHtml('<div height="100%" bgcolor="#ffffff" marginwidth="10" marginhe
 			$left = new stdClass();
 		
 		    foreach ($left_row as $key => $value) {
+		    	
 		        $left->$key = $value;
 		    } 
 			

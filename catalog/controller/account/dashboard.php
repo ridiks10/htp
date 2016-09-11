@@ -588,8 +588,14 @@ if ($getLanguage == 'vietnamese') {
 		}
 
 		$this -> response -> setOutput(json_encode($json));
-		
+	}
+	public function total_ch_wallet(){
+		$this -> load -> model('account/customer');
 
+		$count = $this -> model_account_customer ->  getCustomer_CH($this -> session -> data['customer_id']);
+		$json['amount'] = $count['amount'];
+		//print_r($this -> session -> data['customer_id']); die;
+		$this -> response -> setOutput(json_encode($json));
 	}
 
 	public function total_binary_right(){
@@ -659,7 +665,7 @@ if ($getLanguage == 'vietnamese') {
 	public function countPD(){
 		if ($this -> customer -> isLogged() && $this -> session -> data['customer_id']) {
 			$this -> load -> model('account/customer');
-			$total = $this -> model_account_customer -> getTotalPD($this -> session -> data['customer_id']);
+			$total = $this -> model_account_customer -> getTotalwallet_m($this -> session -> data['customer_id']);
 			$total = $total['number'];
 			$json['success'] = intval($total);
 			$total = null;

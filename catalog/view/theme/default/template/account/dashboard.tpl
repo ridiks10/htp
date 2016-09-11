@@ -22,7 +22,7 @@ echo $self->load->controller('common/header'); echo $self->load->controller('com
            <h3></h3>
             <span class="m-0 counter pd-count" data-link="<?php echo $self->url->link('account/dashboard/countPD', '', 'SSL'); ?>">loading ...
             </span> 
-            <i class="fa fa-star blue">
+            <i class="fa fa-eur red">
             </i>
             <h6>
              <?php echo $lang['provideDonation']; ?>
@@ -35,7 +35,7 @@ echo $self->load->controller('common/header'); echo $self->load->controller('com
             <h3></h3>
             <span class="m-0 counter c-wallet" data-link="<?php echo $self->url->link('account/dashboard/getCWallet', '', 'SSL'); ?>">loading ...
             </span> 
-            <i class="fa fa-star blue">
+            <i class="fa fa-eur red">
             </i>
             <h6>
               <?php echo $lang['c_wallet'] ?>
@@ -48,7 +48,7 @@ echo $self->load->controller('common/header'); echo $self->load->controller('com
             <h3></h3>
             <span class="m-0 counter r-wallet" data-link="<?php echo $self->url->link('account/dashboard/getRWallet', '', 'SSL'); ?>">loading ...
             </span> 
-            <i class="fa fa-users green">
+            <i class="fa fa-eur red">
             </i>
             <h6>
               <?php echo $lang['r_wallet'] ?>
@@ -74,17 +74,29 @@ echo $self->load->controller('common/header'); echo $self->load->controller('com
           <div class="stats-counter blues">
             <h3>
             </h3>
-            <span class="total_left" data-id="<?php echo $self->session -> data['customer_id'] ?>" data-link="<?php echo $self->url->link('account/dashboard/total_binary_left', '', 'SSL'); ?>"></span>
-             <i class="fa fa-sitemap red">
+            <span class="total_ch_wallet" data-id="<?php echo $self->session -> data['customer_id'] ?>" data-link="<?php echo $self->url->link('account/dashboard/total_ch_wallet', '', 'SSL'); ?>"></span>
+             <i class="fa fa-eur red">
             </i>
             <h6>
-              Nhánh trái
+              Cộng hưởng
             </h6> 
           </div>
           <!-- Stats Counter -->   
         </div>
-        <div class="col-md-3 col-sm-6">
-          <div class="stats-counter cyans">
+        <div class="col-md-3 col-sm-6 ">
+          <div class="stats-counter blues">
+            <div class="col-xs-6 stats-counter blues_new">
+                <span class="total_left" data-id="<?php echo $self->session -> data['customer_id'] ?>" data-link="<?php echo $self->url->link('account/dashboard/total_binary_left', '', 'SSL'); ?>"></span>
+            </div>
+             <div class="col-xs-6 stats-counter  blues_new">
+                <span class="total_right" data-id="<?php echo $self->session -> data['customer_id'] ?>" data-link="<?php echo $self->url->link('account/dashboard/total_binary_right', '', 'SSL'); ?>"></span>
+            </div>
+            <i class="fa fa-eur red"></i>
+            <h6>
+              Thành viên trái / phải
+            </h6> 
+          </div>
+         <!--  <div class="stats-counter cyans">
             <h3>
             </h3>
             <span class="m-0 counter total_pd_left" data-id="<?php echo $self->session -> data['customer_id'] ?>" data-link="<?php echo $self->url->link('account/dashboard/total_pd_left', '', 'SSL'); ?>"></span>
@@ -93,18 +105,20 @@ echo $self->load->controller('common/header'); echo $self->load->controller('com
             <h6>
              Nhánh phải
             </h6> 
-          </div>
+          </div> -->
           <!-- Stats Counter -->   
         </div>
         <div class="col-md-3 col-sm-6">
           <div class="stats-counter blues">
             <h3>
             </h3>
-           <span class="total_right" data-id="<?php echo $self->session -> data['customer_id'] ?>" data-link="<?php echo $self->url->link('account/dashboard/total_binary_right', '', 'SSL'); ?>"></span>
-            <i class="fa fa-sitemap red">
+            <span class="m-0 counter total_pd_left" data-id="<?php echo $self->session -> data['customer_id'] ?>" data-link="<?php echo $self->url->link('account/dashboard/total_pd_left', '', 'SSL'); ?>"></span>
+          
+            <i class="fa fa-eur red">
             </i>
             <h6>
-             <?php echo $lang['binary_right'] ?>
+              Hoa hồng nhánh yếu
+             <?php //echo $lang['binary_right'] ?>
             </h6> 
           </div>
           <!-- Stats Counter -->   
@@ -115,7 +129,7 @@ echo $self->load->controller('common/header'); echo $self->load->controller('com
             </h3>
            
               <span class="m-0 counter total_pd_right" data-id="<?php echo $self->session -> data['customer_id'] ?>" data-link="<?php echo $self->url->link('account/dashboard/total_pd_right', '', 'SSL'); ?>"></span>
-            <i class="fa fa-bitcoin blue">
+            <i class="fa fa-eur red">
             </i>
             <h6>
                   <?php echo $lang['binary_btc_right'] ?>              

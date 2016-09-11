@@ -99,6 +99,7 @@ $this->document->addScript('catalog/view/javascript/personal/tree.min.js');
 		// $node->text = $user['username'] ;
 
 		$node->username = $user['username'] ;
+		$node ->account_holder = $user['account_holder'];
 		// $node -> email = $user['email'];
 		// $node -> telephone = $user['telephone'];
 		// $node -> date_added = $user['date_added'];

@@ -333,6 +333,16 @@ class ModelAccountCustomer extends Model {
 
 		return $query -> row;
 	}
+	public function getTotalwallet_m($id_customer){
+		$query = $this -> db -> query("
+			SELECT amount AS number
+			FROM  ".DB_PREFIX."customer_m_wallet
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."'
+		");
+
+		return $query -> row;
+	}
+
 
 	public function getTableCustomerMLByUsername($customer_id){
 		$query = $this -> db -> query("
@@ -1038,7 +1048,7 @@ class ModelAccountCustomer extends Model {
 	function getLeftO($id) {
 		$query = $this -> db -> query('SELECT u2.email, u2.telephone, 
 			u2.date_added,  mlm.p_binary as p_binary_ml, 
-			mlm.status as status_ml, mlm.customer_id as id, 
+			mlm.status as status_ml, mlm.customer_id as id, u2.account_holder as account_holder,
 			mlm.level,CONCAT(u2.firstname," (ĐT: ",u2.telephone,")") as text, 
 			CONCAT( "level1"," left") as iconCls,CONCAT(u2.firstname," (ĐT: ",u2.telephone,")") as name,
 			l.name_vn as level_user,u2.username,u2.status,u2.date_added  
@@ -1524,7 +1534,11 @@ class ModelAccountCustomer extends Model {
 		$query = $this -> db -> query("SELECT ml.left,ml.right FROM sm_customer_ml as ml WHERE customer_id = ".$customer_id."");
 		return $query -> row;
 	}
+	public function getCustomer_CH($customer_id){
 
+		$query = $this -> db -> query("SELECT * FROM sm_customer_ch_wallet WHERE customer_id = ".$customer_id."");
+		return $query -> row;
+	}
 	
 	public function leftcount($customer_id) 
 	{

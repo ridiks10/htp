@@ -10220,3 +10220,18 @@ ul.list-group .list-group-item {
 .account-transaction_history .tab-pane.fade{
     display: none;
 }
+.blues_new{
+    width: 50%;
+    float: left;
+    margin-top: 10px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    margin-bottom: 0px;
+}
+.blues_new .total_left,.blues_new .total_pd_left{
+    margin-top: 22px;
+}
+.blues_new .total_right{
+    margin-top: 23px;
+}
