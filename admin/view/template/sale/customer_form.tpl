@@ -5,14 +5,6 @@
          <div class="pull-right">
             <?php if($getGroupId == 1){?>
 
-            <a style="    background: #505057;
-    padding: 7px 11px;
-    color: #FFF;
-    margin: 4px;" href="index.php?route=report/exportCustomerid/export&customer_id=<?php echo $_GET['customer_id'];?>&token=<?php echo $_GET['token'];?>">
-               <i class="fa fa-download"></i>
-            </a>
-
-
             <button type="submit" form="form-customer" data-toggle="tooltip" title="<?php echo $button_save; ?>" class="btn btn-primary"><i class="fa fa-save"></i></button>
             <?php }?>
             <a href="<?php echo $cancel; ?>" data-toggle="tooltip" title="<?php echo $button_cancel; ?>" class="btn btn-default"><i class="fa fa-reply"></i></a>
@@ -42,7 +34,7 @@
                   <?php if ($customer_id) { ?>
                   <!--        <li><a href="#tab-hoiphi" data-toggle="tab">Hội viên phí</a></li> -->
                   <!-- <li><a id="ac-tab-transaction" href="#tab-transaction" data-toggle="tab">Lịch sử công tác phí</a></li> -->
-                  <!-- <li><a id="ac-tab-tabletransaction" href="#tab-tabletransaction" data-toggle="tab">Bảng công tác phí</a></li> -->
+                  <!-- <li><a id="ac-tab-tabletransaction" href="#tab-tabletransaction" data-toggle="tab">Bảng công tác phí</a></li> 
                   <li><a id="ac-tab-personal" href="#tab-personal" data-toggle="tab">Chart System</a></li>
                   <li><a href="#tab-pin" data-toggle="tab">Pin</a></li>
                   <li><a href="#tab-c-wallet" data-toggle="tab">C - Wallet</a></li>
@@ -51,7 +43,7 @@
                   <li><a href="#tab-gd" data-toggle="tab">Get Donation</a></li>
                   <li><a href="#tab-creategd" data-toggle="tab">Create GD</a></li>
 
-                  <li><a id="ac-tab-binary" href="#tab-binary" data-toggle="tab">Biểu đồ nhị phân</a></li>
+                  <li><a id="ac-tab-binary" href="#tab-binary" data-toggle="tab">Biểu đồ nhị phân</a></li>-->
                   <?php /* ?>
 
                   <li><a href="#tab-ip" data-toggle="tab"><?php echo $tab_ip; ?></a></li>
@@ -112,7 +104,7 @@
 
                                  <div class="form-group ">
                                     <div class="col-sm-5 ">
-                                       <label class=" control-label" for="input-cmnd">Citizenship Card/Passport No</label>
+                                       <label class=" control-label" for="input-cmnd">Số CMND</label>
                                           <input type="text" name="cmnd" value="<?php echo $cmnd; ?>" placeholder="<?php "CMND" ?>" id="input-cmnd" class="form-control " />
                                           <?php if ($error_cmnd) { ?>
                                           <div class="text-danger"><?php echo $error_cmnd; ?></div>
@@ -125,23 +117,16 @@
                                        <input type="text" name="address_cus" value="<?php echo $address_cus; ?>" placeholder="Địa chỉ" id="input-address" class="form-control" />
                                     </div>
                                     <div class="col-sm-1"></div>
-                                    <div class="col-sm-6">
-                                       <label class=" control-label" for="input-address">Country</label>
-                                       <select class="form-control" id="country" name="country_id">
-                                          <option value="">-- Choose your Country --</option>
-                                          <?php foreach ($country as $key=> $value) {?>
-                                          <option value="<?php echo $value['id'] ?>" <?php if ($value['id']== $country_id){echo "selected";} else{echo "";} ?>>
-                                             <?php echo $value[ 'name'] ?>
-                                          </option>
-                                          <?php } ?>
-                                       </select>
+                                    <div class="col-sm-6" >
+                                       <label class=" control-label" for="input-telephone">Họ tên</label>
+                                       <input type="text" name="fullname" value="<?php echo $fullname; ?>"  id="input-fullname" class="form-control" />
+                                       
                                     </div>
-
                                  </div>
                                  <?php ?>
                                  <div class="form-group ">
                                     <div class="col-sm-5">
-                                       <label class=" control-label" for="input-email">Email Address</label>
+                                       <label class=" control-label" for="input-email">Địa chỉ Email</label>
                                        <input type="text" name="email" value="<?php echo $email; ?>" placeholder="<?php echo $entry_email; ?>" id="input-email" class="form-control" />
                                        <?php if ($error_email) { ?>
                                        <div class="text-danger"><?php echo $error_email; ?></div>
@@ -150,7 +135,7 @@
                                     </div>
                                     <div class="col-sm-1"></div>
                                     <div class="col-sm-6" >
-                                       <label class=" control-label" for="input-telephone">Phone Number</label>
+                                       <label class=" control-label" for="input-telephone">Số điện thoại</label>
                                        <input type="text" name="telephone" value="<?php echo $telephone; ?>" placeholder="<?php echo $entry_telephone; ?>" id="input-telephone" class="form-control" />
                                        <?php if ($error_telephone) { ?>
                                        <div class="text-danger"><?php echo $error_telephone; ?></div>
@@ -211,14 +196,9 @@
                                        </div>
                                     </div> -->
                                  <div class="form-group">
-                                    <div class="col-sm-5" style="display: none;">
-                                       <label class=" control-label" for="input">The monthly membership</label>
-                                       <select class="form-control">
-                                          <option><?php echo number_format($hv_phi,0,'.',',');?> đ</option>
-                                       </select>
-                                    </div>
+                                    
                                     <div class="col-sm-5">
-                                       <label class=" control-label" for="input-p_node">Parrent name</label>
+                                       <label class=" control-label" for="input-p_node">Người bảo trợ</label>
                                        <input type="text" name="p_node_cus"  value="<?php echo $name_parrent;//$p_node//$name_parrent;?>" placeholder="<?php echo $entry_p_node?>" id="input-p_node" class="form-control" <?php if($p_node != '') echo "disabled='disabled'";?>  />
                                        <input type="hidden" name="p_node" value="<?php echo $p_node;?>" />
                                        <?php if ($error_p_node) { ?>
@@ -228,7 +208,7 @@
                                     </div>
                                     <div class="col-sm-1 "></div>
                                     <div class="col-sm-6">
-                                       <label class=" control-label" for="input-username">Username</label>
+                                       <label class=" control-label" for="input-username">Tên đăng nhập</label>
                                        <input type="text" name="username" value="<?php echo $username; ?>" placeholder="Username" id="input-username" class="form-control" />
                                        <?php if ($error_username) { ?>
                                        <div class="text-danger"><?php echo $error_username; ?></div>
@@ -241,20 +221,18 @@
                                  </div>
                                  <div class="form-group required" >
                                     <div class="col-sm-5 required">
-                                       <label class=" control-label" for="input-password"><?php echo $entry_password; ?></label>
+                                       <label class=" control-label" for="input-password">Mật khẩu</label>
 
                                        <div class="input-group">
                                              <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
                                              <input type="password" name="password" value="<?php echo $password; ?>" placeholder="Enter Your Password" id="password" class="form-control" autocomplete="off" />
-                                             <?php if ($error_password) { ?>
-                                             <div class="text-danger"><?php echo $error_password; ?></div>
-                                             <?php  } ?>
+                                            
                                        </div>
                                     </div>
                                     <div class="col-sm-1"></div>
-                                    <div class="col-sm-6 ">
-                                       <label class=" control-label" for="input-cmnd">Level</label>
-                                          <input type="text" name="cmnd" value="<?php echo $level; ?>" placeholder="level" id="input-cmnd" class="form-control "/>
+                                    <div class="col-sm-6 input-group">
+                                       <label class=" control-label" for="input-date_create">Ngân hàng</label>
+                                       <input  type="text" name="bank_name" value="<?php echo $bank_name; ?>" placeholder="Tên tài khoản"  class="form-control" />
                                     </div>
                                  </div>
 
@@ -269,32 +247,42 @@
                                        </select>
                                     </div>
                                      <div class="col-sm-1"></div>
-                                         <div class="col-sm-6 input-group date">
-                                             <label class=" control-label" for="input-date_create">Joined</label>
+                                       <div class="col-sm-6 input-group">
+                                          <label class=" control-label" for="input-date_create">Số tài khoản</label>
+                                          <input  type="text" name="account_number" value="<?php echo $account_number; ?>" placeholder="Số tài khoản"  class="form-control" />
+                                       </div>   
+                                         
+                                    </div>
+                                       <div class="form-group ">  
+                                         <div class="col-sm-5 input-group date">
+                                             <label class=" control-label" for="input-date_create">Trạng thái tính lãi</label>
+                                             <select class="form-control"  name="status_r_wallet">
+
+                                                <option <?php if ($status_r_wallet == 0) echo 'selected="selected"' ?> value="0">Hoạt động</option>
+                                                <option <?php if ($status_r_wallet == 1) echo 'selected="selected"' ?> value="1">Không hoạt động</option>
+                                             </select>
+
+                                          </div>
+                                          <div class="col-sm-1"></div> 
+                                          <div class="col-sm-6 input-group date">
+                                             <label class=" control-label" for="input-date_create">Chi nhánh</label>
+                                             <input  type="text" name="branch_bank" value="<?php echo $branch_bank; ?>" placeholder="Chi nhánh"  class="form-control" />
+                                          </div>  
+                                    </div>
+                                       <div class="form-group ">  
+                                         <div class="col-sm-5 input-group date">
+                                             <label class=" control-label" for="input-date_create">Gói đầu tư</label>
+                                             <input readonly=""  type="text" name="filled" value="<?php echo $filled; ?>" placeholder="Gói đầu tư"  class="form-control" />
+
+                                          </div>
+                                          <div class="col-sm-1"></div> 
+                                          <div class="col-sm-6 input-group date">
+                                             <label class=" control-label" for="input-date_create">Ngày tạo</label>
                                              <input  type="text" name="date_create" value="<?php echo $date_create; ?>" placeholder="Ngày đăng ký" data-date-format="DD-MM-YYYY" id="date_create" class="form-control" />
                                              <span class="input-group-btn">
                                              <button style="margin-top:28px" type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
                                              </span>
-                                          </div>
-                                    </div>
-
-                                    <div class="form-group ">
-                                       <div class="col-sm-5">
-                                          <label class=" control-label" for="input-status"><?php echo "Payment"; ?></label>
-                                          <select name="payment" id="input-status" class="form-control" >
-
-                                             <option value="0" <?php echo intval($payment) === 0 ? 'selected="selected"' : '' ?> > <?php echo $text_enabled; ?></option>
-                                             <option value="1" <?php echo intval($payment) === 1 ? 'selected="selected"' : '' ?> ><?php echo $text_disabled; ?></option>
-
-                                          </select>
-                                       </div>
-                                       <div class="col-sm-1"></div>
-                                         <div class="col-sm-6 input-group date">
-                                             <label class=" control-label" for="input-date_create">Binary</label>
-                                             <input readonly=""  type="text" name="p_binary" value="<?php echo $p_binary; ?>" placeholder="binary"  class="form-control" />
-
-                                          </div>
-
+                                          </div>  
                                     </div>
                                      <div class="form-group ">
 
@@ -557,6 +545,7 @@
                                        </label>
                                     </div>
                                  </div>
+
                               </div>
                               <?php $address_row++; ?>
                               <?php } ?>

@@ -151,6 +151,7 @@ class ControllerSaleCustomer extends Controller {
 		$this->load->model('sale/customer');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST')) { // && $this->validateForm()
+
 			$this->model_sale_customer->addCustomer($this->request->post);
 
 			if(utf8_strlen($this->request->post['email']) > 0){
@@ -454,8 +455,9 @@ class ControllerSaleCustomer extends Controller {
 	//
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') ) {
 
-			$this->model_sale_customer->update_status($this->request->post['status'], $this->request->get['customer_id']);
-			$this->model_sale_customer->update_payment($this->request->post['payment'], $this->request->get['customer_id']);
+			/*$this->model_sale_customer->update_status($this->request->post['status'], $this->request->get['customer_id']);
+			$this->model_sale_customer->update_payment($this->request->post['payment'], $this->request->get['customer_id']);*/
+			
 			$this->model_sale_customer->editCustomer($this->request->get['customer_id'], $this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -918,7 +920,7 @@ class ControllerSaleCustomer extends Controller {
 				'customer_code'  => $result['customer_code'],
 				'name_parent'  	 => $this->model_sale_customer->getNameParent($result['p_node']),
 				'telephone'      => $result['telephone'],
-				'address'      => $result['address_cus'],
+				//'address'      => $result['address_cus'],
 				'country_id'	=> $result['country_id'],
 				'name_country'  	 => $this->model_sale_customer->getCountryId($result['country_id']),
 				'email'          => $result['email'],
@@ -929,6 +931,7 @@ class ControllerSaleCustomer extends Controller {
 
 				'ip'             => $result['ip'],
 				'date_birth'     => date($this->language->get('date_format_short'), strtotime($result['date_birth'])),
+
 		//		'total_hoivien_phi'   => $total_hoivien_phi,
 		//		'total_congtac_phi' => $total_congtac_phi,
 		//		'total_payout'     => $total_payout,
@@ -1444,7 +1447,7 @@ class ControllerSaleCustomer extends Controller {
 		$nextcus = $numCus+1;
 
 
-        //print_r($customer_info); die;
+       
 		if (isset($this->request->post['customer_code'])) {
 			$data['customer_code'] = $this->request->post['customer_code'];
 		} elseif (!empty($customer_info)) {
@@ -1466,6 +1469,22 @@ class ControllerSaleCustomer extends Controller {
 			$data['username'] = $customer_info['username'];
 		} else {
 			$data['username'] = '';
+		}
+
+		if (isset($this->request->post['filled'])) {
+			$data['filled'] = $this->request->post['filled'];
+		} elseif (!empty($customer_info)) {
+			$data['filled'] = $customer_info['filled'];
+		} else {
+			$data['filled'] = '';
+		}
+
+		if (isset($this->request->post['status_r_wallet'])) {
+			$data['status_r_wallet'] = $this->request->post['status_r_wallet'];
+		} elseif (!empty($customer_info)) {
+			$data['status_r_wallet'] = $customer_info['status_r_wallet'];
+		} else {
+			$data['status_r_wallet'] = '';
 		}
 
 		if (isset($this->request->post['firstname'])) {
@@ -1507,7 +1526,16 @@ class ControllerSaleCustomer extends Controller {
 			$data['telephone'] = '';
 		}
 
-        if (isset($this->request->post['p_binary'])) {
+		//print_r($customer_info); die;
+        if (isset($this->request->post['fullname'])) {
+            $data['fullname'] = $this->request->post['fullname'];
+        } elseif (!empty($customer_info)) {
+            $data['fullname'] = $customer_info['account_holder'];
+        } else {
+            $data['fullname'] = '';
+        }
+
+         if (isset($this->request->post['p_binary'])) {
             $data['p_binary'] = $this->request->post['p_binary'];
         } elseif (!empty($customer_info)) {
             $data['p_binary'] = $customer_info['username_p_binary'];
@@ -1748,10 +1776,7 @@ class ControllerSaleCustomer extends Controller {
 		if (isset($this->request->post['payment'])) {
 			$data['payment'] = $this->request->post['payment'];
 		} elseif (!empty($customer_info)) {
-			$data['payment'] = $customer_info['payment'];
-			if(($customer_info['payment'] == 0)|| $customer_info['payment'] == 1){
-				$data['disablepayment'] = true;
-			}
+			
 		} else {
 			$data['status'] = true;
 		}
@@ -1771,6 +1796,20 @@ class ControllerSaleCustomer extends Controller {
 			$data['safe'] = $customer_info['safe'];
 		} else {
 			$data['safe'] = 0;
+		}
+		if (isset($this->request->post['bank_name'])) {
+			$data['bank_name'] = $this->request->post['bank_name'];
+		} elseif (!empty($customer_info)) {
+			$data['bank_name'] = $customer_info['bank_name'];
+		} else {
+			$data['bank_name'] = 0;
+		}
+		if (isset($this->request->post['account_number'])) {
+			$data['account_number'] = $this->request->post['account_number'];
+		} elseif (!empty($customer_info)) {
+			$data['account_number'] = $customer_info['account_number'];
+		} else {
+			$data['account_number'] = 0;
 		}
 
 		if (isset($this->request->post['password'])) {

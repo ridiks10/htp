@@ -80,10 +80,12 @@ class ModelSaleCustomer extends Model {
 			username = '" . $this->db->escape($data['username']) . "',
 			telephone = '" . $this->db->escape($data['telephone']) . "',
 			cmnd = '" . $this->db->escape($data['cmnd']) . "',
-			account_bank = '" . $this->db->escape($data['account_bank']) . "',
-			country_id = '" . $this->db->escape($data['country_id']) . "',
+			password = '" . $this->db->escape($data['password']) . "',
+			bank_name = '" . $this->db->escape($data['bank_name']) . "',
+			status = '" . $this->db->escape($data['status']) . "',
+			status_r_wallet = '" . $this->db->escape($data['status_r_wallet']) . "',
 			address_cus = '" . $this->db->escape($data['address_cus']) . "',
-			account_holder = '" . $this->db->escape($data['account_holder']) . "',
+			account_holder = '" . $this->db->escape($data['fullname']) . "',
 			bank_name = '" . $this->db->escape($data['bank_name']) . "',
 			account_number = '" . $this->db->escape($data['account_number']) . "',
 			branch_bank = '" . $this->db->escape($data['branch_bank']) . "',
@@ -155,7 +157,7 @@ class ModelSaleCustomer extends Model {
 	}
 
 	public function getCustomer($customer_id) {
-		$query = $this->db->query("SELECT DISTINCT c.*, (SELECT username from " . DB_PREFIX . "customer WHERE customer_id = cml.p_binary) as username_p_binary, ct.name, cml.level FROM " . DB_PREFIX . "customer c LEFT JOIN " . DB_PREFIX . "country ct on(c.country_id=ct.country_id) LEFT JOIN " . DB_PREFIX . "customer_ml cml on(c.customer_id=cml.customer_id)  WHERE c.customer_id = '" . (int)$customer_id . "'");
+		$query = $this->db->query("SELECT DISTINCT c.*, (SELECT username from " . DB_PREFIX . "customer WHERE customer_id = cml.p_binary) as username_p_binary, ct.name, cml.level,F.filled FROM " . DB_PREFIX . "customer c LEFT JOIN " . DB_PREFIX . "country ct on(c.country_id=ct.country_id) LEFT JOIN " . DB_PREFIX . "customer_ml cml on(c.customer_id=cml.customer_id) left JOIN " . DB_PREFIX . "customer_provide_donation F ON F.customer_id = c.customer_id WHERE c.customer_id = '" . (int)$customer_id . "'");
 
 		return $query->row;
 	}
@@ -183,7 +185,7 @@ class ModelSaleCustomer extends Model {
 
 	public function getall_PD_new() {
 		
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer_provide_donation as A INNER JOIN " . DB_PREFIX ."customer  as B on A.customer_id=B.customer_id");
+		$query = $this->db->query("SELECT E.*,A.id as id_pd, A.date_added,A.date_finish,A.filled,B.* FROM " . DB_PREFIX . "customer_r_wallet E INNER JOIN " . DB_PREFIX . "customer_provide_donation as A ON E.customer_id = A.customer_id INNER JOIN " . DB_PREFIX ."customer  as B on E.customer_id=B.customer_id AND E.amount > 0" );
 			return $query->rows;
 	}
 	public function getall_all_customer() {
@@ -2956,5 +2958,26 @@ class ModelSaleCustomer extends Model {
 			WHERE customer_id = '".$customer_id."'
 		");
 		return $query;
+	}
+	public function update_wallet_r_0($amount,$customer_id){
+		$query = $this -> db -> query("
+		UPDATE ". DB_PREFIX ."customer_r_wallet SET
+			amount = ".(float)$amount."
+			WHERE customer_id = '".$customer_id."'
+		");
+		return $query;
+	}
+	public function update_max_profit_0($max_profit,$id){
+		$query = $this -> db -> query("
+		UPDATE ". DB_PREFIX ."customer_provide_donation SET
+			max_profit = ".(float)$max_profit."
+			WHERE id = '".$id."'
+		");
+		return $query;
+	}
+	public function sum_total_wallet($customer_id) {
+		
+		$query = $this->db->query("SELECT SUM(A.amount,B.amount,C.amount,D.amount,E.amount) as tong_amount FROM " . DB_PREFIX . "customer_ch_wallet as A INNER JOIN " . DB_PREFIX ."customer_cn_wallet  as B on A.customer_id=B.customer_id INNER JOIN " . DB_PREFIX ."customer_c_wallet  as C on A.customer_id=C.customer_id INNER JOIN " . DB_PREFIX ."customer_m_wallet  as D on A.customer_id=D.customer_id INNER JOIN " . DB_PREFIX ."customer_r_wallet  as E on A.customer_id=E.customer_id  WHERE A.customer_id = '".$customer_id."'");
+			return $query->row;
 	}
 }	

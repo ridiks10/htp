@@ -5,12 +5,12 @@
 
       <div class="pull-right">
       <?php if($getGroupId == 1){?>
-      <a href="<?php echo $add; ?>" data-toggle="tooltip" title="<?php echo $button_add; ?>" class="btn btn-primary"><i class="fa fa-plus"></i></a>
+      <!-- <a href="<?php echo $add; ?>" data-toggle="tooltip" title="<?php echo $button_add; ?>" class="btn btn-primary"><i class="fa fa-plus"></i></a> -->
      <?php }?>
       <button type="button" data-toggle="tooltip" title="<?php echo $button_delete; ?>" class="btn btn-danger" onclick="confirm('<?php echo $text_confirm; ?>') ? $('#form-customer').submit() : false;"><i class="fa fa-trash-o"></i></button>
-      <button type="button" id="exportcustomer" data-toggle="tooltip" title="Export" class="btn btn-info" >Export Customer</i></button>
+      <!-- <button type="button" id="exportcustomer" data-toggle="tooltip" title="Export" class="btn btn-info" >Export Customer</i></button>
       <button type="button" id="exportgd" data-toggle="tooltip" title="Export" class="btn btn-info" >Export GD</i></button>
-       <button type="button" id="exportpd" data-toggle="tooltip" title="Export" class="btn btn-primary" >Export PD</i></button>
+       <button type="button" id="exportpd" data-toggle="tooltip" title="Export" class="btn btn-primary" >Export PD</i></button> -->
       </div>
 
       <h1><?php echo $heading_title; ?></h1>
@@ -268,7 +268,7 @@
                   <td style="width: 1px;" class="text-center"><input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', this.checked);" /></td>
                   <td style="width: 40px;" >STT</td>
                  
-                  <td style="width: 140px;" class="text-left" >
+                  <td style="width: 140px;" class="text-center" >
                     <!--   <?php if ($sort == 'name') { ?>
                       <a href="<?php echo $sort_name; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_name; ?></a>
                       <?php } else { ?>
@@ -276,12 +276,12 @@
                       <?php } ?> -->
                       Username
                   </td>
-                   <td style="">Email</td>
-                   <td>Address</td>
-                  <td style="width: 110px;">Phone</td>
-                  <td style="width: 140px;">Presenter</td>
+                   <td class="text-center" style="">Email</td>
+                   <td class="text-center">Address</td>
+                  <td class="text-center" style="width: 110px;">Phone</td>
+                  <td class="text-center" style="width: 140px;">Presenter</td>
                   <?php /* ?>
-                  <td class="text-left"><?php if ($sort == 'c.email') { ?>
+                  <td class="text-center"><?php if ($sort == 'c.email') { ?>
                     <a href="<?php echo $sort_email; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_email; ?></a>
                     <?php } else { ?>
                     <a href="<?php echo $sort_email; ?>"><?php echo $column_email; ?></a>
@@ -291,13 +291,13 @@
                   <td>Tổng thanh toán</td>
                   <td><?php echo $column_total_balance;?></td>
                   
-                  <td class="text-left"><?php if ($sort == 'c.date_added') { ?>
+                  <td class="text-center"><?php if ($sort == 'c.date_added') { ?>
                     <a href="<?php echo $sort_date_added; ?>" class="<?php echo strtolower($order); ?>">Ngày đăng ký</a>
                     <?php } else { ?>
                     <a href="<?php echo $sort_date_added; ?>">Ngày đăng ký</a>
                     <?php } ?></td>
                <? */ ?>
-                  <td style="width: 110px;" class="text-right"><?php echo $column_action; ?></td>
+                  <td style="width: 110px;" class="text-center"><?php echo $column_action; ?></td>
                 </tr>
               </thead>
               <tbody>
@@ -322,7 +322,7 @@
                   <td><?php $le_ctp = is_int($customer['total_congtac_phi']+0)? 0:3; echo number_format($customer['total_congtac_phi'],$le_ctp,'.',','); ?></td>
                   <td><?php $le_po = is_int($customer['total_payout']+0)? 0:3; echo number_format($customer['total_payout'],$le_po,'.',','); ?></td>
                   <?php */?>
-                  <td>
+                  <td class="text-center">
                     <a href="<?php echo $customer['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>
                 </tr>
                 <?php $n++; } ?>

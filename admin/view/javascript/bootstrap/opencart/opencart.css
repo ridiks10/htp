@@ -2070,7 +2070,7 @@ th {
 }
 .table > thead > tr > td{
 /*background-color: #40c5fe;*/
-background-color: #e27226;
+background-color: #00314e;
 color: #fff;
 }
 .table > tbody {
@@ -5413,8 +5413,8 @@ a.list-group-item-danger.active:focus {
   min-height: 20px;
   padding: 19px;
   margin-bottom: 20px;
-  background-color: #d67939;
-  border: 1px solid #e0d1a6;
+  background-color: #00314e;
+  border: 1px solid #00314e;
   border-radius: 3px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
