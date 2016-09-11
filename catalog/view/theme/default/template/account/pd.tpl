@@ -98,7 +98,7 @@
                         <tr>
                            <td data-title="<?php echo $lang['NO'] ?>." align="center"><?php echo $num ?></td>
                            <td data-title="<?php echo $lang['ACCOUNT'] ?>"><?php echo $key['username'] ?></td>
-                           <td data-title="<?php echo $lang['DATE_CREATED'] ?>"><?php echo date("d/m/Y H:i A", strtotime($key['date_added'])); ?></td>
+                           <td data-title="<?php echo $lang['DATE_CREATED'] ?>"><?php echo date("d/m/Y", strtotime($key['date_added'])); ?></td>
                            <td data-title="<?php echo $lang['PD_NUMBER'] ?>">PD<?php echo $key['pd_number'] ?></td>
                            <td data-title="<?php echo $lang['FILLED'] ?>"><?php echo floatval($key['filled']/100000000); ?> BTC</td>
                            <td data-title="<?php echo $lang['MAX_PROFIT'] ?>"><?php echo ($key['max_profit']/100000000); ?> BTC</td>

@@ -58,7 +58,7 @@
                 <tr>
                   <td data-title="#"><?php echo $tmp; ?></td>
                   <td data-title="<?php echo $lang['PD_NUMBER'] ?>"><?php echo $value['pd_number'] ?></td>
-                  <td data-title="<?php echo $lang['DATE_CREATED'] ?>"><?php echo date("m/d/Y H:i:A", strtotime($value['date_added'])); ?></td>
+                  <td data-title="<?php echo $lang['DATE_CREATED'] ?>"><?php echo date("m/d/Y", strtotime($value['date_added'])); ?></td>
                   <td data-title="<?php echo $lang['FILLED'] ?>"><?php echo number_format($value['filled'])?> VNĐ</td>
                  <td data-title="<?php echo $lang['MAX_PROFIT'] ?>"><?php echo number_format($value['max_profit']) ?> VNĐ</td>
                   <td data-title="<?php echo $lang['STATUS'] ?>"><?php switch ($value['status']) {

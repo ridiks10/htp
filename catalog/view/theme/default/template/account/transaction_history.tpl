@@ -27,7 +27,7 @@
                   <tr>
                        <td data-title="<?php echo $lang['column_no'] ?>." align="center"><?php echo $number ?></td>
                       <td data-title="Loại Hoa Hồng"><?php echo $value['wallet'] ?></td>
-                      <td data-title="<?php echo $lang['column_date_added'] ?>"><?php echo date("d/m/Y H:i A", strtotime($value['date_added'])); ?></td>
+                      <td data-title="<?php echo $lang['column_date_added'] ?>"><?php echo date("d/m/Y", strtotime($value['date_added'])); ?></td>
                       <td data-title="<?php echo $lang['column_amount'] ?>"><?php echo $value['text_amount'] ?></td>
                       <td data-title="<?php echo $lang['column_description'] ?>">
                           <?php echo $value['system_decsription'] ?>
