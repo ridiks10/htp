@@ -826,9 +826,10 @@ class ModelAccountCustomer extends Model {
 	}
 
 	public function getCustomerCustomFormSetting($customer_id) {
+		
 		$query = $this -> db -> query("SELECT c.firstname,c.package,c.address_cmnd,
 			ip.date_added as date_add_login,ip.ip, date(c.date_added) as date_added,c.username, 
-			c.telephone , c.email , c.wallet , ml.level,ct.name as countryname 
+			c.telephone , c.email , ml.level,ct.name as countryname 
 			FROM ". DB_PREFIX ."customer AS c
 				JOIN ". DB_PREFIX ."customer_ml AS ml 
 				ON ml.customer_id = c.customer_id JOIN ". DB_PREFIX ."customer_activity ip ON ip.customer_id = c.customer_id
