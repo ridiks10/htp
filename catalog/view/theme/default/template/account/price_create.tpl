@@ -1,5 +1,5 @@
 <?php 
-   $self->document->setTitle($lang['our_investment']);
+   $self->document->setTitle('Các Gói Đầu Tư');
    echo $self->load->controller('common/header'); echo $self->load->controller('common/column_left');
    
    ?>

@@ -1,5 +1,5 @@
 <?php 
-   $self -> document -> setTitle('Transaction History'); 
+   $self -> document -> setTitle('Lịch Sử Giao Dịch'); 
    echo $self -> load -> controller('common/header'); 
    echo $self -> load -> controller('common/column_left'); 
    ?>
@@ -16,7 +16,7 @@
               <thead>
                 <tr>
                    <th class="text-center"><?php echo $lang['column_no'] ?></th>
-                    <th><?php echo $lang['column_wallet'] ?></th>
+                    <th>Loại Hoa Hồng</th>
                     <th><?php echo $lang['column_date_added'] ?></th>
                     <th><?php echo $lang['column_amount'] ?></th>
                     <th><?php echo $lang['column_description'] ?></th>
@@ -26,7 +26,7 @@
                 <?php $number = 1; foreach ($histotys as $key => $value) {?>
                   <tr>
                        <td data-title="<?php echo $lang['column_no'] ?>." align="center"><?php echo $number ?></td>
-                      <td data-title="<?php echo $lang['column_wallet'] ?>"><?php echo $value['wallet'] ?></td>
+                      <td data-title="Loại Hoa Hồng"><?php echo $value['wallet'] ?></td>
                       <td data-title="<?php echo $lang['column_date_added'] ?>"><?php echo date("d/m/Y H:i A", strtotime($value['date_added'])); ?></td>
                       <td data-title="<?php echo $lang['column_amount'] ?>"><?php echo $value['text_amount'] ?></td>
                       <td data-title="<?php echo $lang['column_description'] ?>">

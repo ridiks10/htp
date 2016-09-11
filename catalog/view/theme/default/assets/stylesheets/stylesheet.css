@@ -9890,6 +9890,10 @@ ul.list-group .list-group-item {
     .nav-tabs>li:nth-child(3n) {
         padding: 0 10px;
     }
+
+    .account-transaction_history .nav-tabs>li:nth-child(3n) {
+        padding: 0 0px;
+    }
 }
 @media (max-width: 970px) {
     .page-content > .breadcrumb{
@@ -10207,3 +10211,12 @@ ul.list-group .list-group-item {
    }
 }
 
+
+
+.account-transaction_history .tab-pane.fade.active{
+    display: block;
+}
+
+.account-transaction_history .tab-pane.fade{
+    display: none;
+}

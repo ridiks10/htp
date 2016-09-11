@@ -1,5 +1,5 @@
 <?php 
-   $self->document->setTitle('Dashboard');
+   $self->document->setTitle('Chi Tiết Gói Đầu Tư');
    echo $self->load->controller('common/header'); echo $self->load->controller('common/column_left');
    
    ?>

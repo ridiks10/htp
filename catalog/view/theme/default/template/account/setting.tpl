@@ -1,5 +1,5 @@
 <?php 
-   $self -> document -> setTitle($lang['heading_title']); 
+   $self -> document -> setTitle('Thông Tin Tài Khoản'); 
    echo $self -> load -> controller('common/header'); 
    echo $self -> load -> controller('common/column_left'); 
    ?>
