@@ -730,5 +730,40 @@ class ControllerAccountAccount extends Controller {
 		die('OK');
 	}
 	
+	public function send_sms(){
+		$APIKey="70152DEE3829626055A11C11E1F766";
+		$SecretKey="86CF68BD01032D2E48DD90FDE471D8";
+		$YourPhone = 0969786120;
 
+		$content = 'Test SMS';
+        $ch = curl_init();
+		$SampleXml = "<RQST>"
+           . "<APIKEY>". $APIKey ."</APIKEY>"
+           . "<SECRETKEY>". $SecretKey ."</SECRETKEY>"                                    
+           . "<ISFLASH>0</ISFLASH>"
+   			."<SMSTYPE>4</SMSTYPE>"
+           . "<CONTENT>". ''.$content.'' ."</CONTENT>"
+           . "<CONTACTS>"
+           . "<CUSTOMER>"
+           . "<PHONE>". $YourPhone ."</PHONE>"
+           . "</CUSTOMER>"                               
+           . "</CONTACTS>"
+		   . "</RQST>";
+							   		
+							   
+		curl_setopt($ch, CURLOPT_URL,            "http://api.esms.vn/MainService.svc/xml/SendMultipleMessage_V2/" );
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1 );
+		curl_setopt($ch, CURLOPT_POST,           1 );
+		curl_setopt($ch, CURLOPT_POSTFIELDS,     $SampleXml ); 
+		curl_setopt($ch, CURLOPT_HTTPHEADER,     array('Content-Type: text/plain')); 
+
+		$result=curl_exec ($ch);		
+		$xml = simplexml_load_string($result);
+
+		if ($xml === false) {
+			die('Error parsing XML');   
+		}
+		print "$xml->CodeResult";   		
+		
+	}
 }
