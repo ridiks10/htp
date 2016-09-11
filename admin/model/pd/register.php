@@ -148,6 +148,13 @@ class ModelPdRegister extends Model {
 			WHERE customer_id = '".$customer_id."'
 		");
 	}
+	public function update_status_r_wallet($customer_id){
+		$query = $this -> db -> query("
+		UPDATE " . DB_PREFIX . "customer SET
+			status = 1	
+			WHERE customer_id = '".$customer_id."'
+		");
+	}
 	
 	public function update_CH_Wallet($amount , $customer_id){
 		$query = $this -> db -> query("

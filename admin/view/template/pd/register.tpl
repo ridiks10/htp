@@ -144,6 +144,21 @@
             <option value="1000000000">1,000,000,000 VNĐ</option>
           </select>
         </div>
+        <div class="form-group">
+          
+          <div class="radio">
+            <label>
+              <input type="radio" name="check_user" id="input" value="enable">
+              Không khóa
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="check_user" id="input" value="disable">
+              Khóa
+            </label>
+          </div>
+        </div>
       </div>
       <div class="col-md-6 col-md-offset-5">
          <div class="form-group">

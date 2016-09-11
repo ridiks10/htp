@@ -83,6 +83,7 @@ class ControllerPdRegister extends Controller {
 	public function submit(){
 
 		$this->load->model('pd/register');
+
 		if ($this->request->server['REQUEST_METHOD'] === 'POST'){
 
 			$check_pnode = $this -> model_pd_register ->get_customer_Id_by_username($this->request->post['p_node']);
@@ -145,11 +146,10 @@ class ControllerPdRegister extends Controller {
 				$show_pd_customer['filled'];*/
 
 
-				$this -> createInvestment($cus_id, $this->request->post['investment']);
-				$this->update_C_wallet($cus_id);
+				
 				
 				//Update thuong quan ly
-				
+				$this -> createInvestment($cus_id, $this->request->post['investment']);
 
 				$data['has_register'] = true;
 				// $mail = new Mail();
@@ -192,10 +192,16 @@ class ControllerPdRegister extends Controller {
 				
 
 				//$this->response->redirect($this->url->link('pd/register', 'token=' . $this->session->data['token'], 'SSL'));
-				$p_binary = $this -> model_pd_register -> get_customer_Id_by_username($this->request->post['p_binary']);
-
-				$p_binary= $p_binary['customer_id'];
-				$this -> get_customer_by_binary($cus_id, $p_binary);
+				if (($this->request->post['check_user']) == 'enable') {
+					
+					$this->update_C_wallet($cus_id);
+					$p_binary = $this -> model_pd_register -> get_customer_Id_by_username($this->request->post['p_binary']);
+					$p_binary= $p_binary['customer_id'];
+					$this -> get_customer_by_binary($cus_id, $p_binary);
+				}else{
+					$this -> model_pd_register -> update_status_r_wallet($cus_id);
+				}
+				
 
 				$this->response->redirect($this->url->link('pd/register/prints', 'token=' . $this->session->data['token'].'&id_customer='.$cus_id, 'SSL'));
 
