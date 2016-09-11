@@ -630,35 +630,35 @@ if ($getLanguage == 'vietnamese') {
 		$this -> load -> model('account/customer');
 		$count = $this -> model_account_customer ->  hoahongconghuong($this -> session -> data['customer_id']);
 		$getgoidautu =$this -> model_account_customer ->getgoidautu($this -> session -> data['customer_id']);
-		
+		//print_r($getgoidautu['filled']); die;
 		$json = array();
 		if (doubleval($count['total_pd_left']) >= doubleval($count['total_pd_right']))
-		{
-			
+		{	
+
 			if (doubleval($getgoidautu['filled']) < 500000000){
-				$total = intval($count['total_pd_right'])*0.1;
+				$json['phantram'] = doubleval($count['total_pd_right'])*0.1; 
 			}
+			
 			if (doubleval($getgoidautu['filled']) >= 500000000 && doubleval($getgoidautu['filled']) < 1000000000){
-				$total = intval($count['total_pd_right'])*0.11;
+				$json['phantram'] = doubleval($count['total_pd_right'])*0.11; 
 			}
-			if (doubleval($getgoidautu['filled']) >= 10000000000){
-				$total = intval($count['total_pd_right'])*0.12;
+			if (doubleval($getgoidautu['filled']) >= 1000000000){
+				$json['phantram'] = doubleval($count['total_pd_right'])*0.12; 
 			}
 		}
 		else
 		{
-			
 			if (doubleval($getgoidautu['filled']) < 500000000){
-				$total = intval($count['total_pd_left'])*0.1;
+				$json['phantram'] = doubleval($count['total_pd_left'])*0.1;	
 			}
 			if (doubleval($getgoidautu['filled']) >= 500000000 && doubleval($getgoidautu['filled']) < 1000000000){
-				$total = intval($count['total_pd_left'])*0.11;
+				$json['phantram'] = doubleval($count['total_pd_left'])*0.11;
 			}
-			if (doubleval($getgoidautu['filled']) >= 10000000000){
-				$total = intval($count['total_pd_left'])*0.12;
+			if (doubleval($getgoidautu['filled']) >= 1000000000){
+				$json['phantram'] = doubleval($count['total_pd_left'])*0.12;
 			}
 		}
-		$json_phantram['phantram'] = number_format($total);
+			$json_phantram['phantram'] = number_format($json['phantram']);
 		$this -> response -> setOutput(json_encode($json_phantram));
 
 	}
