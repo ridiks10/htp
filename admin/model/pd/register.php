@@ -637,14 +637,16 @@ $p_binary= $p_binary['customer_id'];
 	//Tai
 	public function getInfoUsers_binary($id_id){
 
-		$query = $this->db->query("select u.*,ml.level,ml.p_binary as p_binary_ml, ml.status as status_ml, l.name_vn as level_member from ". DB_PREFIX . "customer_ml as ml Left Join " . DB_PREFIX . "customer as u ON ml.customer_id = u.customer_id Left Join " . DB_PREFIX . "member_level as l ON l.id = ml.level Where ml.customer_id = " . $id_id);
+		$query = $this->db->query("select u.*,ml.level,ml.p_binary as p_binary_ml, u.firstname as account_holder,
+			ml.status as status_ml, l.name_vn as level_member from ". DB_PREFIX . "customer_ml as ml 
+			Left Join " . DB_PREFIX . "customer as u ON ml.customer_id = u.customer_id Left Join " . DB_PREFIX . "member_level as l ON l.id = ml.level Where ml.customer_id = " . $id_id);
 		$return  = $query->row;
 		return $return;
 	}
 	public function getLeftO($id) {
 		$query = $this -> db -> query('select u2.email, u2.telephone, u2.date_added, 
 			mlm.customer_id as id, mlm.level,CONCAT(u2.firstname," (ĐT: ",u2.telephone,")") as text, 
-			CONCAT( "level1"," left") as iconCls,CONCAT(u2.firstname," (ĐT: ",u2.telephone,")") as name,
+			CONCAT( "level1"," left") as iconCls,CONCAT(u2.firstname," (ĐT: ",u2.telephone,")") as name,u2.firstname as account_holder,
 			l.name_vn as level_user,u2.username,u2.status,u2.date_added  from ' . DB_PREFIX . 'customer AS u2 
 			LEFT join ' . DB_PREFIX . 'customer_ml AS mlm ON u2.customer_id = mlm.customer_id 
 			INNER join ' . DB_PREFIX . 'customer_ml AS u1 ON u1.left = mlm.customer_id left Join ' . DB_PREFIX . 'member_level as l ON l.id = mlm.level where mlm.p_binary = ' . (int)$id);
@@ -653,7 +655,7 @@ $p_binary= $p_binary['customer_id'];
 	}
 
 	public function getRightO($id) {
-		$query = $this -> db -> query('select u2.email, u2.telephone,u2.date_added, u2.account_holder as account_holder,
+		$query = $this -> db -> query('select u2.email, u2.telephone,u2.date_added, u2.firstname as account_holder,
 			mlm.customer_id as id, mlm.level,CONCAT(u2.firstname," (ĐT: ",u2.telephone,")") as text, CONCAT( "level1"," right") as iconCls,CONCAT(u2.firstname," (ĐT: ",u2.telephone,")") as name,l.name_vn as level_user,u2.username,u2.status,u2.date_added from ' . DB_PREFIX . 'customer AS u2 LEFT join ' . DB_PREFIX . 'customer_ml AS mlm ON u2.customer_id = mlm.customer_id INNER join ' . DB_PREFIX . 'customer_ml AS u1 ON u1.right = mlm.customer_id left Join ' . DB_PREFIX . 'member_level as l ON l.id = mlm.level where mlm.p_binary = ' . (int)$id);
 		//return json_decode(json_encode($query->row), false);
 		return $query -> row;
