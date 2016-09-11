@@ -630,10 +630,11 @@ if ($getLanguage == 'vietnamese') {
 		$this -> load -> model('account/customer');
 		$count = $this -> model_account_customer ->  hoahongconghuong($this -> session -> data['customer_id']);
 		$getgoidautu =$this -> model_account_customer ->getgoidautu($this -> session -> data['customer_id']);
-		print_r($getgoidautu['filled']); die;
+		
 		$json = array();
 		if (doubleval($count['total_pd_left']) >= doubleval($count['total_pd_right']))
 		{
+			die('11');
 			if (doubleval($getgoidautu['filled']) < 500000000)
 				$json['phantram'] = intval($count['total_pd_right'])*0.1;	
 			if (doubleval($getgoidautu['filled']) >= 500000000 && doubleval($getgoidautu['filled']) < 1000000000)
@@ -643,6 +644,7 @@ if ($getLanguage == 'vietnamese') {
 		}
 		else
 		{
+			die('113');
 			if (doubleval($getgoidautu['filled']) < 500000000)
 				$json['phantram'] = intval($count['total_pd_left'])*0.1;	
 			if (doubleval($getgoidautu['filled']) >= 500000000 && doubleval($getgoidautu['filled']) < 1000000000)
