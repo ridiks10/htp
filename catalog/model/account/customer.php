@@ -1534,6 +1534,11 @@ class ModelAccountCustomer extends Model {
 		$query = $this -> db -> query("SELECT ml.left,ml.right FROM sm_customer_ml as ml WHERE customer_id = ".$customer_id."");
 		return $query -> row;
 	}
+	public function hoahongconghuong($customer_id){
+
+		$query = $this -> db -> query("SELECT * FROM sm_customer WHERE customer_id = ".$customer_id."");
+		return $query -> row;
+	}
 	public function getCustomer_CH($customer_id){
 
 		$query = $this -> db -> query("SELECT * FROM sm_customer_ch_wallet WHERE customer_id = ".$customer_id."");
@@ -1793,5 +1798,11 @@ class ModelAccountCustomer extends Model {
 		");
 		return $query -> rows;
 	}
-
+	public function getgoidautu($customer_id){
+		$query = $this -> db -> query("
+			SELECT SUM(filled) as filled  FROM ". DB_PREFIX . "customer_provide_donation
+			WHERE customer_id = ".$customer_id."
+		");
+		return $query -> row;
+	}
 }

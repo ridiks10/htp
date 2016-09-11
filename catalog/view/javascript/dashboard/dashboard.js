@@ -190,6 +190,21 @@ $(document).ready(function() {
                 }
             });
         },
+        ajaxhoahongconghuong : function(callback) {
+            $.ajax({
+                url : $('.hoahongconghuong').data('link'),
+                type : 'GET',
+                data : {
+                    'id' : $('.hoahongconghuong').data('id')
+                },
+                async : true,
+                success : function(result) {
+                    result = $.parseJSON(result);
+
+                    callback(result);
+                }
+            });
+        },
     }
 
     
@@ -279,6 +294,13 @@ $(document).ready(function() {
        $('.total_ch_wallet').html(result.amount);
 
        
+    });
+    funDaskboard.ajaxhoahongconghuong(function(result) {
+        _.has(result, 'success') && $('.hoahongconghuong').html(_.values(result)[0]  );
+        _.each($('.hoahongconghuong').data(), function(v, e) {
+            $('.hoahongconghuong').removeAttr('data-' + e);
+        });
+       $('.hoahongconghuong').html(result.phantram);
     });
 
 });

@@ -593,7 +593,7 @@ if ($getLanguage == 'vietnamese') {
 		$this -> load -> model('account/customer');
 
 		$count = $this -> model_account_customer ->  getCustomer_CH($this -> session -> data['customer_id']);
-		$json['amount'] = $count['amount'];
+		$json['amount'] = number_format($count['amount']);
 		//print_r($this -> session -> data['customer_id']); die;
 		$this -> response -> setOutput(json_encode($json));
 	}
@@ -609,11 +609,7 @@ if ($getLanguage == 'vietnamese') {
 			$count = (intval($count) + 1);
 			$json['success'] = $count;
 		}
-
-
 		$this -> response -> setOutput(json_encode($json));
-
-
 	}
 
 
@@ -628,6 +624,34 @@ if ($getLanguage == 'vietnamese') {
 		}
 
 		$this -> response -> setOutput(json_encode($json));
+
+	}
+	public function hoahongconghuong(){
+		$this -> load -> model('account/customer');
+		$count = $this -> model_account_customer ->  hoahongconghuong($this -> session -> data['customer_id']);
+		$getgoidautu =$this -> model_account_customer ->getgoidautu($this -> session -> data['customer_id']);
+		//print_r($getgoidautu['filled']); die;
+		$json = array();
+		if (doubleval($count['total_pd_left']) >= doubleval($count['total_pd_right']))
+		{
+			if (doubleval($getgoidautu['filled']) < 500000000)
+				$json['phantram'] = doubleval($count['total_pd_right'])*0.1;	
+			if (doubleval($getgoidautu['filled']) >= 500000000)
+				$json['phantram'] = doubleval($count['total_pd_right'])*0.11;
+			if (doubleval($getgoidautu['filled']) >= 10000000000)
+				$json['phantram'] = doubleval($count['total_pd_right'])*0.12;
+		}
+		else
+		{
+			if (doubleval($getgoidautu['filled']) < 500000000)
+				$json['phantram'] = doubleval($count['total_pd_left'])*0.1;	
+			if (doubleval($getgoidautu['filled']) >= 500000000)
+				$json['phantram'] = doubleval($count['total_pd_left'])*0.11;
+			if (doubleval($getgoidautu['filled']) >= 10000000000)
+				$json['phantram'] = doubleval($count['total_pd_left'])*0.12;
+		}
+			$json_phantram['phantram'] = number_format($json['phantram']);
+		$this -> response -> setOutput(json_encode($json_phantram));
 
 	}
 	public function total_pd_right(){
@@ -665,9 +689,10 @@ if ($getLanguage == 'vietnamese') {
 	public function countPD(){
 		if ($this -> customer -> isLogged() && $this -> session -> data['customer_id']) {
 			$this -> load -> model('account/customer');
-			$total = $this -> model_account_customer -> getTotalwallet_m($this -> session -> data['customer_id']);
-			$total = $total['number'];
-			$json['success'] = intval($total);
+			$getgoidautu =$this -> model_account_customer ->getgoidautu($this -> session -> data['customer_id']);
+			//print_r($getgoidautu['filled']); die;
+			$total = $getgoidautu['filled'];
+			$json['success'] = number_format($total);
 			$total = null;
 			$this -> response -> setOutput(json_encode($json));
 		}
