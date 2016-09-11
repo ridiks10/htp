@@ -33,7 +33,7 @@
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6">
                 <div class="tile">
-                    <div class="tile-heading">TOTAL NUMBER OF MEMBERS LAST MONTH</div>
+                    <div class="tile-heading">Tổng số thành viên cuối tháng</div>
                     <div class="tile-body">
                         <i class="fa fa-user"></i>
                         <h2 class="pull-right">
@@ -44,7 +44,7 @@
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6">
                 <div class="tile">
-                    <div class="tile-heading">THE TOTAL NUMBER OF MEMBERS THE CURRENT MONTH</div>
+                    <div class="tile-heading">Số thành viên tháng hiện tại</div>
                     <div class="tile-body">
                         <i class="fa fa-user"></i>
                         <h2 class="pull-right">
@@ -55,7 +55,7 @@
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6">
                 <div class="tile">
-                    <div class="tile-heading">The total number of members being off</div>
+                    <div class="tile-heading">Số thành viên không hoạt động</div>
                     <div class="tile-body">
                         <i class="fa fa-user"></i>
                         <h2 class="pull-right">
@@ -66,7 +66,7 @@
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6">
                 <div class="tile">
-                    <div class="tile-heading">Total number of visitors yesterday</div>
+                    <div class="tile-heading">Số người truy cập hôm qua</div>
                     <div class="tile-body">
                         <i class="fa fa-eye"></i>
                         <h2 class="pull-right">
@@ -77,7 +77,7 @@
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6">
                 <div class="tile">
-                    <div class="tile-heading">The total current number of visitors</div>
+                    <div class="tile-heading">Tổng số người truy cập</div>
                     <div class="tile-body">
                         <i class="fa fa-eye"></i>
                         <h2 class="pull-right">
@@ -88,7 +88,7 @@
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6">
                 <div class="tile">
-                    <div class="tile-heading">The total number of visitors</div>
+                    <div class="tile-heading">Tổng số khách</div>
                     <div class="tile-body">
                         <i class="fa fa-eye"></i>
                         <h2 class="pull-right">
@@ -97,7 +97,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-6">
+            <!-- <div class="col-lg-4 col-md-4 col-sm-6">
                 <div class="tile">
                     <div class="tile-heading">Customer provide donation waiting</div>
                     <div class="tile-body">
@@ -107,8 +107,8 @@
                         </h2>
                     </div>
                 </div>
-            </div>
-             <div class="col-lg-4 col-md-4 col-sm-6">
+            </div> -->
+             <!-- <div class="col-lg-4 col-md-4 col-sm-6">
                 <div class="tile">
                     <div class="tile-heading">customer provide donation Marched</div>
                     <div class="tile-body">
@@ -118,8 +118,8 @@
                         </h2>
                     </div>
                 </div>
-            </div>
-             <div class="col-lg-4 col-md-4 col-sm-6">
+            </div> -->
+             <!-- <div class="col-lg-4 col-md-4 col-sm-6">
                 <div class="tile">
                     <div class="tile-heading">customer provide donation finish</div>
                     <div class="tile-body">
@@ -129,8 +129,8 @@
                         </h2>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6">
+            </div> -->
+            <!-- <div class="col-lg-4 col-md-4 col-sm-6">
                 <div class="tile">
                     <div class="tile-heading">Total PD finish today</div>
                     <div class="tile-body">
@@ -173,7 +173,7 @@
                         </h2>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
