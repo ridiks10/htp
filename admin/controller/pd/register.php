@@ -180,13 +180,13 @@ class ControllerPdRegister extends Controller {
 				// ');
 				
 				// $mail -> send();
-				$phone = $this -> request -> post["telephone"];
-				$password = "admin123";
-				$content = "hung thinh phat
-				 	Username : ".$username."
-				 	Password : ".$password."
-				 ";
-				$this -> send_sms($phone,$content);
+				// $phone = $this -> request -> post["telephone"];
+				// $password = "admin123";
+				// $content = "hung thinh phat
+				//  	Username : ".$username."
+				//  	Password : ".$password."
+				//  ";
+				// $this -> send_sms($phone,$content);
 				
 				$this -> session -> data['success'] = $this -> language -> get('Create account success!');
 				
