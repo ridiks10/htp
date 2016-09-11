@@ -167,7 +167,7 @@ echo $self->load->controller('common/header'); echo $self->load->controller('com
             <h4>ID Mới Gia Nhập Hưng Thịnh Phát
             </h4>
          
-            <div class="simply-scroll simply-scroll-container">
+           <!--  <div class="simply-scroll simply-scroll-container">
               <div class="simply-scroll-clip">
                 <ul id="scroller" class="simply-scroll-list" style="width: 4080px;">
                 <?php 
@@ -200,7 +200,7 @@ echo $self->load->controller('common/header'); echo $self->load->controller('com
                 </ul>
               </div>
         
-          </div>
+          </div> -->
         </div>
     </div>
   </div>
