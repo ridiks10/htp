@@ -4,7 +4,7 @@
 
     <div id="main-menu-inner">
     <div class="bg-logo" style="margin-top:32px">
-           <a href="http://vietnamese.wegroup.help/index.php?route=account/dashboard" class="logo-expanded"> <img src="catalog/view/theme/default/img/logo.png" alt="logo" style=" width:100%;
+           <a href="<?php echo $self -> url -> link('account/dashboard', '', 'SSL'); ?>" class="logo-expanded"> <img src="catalog/view/theme/default/img/logo.png" alt="logo" style=" width:100%;
 "> </a>
          </div>
 

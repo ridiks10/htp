@@ -33,22 +33,23 @@ svg:not(:root) {
 }
 .bitree::-webkit-scrollbar-track
 {
-
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
   background-color: #F5F5F5;
 }
 
 .bitree::-webkit-scrollbar
 {
   width: 10px;
-  background-color: green;
-   height: 10px;
+  background-color: #F5F5F5;
 }
 
 .bitree::-webkit-scrollbar-thumb
 {
-  background-color: green;
- 
-
+  background-color: #0ae;
+  
+  background-image: -webkit-gradient(linear, 0 0, 0 100%,
+                     color-stop(.5, rgba(255, 255, 255, .2)),
+             color-stop(.5, transparent), to(transparent));
 }
 span.cir {
     border: 5px solid #00f;
@@ -138,7 +139,8 @@ span.cir {
         </div>
       
                               <div class="panel-body tab-pane bitree active" id="tab-tree">
-
+        <span class="cir lv1"></span> left - 
+               <span class="cir lv3"></span> right
               
                
         </div> 
@@ -161,7 +163,7 @@ span.cir {
 
 var margin = {top: 20, right: 120, bottom: 20, left: 120},
     width = 4000 - margin.right - margin.left,
-    height = 500 - margin.top - margin.bottom;
+    height = 1000 - margin.top - margin.bottom;
 
 var i = 0,
     duration = 750,

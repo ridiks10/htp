@@ -832,7 +832,7 @@ $mail -> setHtml('<div height="100%" bgcolor="#ffffff" marginwidth="10" marginhe
 		
 		// $node->text = $user['username'] ;
 
-		$node->username = $user['username'] ;
+		$node->name = $user['username'] ;
 		// $node -> email = $user['email'];
 		// $node -> telephone = $user['telephone'];
 		// $node -> date_added = $user['date_added'];
