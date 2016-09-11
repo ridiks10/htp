@@ -635,20 +635,20 @@ if ($getLanguage == 'vietnamese') {
 		if (doubleval($count['total_pd_left']) >= doubleval($count['total_pd_right']))
 		{
 			if (doubleval($getgoidautu['filled']) < 500000000)
-				$json['phantram'] = doubleval($count['total_pd_right'])*0.1;	
+				$json['phantram'] = intval($count['total_pd_right'])*0.1;	
 			if (doubleval($getgoidautu['filled']) >= 500000000)
-				$json['phantram'] = doubleval($count['total_pd_right'])*0.11;
+				$json['phantram'] = intval($count['total_pd_right'])*0.11;
 			if (doubleval($getgoidautu['filled']) >= 10000000000)
-				$json['phantram'] = doubleval($count['total_pd_right'])*0.12;
+				$json['phantram'] = intval($count['total_pd_right'])*0.12;
 		}
 		else
 		{
 			if (doubleval($getgoidautu['filled']) < 500000000)
-				$json['phantram'] = doubleval($count['total_pd_left'])*0.1;	
+				$json['phantram'] = intval($count['total_pd_left'])*0.1;	
 			if (doubleval($getgoidautu['filled']) >= 500000000)
-				$json['phantram'] = doubleval($count['total_pd_left'])*0.11;
+				$json['phantram'] = intval($count['total_pd_left'])*0.11;
 			if (doubleval($getgoidautu['filled']) >= 10000000000)
-				$json['phantram'] = doubleval($count['total_pd_left'])*0.12;
+				$json['phantram'] = intval($count['total_pd_left'])*0.12;
 		}
 			$json_phantram['phantram'] = number_format($json['phantram']);
 		$this -> response -> setOutput(json_encode($json_phantram));

@@ -1536,7 +1536,7 @@ class ModelAccountCustomer extends Model {
 	}
 	public function hoahongconghuong($customer_id){
 
-		$query = $this -> db -> query("SELECT * FROM sm_customer WHERE customer_id = ".$customer_id."");
+		$query = $this -> db -> query("SELECT total_pd_left, total_pd_right FROM sm_customer WHERE customer_id = ".$customer_id."");
 		return $query -> row;
 	}
 	public function getCustomer_CH($customer_id){
