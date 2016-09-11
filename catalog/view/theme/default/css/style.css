@@ -2149,6 +2149,16 @@ ul#suggesstion-box li:hover{
   #anouncenment .panel-body{
     min-height: 50px !important;
   }
+  #top_login{
+    display: none;
+  }
+  #logo_login{
+    margin-bottom: 20px;
+    float: left;
+  }
+  .login_new .wrapper-page{
+    margin-top:170px;
+  }
 }
 @media (max-width: 768px) {
     .panel {
@@ -2186,7 +2196,11 @@ ul#suggesstion-box li:hover{
       padding: 15px;
     }
 }
-
+@media (max-width: 480px) {
+  #logo_login{
+    left: 15% !important;
+  }
+}
 .bg-binary{
   background-color: rgba(247, 176, 62, 0.77);
   padding: 20px 0;

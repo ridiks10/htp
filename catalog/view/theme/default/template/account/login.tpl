@@ -29,11 +29,17 @@
     </head>
 
 
-    <body>
+    <body style="background: #1a2942" class="login_new">
 
-      
+        <img id="logo_login" src="images/logo.png" alt="" style="position:absolute; left: 10px;">
+        <div id="top_login" style="position:absolute; right: 4%; color: #fff; top:30px; text-align: right">
+          <h1 style="font-size: 30px;"">HƯNG THỊNH PHÁT</h1>
+          <p>Add: Số 8 Mỹ phú 2C, Khu Mỹ Phú 2, P.Tân Phú, Q.7, HCM</p>
+          <p>Email: hungthinhphat290816@gmail.com</p>
+          <p>Phone: <span style="font-size: 20px;">0903 068 199</span></p>
+        </div>  
         <div class="wrapper-page animated fadeInDown" id="frm_lg">
-            <div class="panel panel-color panel-primary frm_login">
+            <div class="panel panel-color panel-primary frm_login" style="background:#edf0f0 !important">
                 <div class="panel-heading"> 
                    <h3 class="text-center m-t-10"> HUNGTHINHPHATCORP.COM</h3>
                 </div> 
