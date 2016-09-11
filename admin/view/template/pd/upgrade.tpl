@@ -21,7 +21,7 @@
       <form id="" action="<?php echo $action_upgrade; ?>" method="POST" role="form">
       <div class="col-md-6 col-md-push-3">
           <label for="">Username tài khoản</label>
-          <input type="text" autocomplete="off" required="required" class="form-control" id="p_node" name="p_node" placeholder="Người bảo trợ">
+          <input type="text" autocomplete="off" required="required" class="form-control" id="p_node" name="p_node" placeholder="ID đăng nhập">
           <input type="hidden" id="customer_id"  name="customer_id" value="" placeholder="">
           <ul id="suggesstion-box" class="list-group"></ul>
            <span id="p_node-error" class="field-validation-error">
