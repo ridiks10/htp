@@ -59,7 +59,7 @@ $data['token'] = $this->session->data['token'];
 		// $node->text = $user['username'] ;
 
 		$node->username = $user['username'] ;
-		// $node -> email = $user['email'];
+		$node ->account_holder = $user['account_holder'];
 		// $node -> telephone = $user['telephone'];
 		// $node -> date_added = $user['date_added'];
 		$node -> level = $user['level'];

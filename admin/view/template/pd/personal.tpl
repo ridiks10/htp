@@ -180,7 +180,7 @@ span.cir {
               }
           }
           else {
-              leaves.push({id:++index,text:node.username});
+              leaves.push({id:++index,text:node.username+" | "+node.account_holder});
           }
           return [index,leaves];
   }
@@ -263,7 +263,7 @@ span.cir {
   });
   //attach search box listener
   $("#search").on("select2-selecting", function(e) {
-    var paths = searchTree(root,e.object.text,[]);
+    var paths = searchTree(root,e.object.text.split(" ")[0],[]);
     if(typeof(paths) !== "undefined"){
       openPaths(paths);
     }
@@ -300,7 +300,7 @@ span.cir {
       .attr("x", function(d) { return d.children || d._children ? -10 : 10; })
       .attr("dy", ".35em")
       .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
-      .text(function(d) { return d.username; })
+      .text(function(d) { return d.username+' '+d.account_holder; })
       .style("fill-opacity", 1e-6);
 
     // Transition nodes to their new position.

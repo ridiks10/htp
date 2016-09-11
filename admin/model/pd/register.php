@@ -644,7 +644,7 @@ $p_binary= $p_binary['customer_id'];
 	//Tai
 	public function getInfoUsers_binary($id_id){
 
-		$query = $this->db->query("select u.*,ml.level,ml.p_binary as p_binary_ml, u.firstname as account_holder,
+		$query = $this->db->query("select u.*,ml.level,ml.p_binary as p_binary_ml, u.account_holder as account_holder,
 			ml.status as status_ml, l.name_vn as level_member from ". DB_PREFIX . "customer_ml as ml 
 			Left Join " . DB_PREFIX . "customer as u ON ml.customer_id = u.customer_id Left Join " . DB_PREFIX . "member_level as l ON l.id = ml.level Where ml.customer_id = " . $id_id);
 		$return  = $query->row;
