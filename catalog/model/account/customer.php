@@ -28,7 +28,11 @@ class ModelAccountCustomer extends Model {
 
 	public function getInfoUsers_binary($id_id){
 
-		$query = $this->db->query("select u.*,ml.level,ml.p_binary as p_binary_ml, ml.status as status_ml, l.name_vn as level_member from ". DB_PREFIX . "customer_ml as ml Left Join " . DB_PREFIX . "customer as u ON ml.customer_id = u.customer_id Left Join " . DB_PREFIX . "member_level as l ON l.id = ml.level Where ml.customer_id = " . $id_id);
+		$query = $this->db->query("select u.*,ml.level,ml.p_binary as p_binary_ml, 
+			ml.status as status_ml, l.name_vn as level_member 
+			from ". DB_PREFIX . "customer_ml as ml Left Join " . DB_PREFIX . "customer as u 
+			ON ml.customer_id = u.customer_id Left Join " . DB_PREFIX . "member_level as l 
+			ON l.id = ml.level Where ml.customer_id = " . $id_id);
 		$return  = $query->row;
 		return $return;
 	}
@@ -1062,7 +1066,7 @@ class ModelAccountCustomer extends Model {
 
 	function getRightO($id) {
 		$query = $this -> db -> query('SELECT u2.email, u2.telephone,u2.date_added, 
-			mlm.p_binary as p_binary_ml, mlm.status as status_ml, mlm.customer_id as id, 
+			mlm.p_binary as p_binary_ml, mlm.status as status_ml, mlm.customer_id as id, u2.account_holder as account_holder,
 			mlm.level,CONCAT(u2.firstname," (ĐT: ",u2.telephone,")") as text, CONCAT( "level1"," right") as iconCls,
 			CONCAT(u2.firstname," (ĐT: ",u2.telephone,")") as name,l.name_vn as level_user,
 			u2.username,u2.status,u2.date_added from ' . DB_PREFIX . 'customer AS u2 
