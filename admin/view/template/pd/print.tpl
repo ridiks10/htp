@@ -108,7 +108,7 @@
 	     
 	    <h5>Gói đầu tư: <?php echo number_format($info_customer['filled']) ?></h5>
 	    <h5>Ngày đầu tư: <?php echo date("d/m/Y H:i:A", strtotime($info_customer['pd_date_added'])); ?></h5>
-	    <h5>Ngày kết thúc: <?php echo date("d/m/Y H:i:A", strtotime($info_customer['pd_date_finish'])); ?></h5>
+	    <!-- <h5>Ngày kết thúc: <?php echo date("d/m/Y H:i:A", strtotime($info_customer['pd_date_finish'])); ?></h5> -->
 	     
 		</div>
 		<div class="right">
