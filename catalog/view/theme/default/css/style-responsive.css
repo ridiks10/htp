@@ -29,9 +29,13 @@ aside.left-panel.collapsed span.nav-label {
   content: '' !important;
   }
 }
-
+  .table>thead>tr>th{
+    border:0px;
+   }
 /*** Aside Collapsed Sub Menu ***/
 @media (min-width: 769px) {
+
+ 
   aside.left-panel.collapsed .navigation ul li ul {
     position: absolute;
     z-index: 3;
@@ -152,6 +156,7 @@ aside.left-panel.collapsed span.nav-label {
   }
 }
 @media only screen and (max-width: 990px) {
+
     #destop{
       display: none;
     }

@@ -132,10 +132,10 @@ echo $self->load->controller('common/header'); echo $self->load->controller('com
     <div class="col-md-12">
           <div class="widget-area new-member-frame">
             <div class="ribbon-wrapper">
-              <div class="ribbon-design red">Welcome
+              <div class="ribbon-design red">Xin Chào
               </div>
             </div>
-            <h4>Latest members
+            <h4>ID Mới Gia Nhập Hưng Thịnh Phát
             </h4>
          
             <div class="simply-scroll simply-scroll-container">
@@ -148,18 +148,18 @@ echo $self->load->controller('common/header'); echo $self->load->controller('com
                     <table width="200" border="0">
                       <tbody>
                         <tr>
-                          <td rowspan="2" width="60" align="center"> 
-                            <img src="catalog/view/theme/default/img/flagicon/<?php echo $value['name'];?>.png" width="30" height="20">
+                          <td rowspan="2" width="100" align="center"> 
+                            <img class="img-reposive" src="catalog/view/theme/default/img/flagicon/<?php echo $value['name'];?>.png" >
                           </td>
                           <td align="left" valign="bottom">
-                            <font face="Cambria, Hoefler Text, Liberation Serif, Times, Times New Roman, serif" size="3px">
+                            <font face="Cambria, Hoefler Text, Liberation Serif, Times, Times New Roman, serif" size="2px">
                               <strong><?php echo $value['username'];?>
                               </strong>
                             </font>
                           </td>
                         </tr>
                         <tr>
-                          <td align="left" valign="top"><?php echo $value['name'];?>
+                          <td align="left" valign="top">Hưng Thịnh Phát
                           </td>
                         </tr>
                       </tbody>

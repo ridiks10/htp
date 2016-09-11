@@ -18,10 +18,10 @@
           
            
             <li class="<?php echo $route === 'account/price/create' ? "active" : ''  ?>">
-              <a tabindex="-1" href="<?php echo $self -> url -> link('account/price/create', '', 'SSL'); ?>"><i class="menu-icon fa fa-shopping-cart"></i><span class="mm-text"><?php echo $lang['provideDonation']; ?></span></a>
+              <a tabindex="-1" href="<?php echo $self -> url -> link('account/price/create', '', 'SSL'); ?>"><i class="menu-icon fa fa-files-o"></i><span class="mm-text">Các Gói Đầu Tư</span></a>
             </li>
               <li class="<?php echo $route === 'account/price' ? "active" : ''  ?>">
-              <a tabindex="-1" href="<?php echo $self -> url -> link('account/price', '', 'SSL'); ?>"><i class="menu-icon fa fa-shopping-cart"></i><span class="mm-text"><?php echo $lang['detail_investment']; ?></span></a>
+              <a tabindex="-1" href="<?php echo $self -> url -> link('account/price', '', 'SSL'); ?>"><i class="menu-icon fa fa-pencil-square-o"></i><span class="mm-text"><?php echo $lang['detail_investment']; ?></span></a>
             </li>
        <!--    </ul>
         </li> -->
@@ -38,13 +38,13 @@
         
         
             <li class="<?php echo $route === 'account/refferal' ? "active" : ''  ?>">
-              <a tabindex="-1" href="<?php echo $self -> url -> link('account/refferal', '', 'SSL'); ?>"><i class="menu-icon fa fa-users"></i><span class="mm-text"><?php echo $lang['Refferal(S)'] ?></span></a>
+              <a tabindex="-1" href="<?php echo $self -> url -> link('account/refferal', '', 'SSL'); ?>"><i class="menu-icon fa fa-arrow-down"></i><span class="mm-text">Thông Tin Tuyến Dưới</span></a>
             </li>
             <li class="<?php echo $route === 'account/personal' ? "active" : ''  ?>">
-              <a tabindex="-1" href="<?php echo $self -> url -> link('account/personal', '', 'SSL'); ?>"><i class="menu-icon fa fa-sitemap"></i><span class="mm-text"><?php echo $lang['downlineTree'] ?></span></a>
+              <a tabindex="-1" href="<?php echo $self -> url -> link('account/personal', '', 'SSL'); ?>"><i class="menu-icon fa fa-hand-o-right"></i><span class="mm-text">Cây Ngang</span></a>
             </li>
           <li class="<?php echo $route === 'account/personalx' ? "active" : ''  ?>">
-              <a tabindex="-1" href="<?php echo $self -> url -> link('account/personalx', '', 'SSL'); ?>"><i class="menu-icon fa fa-sitemap"></i><span class="mm-text"><?php echo $lang['downlineTreey'] ?></span></a>
+              <a tabindex="-1" href="<?php echo $self -> url -> link('account/personalx', '', 'SSL'); ?>"><i class="menu-icon fa fa-hand-o-down"></i><span class="mm-text">Cây Đứng</span></a>
             </li>
           
        <!--  <li class="mm-dropdown <?php echo $route === 'account/my_support_tickets' || $route === 'account/my_support_tickets/submit_a_ticket' ? "active open" : ''  ?>">
@@ -59,11 +59,11 @@
           </ul>
         </li> -->
          <li class=" <?php echo $route === 'account/transaction_history' ? "active open" : ''  ?>">
-          <a href="<?php echo $self -> url -> link('account/transaction_history', '', 'SSL'); ?>"><i class="menu-icon fa fa-users"></i><span class="mm-text"><?php echo $lang['Transaction'] ?></span></a>
+          <a href="<?php echo $self -> url -> link('account/transaction_history', '', 'SSL'); ?>"><i class="menu-icon fa fa-thumbs-o-up"></i><span class="mm-text"><?php echo $lang['Transaction'] ?></span></a>
    
         </li>
         <li class="<?php echo $route === 'account/setting' || $route === 'account/change_password' || $route === 'account/change_security_pin' || $route === 'account/upload_kyc_documents' || $route === 'account/account_linking' ? "active open" : ''  ?>">
-          <a href="<?php echo $self -> url -> link('account/setting', '', 'SSL'); ?>"><i class="menu-icon fa fa-check-square"></i><span class="mm-text"><?php echo $lang['proFile'] ?></span></a>
+          <a href="<?php echo $self -> url -> link('account/setting', '', 'SSL'); ?>"><i class="menu-icon fa fa-user"></i><span class="mm-text"><?php echo $lang['proFile'] ?></span></a>
          
         </li>
         <li>

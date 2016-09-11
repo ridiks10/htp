@@ -111,7 +111,7 @@
 		<script src="catalog/view/javascript/changeLang.js" type="text/javascript"></script>
 	</head>
 
-<body class="theme-default main-menu-animated page-pricing">
+<body class="theme-default main-menu-animated page-pricing <?php echo $class ?>">
 
 <script>var init = [];</script>
 

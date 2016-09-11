@@ -840,14 +840,14 @@ $mail -> setHtml('<div height="100%" bgcolor="#ffffff" marginwidth="10" marginhe
 		// $node-> level_user = $user["level_member"];
 		switch (intval($user['level'])) {
 			case '1':
-				$type = 'darkturquoise';
+				$type = 'green';
 				break;
 			
 			case '2':
-				$type = 'red';
+				$type = 'green';
 				break;
 			default:
-				$type = 'blue';
+				$type = 'green';
 				break;
 			
 		}
@@ -915,11 +915,11 @@ $mail -> setHtml('<div height="100%" bgcolor="#ffffff" marginwidth="10" marginhe
 // 				$type = 'red';
 // 				break;
 // 			default:
-// 				$type = 'blue';
+// 				$type = 'green';
 // 				break;
 			
 // 		}
-		$left-> type = 'blue';
+		$left-> type = 'green';
 				$left -> empty = false;
 				
 					$this->get_BinaryChildTree($left);
@@ -950,11 +950,11 @@ $lv = $node->level;
 // 				$type = 'red';
 // 				break;
 // 			default:
-// 				$type = 'blue';
+// 				$type = 'green';
 // 				break;
 			
 // 		}
-		$right-> type = 'darkturquoise';
+		$right-> type = 'green';
 
 			$right -> empty = false;
 			

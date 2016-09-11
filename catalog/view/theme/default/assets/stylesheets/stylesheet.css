@@ -9838,7 +9838,7 @@ address a,
     /*background:url('../images/bg.png');*/
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 1000px;
+    /*min-height: 1000px;*/
 }
 .panel-body {
     background: none;
@@ -9997,7 +9997,7 @@ ul.list-group .list-group-item {
     background: #ffffff;
 }.theme-default #main-menu li.active>a {
     background: #ffffff;
-    color: #1d89cf !important;
+    color: #fea63e !important;
 }
 .theme-default #main-menu .navigation a:hover {
     color: #000;
@@ -10150,26 +10150,26 @@ ul.list-group .list-group-item {
     background: #9eba5c;
 }
 .stats-counter.cyans h6{
- background: none repeat scroll 0 0 #5cc99f;
+ background: none repeat scroll 0 0 #064b75;
 }
 .stats-counter.greens h6{
- background: none repeat scroll 0 0 #aecb6a;
+ background: none repeat scroll 0 0 #064b75;
 }
 .stats-counter.reds h6{
- background: none repeat scroll 0 0 #aecb6a;
+ background: none repeat scroll 0 0 #064b75;
 }
 .stats-counter.oranges h6{
- background: none repeat scroll 0 0 #fea63e;
+ background: none repeat scroll 0 0 #064b75;
 }
 .stats-counter.purples h6{
- background: none repeat scroll 0 0 #e75b8d;
+ background: none repeat scroll 0 0 #064b75;
 }
 .stats-counter.blues h6{
  background: none repeat scroll 0 0 #064b75;
 }
 
  #main-menu ul.navigation>li {
-        width: 240px;
+        /*width: 240px;*/
         border-bottom:1px dashed  #ddd;
     }
     #main-menu ul.navigation>li:last-child{
@@ -10178,3 +10178,32 @@ ul.list-group .list-group-item {
 .mmc .bg-logo{
     display: none;
 }
+
+.theme-default #main-menu .navigation a{
+    color: #333;
+}
+
+
+.theme-default #main-menu .navigation a:hover{
+    color: #fea63e;
+}
+
+/*** Aside Collapsed Sub Menu ***/
+@media (min-width: 769px) {
+
+   .table>thead>tr>th{
+    border:0px;
+   }
+}
+
+@media (max-width: 769px) {
+
+  #content-wrapper{
+    padding: 0px;
+   }
+
+   .account-dashboard #content-wrapper{
+    padding: 10px;
+   }
+}
+

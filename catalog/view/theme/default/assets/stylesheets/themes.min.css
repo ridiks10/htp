@@ -7,3 +7,6 @@
 	font-size: 15px;
 }
 
+.theme-default #main-menu li.active>a .menu-icon{
+	color: #fea63e ;
+}

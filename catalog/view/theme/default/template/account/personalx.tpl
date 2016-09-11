@@ -18,7 +18,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
               <div class="container-fluid">
                 <fieldset>
-                  <div class="personal_contain" style="margin-top:60px;" >
+                  <div class="personal_contain" style="margin-top:10px;" >
                     <div class="tootbar-top">
                       <ul class="list-unstyled">
                         <li style="margin-bottom:15px;">
@@ -40,11 +40,7 @@
                 </fieldset>
               
               </div>
-              <div class="detail-icon" style="margin-top: 50px;">
-                          <img src="catalog/view/theme/default/stylesheet/icons/2.png" width="40px">- New User
-                          <img src="catalog/view/theme/default/stylesheet/icons/6.png" width="40px"> - User Active
-                         <img src="catalog/view/theme/default/stylesheet/icons/3.png" width="40px"> - Add New User
-                        </div>
+             
             </div>
           </div>
         </div>

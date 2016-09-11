@@ -27,9 +27,9 @@
          <?php if (intval($package) === 0) { ?>
          <div class="col-md-4">
             <div class="deposite deposite_red">
-              <span class="deposite_title">90 days</span>
+              <span class="deposite_title">90 ngày</span>
               <div class="deposite_time_wrap">
-                  <span class="deposite_time_wrap_text">2% per day</span>
+                  <span class="deposite_time_wrap_text">2% mỗi ngày</span>
                   <div class="deposite_time">
                       <span class="deposite_time_digit"><?php echo number_format('5000000') ?></span>
                       <span class="deposite_time_text">VNĐ</span>
@@ -38,9 +38,9 @@
               <div class="deposite_time_triangle">
               </div>
               <div class="deposite_info">
-                  <span>Profit / 90 days: <?php echo number_format('7200000') ?> VNĐ</span>
-                  <span>Reinvestment / days: <?php echo number_format('1800000') ?> VNĐ</span>
-                  <span>2% per day</span>
+                  <span>Lãi / 90 ngày: <?php echo number_format('7200000') ?> VNĐ</span>
+                  <span>Tái đầu tư / ngày: <?php echo number_format('1800000') ?> VNĐ</span>
+                  <span>2% mỗi ngày</span>
               </div>
 <!--                <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="1">
@@ -53,9 +53,9 @@
           </div>
           <div class=" col-md-4">
                <div class="deposite deposite_orange">
-                    <span class="deposite_title">90 days</span>
+                    <span class="deposite_title">90 ngày</span>
                     <div class="deposite_time_wrap">
-                        <span class="deposite_time_wrap_text">2% per day</span>
+                        <span class="deposite_time_wrap_text">2% mỗi ngày</span>
                         <div class="deposite_time">
                             <span class="deposite_time_digit"><?php echo number_format('20000000') ?></span>
                       <span class="deposite_time_text">VNĐ</span>
@@ -64,9 +64,9 @@
                     <div class="deposite_time_triangle">
                     </div>
                     <div class="deposite_info">
-                       <span>Profit / 90 days: <?php echo number_format('28000000') ?> VNĐ</span>
-                        <span>Reinvestment / days: <?php echo number_format('7200000') ?> VNĐ</span>
-                        <span>2% per day</span>
+                       <span>Lãi / 90 ngày: <?php echo number_format('28000000') ?> VNĐ</span>
+                        <span>Tái đầu tư / ngày: <?php echo number_format('7200000') ?> VNĐ</span>
+                        <span>2% mỗi ngày</span>
                     </div>
 <!--                      <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="2">
@@ -78,9 +78,9 @@
             </div>
                <div class="col-md-4">
                   <div class="deposite deposite_green">
-                    <span class="deposite_title">90 days</span>
+                    <span class="deposite_title">90 ngày</span>
                     <div class="deposite_time_wrap">
-                        <span class="deposite_time_wrap_text">2% per day</span>
+                        <span class="deposite_time_wrap_text">2% mỗi ngày</span>
                         <div class="deposite_time">
                             <span class="deposite_time_digit"><?php echo number_format('50000000') ?></span>
                       <span class="deposite_time_text">VNĐ</span>
@@ -89,9 +89,9 @@
                     <div class="deposite_time_triangle">
                     </div>
                     <div class="deposite_info">
-                        <span>Profit / 90 days: <?php echo number_format('72000000') ?> VNĐ</span>
-                        <span>Reinvestment / days: <?php echo number_format('18000000') ?> VNĐ</span>
-                        <span>2% per day</span>
+                        <span>Lãi / 90 ngày: <?php echo number_format('72000000') ?> VNĐ</span>
+                        <span>Tái đầu tư / ngày: <?php echo number_format('18000000') ?> VNĐ</span>
+                        <span>2% mỗi ngày</span>
                     </div>
 <!--                      <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="3">
@@ -103,9 +103,9 @@
                </div>
             <div class="col-md-4">
                <div class="deposite deposite_cyan">
-              <span class="deposite_title">90 days</span>
+              <span class="deposite_title">90 ngày</span>
               <div class="deposite_time_wrap">
-                  <span class="deposite_time_wrap_text">2% per day</span>
+                  <span class="deposite_time_wrap_text">2% mỗi ngày</span>
                   <div class="deposite_time">
                       <span class="deposite_time_digit"><?php echo number_format('100000000') ?></span>
                       <span class="deposite_time_text">VNĐ</span>
@@ -114,9 +114,9 @@
               <div class="deposite_time_triangle">
               </div>
               <div class="deposite_info">
-                  <span>Profit / 90 days: <?php echo number_format('144000000') ?> VNĐ</span>
-                  <span>Reinvestment / days: <?php echo number_format('36000000') ?> VNĐ</span>
-                  <span>2% per day</span>
+                  <span>Lãi / 90 ngày: <?php echo number_format('144000000') ?> VNĐ</span>
+                  <span>Tái đầu tư / ngày: <?php echo number_format('36000000') ?> VNĐ</span>
+                  <span>2% mỗi ngày</span>
               </div>
 <!--                <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="4">
@@ -128,9 +128,9 @@
           </div>
            <div class="col-md-4">
                <div class="deposite deposite_blue">
-              <span class="deposite_title">90 days</span>
+              <span class="deposite_title">90 ngày</span>
               <div class="deposite_time_wrap">
-                  <span class="deposite_time_wrap_text">2% per day</span>
+                  <span class="deposite_time_wrap_text">2% mỗi ngày</span>
                   <div class="deposite_time">
                       <span class="deposite_time_digit"><?php echo number_format('500000000') ?></span>
                       <span class="deposite_time_text">VNĐ</span>
@@ -139,9 +139,9 @@
               <div class="deposite_time_triangle">
               </div>
               <div class="deposite_info">
-                  <span>Profit / 90 days: <?php echo number_format('720000000') ?> VNĐ</span>
-                  <span>Reinvestment / days: <?php echo number_format('180000000') ?> VNĐ</span>
-                  <span>2% per day</span>
+                  <span>Lãi / 90 ngày: <?php echo number_format('720000000') ?> VNĐ</span>
+                  <span>Tái đầu tư / ngày: <?php echo number_format('180000000') ?> VNĐ</span>
+                  <span>2% mỗi ngày</span>
               </div>
 <!--                <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="5">
@@ -153,9 +153,9 @@
           </div>
           <div class="col-md-4">
                <div class="deposite deposite_purple">
-              <span class="deposite_title">90 days</span>
+              <span class="deposite_title">90 ngày</span>
               <div class="deposite_time_wrap">
-                  <span class="deposite_time_wrap_text">2% per day</span>
+                  <span class="deposite_time_wrap_text">2% mỗi ngày</span>
                   <div class="deposite_time">
                       <span class="deposite_time_digit"><?php echo number_format('1000000000') ?></span>
                       <span class="deposite_time_text">VNĐ</span>
@@ -164,9 +164,9 @@
               <div class="deposite_time_triangle">
               </div>
               <div class="deposite_info">
-                  <span>Profit / 90 days: <?php echo number_format('1440000000') ?> VNĐ</span>
-                  <span>Reinvestment / days: <?php echo number_format('360000000') ?> VNĐ</span>
-                  <span>2% per day</span>
+                  <span>Lãi / 90 ngày: <?php echo number_format('1440000000') ?> VNĐ</span>
+                  <span>Tái đầu tư / ngày: <?php echo number_format('360000000') ?> VNĐ</span>
+                  <span>2% mỗi ngày</span>
               </div>
 <!--                <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="6">
@@ -181,9 +181,9 @@
             if (intval($package) === 5000000) { ?>
             <div class=" col-md-4">
                <div class="deposite deposite_orange">
-                    <span class="deposite_title">90 days</span>
+                    <span class="deposite_title">90 ngày</span>
                     <div class="deposite_time_wrap">
-                        <span class="deposite_time_wrap_text">2% per day</span>
+                        <span class="deposite_time_wrap_text">2% mỗi ngày</span>
                         <div class="deposite_time">
                             <span class="deposite_time_digit"><?php echo number_format('20000000') ?></span>
                       <span class="deposite_time_text">VNĐ</span>
@@ -192,9 +192,9 @@
                     <div class="deposite_time_triangle">
                     </div>
                     <div class="deposite_info">
-                       <span>Profit / 90 days: <?php echo number_format('28000000') ?> VNĐ</span>
-                        <span>Reinvestment / days: <?php echo number_format('7200000') ?> VNĐ</span>
-                        <span>2% per day</span>
+                       <span>Lãi / 90 ngày: <?php echo number_format('28000000') ?> VNĐ</span>
+                        <span>Tái đầu tư / ngày: <?php echo number_format('7200000') ?> VNĐ</span>
+                        <span>2% mỗi ngày</span>
                     </div>
 <!--                      <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="2">
@@ -206,9 +206,9 @@
             </div>
                <div class="col-md-4">
                   <div class="deposite deposite_green">
-                    <span class="deposite_title">90 days</span>
+                    <span class="deposite_title">90 ngày</span>
                     <div class="deposite_time_wrap">
-                        <span class="deposite_time_wrap_text">2% per day</span>
+                        <span class="deposite_time_wrap_text">2% mỗi ngày</span>
                         <div class="deposite_time">
                             <span class="deposite_time_digit"><?php echo number_format('50000000') ?></span>
                       <span class="deposite_time_text">VNĐ</span>
@@ -217,9 +217,9 @@
                     <div class="deposite_time_triangle">
                     </div>
                     <div class="deposite_info">
-                        <span>Profit / 90 days: <?php echo number_format('72000000') ?> VNĐ</span>
-                        <span>Reinvestment / days: <?php echo number_format('18000000') ?> VNĐ</span>
-                        <span>2% per day</span>
+                        <span>Lãi / 90 ngày: <?php echo number_format('72000000') ?> VNĐ</span>
+                        <span>Tái đầu tư / ngày: <?php echo number_format('18000000') ?> VNĐ</span>
+                        <span>2% mỗi ngày</span>
                     </div>
 <!--                      <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="3">
@@ -231,9 +231,9 @@
                </div>
             <div class="col-md-4">
                <div class="deposite deposite_cyan">
-              <span class="deposite_title">90 days</span>
+              <span class="deposite_title">90 ngày</span>
               <div class="deposite_time_wrap">
-                  <span class="deposite_time_wrap_text">2% per day</span>
+                  <span class="deposite_time_wrap_text">2% mỗi ngày</span>
                   <div class="deposite_time">
                       <span class="deposite_time_digit"><?php echo number_format('100000000') ?></span>
                       <span class="deposite_time_text">VNĐ</span>
@@ -242,9 +242,9 @@
               <div class="deposite_time_triangle">
               </div>
               <div class="deposite_info">
-                  <span>Profit / 90 days: <?php echo number_format('144000000') ?> VNĐ</span>
-                  <span>Reinvestment / days: <?php echo number_format('36000000') ?> VNĐ</span>
-                  <span>2% per day</span>
+                  <span>Lãi / 90 ngày: <?php echo number_format('144000000') ?> VNĐ</span>
+                  <span>Tái đầu tư / ngày: <?php echo number_format('36000000') ?> VNĐ</span>
+                  <span>2% mỗi ngày</span>
               </div>
 <!--                <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="4">
@@ -256,9 +256,9 @@
           </div>
            <div class="col-md-4">
                <div class="deposite deposite_blue">
-              <span class="deposite_title">90 days</span>
+              <span class="deposite_title">90 ngày</span>
               <div class="deposite_time_wrap">
-                  <span class="deposite_time_wrap_text">2% per day</span>
+                  <span class="deposite_time_wrap_text">2% mỗi ngày</span>
                   <div class="deposite_time">
                       <span class="deposite_time_digit"><?php echo number_format('500000000') ?></span>
                       <span class="deposite_time_text">VNĐ</span>
@@ -267,9 +267,9 @@
               <div class="deposite_time_triangle">
               </div>
               <div class="deposite_info">
-                  <span>Profit / 90 days: <?php echo number_format('720000000') ?> VNĐ</span>
-                  <span>Reinvestment / days: <?php echo number_format('180000000') ?> VNĐ</span>
-                  <span>2% per day</span>
+                  <span>Lãi / 90 ngày: <?php echo number_format('720000000') ?> VNĐ</span>
+                  <span>Tái đầu tư / ngày: <?php echo number_format('180000000') ?> VNĐ</span>
+                  <span>2% mỗi ngày</span>
               </div>
 <!--                <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="5">
@@ -281,9 +281,9 @@
           </div>
           <div class="col-md-4">
                <div class="deposite deposite_purple">
-              <span class="deposite_title">90 days</span>
+              <span class="deposite_title">90 ngày</span>
               <div class="deposite_time_wrap">
-                  <span class="deposite_time_wrap_text">2% per day</span>
+                  <span class="deposite_time_wrap_text">2% mỗi ngày</span>
                   <div class="deposite_time">
                       <span class="deposite_time_digit"><?php echo number_format('1000000000') ?></span>
                       <span class="deposite_time_text">VNĐ</span>
@@ -292,9 +292,9 @@
               <div class="deposite_time_triangle">
               </div>
               <div class="deposite_info">
-                  <span>Profit / 90 days: <?php echo number_format('1440000000') ?> VNĐ</span>
-                  <span>Reinvestment / days: <?php echo number_format('360000000') ?> VNĐ</span>
-                  <span>2% per day</span>
+                  <span>Lãi / 90 ngày: <?php echo number_format('1440000000') ?> VNĐ</span>
+                  <span>Tái đầu tư / ngày: <?php echo number_format('360000000') ?> VNĐ</span>
+                  <span>2% mỗi ngày</span>
               </div>
 <!--                <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="6">
@@ -309,9 +309,9 @@
             if (intval($package) === 20000000) { ?>
          <div class="col-md-4">
                   <div class="deposite deposite_green">
-                    <span class="deposite_title">90 days</span>
+                    <span class="deposite_title">90 ngày</span>
                     <div class="deposite_time_wrap">
-                        <span class="deposite_time_wrap_text">2% per day</span>
+                        <span class="deposite_time_wrap_text">2% mỗi ngày</span>
                         <div class="deposite_time">
                             <span class="deposite_time_digit"><?php echo number_format('50000000') ?></span>
                       <span class="deposite_time_text">VNĐ</span>
@@ -320,9 +320,9 @@
                     <div class="deposite_time_triangle">
                     </div>
                     <div class="deposite_info">
-                        <span>Profit / 90 days: <?php echo number_format('72000000') ?> VNĐ</span>
-                        <span>Reinvestment / days: <?php echo number_format('18000000') ?> VNĐ</span>
-                        <span>2% per day</span>
+                        <span>Lãi / 90 ngày: <?php echo number_format('72000000') ?> VNĐ</span>
+                        <span>Tái đầu tư / ngày: <?php echo number_format('18000000') ?> VNĐ</span>
+                        <span>2% mỗi ngày</span>
                     </div>
 <!--                      <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="3">
@@ -334,9 +334,9 @@
                </div>
             <div class="col-md-4">
                <div class="deposite deposite_cyan">
-              <span class="deposite_title">90 days</span>
+              <span class="deposite_title">90 ngày</span>
               <div class="deposite_time_wrap">
-                  <span class="deposite_time_wrap_text">2% per day</span>
+                  <span class="deposite_time_wrap_text">2% mỗi ngày</span>
                   <div class="deposite_time">
                       <span class="deposite_time_digit"><?php echo number_format('100000000') ?></span>
                       <span class="deposite_time_text">VNĐ</span>
@@ -345,9 +345,9 @@
               <div class="deposite_time_triangle">
               </div>
               <div class="deposite_info">
-                  <span>Profit / 90 days: <?php echo number_format('144000000') ?> VNĐ</span>
-                  <span>Reinvestment / days: <?php echo number_format('36000000') ?> VNĐ</span>
-                  <span>2% per day</span>
+                  <span>Lãi / 90 ngày: <?php echo number_format('144000000') ?> VNĐ</span>
+                  <span>Tái đầu tư / ngày: <?php echo number_format('36000000') ?> VNĐ</span>
+                  <span>2% mỗi ngày</span>
               </div>
       <!--          <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="4">
@@ -359,9 +359,9 @@
           </div>
            <div class="col-md-4">
                <div class="deposite deposite_blue">
-              <span class="deposite_title">90 days</span>
+              <span class="deposite_title">90 ngày</span>
               <div class="deposite_time_wrap">
-                  <span class="deposite_time_wrap_text">2% per day</span>
+                  <span class="deposite_time_wrap_text">2% mỗi ngày</span>
                   <div class="deposite_time">
                       <span class="deposite_time_digit"><?php echo number_format('500000000') ?></span>
                       <span class="deposite_time_text">VNĐ</span>
@@ -370,9 +370,9 @@
               <div class="deposite_time_triangle">
               </div>
               <div class="deposite_info">
-                  <span>Profit / 90 days: <?php echo number_format('720000000') ?> VNĐ</span>
-                  <span>Reinvestment / days: <?php echo number_format('180000000') ?> VNĐ</span>
-                  <span>2% per day</span>
+                  <span>Lãi / 90 ngày: <?php echo number_format('720000000') ?> VNĐ</span>
+                  <span>Tái đầu tư / ngày: <?php echo number_format('180000000') ?> VNĐ</span>
+                  <span>2% mỗi ngày</span>
               </div>
            <!--     <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="5">
@@ -384,9 +384,9 @@
           </div>
           <div class="col-md-4">
                <div class="deposite deposite_purple">
-              <span class="deposite_title">90 days</span>
+              <span class="deposite_title">90 ngày</span>
               <div class="deposite_time_wrap">
-                  <span class="deposite_time_wrap_text">2% per day</span>
+                  <span class="deposite_time_wrap_text">2% mỗi ngày</span>
                   <div class="deposite_time">
                       <span class="deposite_time_digit"><?php echo number_format('1000000000') ?></span>
                       <span class="deposite_time_text">VNĐ</span>
@@ -395,9 +395,9 @@
               <div class="deposite_time_triangle">
               </div>
               <div class="deposite_info">
-                  <span>Profit / 90 days: <?php echo number_format('1440000000') ?> VNĐ</span>
-                  <span>Reinvestment / days: <?php echo number_format('360000000') ?> VNĐ</span>
-                  <span>2% per day</span>
+                  <span>Lãi / 90 ngày: <?php echo number_format('1440000000') ?> VNĐ</span>
+                  <span>Tái đầu tư / ngày: <?php echo number_format('360000000') ?> VNĐ</span>
+                  <span>2% mỗi ngày</span>
               </div>
         <!--        <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="6">
@@ -411,9 +411,9 @@
          <?php } if (intval($package) === 50000000) { ?>
           <div class="col-md-4">
                <div class="deposite deposite_cyan">
-              <span class="deposite_title">90 days</span>
+              <span class="deposite_title">90 ngày</span>
               <div class="deposite_time_wrap">
-                  <span class="deposite_time_wrap_text">2% per day</span>
+                  <span class="deposite_time_wrap_text">2% mỗi ngày</span>
                   <div class="deposite_time">
                       <span class="deposite_time_digit"><?php echo number_format('100000000') ?></span>
                       <span class="deposite_time_text">VNĐ</span>
@@ -422,9 +422,9 @@
               <div class="deposite_time_triangle">
               </div>
               <div class="deposite_info">
-                  <span>Profit / 90 days: <?php echo number_format('144000000') ?> VNĐ</span>
-                  <span>Reinvestment / days: <?php echo number_format('36000000') ?> VNĐ</span>
-                  <span>2% per day</span>
+                  <span>Lãi / 90 ngày: <?php echo number_format('144000000') ?> VNĐ</span>
+                  <span>Tái đầu tư / ngày: <?php echo number_format('36000000') ?> VNĐ</span>
+                  <span>2% mỗi ngày</span>
               </div>
              <!--   <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="4">
@@ -436,9 +436,9 @@
           </div>
            <div class="col-md-4">
                <div class="deposite deposite_blue">
-              <span class="deposite_title">90 days</span>
+              <span class="deposite_title">90 ngày</span>
               <div class="deposite_time_wrap">
-                  <span class="deposite_time_wrap_text">2% per day</span>
+                  <span class="deposite_time_wrap_text">2% mỗi ngày</span>
                   <div class="deposite_time">
                       <span class="deposite_time_digit"><?php echo number_format('500000000') ?></span>
                       <span class="deposite_time_text">VNĐ</span>
@@ -447,9 +447,9 @@
               <div class="deposite_time_triangle">
               </div>
               <div class="deposite_info">
-                  <span>Profit / 90 days: <?php echo number_format('720000000') ?> VNĐ</span>
-                  <span>Reinvestment / days: <?php echo number_format('180000000') ?> VNĐ</span>
-                  <span>2% per day</span>
+                  <span>Lãi / 90 ngày: <?php echo number_format('720000000') ?> VNĐ</span>
+                  <span>Tái đầu tư / ngày: <?php echo number_format('180000000') ?> VNĐ</span>
+                  <span>2% mỗi ngày</span>
               </div>
         <!--        <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="5">
@@ -461,9 +461,9 @@
           </div>
           <div class="col-md-4">
                <div class="deposite deposite_purple">
-              <span class="deposite_title">90 days</span>
+              <span class="deposite_title">90 ngày</span>
               <div class="deposite_time_wrap">
-                  <span class="deposite_time_wrap_text">2% per day</span>
+                  <span class="deposite_time_wrap_text">2% mỗi ngày</span>
                   <div class="deposite_time">
                       <span class="deposite_time_digit"><?php echo number_format('1000000000') ?></span>
                       <span class="deposite_time_text">VNĐ</span>
@@ -472,9 +472,9 @@
               <div class="deposite_time_triangle">
               </div>
               <div class="deposite_info">
-                  <span>Profit / 90 days: <?php echo number_format('1440000000') ?> VNĐ</span>
-                  <span>Reinvestment / days: <?php echo number_format('360000000') ?> VNĐ</span>
-                  <span>2% per day</span>
+                  <span>Lãi / 90 ngày: <?php echo number_format('1440000000') ?> VNĐ</span>
+                  <span>Tái đầu tư / ngày: <?php echo number_format('360000000') ?> VNĐ</span>
+                  <span>2% mỗi ngày</span>
               </div>
            <!--     <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="6">
@@ -488,9 +488,9 @@
           <?php } if (intval($package) === 100000000) { ?>
          <div class="col-md-4">
                <div class="deposite deposite_blue">
-              <span class="deposite_title">90 days</span>
+              <span class="deposite_title">90 ngày</span>
               <div class="deposite_time_wrap">
-                  <span class="deposite_time_wrap_text">2% per day</span>
+                  <span class="deposite_time_wrap_text">2% mỗi ngày</span>
                   <div class="deposite_time">
                       <span class="deposite_time_digit"><?php echo number_format('500000000') ?></span>
                       <span class="deposite_time_text">VNĐ</span>
@@ -499,9 +499,9 @@
               <div class="deposite_time_triangle">
               </div>
               <div class="deposite_info">
-                  <span>Profit / 90 days: <?php echo number_format('720000000') ?> VNĐ</span>
-                  <span>Reinvestment / days: <?php echo number_format('180000000') ?> VNĐ</span>
-                  <span>2% per day</span>
+                  <span>Lãi / 90 ngày: <?php echo number_format('720000000') ?> VNĐ</span>
+                  <span>Tái đầu tư / ngày: <?php echo number_format('180000000') ?> VNĐ</span>
+                  <span>2% mỗi ngày</span>
               </div>
                <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="5">
@@ -513,9 +513,9 @@
           </div>
           <div class="col-md-4">
                <div class="deposite deposite_purple">
-              <span class="deposite_title">90 days</span>
+              <span class="deposite_title">90 ngày</span>
               <div class="deposite_time_wrap">
-                  <span class="deposite_time_wrap_text">2% per day</span>
+                  <span class="deposite_time_wrap_text">2% mỗi ngày</span>
                   <div class="deposite_time">
                       <span class="deposite_time_digit"><?php echo number_format('1000000000') ?></span>
                       <span class="deposite_time_text">VNĐ</span>
@@ -524,9 +524,9 @@
               <div class="deposite_time_triangle">
               </div>
               <div class="deposite_info">
-                  <span>Profit / 90 days: <?php echo number_format('1440000000') ?> VNĐ</span>
-                  <span>Reinvestment / days: <?php echo number_format('360000000') ?> VNĐ</span>
-                  <span>2% per day</span>
+                  <span>Lãi / 90 ngày: <?php echo number_format('1440000000') ?> VNĐ</span>
+                  <span>Tái đầu tư / ngày: <?php echo number_format('360000000') ?> VNĐ</span>
+                  <span>2% mỗi ngày</span>
               </div>
               <!--  <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="6">
@@ -540,9 +540,9 @@
           <?php } if (intval($package) === 500000000) { ?>
         <div class="col-md-4">
                <div class="deposite deposite_purple">
-              <span class="deposite_title">90 days</span>
+              <span class="deposite_title">90 ngày</span>
               <div class="deposite_time_wrap">
-                  <span class="deposite_time_wrap_text">2% per day</span>
+                  <span class="deposite_time_wrap_text">2% mỗi ngày</span>
                   <div class="deposite_time">
                       <span class="deposite_time_digit"><?php echo number_format('1000000000') ?></span>
                       <span class="deposite_time_text">VNĐ</span>
@@ -551,9 +551,9 @@
               <div class="deposite_time_triangle">
               </div>
               <div class="deposite_info">
-                  <span>Profit / 90 days: <?php echo number_format('1440000000') ?> VNĐ</span>
-                  <span>Reinvestment / days: <?php echo number_format('360000000') ?> VNĐ</span>
-                  <span>2% per day</span>
+                  <span>Lãi / 90 ngày: <?php echo number_format('1440000000') ?> VNĐ</span>
+                  <span>Tái đầu tư / ngày: <?php echo number_format('360000000') ?> VNĐ</span>
+                  <span>2% mỗi ngày</span>
               </div>
         <!--        <form  class="product-form" rel="6" method="POST" action="<?php echo $self->url->link('account/price/paymentSubmit', '', 'SSL'); ?>">
                      <input type="hidden" name="amount"  class="form-control" value="6">

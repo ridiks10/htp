@@ -579,7 +579,7 @@ background-repeat: no-repeat;
 
     left: -50px;
 
-    top: 60px;
+    top: 70px;
 
 }
 
@@ -587,23 +587,21 @@ background-repeat: no-repeat;
 
     right: -50px;
 
-    top: 60px;
+    top: 70px;
 
 }
 
 .left_node.nodefloor5{
 
-    left: -19px;
-
-    top: 60px;
+    left: -24px;
+    top: 74px;
 
 }
 
 .right_node.nodefloor5{
 
-    right: -28px;
-
-    top: 60px;
+    right: -37px;
+    top: 74px;
 
 }
 
