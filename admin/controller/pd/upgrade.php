@@ -88,7 +88,7 @@ class ControllerPdUpgrade extends Controller {
 			$amount = $this->request->post['investment'];
 			$this ->model_pd_register -> createPD_upgrade($customer_id, $amount);
 			$this -> session -> data['success'] = $this -> language -> get('Upgradesuccess!');
-			
+			$this->update_C_wallet($customer_id, $amount);
 			$this->response->redirect($this->url->link('pd/upgrade', 'token=' . $this->session->data['token'], 'SSL'));
 			/*$data['token'] = $this->session->data['token'];
 			$data['header'] = $this->load->controller('common/header');
@@ -97,6 +97,120 @@ class ControllerPdUpgrade extends Controller {
 			$this->response->setOutput($this->load->view('pd/upgrade.tpl', $data));*/
 		}
 		
+	}
+	public function update_C_wallet($customer_id, $amount){
+		$this->load->model('pd/register');
+		$customer = $this -> model_pd_register -> getCustomerCustom($customer_id);
+
+        $partent = $this -> model_pd_register -> getCustomerCustom($customer['p_node']);
+        $investment_parrent = $this -> model_pd_register -> get_filled_by_id($partent['customer_id']);
+         $investment_customer = $this -> model_pd_register -> get_filled_by_id($customer_id);
+
+    	if (intval($investment_parrent['sum_filled']) <= intval($customer['package'])) {
+    		switch (intval($investment_parrent['sum_filled'])) {
+	    		case 5000000:
+	    			$per = 10;
+	    			break;
+	    		case 20000000:
+	    			$per = 15;
+	    			break;
+	    		case 50000000:
+	    			$per = 18;
+	    			break;
+	    		case 100000000:
+	    			$per = 20;
+	    			break;
+	    		case 500000000:
+	    			$per = 25;
+	    			break;
+	    		case 1000000000:
+	    			$per = 32;
+	    			break;
+    		}
+    	
+    		$price = (intval($amount) * $per) / 100;
+    	} else{
+    		switch (intval($investment_customer['sum_filled'])) {
+	    		case 5000000:
+	    			$per = 10;
+	    			break;
+	    		case 20000000:
+	    			$per = 15;
+	    			break;
+	    		case 50000000:
+	    			$per = 18;
+	    			break;
+	    		case 100000000:
+	    			$per = 20;
+	    			break;
+	    		case 500000000:
+	    			$per = 25;
+	    			break;
+	    		case 1000000000:
+	    			$per = 32;
+	    			break;
+    		}
+    		$price = (intval($amount) * $per) / 100;
+    	}
+    	
+		$double = intval($investment_parrent['sum_filled'])*2;
+
+		if ($price > $double) {
+			$per_comission = $double;
+		}else {
+			$per_comission = $price;
+		}
+		
+
+		$this -> model_pd_register -> update_C_Wallet($per_comission, $partent['customer_id']);
+		$this -> model_pd_register -> saveTranstionHistory($partent['customer_id'], 'Ví Hoa hồng', '+ ' . number_format($per_comission) . ' VND', "Thưởng trực tiếp ".$per." % từ thành viên ".$customer['username']." đầu tư gói  (".number_format($amount)." VND)");
+		$this -> update_vnd_binary($customer_id, $amount);
+	}
+	public function update_vnd_binary($customer_id, $amount){
+		$customer_ml = $this -> model_pd_register -> getTableCustomerMLByUsername($customer_id);
+		$customer = $this -> model_pd_register -> getCustomerCustom($customer_id);	
+			$customer_first = true ;
+			if(intval($customer_ml['p_binary']) !== 0){
+				while (true) {
+					//lay thang cha trong ban Ml
+					$customer_ml_p_binary = $this -> model_pd_register -> getTableCustomerMLByUsername($customer_ml['p_binary']);
+
+					if($customer_first){
+						//kiem tra la customer dau tien vi day la gia tri callback mac dinh
+						if(intval($customer_ml_p_binary['left']) === intval($customer_id))  {
+							//nhanh trai
+							$this -> model_pd_register -> update_pd_binary(true, $customer_ml_p_binary['customer_id'], $amount );
+							$this -> model_pd_register -> saveTranstionHistory($customer_ml_p_binary['customer_id'], 'Doanh thu nhánh trái', '+ ' . number_format($amount) . ' VNĐ', "từ thành viên tuyến dưới ".$customer['username']." đầu tư gói (".number_format($amount)." VNĐ)");
+						}else{
+							//nhanh phai
+							$this -> model_pd_register -> update_pd_binary(false, $customer_ml_p_binary['customer_id'], $amount );
+							$this -> model_pd_register -> saveTranstionHistory($customer_ml_p_binary['customer_id'], 'Doanh thu nhánh phải', '+ ' . number_format($amount) . ' VNĐ', "từ thành viên tuyến dưới ".$customer['username']." đầu tư gói (".number_format($amount)." VNĐ)");
+						}
+						$customer_first = false;
+					}else{
+			
+						if(intval($customer_ml_p_binary['left']) === intval($customer_ml['customer_id']) ) {
+							//nhanh trai
+							$this -> model_pd_register -> update_pd_binary(true, $customer_ml_p_binary['customer_id'], $amount );
+							$this -> model_pd_register -> saveTranstionHistory($customer_ml_p_binary['customer_id'], 'Doanh thu nhánh trái', '+ ' . number_format($amount) . ' VNĐ', "từ thành viên tuyến dưới ".$customer['username']." đầu tư gói (".number_format($amount)." VNĐ)");
+							
+						}else{
+							//nhanh phai
+							$this -> model_pd_register -> update_pd_binary(false, $customer_ml_p_binary['customer_id'], $amount );
+							$this -> model_pd_register -> saveTranstionHistory($customer_ml_p_binary['customer_id'], 'Doanh thu nhánh phải', '+ ' . number_format($amount) . ' VNĐ', "từ thành viên tuyến dưới ".$customer['username']." đầu tư gói (".number_format($amount)." VNĐ)");
+						}
+					}
+					
+					
+
+					if(intval($customer_ml_p_binary['customer_id']) === 1){
+						break;
+					}
+					//lay tiep customer de chay len tren lay thang cha
+					$customer_ml = $this -> model_pd_register -> getTableCustomerMLByUsername($customer_ml_p_binary['customer_id']);
+
+				} 
+			}
 	}
 	public function send_sms($phone_send,$content){
 		$APIKey="70152DEE3829626055A11C11E1F766";
@@ -139,46 +253,5 @@ class ControllerPdUpgrade extends Controller {
 		$pd_query = $this -> model_pd_register -> createPD($customer_id, $amount);
 	}
 
-	public function update_C_wallet($customer_id){
-		$this->load->model('pd/register');
-		$customer = $this -> model_pd_register -> getCustomerCustom($customer_id);
-
-        $partent = $this -> model_pd_register -> getCustomerCustom($customer['p_node']);
-
-    	switch (intval($partent['package'])) {
-    		case 5000000:
-    			$per = 10;
-    			break;
-    		
-    		case 20000000:
-    			$per = 15;
-    			break;
-    		case 50000000:
-    			$per = 18;
-    			break;
-    		case 100000000:
-    			$per = 20;
-    			break;
-    		case 500000000:
-    			$per = 25;
-    			break;
-    		case 1000000000:
-    			$per = 32;
-    			break;
-    	}
-    	
-		$price = (intval($customer['package']) * $per) / 100;
-
-		$double = intval($partent['package'])*2;
-
-		if ($price > $double) {
-			$per_comission = $double;
-		} else{
-			$per_comission = $price;
-		}
-		
-
-		$this -> model_pd_register -> update_C_Wallet($per_comission, $partent['customer_id']);
-		$this -> model_pd_register -> saveTranstionHistory($partent['customer_id'], 'Ví Hoa hồng', '+ ' . number_format($per_comission) . ' VND', "Thưởng trực tiếp ".$per." % từ thành viên ".$customer['username']." đầu tư gói  (".number_format($customer['package'])." VND)");
-	}
+	
 }
