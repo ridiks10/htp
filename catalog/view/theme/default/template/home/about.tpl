@@ -152,7 +152,7 @@
         <div class='wrapper'>
             <h1 id='inner_page_title'>Giới thiệu về chúng tôi</h1>
              
-                <p>Công ty CÔNG TY TNHH SX TM VẬN TẢI BIỂN HƯNG THỊNH PHÁT hoạt động trong lĩnh vực đóng tàu vận tải biển quốc tế và bất động. Bằng việc làm việc với chúng tôi bạn luôn có thể chắc chắn về sự thành công của các khoản đầu tư của mình.</p>
+                <p>Công ty CÔNG TY TNHH SX TM VẬN TẢI BIỂN HƯNG THỊNH PHÁT hoạt động trong lĩnh vực đóng tàu vận tải biển quốc tế. Bằng việc làm việc với chúng tôi bạn luôn có thể chắc chắn về sự thành công của các khoản đầu tư của mình.</p>
              
         </div>
     </div>
@@ -176,7 +176,7 @@
         </div>
             <div id='timeline_slider'>
                 <div class='timeline_slide'>
-                    <div class='timeline_left_side' style="margin: 0 auto;display: block;width: 70%">
+                    <!-- <div class='timeline_left_side' style="margin: 0 auto;display: block;width: 70%">
                         <h2>since <i>2006</i></h2>
                         <span>Chúng tôi đã bắt đầu công việc kinh doanh của chính mình</span>
                         <p>Các nhân viên có ít nhất 5 năm kinh nghiệm làm việc trong tiểu bang của chúng tôi. Tất cả trong số họ là những sinh viên tốt nghiệp từ các trường đại học tốt nhất trên thế giới. Hơn thế nữa,  tất cả những người quản lý của chúng tôi đều có bằng MBA (Thạc Sỹ Quản trị Kinh doanh)uy tín và điều này có nghĩa là tất cả trong số họ đều có kinh nghiệm làm việc dày dặn và được đào tạo nâng cao về kinh doanh.</p>
@@ -196,7 +196,7 @@ Công ty của chúng tôi đánh giá cao danh tiếng của chính mình. Do �
                             Các chuyên gia của chúng tôi liên tục theo dõi thị trường bất động sản ở các quốc gia trên toàn thế giới. Họ cũng theo dõi các xu hướng du lịch và phân tích thông tin để tìm ra các đối tượng mang lại lợi nhuận nhiều nhất để đầu tư. 
                         </p>
                     </div>
-
+ -->
                 </div>
 
                  

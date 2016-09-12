@@ -154,7 +154,8 @@
         <div class='wrapper'>
             <h1 id='inner_page_title'>Câu trả lời cho các câu hỏi</h1>
              
-                <p>Công ty CÔNG TY TNHH SX TM VẬN TẢI BIỂN HƯNG THỊNH PHÁT hoạt động trong lĩnh vực đóng tàu vận tải biển quốc tế và bất động. Bằng việc làm việc với chúng tôi bạn luôn có thể chắc chắn về sự thành công của các khoản đầu tư của mình.</p>
+                <p>Công ty CÔNG TY TNHH SX TM VẬN TẢI BIỂN HƯNG THỊNH PHÁT hoạt động trong lĩnh vực đóng tàu vận tải biển quốc tế
+                    . Bằng việc làm việc với chúng tôi bạn luôn có thể chắc chắn về sự thành công của các khoản đầu tư của mình.</p>
              
         </div>
     </div>
@@ -212,24 +213,24 @@
                 <div class='faq_text'>Chúng tôi có trên 10 năm kinh nghiệm đầu tư. Trong suốt thời gian này, chúng tôi đã tích lũy được một lượng kiến thức ở phạm vi lớn cho phép chúng tôi tăng số vốn cho các đối tác của mình. 
                 </div>
             </div>
-            <div class='faq_block'>
+            <!-- <div class='faq_block'>
                 <div class='faq_title_text'>
                     <div class='faq_plus'>+</div>
                     Làm thế nào công ty có thể chứng minh rằng công ty đã ở trong lĩnh vực này trong 10 năm? 
                 </div>
                 <div class='faq_text'>Hãy nhìn vào thông tin đăng ký tên miền của chúng tôi. Chúng tôi đã đăng đăng ký tên miền này ngay từ khi bắt đầu thử sức mình. 
                 </div>
-            </div>
-            <div class='faq_block'>
+            </div> -->
+           <!--  <div class='faq_block'>
                 <div class='faq_title_text'>
                     <div class='faq_plus'>+</div>
                     Tại sao không có nhiều thông tin về công ty trên Internet trong những năm này? 
                 </div>
                 <div class='faq_text'>Ban đầu chúng tôi chỉ hoạt động để thu hút các khoản vay ngân hàng. Nhưng hiện nay chúng tôi bắt đầu "thèm khát" các khoản đầu tư. Do các ngân hàng không thể phát hành vốn cần thiết để chúng tôi có thể quản lý thành công nên chúng tôi đã quyết định làm việc với các đối tác và cá nhân..  . 
                 </div>
-            </div>
+            </div> -->
              
-            <div class='faq_block'>
+       <!--      <div class='faq_block'>
                 <div class='faq_title_text'>
                     <div class='faq_plus'>+</div>
                     Các thay đổi khác mà công ty đang có kế hoạch cho trang web của mình là gì? 
@@ -244,13 +245,13 @@
                 </div>
                 <div class='faq_text'>Trong thời gian hoạt động của mình, chúng tôi đã tích lũy được rất nhiều kinh nghiệm trong lĩnh vực đầu tư bất động sản. Chúng tôi chuyên về bất động sản vùng nghĩ dưỡng trên toàn thế giới vì phân khúc này ít phát sinh vấn đề trong nền kinh thế thế giới. Trong phần "Các dự án của chúng tôi", bạn có thể làm quen với các dự án mà chúng tôi đã và đang tham gia. Hầu hết, đây là việc xây dựng các tổ hợp dân cư và bất động sản thương mại 
                 </div>
-            </div>
-            <div class='faq_block'>
+            </div> -->
+           <!--  <div class='faq_block'>
                 <div class='faq_title_text'>
                     <div class='faq_plus'>+</div>
                     Công ty kiếm thu nhập này bằng cách nào? 
                 </div>
-                <div class='faq_text'>Có nhiều cách. Một trong các phòng ban của công ty chúng tôi, ví dụ, làm việc về việc xây dựng tòa nhà mới. Trong quá trình xây dựng, nhà phát triển cung cấp giá thấp nhất để xây nhà và chung cư, và một hoặc hai năm sau khi xây dựng, những đối tượng này trở nên có giá trị hơn và được bán ra nhanh chóng ở mức giá cao hơn rất nhiều so với mức giá mà chúng được xây dựng? 
+                <div class='faq_text'>Có nhiều cách. Một trong các phòng ban của công ty chúng tôi, ví dụ, làm việc về việc xây dựng đóng tàu vận tải biển. Trong quá trình xây dựng, nhà phát triển cung cấp giá thấp nhất để xây nhà và chung cư, và một hoặc hai năm sau khi xây dựng, những đối tượng này trở nên có giá trị hơn và được bán ra nhanh chóng ở mức giá cao hơn rất nhiều so với mức giá mà chúng được xây dựng? 
                 </div>
             </div>
             <div class='faq_block'>
@@ -284,7 +285,7 @@
                 </div>
                 <div class='faq_text'>Tất nhiên là có 
                 </div>
-            </div>
+            </div> -->
             <div class='faq_block'>
                 <div class='faq_title_text'>
                     <div class='faq_plus'>+</div>
