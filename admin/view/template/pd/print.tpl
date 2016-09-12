@@ -4,6 +4,12 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title></title>
+	<style type="text/css" media="print">
+	@page {
+	    size: auto;   /* auto is the initial value */
+	    margin: 0;  /* this affects the margin in the printer settings */
+	}
+</style>
 	<style type="text/css">
 	body {
 	  background: rgb(204,204,204); 
