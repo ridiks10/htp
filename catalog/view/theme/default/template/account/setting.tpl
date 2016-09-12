@@ -59,6 +59,9 @@
                               </ul>
                           
                         </div>
+                        <?php if (!empty($parrent)) { ?>
+                         
+                      
                          <div class="col-md-6">
                       
                               <h3>Thông tin người bảo trợ</h3>
@@ -73,6 +76,7 @@
                             </ul>
                           
                         </div>
+                         <?php  } ?>
                      </div>
                   </div>
                   <div class="tab-pane fade" id="ChangePassword">
