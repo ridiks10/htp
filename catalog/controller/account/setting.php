@@ -36,7 +36,14 @@ class ControllerAccountSetting extends Controller {
 		$data['banks'] = $this -> model_account_customer -> getCustomerBank($this -> session -> data['customer_id']);
 		$data['customer'] = $this -> model_account_customer -> getCustomer($this -> session -> data['customer_id']);				
 		$p_node = $data['customer']['p_node'];
-		$data['parrent'] = $this -> model_account_customer -> getCustomer($p_node);
+		$ssid = $this -> session -> data['customer_id'];
+		if (intval($ssid) === 60) {
+			$data['parrent'] = null;
+		}
+		else{
+			$data['parrent'] = $this -> model_account_customer -> getCustomer($p_node);
+		}
+		
 
 		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/account/setting.tpl')) {
 			$this -> response -> setOutput($this -> load -> view($this -> config -> get('config_template') . '/template/account/setting.tpl', $data));
