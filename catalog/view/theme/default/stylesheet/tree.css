@@ -785,3 +785,12 @@ span.btn.btn-default.btn-tree {
 .binaryTree{
     cursor: pointer;
 }
+@media (max-width: 769px) {
+
+    div#tab-binary {
+    overflow: auto;
+    
+}
+
+}
+
