@@ -86,7 +86,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-6">
+            <!-- <div class="col-lg-4 col-md-4 col-sm-6">
                 <div class="tile">
                     <div class="tile-heading">Tổng số khách</div>
                     <div class="tile-body">
@@ -96,7 +96,7 @@
                         </h2>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- <div class="col-lg-4 col-md-4 col-sm-6">
                 <div class="tile">
                     <div class="tile-heading">Customer provide donation waiting</div>

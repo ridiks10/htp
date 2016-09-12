@@ -223,7 +223,7 @@
               </div>
 
             </div>
-             <div class="col-sm-4">
+             <!-- <div class="col-sm-4">
               <div class="form-group">
                   <label class="control-label" for="input-phone">Status PD</label>
               
@@ -236,8 +236,8 @@
                 </select>
               </div>
 
-            </div> 
-             <div class="col-sm-4">
+            </div>  -->
+             <!-- <div class="col-sm-4">
               <div class="form-group">
                   <label class="control-label" for="input-phone">Status GD</label>
               
@@ -248,11 +248,11 @@
                      <option value="3" <?php echo 3 == $filter_status_gd? 'selected="selected"':'';?>>GD FINISH</option>
                    <!--  <?php for($n=1;$n<=2;$n++){?>
                     <option  value="<?php echo $n;?>" <?php echo $n == $filter_status_gd? 'selected="selected"':'';?>> <?php echo $n;?></option>
-                  <?php }?> -->
+                  <?php }?> 
                 </select>
               </div>
 
-            </div> 
+            </div>  -->
              <div class="col-sm-2" style="margin-top:20px">
             	<button type="button" id="button-filter" class="btn btn-primary pull-right"><i class="fa fa-search"></i> <?php echo $button_filter; ?></button>
             	

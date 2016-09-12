@@ -42,7 +42,7 @@
             <?php
               if (count($show_button_hoahong) > 0) {
             ?>
-              <a class="click_" href="index.php?route=report/exportCustomerid/getPD90Before&token=<?php echo $_GET['token'];?>">
+              <a onclick="return confirm('Are you sure?')" class="click_" href="index.php?route=report/exportCustomerid/getPD90Before&token=<?php echo $_GET['token'];?>">
               <button type="button" class="btn btn-success">Tính lãi</button>
               </a>
             <?php } else { ?>
@@ -54,7 +54,7 @@
             <?php
               if (count($show_button_export) > 0) {
             ?>
-            <a class="click" href="index.php?route=report/exportCustomerid/export_pd_new&token=<?php echo $_GET['token'];?>"><button type="button" class="btn btn-info">Xuất Excel</button></a>
+            <a class="btn btn-info click" href="index.php?route=report/exportCustomerid/export_pd_new&token=<?php echo $_GET['token'];?>">Xuất Excel</a>
           <?php } else { ?>
             <h1 class="countdown" data-countdown="<?php echo $get_time_button_export['date_finish'];?>"></h1>
           <?php } ?>
@@ -66,7 +66,7 @@
     <table>
       <thead>
         <tr>
-          <th>Lãi trực tiếp</th>
+          <th>Hoa hồng trực tiếp</th>
           <th></th>
         </tr>
       </thead>
@@ -99,11 +99,7 @@
 
 <script type="text/javascript">
 $('.click').click(function() {
-  jQuery(this).hide();
-  setTimeout(function(){
-    location.reload();
-  },1000)
-    
+  jQuery(this).hide();  
 });
 </script>
 <?php echo $footer; ?>

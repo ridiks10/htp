@@ -2945,32 +2945,32 @@ class ModelSaleCustomer extends Model {
 	public function update_wallet_m_20($amount,$customer_id){
 		$query = $this -> db -> query("
 		UPDATE ". DB_PREFIX ."customer_m_wallet SET
-			amount = amount + ".(float)$amount.",
+			amount = amount + ".doubleval($amount).",
 			date = NOW()
-			WHERE customer_id = '".$customer_id."'
+			WHERE customer_id = '".doubleval($customer_id)."'
 		");
 		return $query;
 	}
 	public function update_wallet_c_0($amount,$customer_id){
 		$query = $this -> db -> query("
 		UPDATE ". DB_PREFIX ."customer_c_wallet SET
-			amount = ".(float)$amount."
-			WHERE customer_id = '".$customer_id."'
+			amount = ".doubleval($amount)."
+			WHERE customer_id = '".doubleval($customer_id)."'
 		");
 		return $query;
 	}
 	public function update_wallet_r_0($amount,$customer_id){
 		$query = $this -> db -> query("
 		UPDATE ". DB_PREFIX ."customer_r_wallet SET
-			amount = ".(float)$amount."
-			WHERE customer_id = '".$customer_id."'
+			amount = ".doubleval($amount)."
+			WHERE customer_id = '".doubleval($customer_id)."'
 		");
 		return $query;
 	}
 	public function update_max_profit_0($max_profit,$id){
 		$query = $this -> db -> query("
 		UPDATE ". DB_PREFIX ."customer_provide_donation SET
-			max_profit = ".(float)$max_profit."
+			max_profit = ".doubleval($max_profit)."
 			WHERE id = '".$id."'
 		");
 		return $query;

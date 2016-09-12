@@ -263,7 +263,7 @@ span.cir {
   });
   //attach search box listener
   $("#search").on("select2-selecting", function(e) {
-    var paths = searchTree(root,e.object.text.split(" ")[0],[]);
+    var paths = searchTree(root,e.object.text.split("|")[0],[]);
     if(typeof(paths) !== "undefined"){
       openPaths(paths);
     }
