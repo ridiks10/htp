@@ -88,7 +88,7 @@ span.cir {
     
     <div class="panel-body">
        <div class="navbar-form">
-        <div id="search"></div>
+        <div id="search" style="width:340px;"></div>
             <div class="panel-body tab-pane bitree active" id="tab-tree">
         <span class="cir lv1"></span> left - 
                <span class="cir lv3"></span> right
@@ -263,7 +263,7 @@ span.cir {
   });
   //attach search box listener
   $("#search").on("select2-selecting", function(e) {
-    var paths = searchTree(root,e.object.text.split("|")[0],[]);
+    var paths = searchTree(root,e.object.text.split(" |")[0],[]);
     if(typeof(paths) !== "undefined"){
       openPaths(paths);
     }
