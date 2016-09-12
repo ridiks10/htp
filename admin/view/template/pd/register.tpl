@@ -162,7 +162,7 @@
       </div>
       <div class="col-md-6 col-md-offset-5">
          <div class="form-group">
-            <button type="submit" class="btn btn-primary">Đăng Ký</button>
+            <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn đăng ký tài khoản?')" class="btn btn-primary">Đăng Ký</button>
           </div>
       </div>
       </form>
