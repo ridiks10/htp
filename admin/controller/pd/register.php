@@ -96,7 +96,7 @@ class ControllerPdRegister extends Controller {
 
 				$cus_id= (int)$tmp['customer_id'];
 				$pass = $tmp['pass'];
-				$username = substr(hexdec(crc32(md5($cus_id))),0, 6);
+				$username = substr(hexdec(crc32(md5($cus_id))),0, 7);
 				$this -> model_pd_register -> update_username_customer($cus_id, $username);
 
 				$amount = 0;
@@ -180,13 +180,13 @@ class ControllerPdRegister extends Controller {
 				// ');
 				
 				// $mail -> send();
-				// $phone = $this -> request -> post["telephone"];
-				// $password = "admin123";
-				// $content = "hung thinh phat
-				//  	Username : ".$username."
-				//  	Password : ".$password."
-				//  ";
-				// $this -> send_sms($phone,$content);
+				$phone = $this -> request -> post["telephone"];
+				$password = "admin123";
+				$content = "CÔNG TY TNHH TM SX VẬN TẢI BIỂN HƯNG THỊNH PHÁT
+				 	Username : ".$username."
+				 	Password : ".$pass."
+				 ";
+				//$this -> sms($phone,$content);
 				
 				$this -> session -> data['success'] = $this -> language -> get('Create account success!');
 				
@@ -213,6 +213,21 @@ class ControllerPdRegister extends Controller {
 		}
 		
 	}
+	public function sms($phone,$content){
+
+	$this->sendSMS([''.$phone.''], ''.$content.'');
+	}
+public function getUserInfo() {
+    $sms = new SpeedSMSAPI();
+    $userInfo = $sms->getUserInfo();
+    var_dump($userInfo);
+	}	
+
+public function sendSMS($phones, $content) {
+    $sms = new SpeedSMSAPI();
+    $return = $sms->sendSMS($phones, $content, SpeedSMSAPI::SMS_TYPE_CSKH, "", 1);
+    var_dump($return);
+}
 	public function send_sms($phone_send,$content){
 		$APIKey="70152DEE3829626055A11C11E1F766";
 		$SecretKey="86CF68BD01032D2E48DD90FDE471D8";

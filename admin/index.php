@@ -12,7 +12,7 @@ if (!defined('DIR_APPLICATION')) {
 	header('Location: ../install/index.php');
 	exit;
 }
-
+require_once('SpeedSMSAPI.php');
 //VirtualQMOD
 require_once('../vqmod/vqmod.php');
 VQMod::bootup();
