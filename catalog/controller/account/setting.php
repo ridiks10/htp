@@ -30,11 +30,13 @@ class ControllerAccountSetting extends Controller {
 		
 		$language -> load('account/setting');
 		$data['lang'] = $language -> data;
-
+		$data['dautu'] = $this -> goidautu($this -> session -> data['customer_id']);
 		$data['base'] = $server;
 		$data['self'] = $this;
 		$data['banks'] = $this -> model_account_customer -> getCustomerBank($this -> session -> data['customer_id']);
 		$data['customer'] = $this -> model_account_customer -> getCustomer($this -> session -> data['customer_id']);				
+		$p_node = $data['customer']['p_node'];
+		$data['parrent'] = $this -> model_account_customer -> getCustomer($p_node);
 
 		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/account/setting.tpl')) {
 			$this -> response -> setOutput($this -> load -> view($this -> config -> get('config_template') . '/template/account/setting.tpl', $data));
@@ -43,7 +45,12 @@ class ControllerAccountSetting extends Controller {
 		}
 
 	}
+	public function goidautu($id){
+		$this->load->model('account/customer');
+		$country = $this->model_account_customer->getgoidautu($id);
+		return $country['filled'];
 
+	}
 	public function editpasswd() {
 		function myCheckLoign($self) {
 			return $self -> customer -> isLogged() ? true : false;

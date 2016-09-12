@@ -36,7 +36,7 @@
                               <h3><?php echo $lang['account_detail'] ?></h3>
                               <ul class="list-group">
                                  <li class="list-group-item" id="UserName"><?php echo $lang['text_username'] ?>: <span>huuthanhphuyen</span></li>
-                                 <li class="list-group-item"><?php echo $lang['Affiliate_Status'] ?>: <span>Premium</span></li>
+                                 <li class="list-group-item"><?php echo $lang['Affiliate_Status'] ?>: <span><?php echo number_format($dautu) ?> VND</span></li>
                                  <li class="list-group-item" id="Date"><?php echo $lang['Affiliate_Since'] ?>: <span>28/12/2015</span></li>
                                  <li class="list-group-item" id="LastIP"><?php echo $lang['Last_Login_IP'] ?>: <span>171.250.123.121</span></li>
                                  <li class="list-group-item" id="date_add_login"><?php echo $lang['Last_Login_Time'] ?>: <span>Accepted</span></li>
@@ -57,6 +57,20 @@
                                  <li class="list-group-item" id="Country"><?php echo $lang['country'] ?>: <span></span></li>
                                  <li class="list-group-item" id="Phone"><?php echo $lang['phone'] ?>: <span>+84913452268</span></li>
                               </ul>
+                          
+                        </div>
+                         <div class="col-md-6">
+                      
+                              <h3>Thông tin người bảo trợ</h3>
+                              <ul class="list-group">
+                                 <li class="list-group-item">ID đăng nhập: <span><?php echo $parrent['username'] ?></span></li>
+                                 <li class="list-group-item">Tên: <span><?php echo $parrent['firstname'] ?></span></li>
+                                 <li class="list-group-item">E-mail: <span><?php echo $parrent['email'] ?></span></li>
+                                
+                                 <li class="list-group-item"><?php echo $lang['phone'] ?>: <span><?php echo $parrent['telephone'] ?></span></li>
+                                 <li class="list-group-item">Ngày tham gia: <span><?php echo date("d/m/Y", strtotime($parrent['date_added'])); ?></span></li>
+                              <li class="list-group-item">Gói đầu tư: <span><?php echo number_format($self->goidautu($parrent['customer_id'])); ?> VND</span></li>
+                            </ul>
                           
                         </div>
                      </div>
