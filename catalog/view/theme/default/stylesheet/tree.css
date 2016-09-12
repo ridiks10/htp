@@ -787,4 +787,6 @@ span.btn.btn-default.btn-tree {
 }
 div#tab-binary {
     overflow: auto;
+        min-width: 1000px;
+
 }
