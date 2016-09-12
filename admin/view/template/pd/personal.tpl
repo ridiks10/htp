@@ -191,7 +191,7 @@ span.cir {
     .style("opacity", 0);
 
   var margin = {top: 20, right: 120, bottom: 20, left: 120},
-    width = 4000 - margin.right - margin.left,
+    width = 10000 - margin.right - margin.left,
     height = 800 - margin.top - margin.bottom;
 
   var i = 0,

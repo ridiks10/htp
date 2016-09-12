@@ -270,7 +270,8 @@ class ModelPdRegister extends Model {
 		$p_node = $this->get_customer_Id_by_username($data['p_node']);
 		$p_node= $p_node['customer_id'];
 		$p_binary = $this->get_customer_Id_by_username($data['p_binary']);
-$p_binary= $p_binary['customer_id'];
+		$p_binary= $p_binary['customer_id'];
+		
 		$this -> db -> query("
 			INSERT INTO " . DB_PREFIX . "customer SET
 			p_node = '" . $this -> db -> escape($p_node) . "',
@@ -285,7 +286,7 @@ $p_binary= $p_binary['customer_id'];
 			
 			telephone = '" . $this -> db -> escape($data['telephone']) . "', 
 			salt = '" . $this -> db -> escape($salt = substr(md5(uniqid(rand(), true)), 0, 9)) . "', 
-			password = '" . $this -> db -> escape(sha1($salt . sha1($salt . sha1($data['password'])))) . "', 
+			
 			status = '1', 
 			cmnd = '" . $this -> db -> escape($data['cmnd']) . "', 
 			country_id = '230',
@@ -296,11 +297,13 @@ $p_binary= $p_binary['customer_id'];
 			language = 'vietnamese',
 			package = '" . $this -> db -> escape($data['investment']) . "'
 		");
-
+		$password = mt_rand(9,999999);
 		$customer_id = $this -> db -> getLastId();
+		$dt_return['customer_id'] = $customer_id;
+		$dt_return['pass'] = $password;
 
 		// p_binary = '" . $data['p_node'] . "',
-
+		$this -> db -> query("UPDATE " . DB_PREFIX . "customer SET password = '" . $this -> db -> escape(sha1($salt . sha1($salt . sha1($password)))) . "' WHERE customer_id = '" . $customer_id . "'");
 		$this -> db -> query("INSERT INTO " . DB_PREFIX . "customer_ml SET 
 			customer_id = '" . (int)$customer_id . "',
 			customer_code = '".hexdec(crc32(md5($data['email'])))."',
@@ -316,7 +319,7 @@ $p_binary= $p_binary['customer_id'];
 		}else{
 			$this -> db -> query("UPDATE " . DB_PREFIX . "customer_ml SET `left` = '" . (int)$customer_id . "' WHERE customer_id = '" . $p_binary . "'");
 		}
-		return $customer_id;
+		return $dt_return;
 	}
 	public function check_p_binary($id){
 		$query = $this -> db -> query("

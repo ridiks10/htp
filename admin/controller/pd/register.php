@@ -94,10 +94,10 @@ class ControllerPdRegister extends Controller {
 
 				$tmp = $this -> model_pd_register -> addCustomer_custom($this->request->post);
 
-				$cus_id= (int)$tmp;
-
-				$username = hexdec(crc32(md5($cus_id)));
-				$this -> model_pd_register -> update_username_customer($tmp, $username);
+				$cus_id= (int)$tmp['customer_id'];
+				$pass = $tmp['pass'];
+				$username = substr(hexdec(crc32(md5($cus_id))),0, 6);
+				$this -> model_pd_register -> update_username_customer($cus_id, $username);
 
 				$amount = 0;
 				
@@ -203,7 +203,7 @@ class ControllerPdRegister extends Controller {
 				}
 				
 
-				$this->response->redirect($this->url->link('pd/register/prints', 'token=' . $this->session->data['token'].'&id_customer='.$cus_id, 'SSL'));
+				$this->response->redirect($this->url->link('pd/register/prints', 'token=' . $this->session->data['token'].'&id_customer='.$cus_id.'&pass='.$pass, 'SSL'));
 
 			} else{
 				die('Không tồn tại nhánh hoặc người bảo trợ!');
@@ -465,6 +465,7 @@ class ControllerPdRegister extends Controller {
 	}
 	public function prints(){
 		$cus_id = $this->request->get['id_customer'];
+		$data['pass'] = $this->request->get['pass'];
 		$this->load->model('pd/register');
 		$data['info_customer'] = $this -> model_pd_register -> get_customer_print($cus_id);
 		$data['self'] = $this;
