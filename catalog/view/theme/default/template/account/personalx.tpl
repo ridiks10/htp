@@ -85,12 +85,13 @@ jQuery.fn.show_tree = function(node) {
 // onclick=\'click_node('+node.id+')\' value=\''+node.id+'\'
     x_p = "<p>username: "+node.username+"<p>";
     x_p += "<p>Tên: "+node.account_holder+"<p>";
-    // x_p += "<p>Email: "+node.email+"<p>";
+    
+     // x_p += "<p>Email: "+node.email+"<p>";
     // x_p += "<p>Phone: "+node.telephone+"<p>";
     x_p += "<p>Ngày ĐK: "+node.date_added+"<p>";
-
-    x_p += "<p>Doanh số trái: "+node.leftPD+" VND</p>";
-    x_p += "<p>Doanh số phải: "+node.rightPD+" VND</p>";
+ x_p += "<p>Đầu tư: "+node.totalPD+"<p>";
+    x_p += "<p>Doanh số trái: "+node.leftPD+" </p>";
+    x_p += "<p>Doanh số phải: "+node.rightPD+"</p>";
 console.log(node)
 
     html += !node.empty 

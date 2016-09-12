@@ -67,7 +67,12 @@ class ControllerAccountRefferal extends Controller {
 		return $country['name'];
 
 	}
-	
+	public function goidautu($id){
+		$this->load->model('account/customer');
+		$country = $this->model_account_customer->getgoidautu($id);
+		return $country['filled'];
+
+	}
 	public function getlevel(){
 		if($this->customer->isLogged() && $this -> request -> get['id'] ) {
 			$this->load->model('account/customer');

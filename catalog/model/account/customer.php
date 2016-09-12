@@ -635,11 +635,13 @@ class ModelAccountCustomer extends Model {
 	}
 
 	public function getRefferalByID($id_customer ,$limit, $offset){
-		$query = $this -> db -> query("
-			SELECT c.email , c.username,c.firstname, c.telephone,c.cmnd,c.wallet,c.country_id, c.customer_id, ml.level, c.date_added
+		$query = $this -> db -> query("SELECT c.email , c.username,c.firstname, 
+			c.telephone,c.cmnd,c.wallet,c.country_id, c.customer_id, 
+			ml.level, c.date_added,DATE_ADD(ip.date_added,INTERVAL + 7 HOUR)
+ as date_add_login,ip.ip
 			FROM ".DB_PREFIX."customer_ml AS ml
 			JOIN ". DB_PREFIX ."customer AS c
-			ON ml.customer_id = c.customer_id
+			ON ml.customer_id = c.customer_id JOIN ". DB_PREFIX ."customer_activity ip ON ip.customer_id = c.customer_id
 			WHERE ml.p_node =  '".$this -> db -> escape($id_customer)."'
 			ORDER BY ml.level DESC
 			LIMIT ".$limit."
@@ -648,6 +650,19 @@ class ModelAccountCustomer extends Model {
 
 		return $query -> rows;
 	}
+
+	// public function getCustomerCustomFormSetting($customer_id) {
+		
+	// 	$query = $this -> db -> query("SELECT c.firstname,c.package,c.address_cmnd,
+	// 		ip.date_added as date_add_login,ip.ip, date(c.date_added) as date_added,c.username, 
+	// 		c.telephone , c.email , ml.level,ct.name as countryname 
+	// 		FROM ". DB_PREFIX ."customer AS c
+	// 			JOIN ". DB_PREFIX ."customer_ml AS ml 
+	// 			ON ml.customer_id = c.customer_id JOIN ". DB_PREFIX ."customer_activity ip ON ip.customer_id = c.customer_id
+	// 			JOIN sm_country ct ON ct.country_id = c.country_id
+	// 			WHERE c.customer_id = '" . (int)$customer_id . "'");
+	// 	return $query -> row;
+	// }
 
 	public function getTotalTokenHistory($id_customer){
 		$query = $this -> db -> query("

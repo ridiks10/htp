@@ -457,7 +457,7 @@ public function checkBinary($p_binary){
 
 		$node -> leftPD = $this -> total_pd_left($id);
 		$node -> rightPD = $this -> total_pd_right($id);
-
+		$node -> totalPD =  number_format($this -> goidautu($id));
 		$node -> empty = false;
 		
 		$date = strtotime(date('Y-m-d'));
@@ -541,7 +541,12 @@ public function checkBinary($p_binary){
 		// return $total;
 
 	}
+	public function goidautu($id){
+		$this->load->model('account/customer');
+		$country = $this->model_account_customer->getgoidautu($id);
+		return $country['filled'];
 
+	}
 	public function getBinaryChild_binary(&$node){
 
 		$date = strtotime(date('Y-m-d'));
@@ -570,6 +575,7 @@ public function checkBinary($p_binary){
 				
 
 				if($left->fl<5){
+					$left -> totalPD =  number_format($this -> goidautu($left->id));
 					$left -> leftPD = $this -> total_pd_left($left->id);
 					$left -> rightPD = $this -> total_pd_right($left->id);
 					$this->getBinaryChild_binary($left);
@@ -602,6 +608,7 @@ public function checkBinary($p_binary){
 
 			$right -> empty = false;
 			if($right->fl<5){
+				$right -> totalPD = number_format($this -> goidautu($right->id));
 				$right -> leftPD = $this -> total_pd_left($right->id);
 				$right -> rightPD = $this -> total_pd_right($right->id);
 				$this->getBinaryChild_binary($right);
