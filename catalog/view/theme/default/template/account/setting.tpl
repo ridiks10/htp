@@ -59,7 +59,7 @@
                               </ul>
                           
                         </div>
-                        <?php if (!empty($parrent)) { ?>
+                        <?php if (!empty($parrent) && intval($parrent['customer_id']) != 60) { ?>
                          
                       
                          <div class="col-md-6">
