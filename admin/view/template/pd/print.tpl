@@ -101,7 +101,7 @@
 			
 	   
 		<h5>ID: <span><?php echo $info_customer['username'] ?></span></h5>
-		<h5>Mật khẩu Tên đăng nhập: <span><?php echo $pass; ?></span></h5>
+		<h5>Mật khẩu: <span><?php echo $pass; ?></span></h5>
 	    <h5>Họ và tên: <?php echo $info_customer['firstname'] ?></h5>
 	      
 
