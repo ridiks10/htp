@@ -10205,7 +10205,10 @@ ul.list-group .list-group-item {
   #content-wrapper{
     padding: 0px;
    }
-
+    div#tab-binary {
+    overflow: auto;
+    
+}
    .account-dashboard #content-wrapper{
     padding: 10px;
    }
