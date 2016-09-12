@@ -120,7 +120,7 @@ echo $self->load->controller('common/header'); echo $self->load->controller('com
             <div class="clearfix"></div>
             <i class="fa fa-eur red"></i>
             <h6>
-              Thành viên trái / phải
+              Doanh số trái / phải
             </h6> 
           </div>
         </div>
