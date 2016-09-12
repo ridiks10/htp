@@ -31,7 +31,7 @@
                       </ul>
                     </div>
                     <div class="clr"></div>
-                    <div class="personal-tree" style="text-align: center; min-height:300px">
+                    <div class="personal-tree" style="text-align: center; min-height:300px; margin-top: 40px;">
                       <img src="
                       <?php echo $self -> config -> get('config_ing_loading'); ?>" />
                     </div>
