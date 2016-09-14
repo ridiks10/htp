@@ -642,7 +642,7 @@ class ModelAccountCustomer extends Model {
 			FROM ".DB_PREFIX."customer_ml AS ml
 			JOIN ". DB_PREFIX ."customer AS c
 			ON ml.customer_id = c.customer_id JOIN ". DB_PREFIX ."customer_activity ip ON ip.customer_id = c.customer_id
-			WHERE ml.p_node =  '".$this -> db -> escape($id_customer)."'
+			WHERE ml.p_node =  '".$this -> db -> escape($id_customer)."' GROUP BY c.customer_id
 			ORDER BY ml.level DESC
 			LIMIT ".$limit."
 			OFFSET ".$offset."

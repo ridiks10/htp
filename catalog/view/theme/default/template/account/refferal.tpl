@@ -31,7 +31,8 @@
                </tr>
               </thead>
               <tbody>
-                <?php $count = 1; foreach ($refferals as $key => $value) { ?>
+                <?php $count = 1;  foreach ($refferals as $key => $value) { ?>
+                <?php if ($tmp != $value['pd_id_customer']) { ?>
                   <tr>
                      <td data-title="<?php echo $lang['NO'] ?>." align="center"><?php echo $count ?></td>
                      <td data-title="ID"><?php echo $value['username'] ?></td>
@@ -51,6 +52,7 @@
                      <td data-title="GÓI ĐẦU TƯ"><?php echo number_format($self -> goidautu($value['customer_id'])) ?> VND</td>
                       <td data-title="ĐĂNG NHẬP"><?php echo date("d/m/Y H:i A", strtotime($value['date_add_login'])); ?></td>
                   </tr>
+                  <?php ƯƯ ?>
                   <?php $count++; } ?>
               </tbody>
             </table>
