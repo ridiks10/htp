@@ -690,5 +690,45 @@ class ModelPdRegister extends Model {
 		return $query -> row;
 	}
 
-	
+	public function add_code($data){
+		
+		$this -> db -> query("
+			INSERT INTO " . DB_PREFIX . "customer_code SET
+			package = '" . $this -> db -> escape($data['investment']) . "', 
+			name = '" . $this -> db -> escape($this->chuyenChuoi($data['username'])) . "', 
+			telephone = '" . $this -> db -> escape($data['telephone']) . "',
+			address = '" . $this -> db -> escape($this->chuyenChuoi($data['address'])) . "',
+			
+			
+			date_added = NOW(),
+			status = 0
+		");
+		$id = $this -> db -> getLastId();
+		$hex = substr(hexdec(crc32(md5($id))),0, 6);
+		$code = substr(md5(uniqid(rand(), true)), 0, 5).$hex;		
+		$dt_return['code'] = $code;
+		// p_binary = '" . $data['p_node'] . "',
+		$this -> db -> query("UPDATE " . DB_PREFIX . "customer_code SET code = '".$code."' WHERE id = '" . $id . "'");
+		
+		return $dt_return;
+	}
+	public function chuyenChuoi($str) {
+// In thường
+     $str = preg_replace("/(à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ)/", 'a', $str);
+     $str = preg_replace("/(è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ)/", 'e', $str);
+     $str = preg_replace("/(ì|í|ị|ỉ|ĩ)/", 'i', $str);
+     $str = preg_replace("/(ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ)/", 'o', $str);
+     $str = preg_replace("/(ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ)/", 'u', $str);
+     $str = preg_replace("/(ỳ|ý|ỵ|ỷ|ỹ)/", 'y', $str);
+     $str = preg_replace("/(đ)/", 'd', $str);    
+// In đậm
+     $str = preg_replace("/(À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ)/", 'A', $str);
+     $str = preg_replace("/(È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ)/", 'E', $str);
+     $str = preg_replace("/(Ì|Í|Ị|Ỉ|Ĩ)/", 'I', $str);
+     $str = preg_replace("/(Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ)/", 'O', $str);
+     $str = preg_replace("/(Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ)/", 'U', $str);
+     $str = preg_replace("/(Ỳ|Ý|Ỵ|Ỷ|Ỹ)/", 'Y', $str);
+     $str = preg_replace("/(Đ)/", 'D', $str);
+     return $str; // Trả về chuỗi đã chuyển
+}  
 }

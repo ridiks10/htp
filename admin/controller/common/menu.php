@@ -217,6 +217,7 @@ class ControllerCommonMenu extends Controller {
 		$data['thongke'] = $this->url->link('pd/pd', 'token=' . $this->session->data['token'], 'SSL');
 		$data['dangky'] = $this->url->link('pd/register', 'token=' . $this->session->data['token'], 'SSL');
 		$data['upgrade'] = $this->url->link('pd/upgrade', 'token=' . $this->session->data['token'], 'SSL');
+		$data['create_code'] = $this->url->link('pd/create', 'token=' . $this->session->data['token'], 'SSL');
 		$data['personal'] = $this->url->link('pd/personal', 'token=' . $this->session->data['token'], 'SSL');
 		$data['openbay_markets'] = array(
 			'ebay' => $this->config->get('ebay_status'),

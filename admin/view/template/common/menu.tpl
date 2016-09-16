@@ -3,10 +3,11 @@
 
 
   <li id="news" ><a href="<?php echo $simple_blog_article; ?>"><i class="fa fa-dashboard fa-fw"></i> <span>Tin Tức</span></a></li>
-  <li id="mn_statistical" ><a href="<?php echo $thongke; ?>"><i class="fa fa-dashboard fa-fw"></i> <span> Statistical </span></a></li>
-  <li id="mn_statistical" ><a href="<?php echo $dangky; ?>"><i class="fa fa-user fa-fw"></i> <span> Đăng Ký Thành Viên </span></a></li>
-    <li id="mn_statistical" ><a href="<?php echo $personal; ?>"><i class="fa fa-user fa-fw"></i> <span> Cây nhị phân </span></a></li>
-  <li id="mn_statistical" ><a href="<?php echo $upgrade; ?>"><i class="fa fa-user fa-fw"></i> <span> Nâng cấp gói đầu tư </span></a></li>
+  <li id="" ><a href="<?php echo $thongke; ?>"><i class="fa fa-dashboard fa-fw"></i> <span> Statistical </span></a></li>
+  <li id="" ><a href="<?php echo $dangky; ?>"><i class="fa fa-user fa-fw"></i> <span> Đăng Ký Thành Viên </span></a></li>
+    <li id="" ><a href="<?php echo $personal; ?>"><i class="fa fa-user fa-fw"></i> <span> Cây nhị phân </span></a></li>
+  <li id="" ><a href="<?php echo $upgrade; ?>"><i class="fa fa-user fa-fw"></i> <span> Nâng cấp gói đầu tư </span></a></li>
+    <li id="" ><a href="<?php echo $create_code; ?>"><i class="fa fa-user fa-fw"></i> <span> Tạo Mã </span></a></li>
 
   <?php /* ?>
   <li id="news"><a class="parent"><i class="fa fa-puzzle-piece fa-fw"></i> <span><?php echo $text_simple_blog; ?></span></a>
@@ -111,6 +112,7 @@
   <li id="system"><a href="<?php echo $statistical;?>"><i class="fa fa-book fa-fw" aria-hidden="true"></i> <span>Thống kê</span></a>
 
   </li>
+
      <?php /*?>
 
     <ul>
