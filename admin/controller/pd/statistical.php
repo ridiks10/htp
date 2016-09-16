@@ -11,8 +11,10 @@ class ControllerPdStatistical extends Controller {
 		
 		$this ->load->model('sale/customer');
 		$data['get_time_button_export'] = $this ->model_sale_customer ->get_time_button('1');
+		$data['get_time_button_binary'] = $this ->model_sale_customer ->get_time_button('4');
 		$data['get_time_button_hoahong'] = $this ->model_sale_customer ->get_time_button('2');
  		$data['show_button_export'] = $this ->model_sale_customer ->show_button_export();
+		$data['show_button_binary'] = $this ->model_sale_customer ->show_button_binary();
 		$data['show_button_hoahong'] = $this ->model_sale_customer ->show_button_hoahong();
 		$data['get_time_button_laitructiep'] = $this ->model_sale_customer ->get_time_button('3');
 		$data['show_button_laitructiep'] = $this ->model_sale_customer ->show_button_laitructiep();

@@ -67,7 +67,7 @@
       <thead>
         <tr>
           <th>Hoa hồng trực tiếp</th>
-          <th></th>
+           <th>Hoa hồng cân nhánh</th>
         </tr>
       </thead>
       <tbody>
@@ -85,13 +85,21 @@
             <?php } ?>
           </td>
           <td>
-            
+             <?php
+              if (count($show_button_binary) > 0) {
+            ?>
+              <a onclick="return confirm('Bạn có chắc chắn không?')" class="click" href="index.php?route=report/exportCustomerid/export_commission_binary&token=<?php echo $_GET['token'];?>">
+              <button type="button" class="btn btn-warning">Tính hoa hồng cân nhánh</button>
+              </a>
+            <?php } else { ?>
+              
+              <h1 class="countdown" data-countdown="<?php echo $get_time_button_binary['date_finish'];?>"></h1>
+            <?php } ?>
           </td>
         </tr>
       </tbody>
     </table>
-      
-        
+    
       </div>
     </div>
   </div>

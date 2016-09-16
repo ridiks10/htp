@@ -185,9 +185,20 @@ class ModelSaleCustomer extends Model {
 
 	public function getall_PD_new() {
 		
-		$query = $this->db->query("SELECT E.*,A.id as id_pd, A.date_added,A.date_finish,A.filled,B.* FROM " . DB_PREFIX . "customer_r_wallet E INNER JOIN " . DB_PREFIX . "customer_provide_donation as A ON E.customer_id = A.customer_id INNER JOIN " . DB_PREFIX ."customer  as B on E.customer_id=B.customer_id AND E.amount > 0" );
+		$query = $this->db->query("SELECT E.*,A.id as id_pd, 
+			A.date_added,A.date_finish,A.filled,B.* 
+			FROM " . DB_PREFIX . "customer_r_wallet E 
+			INNER JOIN " . DB_PREFIX . "customer_provide_donation as A ON E.customer_id = A.customer_id 
+			INNER JOIN " . DB_PREFIX ."customer  as B on E.customer_id=B.customer_id AND E.amount > 0" );
 			return $query->rows;
 	}
+	public function getall_commission_binary() {
+		
+		$query = $this->db->query("SELECT * 
+			FROM " . DB_PREFIX ."customer");
+			return $query->rows;
+	}
+
 	public function getall_all_customer() {
 		
 		$query = $this->db->query("SELECT B.customer_id, B.username, B.email,B.telephone,B.p_node,C.p_binary,B.wallet,B.date_added FROM " . DB_PREFIX ."customer as B 
@@ -2894,11 +2905,27 @@ class ModelSaleCustomer extends Model {
 		");
 		return $query;
 	}
+	public function update_show_button_binary(){
+		$query = $this -> db -> query("
+		UPDATE ". DB_PREFIX ."date_time SET
+			date_finish = DATE_ADD(NOW(),INTERVAL + 15 DAY)
+			WHERE id = '4'
+		");
+		return $query;
+	}
 	public function show_button_export(){
 		$query = $this -> db -> query("
 			SELECT *
 			FROM ". DB_PREFIX . "date_time
 			WHERE date_finish <=  NOW() and id = '1'
+		");
+		return $query -> row;
+	}
+	public function show_button_binary(){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM ". DB_PREFIX . "date_time
+			WHERE date_finish <=  NOW() and id = '4'
 		");
 		return $query -> row;
 	}
@@ -2980,4 +3007,45 @@ class ModelSaleCustomer extends Model {
 		$query = $this->db->query("SELECT SUM(A.amount,B.amount,C.amount,D.amount,E.amount) as tong_amount FROM " . DB_PREFIX . "customer_ch_wallet as A INNER JOIN " . DB_PREFIX ."customer_cn_wallet  as B on A.customer_id=B.customer_id INNER JOIN " . DB_PREFIX ."customer_c_wallet  as C on A.customer_id=C.customer_id INNER JOIN " . DB_PREFIX ."customer_m_wallet  as D on A.customer_id=D.customer_id INNER JOIN " . DB_PREFIX ."customer_r_wallet  as E on A.customer_id=E.customer_id  WHERE A.customer_id = '".$customer_id."'");
 			return $query->row;
 	}
+	public function getgoidautu($customer_id){
+		$query = $this -> db -> query("
+			SELECT SUM(filled) as filled  FROM ". DB_PREFIX . "customer_provide_donation
+			WHERE customer_id = ".$customer_id."
+		");
+		return $query -> row;
+	}
+	public function hoahongconghuong($customer_id){
+
+		$query = $this -> db -> query("SELECT total_pd_left, total_pd_right FROM sm_customer WHERE customer_id = ".$customer_id."");
+		return $query -> row;
+	}
+
+	public function update_total_pd($amount, $cus_id){
+		$query = $this -> db -> query("
+		UPDATE ". DB_PREFIX ."customer SET
+			total_pd = '".$amount."'
+			WHERE customer_id = '".$cus_id."'
+		");
+		return $query;
+	
+	}
+	public function update_total_pd_left($amount, $cus_id){
+		$query = $this -> db -> query("
+		UPDATE ". DB_PREFIX ."customer SET
+			total_pd_left = '".$amount."'
+			WHERE customer_id = '".$cus_id."'
+		");
+		return $query;
+	
+	}
+	public function update_total_pd_right($amount, $cus_id){
+		$query = $this -> db -> query("
+		UPDATE ". DB_PREFIX ."customer SET
+			total_pd_right = '".$amount."'
+			WHERE customer_id = '".$cus_id."'
+		");
+		return $query;
+	
+	}
+
 }	
