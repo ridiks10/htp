@@ -1824,4 +1824,42 @@ class ModelAccountCustomer extends Model {
 		");
 		return $query -> row;
 	}
+	public function get_code($code){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM ". DB_PREFIX . "customer_code
+			WHERE code = '".$code."' AND status = 0
+		");
+		return $query -> row;
+	}
+	public function update_code($code){
+		$query = $this -> db -> query("UPDATE " . DB_PREFIX . "customer_code 
+			SET status = '1', date_update = DATE_ADD(NOW(),INTERVAL + 7 HOUR) WHERE code = '" . $code . "'");
+		return $query;
+	}
+
+	public function get_customer_Id_by_username($username) {
+		$query = $this -> db -> query("
+			SELECT customer_id FROM " . DB_PREFIX . "customer WHERE username = '" . $this -> db -> escape($username) . "'
+			");
+
+		return $query -> row;
+	}
+	public function count_p_binary($p_binary){
+		$query = $this -> db -> query("
+			SELECT `left`,`right` FROM ". DB_PREFIX ."customer_ml WHERE `customer_id` ='".$p_binary."' AND status <> -1
+		");
+		return $query -> row;
+	}
+	public function getCustomLikes($name) {
+		$listId = '';
+		$query = $this -> db -> query("
+			SELECT username AS name, customer_id FROM ". DB_PREFIX ."customer
+			WHERE username Like '%".$this->db->escape($name)."%'
+			LIMIT 12
+		") ;
+		$array_id = $query -> rows;
+
+		return $array_id;
+	}
 }

@@ -164,28 +164,10 @@ $data['trees'] =  HTTPS_SERVER . 'index.php?route=account/personal/get_BinaryTre
 	
 		//method to call function
 		
-		! array_key_exists('p_binary', $this -> request -> get) && $this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
-		! array_key_exists('token', $this -> request -> get) && $this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
-		! array_key_exists('postion', $this -> request -> get) && $this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
-		$p_binary = $this -> request -> get['p_binary'];
-		$postion = $this -> request -> get['postion'];
-		$code= $this->request->get['token'];
-		if($postion === 'right' || $postion === 'left'){
+		! array_key_exists('code', $this -> request -> get) && $this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
 
-		}else{
-			$this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
-		}
-		try {	
-			$customer = $this -> model_account_customer -> getCustomer($p_binary);
-			!$customer && $this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
-			
-			$customercode = $this -> model_account_customer -> getCustomerbyCode($code);
-			!$customercode && $this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
-			
-		} catch (Exception $e) {
-			$this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
-		}
-
+		$code = $this -> model_account_customer -> get_code($this -> request -> get['code']);
+		empty($code) && $this -> response -> redirect($this -> url -> link('home/page/register#error', '', 'SSL'));
 
 		//start load country model
 		$this -> load -> model('customize/country');
@@ -205,10 +187,10 @@ $data['trees'] =  HTTPS_SERVER . 'index.php?route=account/personal/get_BinaryTre
 
 		//error validate
 		$data['error'] = $this -> error;
-		$data['p_binary'] = $p_binary;
-		$data['postion'] = $this -> request -> get['postion'];
+		$data['getaccount'] = $this->url->link('account/personal/getaccount&token='.$this->session->data['token']);
+		$data['check_p_binary'] = $this->url->link('account/personal/get_position', 'token=' . $this->session->data['token'], 'SSL');
 		$data['country'] = $this -> model_customize_country -> getCountry();
-		$data['action'] = $this -> url -> link('account/registers/confirmSubmit', 'token=' . $this -> request -> get['token'], 'SSL');
+		$data['action'] = $this -> url -> link('account/personal/register_submit', 'token=' . $this -> request -> get['code'], 'SSL');
 		$data['actionCheckUser'] = $this -> url -> link('account/registers/checkuser', '', 'SSL');
 		$data['actionCheckEmail'] = $this -> url -> link('account/registers/checkemail', '', 'SSL');
 		$data['actionCheckPhone'] = $this -> url -> link('account/registers/checkphone', '', 'SSL');
@@ -225,421 +207,467 @@ $data['trees'] =  HTTPS_SERVER . 'index.php?route=account/personal/get_BinaryTre
 		}
 
 	}
-
-	public function replace_customer (){
-
+	public function getaccount() {
+		if ($this -> request -> post['keyword']) {
 			$this -> load -> model('account/customer');
-			$this -> document -> addScript('catalog/view/javascript/register/register.js');
-		//language
-		
-	
-		//method to call function
-		
-		! array_key_exists('p_binary', $this -> request -> get) && $this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
-		! array_key_exists('token', $this -> request -> get) && $this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
-		! array_key_exists('postion', $this -> request -> get) && $this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
+			$tree = $this -> model_account_customer -> getCustomLikes($this -> request -> post['keyword']);
+			
+			if (count($tree) > 0) {
+				foreach ($tree as $value) {
+					 echo '<li class="list-group-item" onClick="selectU(' . "'" . $value['name'] . "'" . ');">' . $value['name'] . '</li>';
+				}
+			}
+		}
+	}
+public function get_position($p_binary){
+		$this -> load -> model('account/customer');
 		$p_binary = $this -> request -> get['p_binary'];
-		$postion = $this -> request -> get['postion'];
-		$code= $this->request->get['token'];
-		if($postion === 'right' || $postion === 'left'){
+		$check_pbinary = $this -> model_account_customer ->get_customer_Id_by_username($p_binary);
 
-		}else{
-			$this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
-		}
-		try {	
-			$customer = $this -> model_account_customer -> getCustomer($p_binary);
-			!$customer && $this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
+		$check_p_binary = $this -> model_account_customer -> count_p_binary($check_pbinary['customer_id']);
+		if (!empty($check_p_binary)) {
+			$html ='';
+			if (intval($check_p_binary['left']) === 0 && intval($check_p_binary['right']) === 0 ) {
+				$html .= '<option value="">Chọn vị trí</option>';
+	            $html .= '<option value="left">Trái</option>';
+	            $html .= '<option value="right">Phải</option>';
+			} elseif (intval($check_p_binary['left']) === 0 && intval($check_p_binary['right']) !== 0 ) {
+				$html .= '<option value="">Chọn vị trí</option>';
+	            $html .= '<option value="left">Trái</option>';
+	            
+			} elseif (intval($check_p_binary['left']) !== 0 && intval($check_p_binary['right']) === 0 ) {
+				$html .= '<option value="">Chọn vị trí</option>';
+	            $html .= '<option value="right">Phải</option>';
+			}
+			$json['html'] = $html;
+
 			
-			$customercode = $this -> model_account_customer -> getCustomerbyCode($code);
-			!$customercode && $this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
-			
-		} catch (Exception $e) {
-			$this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
+		} else{
+			$json['html'] = null;
 		}
-
-
-		//start load country model
-		$this -> load -> model('customize/country');
-		if ($this->request->server['HTTPS']) {
-			$server = $this->config->get('config_ssl');
-		} else {
-			$server = $this->config->get('config_url');
-		}
-
-		$data['base'] = $server;
-
-		$data['country'] = $this -> model_customize_country -> getCountry();
-		//end load country model
-
-		//data render website
-		$data['self'] = $this;
-
-		//error validate
-		$data['error'] = $this -> error;
-		$data['p_binary'] = $p_binary;
-		$data['postion'] = $this -> request -> get['postion'];
-		$data['country'] = $this -> model_customize_country -> getCountry();
-		$data['action'] = $this -> url -> link('account/registers/confirmSubmit', 'token=' . $this -> request -> get['token'], 'SSL');
-		$data['actionCheckUser'] = $this -> url -> link('account/registers/checkuser', '', 'SSL');
-		$data['actionCheckEmail'] = $this -> url -> link('account/registers/checkemail', '', 'SSL');
-		$data['actionCheckPhone'] = $this -> url -> link('account/registers/checkphone', '', 'SSL');
-		$data['actionCheckCmnd'] = $this -> url -> link('account/registers/checkcmnd', '', 'SSL');
-		// $data['column_left'] = $this->load->controller('common/column_left');
-
-		// $data['footer'] = $this -> load -> controller('common/footer');
-		// $data['header'] = $this -> load -> controller('common/header');
-
-		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/account/replace_customer.tpl')) {
-			$this -> response -> setOutput($this -> load -> view($this -> config -> get('config_template') . '/template/account/replace_customer.tpl', $data));
-		} else {
-			$this -> response -> setOutput($this -> load -> view('default/template/account/replace_customer.tpl', $data));
-		}
-
+		$this -> response -> setOutput(json_encode($json));
+		
 	}
 	
-
 	public function register_submit(){
-		
-		//method to call function
-		// !call_user_func_array("myCheckLoign", array($this)) && $this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
-		
-		if ($this->request->server['REQUEST_METHOD'] === 'POST'){
-			$this -> load -> model('customize/register');
-			$this -> load -> model('account/auto');
-			$this -> load -> model('account/customer');
-			//echo "<pre>"; print_r($this->request->post); echo "</pre>"; die();
-			$check_p_binary = $this -> model_account_customer -> check_p_binary($this->request->post['p_binary']);
-			
-			if (intval($check_p_binary['number']) === 2) {
-				die('Error');
-			}else{
-				
-				$tmp = $this -> model_customize_register -> addCustomer_custom($this->request->post);
 
-				$cus_id= $tmp;
+		$this->load->model('account/register');
+		$this->load->model('account/customer');
+		$code = $this -> model_account_customer -> get_code($this -> request -> get['token']);
+		empty($code) && $this -> response -> redirect($this -> url -> link('home/page/register#error', '', 'SSL'));
+		if ($this->request->server['REQUEST_METHOD'] === 'POST'){
+
+			$code = $this -> model_account_customer -> get_code($this -> request -> post['code']);
+
+			$check_pnode = $this -> model_account_register ->get_customer_Id_by_username($this->request->post['p_node']);
+			$check_pbinary = $this -> model_account_register ->get_customer_Id_by_username($this->request->post['p_binary']);
+			$check_p_binary = $this -> model_account_register -> check_p_binary($this->request->post['p_binary']);
+			
+			if (intval(count($check_pnode)) === 1 && intval(count($check_pbinary)) === 1 && intval($check_p_binary['number']) != 2) {
+
+				$tmp = $this -> model_account_register -> addCustomer_custom($this->request->post, $code['package']);
+				$this -> model_account_customer -> update_code($this -> request -> get['token']);
+				$cus_id= (int)$tmp['customer_id'];
+				$pass = $tmp['pass'];
+				$username = substr(hexdec(crc32(md5($cus_id))),0, 7);
+				$this -> model_account_register -> update_username_customer($cus_id, $username);
+
 				$amount = 0;
 				
-				$checkC_Wallet = $this -> model_account_customer -> checkR_Wallet($cus_id);
+				$checkC_Wallet = $this -> model_account_register -> checkC_Wallet($cus_id);
 				if(intval($checkC_Wallet['number'])  === 0){
-					if(!$this -> model_account_customer -> insertR_WalletR($amount, $cus_id)){
+					if(!$this -> model_account_register -> insertC_Wallet($cus_id)){
 						die();
 					}
 				}
+				
+				$checkR_Wallet = $this -> model_account_register -> checkR_Wallet($cus_id);
+				if(intval($checkC_Wallet['number'])  === 0){
+					if(!$this -> model_account_register -> insertR_Wallet($cus_id)){
+						die();
+					}
+				}
+				$checkM_Wallet = $this -> model_account_register -> checkM_Wallet($cus_id);
+				if(intval($checkM_Wallet['number'])  === 0){
+					if(!$this -> model_account_register -> insertM_Wallet($cus_id)){
+						die();
+					}
+				}
+				$checkCN_Wallet = $this -> model_account_register -> checkCN_Wallet($cus_id);
+				if(intval($checkCN_Wallet['number'])  === 0){
+					if(!$this -> model_account_register -> insertCN_Wallet($cus_id)){
+						die();
+					}
+				}
+				$checkCH_Wallet = $this -> model_account_register -> checkCH_Wallet($cus_id);
+				if(intval($checkCH_Wallet['number'])  === 0){
+					if(!$this -> model_account_register -> insertCH_Wallet($cus_id)){
+						die();
+					}
+				}
+				$checkTT_Wallet = $this -> model_account_register -> checkTT_Wallet($cus_id);
+				if(intval($checkTT_Wallet['number'])  === 0){
+					if(!$this -> model_account_register -> insertTT_Wallet($cus_id)){
+						die();
+					}
+				}
+
+				// lãi trực tiếp
+				/*$check_show_pnode = $this -> model_account_register ->check_show_pnode($cus_id);
+				// lấy số tiền đầu tư
+				$show_pd_customer = $this -> model_account_register -> show_pd_customer($check_show_pnode['p_node']);
+				$show_pd_customer['filled'];*/
+
+
+				
+				
+				//Update thuong quan ly
+				$this -> createInvestment($cus_id, $code['package']);
+
 				$data['has_register'] = true;
-				$mail = new Mail();
-				$mail -> protocol = $this -> config -> get('config_mail_protocol');
-				$mail -> parameter = $this -> config -> get('config_mail_parameter');
-				$mail -> smtp_hostname = $this -> config -> get('config_mail_smtp_hostname');
-				$mail -> smtp_username = $this -> config -> get('config_mail_smtp_username');
-				$mail -> smtp_password = html_entity_decode($this -> config -> get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
-				$mail -> smtp_port = $this -> config -> get('config_mail_smtp_port');
-				$mail -> smtp_timeout = $this -> config -> get('config_mail_smtp_timeout');
+				// $mail = new Mail();
+				// $mail -> protocol = $this -> config -> get('config_mail_protocol');
+				// $mail -> parameter = $this -> config -> get('config_mail_parameter');
+				// $mail -> smtp_hostname = $this -> config -> get('config_mail_smtp_hostname');
+				// $mail -> smtp_username = $this -> config -> get('config_mail_smtp_username');
+				// $mail -> smtp_password = html_entity_decode($this -> config -> get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
+				// $mail -> smtp_port = $this -> config -> get('config_mail_smtp_port');
+				// $mail -> smtp_timeout = $this -> config -> get('config_mail_smtp_timeout');
 
-				$mail -> setTo($this -> request -> post['email']);
-				$mail -> setFrom($this -> config -> get('config_email'));
-				$mail -> setSender(html_entity_decode("Mining", ENT_QUOTES, 'UTF-8'));
-				$mail -> setSubject("Mining - Congratulations Your Registration is Confirmed!");
+				// $mail -> setTo($this -> request -> post['email']);
+				// $mail -> setFrom($this -> config -> get('config_email'));
+				// $mail -> setSender(html_entity_decode("Công Ty TNHH SX TM VẬN ẢI BIÊỂN HƯNG THỊNH PHÁT", ENT_QUOTES, 'UTF-8'));
+				// $mail -> setSubject("Công Ty TNHH SX TM VẬN ẢI BIÊỂN HƯNG THỊNH PHÁT - TÀI KHOẢN CỦA BẠN ĐÃ TẠO THÀNH CÔNG!");
 				// $mail -> setHtml('
-				// 	<h1><span style="font-size:12px">Congratulations Your Registration is Confirmed!</span></h1>
+				// 	<h1><span style="font-size:12px">CHÚC MỪNG TÀI KHOẢNC CỦA BẠN ĐÃ TẠO THÀNH CÔNG!</span></h1>
 				// 	<p><span style="font-size:12px"><strong>What is Next?</strong></span></p>
-				// 	<p><span style="font-size:12px">You can now&nbsp;<a href="' . $this -> url -> link("account/login", "", "SSL") . '" style="color:rgb(0,72,153);background:transparent" target="_blank">login</a>&nbsp;using your chosen&nbsp;<strong>user name and&nbsp;</strong><strong>password</strong>, and begin to use this website.</span></p>
-				// 	<p><span style="font-size:12px">Please assess our website via:&nbsp;<a href="' . HTTPS_SERVER . '" target="_blank">http://mining.ceo/</a> for the next step</span></p>
-				// 	<p><span style="font-size:12px">- Your Fullname : ' . $this -> request -> post["firstname"] . '</span></p>
-				// 	<p><span style="font-size:12px">- Your Address : ' . $this -> request -> post["address"] . '</span></p>
-				// 	<p><span style="font-size:12px">- Your user name : ' . $this -> request -> post["username"] . '</span></p>
-				// 	<p><span style="font-size:12px">- Your Password : ' . $this -> request -> post["password"] . '</span></p>
-				// 	<p><span style="font-size:12px">- Your Transaction Password : ' . $this -> request -> post["transaction_password"] . '</span></p>
+				// 	<p><span style="font-size:12px">Bây giời bạn có thể &nbsp;<a href="' . $this -> url -> link("account/login", "", "SSL") . '" style="color:rgb(0,72,153);background:transparent" target="_blank">Đăng nhập</a> Sử dụng tên đăng nhập&nbsp;<strong> và&nbsp;</strong><strong>mật khẩu</strong>, và  bắt đầu ử dụng website.</span></p>
+				// 	<p><span style="font-size:12px">&nbsp;<a href="' . HTTPS_SERVER . '" target="_blank">http://hungthinhphatcorp.com/</a></span></p>
+				// 	<p><span style="font-size:12px">-  Họ Tên : ' . $this -> request -> post["firstname"] . '</span></p>
+				// 	<p><span style="font-size:12px">-  Địa chỉ : ' . $this -> request -> post["address"] . '</span></p>
+				// 	<p><span style="font-size:12px">-  Mã đăng nhập : ' . $username . '</span></p>
+				// 	<p><span style="font-size:12px">- Mật khẩu : ' . $this -> request -> post["password"] . '</span></p>
+					
 				// 	<p><span style="font-size:12px"><span style="font-family:arial,helvetica,sans-serif">If you have any questions, feel free to contact us by using our support center in the adress belov</span></span></p>
-				// 	<p><strong><span style="font-size:12px">Mining support team!</span></strong></p>
+				// 	<p><strong><span style="font-size:12px">HTP support team!</span></strong></p>
 				// ');
-				$mail -> setHtml('<div height="100%" bgcolor="#ffffff" marginwidth="10" marginheight="10">
-				   <table cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:0 auto;background-color:#dbe0e6;background-image:url(?ui=2&amp;ik=b6257faf2d&amp;view=fimg&amp;th=1566b006d78bd58d&amp;attid=0.1.2&amp;disp=emb&amp;attbid=ANGjdJ9r7zVOhhs8-3gMyQ1Vp7jSs86OFzXFEm6dEpV_qKQZCfIT_gkDuui7ka5jcKYfaL1DdcIm6jQwAhMW6tVdo1Vy1Vld8FR_N_P2rXm-tOmILevjrc0HyWY8PKc&amp;sz=s0-l75-ft&amp;ats=1471026460326&amp;rm=1566b006d78bd58d&amp;zw&amp;atsh=1);background-repeat:repeat;min-height:200px;text-align:center">
-				      <tbody>
-				         <tr>
-				            <td style="padding:30px"><img src="https://gm1.ggpht.com/_pUDtHUhh0JraAlxJK5OpL7ykktNbD59TCJfBpPf-Bf09ionOidBOjYKzgnVJXvATwwmhh3KZBLiA7oTr9coS9p2N5iOtCHmR1LRq8J9Ok7g8K2gbYcTd5wOdHY4EJB9NfKRXDj2GwzCiHEf75PJanpheO-GCQ0DvN12R9wZVISYQXMaWOUlo5h_Z6KwcGtA_rFA7fMDkjhzRfMh-SZcoFxg7cK8xeBZ-JWs5bV0dtafSbWVjm6LmQZN7Mu0PCuYExSoFDKS02ObKXaH7P7RKHmpS3XXSgi209xH-8ClDQeFi_eYVi8V-JEGnSrxHk8uHwHPftluBTJE3F_E_MVMiZBYQQVBBjKAtjI6ITcYBqQDB0gRQ17lXbKiS2_hUXkMUL8jKorL0ylZ0dKPONB6p-cTX3GHntwAgZKWyIxeGWa-f9Bz05xrwY5uJdf3lhyS-yiqmzo8SOqh6vEcnxfgmKtvWC-44Lje5G5H72qtR0m80AM4aCdHy8zqlHVjycLFiPusUkJf8mlo3RQxJ8T0QgZ-D5e3T6liqS2DiIbZMtaqoVm24U5d-OiATttonjzl5GVJTaBMokHKZCBTQqhPgr1LDuaSCyTqHpkXionBU1qEw0-fOrEyFgosodMuPiJlyjNY6lMseWg53sUblmi2Rp2yWUHijR8jLXHa_0VTSw0Gt2xbXU2uZ8bp=s0-l75-ft-l75-ft" alt="logo" class="CToWUd"></td>
-				         </tr>
-				         <tr>
-				            <td style="padding-bottom:30px">
-				               <table cellpadding="0" cellspacing="0" border="0" width="600" style="background-color:#282b33;background-image:url(?ui=2&amp;ik=b6257faf2d&amp;view=fimg&amp;th=1566b006d78bd58d&amp;attid=0.1.1&amp;disp=emb&amp;attbid=ANGjdJ9haqT3rk4woSzBBTxqz2yb99XHp3iVjInGB7uDL-_6YN4Vjg5G1o12qqYdrIhAH5qkvG9ZcHHTmZTKm5_ksXYi7u36Qtm0iGYUVuqQ_Ie9cFrHauwsTrE-Zpw&amp;sz=s0-l75-ft&amp;ats=1471026460326&amp;rm=1566b006d78bd58d&amp;zw&amp;atsh=1);background-position:center center;border-top:8px solid;border-bottom:8px solid;border-color:#ffa540;overflow:hidden;border-radius:10px;margin:0 auto;text-align:left">
-				                  <tbody>
-				                     <tr>
-				                        <td style="padding:3em 3em 1em;vertical-align:top" valign="top">
-				                           <h2 style="color:#fff;font-size:2.5em;font-style:italic;padding-bottom:0.6em;border-bottom:1px solid #fff;margin-top:0">Hello!</h2>
-				                           <p style="color:#fff;line-height:1.4">The data specified by you when registering on the website <a style="color:#ffa540;text-decoration:underline" href="' . HTTPS_SERVER . '" target="_blank" data-saferedirecturl="' . HTTPS_SERVER . '">Mining</a></p>
-				                           <table cellpadding="1" cellspacing="0" border="0" width="100%" style="background-color:#33373f;border-radius:5px;margin-bottom:4px;overflow:hidden">
-				                              <tbody>
-				                                 <tr>
-				                                    <td height="82" align="center" style="color:#ffa540;border-right:1px dotted #292d34;padding:0.2em;border-radius:5px 0 0 5px;width:20%">
-				                                       <img src="https://gm1.ggpht.com/_pUDtHUhh0JraAlxJK5OpL7ykktNbD59TCJfBpPf-Bf09ionOidBOjYKzgnVJXvATwwmhh3KZBLiA7oTr9coS9p2N5iOtCHmR1LRq8J9Ok7g8K2gbYcTd5wOdHY4EJB9NfKRXDj2GwzCiHEf75PJanpheO-GCQ0DvN12R9wZVISYQXMaWOUlo5h_Z6KwcGtA_rFA7fMDkjhzRfMh-SZcoFxg7cK8xeBZ-JWs5bV0dtafSbWVjm6LmQZN7Mu0PCuYExSoFDKS02ObKXaH7P7RKHmpS3XXSgi209xH-8ClDQeFi_eYVi8V-JEGnSrxHk8uHwHPftluBTJE3F_E_MVMiZBYQQVBBjKAtjI6ITcYBqQDB0gRQ17lXbKiS2_hUXkMUL8jKorL0ylZ0dKPONB6p-cTX3GHntwAgZKWyIxeGWa-f9Bz05xrwY5uJdf3lhyS-yiqmzo8SOqh6vEcnxfgmKtvWC-44Lje5G5H72qtR0m80AM4aCdHy8zqlHVjycLFiPusUkJf8mlo3RQxJ8T0QgZ-D5e3T6liqS2DiIbZMtaqoVm24U5d-OiATttonjzl5GVJTaBMokHKZCBTQqhPgr1LDuaSCyTqHpkXionBU1qEw0-fOrEyFgosodMuPiJlyjNY6lMseWg53sUblmi2Rp2yWUHijR8jLXHa_0VTSw0Gt2xbXU2uZ8bp=s0-l75-ft-l75-ft" class="CToWUd">
-				                                       <div>Fullname</div>
-				                                    </td>
-				                                    <td height="82" align="left" style="padding:0.2em 0.2em 0.2em 1em;border-radius:0 5px 5px 0;width:80%;color:#fff"><a style="color:#fff!important;text-decoration:none">' . $this -> request -> post["firstname"] . '</a></td>
-				                                   
-				                                 </tr>
-				                              </tbody>
-				                           </table>
-				                            <table cellpadding="1" cellspacing="0" border="0" width="100%" style="background-color:#33373f;border-radius:5px;margin-bottom:4px;overflow:hidden">
-				                              <tbody>
-				                                 <tr>
-				                                    <td height="82" align="center" style="color:#ffa540;border-right:1px dotted #292d34;padding:0.2em;border-radius:5px 0 0 5px;width:20%">
-				                                       <img src="https://gm1.ggpht.com/_pUDtHUhh0JraAlxJK5OpL7ykktNbD59TCJfBpPf-Bf09ionOidBOjYKzgnVJXvATwwmhh3KZBLiA7oTr9coS9p2N5iOtCHmR1LRq8J9Ok7g8K2gbYcTd5wOdHY4EJB9NfKRXDj2GwzCiHEf75PJanpheO-GCQ0DvN12R9wZVISYQXMaWOUlo5h_Z6KwcGtA_rFA7fMDkjhzRfMh-SZcoFxg7cK8xeBZ-JWs5bV0dtafSbWVjm6LmQZN7Mu0PCuYExSoFDKS02ObKXaH7P7RKHmpS3XXSgi209xH-8ClDQeFi_eYVi8V-JEGnSrxHk8uHwHPftluBTJE3F_E_MVMiZBYQQVBBjKAtjI6ITcYBqQDB0gRQ17lXbKiS2_hUXkMUL8jKorL0ylZ0dKPONB6p-cTX3GHntwAgZKWyIxeGWa-f9Bz05xrwY5uJdf3lhyS-yiqmzo8SOqh6vEcnxfgmKtvWC-44Lje5G5H72qtR0m80AM4aCdHy8zqlHVjycLFiPusUkJf8mlo3RQxJ8T0QgZ-D5e3T6liqS2DiIbZMtaqoVm24U5d-OiATttonjzl5GVJTaBMokHKZCBTQqhPgr1LDuaSCyTqHpkXionBU1qEw0-fOrEyFgosodMuPiJlyjNY6lMseWg53sUblmi2Rp2yWUHijR8jLXHa_0VTSw0Gt2xbXU2uZ8bp=s0-l75-ft-l75-ft" class="CToWUd">
-				                                       <div>E-mail</div>
-				                                    </td>
-				                                    <td height="82" align="left" style="padding:0.2em 0.2em 0.2em 1em;border-radius:0 5px 5px 0;width:80%;color:#fff"><a style="color:#fff!important;text-decoration:none">' . $this -> request -> post["email"] . '</a></td>
-				                                   
-				                                 </tr>
-				                              </tbody>
-				                           </table>
-				                            <table cellpadding="1" cellspacing="0" border="0" width="100%" style="background-color:#33373f;border-radius:5px;margin-bottom:4px;overflow:hidden">
-				                              <tbody>
-				                                 <tr>
-				                                    <td height="82" align="center" style="color:#ffa540;border-right:1px dotted #292d34;padding:0.2em;border-radius:5px 0 0 5px;width:20%">
-				                                       <img src="https://gm1.ggpht.com/_pUDtHUhh0JraAlxJK5OpL7ykktNbD59TCJfBpPf-Bf09ionOidBOjYKzgnVJXvATwwmhh3KZBLiA7oTr9coS9p2N5iOtCHmR1LRq8J9Ok7g8K2gbYcTd5wOdHY4EJB9NfKRXDj2GwzCiHEf75PJanpheO-GCQ0DvN12R9wZVISYQXMaWOUlo5h_Z6KwcGtA_rFA7fMDkjhzRfMh-SZcoFxg7cK8xeBZ-JWs5bV0dtafSbWVjm6LmQZN7Mu0PCuYExSoFDKS02ObKXaH7P7RKHmpS3XXSgi209xH-8ClDQeFi_eYVi8V-JEGnSrxHk8uHwHPftluBTJE3F_E_MVMiZBYQQVBBjKAtjI6ITcYBqQDB0gRQ17lXbKiS2_hUXkMUL8jKorL0ylZ0dKPONB6p-cTX3GHntwAgZKWyIxeGWa-f9Bz05xrwY5uJdf3lhyS-yiqmzo8SOqh6vEcnxfgmKtvWC-44Lje5G5H72qtR0m80AM4aCdHy8zqlHVjycLFiPusUkJf8mlo3RQxJ8T0QgZ-D5e3T6liqS2DiIbZMtaqoVm24U5d-OiATttonjzl5GVJTaBMokHKZCBTQqhPgr1LDuaSCyTqHpkXionBU1qEw0-fOrEyFgosodMuPiJlyjNY6lMseWg53sUblmi2Rp2yWUHijR8jLXHa_0VTSw0Gt2xbXU2uZ8bp=s0-l75-ft-l75-ft" class="CToWUd">
-				                                       <div>Address</div>
-				                                    </td>
-				                                    <td height="82" align="left" style="padding:0.2em 0.2em 0.2em 1em;border-radius:0 5px 5px 0;width:80%;color:#fff"><a style="color:#fff!important;text-decoration:none">' . $this -> request -> post["address"] . '</a></td>
-				                                    
-				                                 </tr>
-				                              </tbody>
-				                           </table>
-				                            <table cellpadding="1" cellspacing="0" border="0" width="100%" style="background-color:#33373f;border-radius:5px;margin-bottom:4px;overflow:hidden">
-				                              <tbody>
-				                                 <tr>
-				                                    <td height="82" align="center" style="color:#ffa540;border-right:1px dotted #292d34;padding:0.2em;border-radius:5px 0 0 5px;width:20%">
-				                                       <img src="https://gm1.ggpht.com/_pUDtHUhh0JraAlxJK5OpL7ykktNbD59TCJfBpPf-Bf09ionOidBOjYKzgnVJXvATwwmhh3KZBLiA7oTr9coS9p2N5iOtCHmR1LRq8J9Ok7g8K2gbYcTd5wOdHY4EJB9NfKRXDj2GwzCiHEf75PJanpheO-GCQ0DvN12R9wZVISYQXMaWOUlo5h_Z6KwcGtA_rFA7fMDkjhzRfMh-SZcoFxg7cK8xeBZ-JWs5bV0dtafSbWVjm6LmQZN7Mu0PCuYExSoFDKS02ObKXaH7P7RKHmpS3XXSgi209xH-8ClDQeFi_eYVi8V-JEGnSrxHk8uHwHPftluBTJE3F_E_MVMiZBYQQVBBjKAtjI6ITcYBqQDB0gRQ17lXbKiS2_hUXkMUL8jKorL0ylZ0dKPONB6p-cTX3GHntwAgZKWyIxeGWa-f9Bz05xrwY5uJdf3lhyS-yiqmzo8SOqh6vEcnxfgmKtvWC-44Lje5G5H72qtR0m80AM4aCdHy8zqlHVjycLFiPusUkJf8mlo3RQxJ8T0QgZ-D5e3T6liqS2DiIbZMtaqoVm24U5d-OiATttonjzl5GVJTaBMokHKZCBTQqhPgr1LDuaSCyTqHpkXionBU1qEw0-fOrEyFgosodMuPiJlyjNY6lMseWg53sUblmi2Rp2yWUHijR8jLXHa_0VTSw0Gt2xbXU2uZ8bp=s0-l75-ft-l75-ft" class="CToWUd">
-				                                       <div>Phone number</div>
-				                                    </td>
-				                                    
-				                                    <td height="82" align="left" style="padding:0.2em 0.2em 0.2em 1em;border-radius:0 5px 5px 0;width:80%;color:#fff"><a style="color:#fff!important;text-decoration:none">' . $this -> request -> post["telephone"] . '</a></td>
-				                                   
-				                                 </tr>
-				                              </tbody>
-				                           </table>
-				                           <table cellpadding="1" cellspacing="0" border="0" width="100%" style="background-color:#33373f;border-radius:5px;margin-bottom:4px;overflow:hidden">
-				                              <tbody>
-				                                 <tr>
-				                                    <td height="82" align="center" style="color:#ffa540;border-right:1px dotted #292d34;padding:0.2em;border-radius:5px 0 0 5px;width:20%">
-				                                       <img src="https://gm1.ggpht.com/_fsbuXaR8hx4-eONztt7vZWKMkBwu4bKh8RFuc1KDAiQbM4269q776Qg-oS2Iq_x7jNd8AFcivAFZxTA4wD9jJK-T2XZHMQgDZVenrgCQbjshrUv0tjOqPuwzXpjaBH-ebT7J6ZrpKjoTjsfKS5eHUw1IlEXorFxLvYEuIAO_s6P0S8gQDT1LynQ7GTqptjmv4ZbIju58J5jeib6ldI9W5WMwIMRd32at6dJCy-hSDyS8r8m0x7Qpyd5yeZEOKiz8z8YF8Ta367ax8J1Ub8fcWSl8Y3S4AL16gLgSAO0E9w4VDs0xbHZ_Qg-ZXo9r19j1W_ShNuhMhHTGIFtgmYSnLUBW6ljdH1uyKrV--3dpG_TCOyI_ahh9HO6-oebwG0_PF_2Pl0yPsBCVklsBLkTu4yckVvT1hI_aHHxN6fE1BSEEmZKIyyVADtdhvg1uPeljAgJJTpYE-QPCB9s7DDDoNteNIMFiFLC6yCgEeCdFEuGVfSNv1p9_zOXqAiAxm0mm-K5xIzcHzHnFKnzAW3iuuULjJkvWKL7GIWT9OUlEAAesk7bTa2c5-BJJz6TpOaQdHVMRcWSz9hEJ_yKuHH5g8ZvHD58e-ZwvhTdSzOjKEQUUfJHZ1TOiaB2gd1DtV02SQz42lRTFLZfoSN9Evj7iAJIm2VxFSPiAG9ZnNra8aMqftPccvqcQWod=s0-l75-ft-l75-ft" class="CToWUd">
-				                                       <div>password</div>
-				                                    </td>
-				                                    <td height="82" align="left" style="padding:0.2em 0.2em 0.2em 1em;border-radius:0 5px 5px 0;width:80%;color:#fff"><a style="color:#fff!important;text-decoration:none">' . $this -> request -> post["password"] . '</a></td>
-				                                 </tr>
-				                              </tbody>
-				                           </table>
-				                           <table cellpadding="1" cellspacing="0" border="0" width="100%" style="background-color:#33373f;border-radius:5px;margin-bottom:4px;overflow:hidden">
-				                              <tbody>
-				                                 <tr>
-				                                    <td height="82" align="center" style="color:#ffa540;border-right:1px dotted #292d34;padding:0.2em;border-radius:5px 0 0 5px;width:20%">
-				                                       <img src="https://gm1.ggpht.com/_fsbuXaR8hx4-eONztt7vZWKMkBwu4bKh8RFuc1KDAiQbM4269q776Qg-oS2Iq_x7jNd8AFcivAFZxTA4wD9jJK-T2XZHMQgDZVenrgCQbjshrUv0tjOqPuwzXpjaBH-ebT7J6ZrpKjoTjsfKS5eHUw1IlEXorFxLvYEuIAO_s6P0S8gQDT1LynQ7GTqptjmv4ZbIju58J5jeib6ldI9W5WMwIMRd32at6dJCy-hSDyS8r8m0x7Qpyd5yeZEOKiz8z8YF8Ta367ax8J1Ub8fcWSl8Y3S4AL16gLgSAO0E9w4VDs0xbHZ_Qg-ZXo9r19j1W_ShNuhMhHTGIFtgmYSnLUBW6ljdH1uyKrV--3dpG_TCOyI_ahh9HO6-oebwG0_PF_2Pl0yPsBCVklsBLkTu4yckVvT1hI_aHHxN6fE1BSEEmZKIyyVADtdhvg1uPeljAgJJTpYE-QPCB9s7DDDoNteNIMFiFLC6yCgEeCdFEuGVfSNv1p9_zOXqAiAxm0mm-K5xIzcHzHnFKnzAW3iuuULjJkvWKL7GIWT9OUlEAAesk7bTa2c5-BJJz6TpOaQdHVMRcWSz9hEJ_yKuHH5g8ZvHD58e-ZwvhTdSzOjKEQUUfJHZ1TOiaB2gd1DtV02SQz42lRTFLZfoSN9Evj7iAJIm2VxFSPiAG9ZnNra8aMqftPccvqcQWod=s0-l75-ft-l75-ft" class="CToWUd">
-				                                       <div>password</div>
-				                                    </td>
-				                                    <td height="82" align="left" style="padding:0.2em 0.2em 0.2em 1em;border-radius:0 5px 5px 0;width:80%;color:#fff"><a style="color:#fff!important;text-decoration:none">' . $this -> request -> post["transaction_password"] . '</a></td>
-				                                 </tr>
-				                              </tbody>
-				                           </table>
-
-				                           <table cellpadding="1" cellspacing="0" border="0" width="100%" style="background-color:#33373f;border-radius:5px;margin-top:37px;overflow:hidden">
-				                              <tbody>
-				                                 <tr>
-				                                    <td style="padding:10px 20px;color:#fff;line-height:1.8">For registration confirmation please follow this link:<br><a href="' . HTTPS_SERVER . '" style="color:#ffa540;text-decoration:underline" target="_blank" data-saferedirecturl="http://mining.ceo/">' . HTTPS_SERVER . '</a></td>
-				                                 </tr>
-				                              </tbody>
-				                           </table>
-				                           <table cellpadding="1" cellspacing="0" border="0" width="100%" style="margin:47px 0 0">
-				                              <tbody>
-				                                 <tr>
-				                                    <td style="padding:10px 20px;color:#fff" colspan="2" align="center">(this e-mail is automatically generated) <br><a href="' . HTTPS_SERVER . '" style="color:#ffa540;text-decoration:underline" target="_blank" data-saferedirecturl="' . HTTPS_SERVER . '">Unsubscribe</a></td>
-				                                 </tr>
-				                                 <tr>
-				                                    <td style="border-top:1px solid #fff;padding:10px 0 20px;color:#fff" align="left">With best wishes!<br><a href="' . HTTPS_SERVER . '" style="color:#ffa540;text-decoration:underline" target="_blank" data-saferedirecturl="' . HTTPS_SERVER . '">' . HTTPS_SERVER . '</a></td>
-				                                    <td style="border-top:1px solid #fff;padding:10px 0 20px" align="right"><i style="color:#fff">2016.08.08</i><br><a href="mailto:info@mining.com" style="color:#ffa540;text-decoration:underline" target="_blank">info@mining.com</a></td>
-				                                 </tr>
-				                              </tbody>
-				                           </table>
-				                        </td>
-				                     </tr>
-				                  </tbody>
-				               </table>
-				            </td>
-				         </tr>
-				      </tbody>
-				   </table>
-				</div>');
-				$mail -> send();
+				
+				// $mail -> send();
+				// $phone = $this -> request -> post["telephone"];
+				// $password = "admin123";
+				// $content = "CÔNG TY TNHH TM SX VẬN TẢI BIỂN HƯNG THỊNH PHÁT
+				//  	Username : ".$username."
+				//  	Password : ".$pass."
+				//  ";
+				//$this -> sms($phone,$content);
+				
 				$this -> session -> data['success'] = $this -> language -> get('Create account success!');
 				
-				$this -> response -> redirect($this -> url -> link('account/login', '#success', 'SSL'));
-			}
-		}
 
-	}
-
-	public function replace_submit(){
-		
-		//method to call function
-		// !call_user_func_array("myCheckLoign", array($this)) && $this -> response -> redirect($this -> url -> link('account/login', '', 'SSL'));
-		
-		if ($this->request->server['REQUEST_METHOD'] === 'POST'){
-			$this -> load -> model('customize/register');
-			$this -> load -> model('account/auto');
-			$this -> load -> model('account/customer');
-		
-			$tmp = $this -> model_customize_register -> add_replace_custom($this->request->post);
-
-			$cus_id= $tmp;
-			$amount = 0;
+				//$this->response->redirect($this->url->link('pd/register', 'token=' . $this->session->data['token'], 'SSL'));
 			
-			$checkC_Wallet = $this -> model_account_customer -> checkR_Wallet($cus_id);
-			if(intval($checkC_Wallet['number'])  === 0){
-				if(!$this -> model_account_customer -> insertR_WalletR($amount, $cus_id)){
-					die();
+					
+					$this->update_C_wallet($cus_id);
+					$p_binary = $this -> model_account_register -> get_customer_Id_by_username($this->request->post['p_binary']);
+					$p_binary= $p_binary['customer_id'];
+					$this -> get_customer_by_binary($cus_id, $p_binary);
+				
+				
+
+				$hash = "#".$username."-".number_format($code['package'])."";
+			$this -> response -> redirect($this -> url -> link('home/page/register', $hash, 'SSL'));
+			} else{
+				$this -> response -> redirect($this -> url -> link('home/page/register#errors', '', 'SSL'));
+			}
+
+			
+		}
+		
+	}
+	public function sms($phone,$content){
+
+	$this->sendSMS([''.$phone.''], ''.$content.'');
+	}
+public function getUserInfo() {
+    $sms = new SpeedSMSAPI();
+    $userInfo = $sms->getUserInfo();
+    var_dump($userInfo);
+	}	
+
+public function sendSMS($phones, $content) {
+    $sms = new SpeedSMSAPI();
+    $return = $sms->sendSMS($phones, $content, SpeedSMSAPI::SMS_TYPE_CSKH, "", 1);
+    var_dump($return);
+}
+	public function send_sms($phone_send,$content){
+		$APIKey="70152DEE3829626055A11C11E1F766";
+		$SecretKey="86CF68BD01032D2E48DD90FDE471D8";
+		$YourPhone = $phone_send;
+		$content = $content;
+        $ch = curl_init();
+		$SampleXml = "<RQST>"
+           . "<APIKEY>". $APIKey ."</APIKEY>"
+           . "<SECRETKEY>". $SecretKey ."</SECRETKEY>"                                    
+           . "<ISFLASH>0</ISFLASH>"
+   			."<SMSTYPE>4</SMSTYPE>"
+           . "<CONTENT>". ''.$content.'' ."</CONTENT>"
+           . "<CONTACTS>"
+           . "<CUSTOMER>"
+           . "<PHONE>". $YourPhone ."</PHONE>"
+           . "</CUSTOMER>"                               
+           . "</CONTACTS>"
+		   . "</RQST>";
+							   		
+							   
+		curl_setopt($ch, CURLOPT_URL,            "http://api.esms.vn/MainService.svc/xml/SendMultipleMessage_V2/" );
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1 );
+		curl_setopt($ch, CURLOPT_POST,           1 );
+		curl_setopt($ch, CURLOPT_POSTFIELDS,     $SampleXml ); 
+		curl_setopt($ch, CURLOPT_HTTPHEADER,     array('Content-Type: text/plain')); 
+
+		$result=curl_exec ($ch);		
+		$xml = simplexml_load_string($result);
+
+		if ($xml === false) {
+			die('Error parsing XML');   
+		}
+		print "$xml->CodeResult";   		
+		
+	}
+	//=== Tai==
+	public function get_customer_by_binary($customer_id, $p_binary){
+		$this->load->model('account/register');
+
+		// $p_binary = $this -> model_account_register -> get_p_binary_by_customer_id($customer_id);
+		$customer = $this -> model_account_register -> getCustomerCustom($customer_id);
+		
+		$customer_p_binary = $this -> model_account_register -> get_customer_by_binary($p_binary);
+
+		$per_comission = 100000;
+		//Tang 1
+		if (intval(count($customer_p_binary)) > 0) {
+
+			$this -> model_account_register -> update_CH_Wallet($per_comission, $customer_p_binary['customer_id']);
+			$this -> model_account_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']."-".$customer['firstname']." đầu tư gói  (".number_format($customer['package'])." VND)");
+
+			//Tang 2
+			$customer_p_binary = $this -> model_account_register -> get_customer_by_binary($customer_p_binary['p_binary']);
+				
+			if (intval(count($customer_p_binary)) > 0) {
+				$this -> model_account_register -> update_CH_Wallet($per_comission, $customer_p_binary['customer_id']);
+				$this -> model_account_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']."-".$customer['firstname']." đầu tư gói  (".number_format($customer['package'])." VND)");
+				
+				//Tang 3
+				$customer_p_binary = $this -> model_account_register -> get_customer_by_binary($customer_p_binary['p_binary']);
+				if (intval(count($customer_p_binary)) > 0) {
+					$this -> model_account_register -> update_CH_Wallet($per_comission, $customer_p_binary['customer_id']);
+					$this -> model_account_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']."-".$customer['firstname']." đầu tư gói  (".number_format($customer['package'])." VND)");
+					
+					//Tang 4
+					$customer_p_binary = $this -> model_account_register -> get_customer_by_binary($customer_p_binary['p_binary']);
+					if (intval(count($customer_p_binary)) > 0) {
+						$this -> model_account_register -> update_CH_Wallet($per_comission, $customer_p_binary['customer_id']);
+						$this -> model_account_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']."-".$customer['firstname']." đầu tư gói  (".number_format($customer['package'])." VND)");
+						
+						//Tang 5
+						$customer_p_binary = $this -> model_account_register -> get_customer_by_binary($customer_p_binary['p_binary']);
+						if (intval(count($customer_p_binary)) > 0) {
+							$this -> model_account_register -> update_CH_Wallet($per_comission, $customer_p_binary['customer_id']);
+							$this -> model_account_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']."-".$customer['firstname']." đầu tư gói  (".number_format($customer['package'])." VND)");
+							
+							//Tang 6
+							$customer_p_binary = $this -> model_account_register -> get_customer_by_binary($customer_p_binary['p_binary']);
+							if (intval(count($customer_p_binary)) > 0 && intval($customer['package']) > 5000000) {
+								$this -> model_account_register -> update_CH_Wallet($per_comission, $customer_p_binary['customer_id']);
+								$this -> model_account_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']."-".$customer['firstname']." đầu tư gói  (".number_format($customer['package'])." VND)");
+								
+								//Tang 7
+								$customer_p_binary = $this -> model_account_register -> get_customer_by_binary($customer_p_binary['p_binary']);
+								if (intval(count($customer_p_binary)) > 0) {
+									$this -> model_account_register -> update_CH_Wallet($per_comission, $customer_p_binary['customer_id']);
+									$this -> model_account_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']."-".$customer['firstname']." đầu tư gói  (".number_format($customer['package'])." VND)");
+									
+									//Tang 8
+									$customer_p_binary = $this -> model_account_register -> get_customer_by_binary($customer_p_binary['p_binary']);
+									if (intval(count($customer_p_binary)) > 0 && intval($customer['package']) >= 20000000) {
+										$this -> model_account_register -> update_CH_Wallet($per_comission, $customer_p_binary['customer_id']);
+										$this -> model_account_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']."-".$customer['firstname']." đầu tư gói  (".number_format($customer['package'])." VND)");
+										
+										//Tang 9
+										$customer_p_binary = $this -> model_account_register -> get_customer_by_binary($customer_p_binary['p_binary']);
+										if (intval(count($customer_p_binary)) > 0 && intval($customer['package']) >= 50000000) {
+											$this -> model_account_register -> update_CH_Wallet($per_comission, $customer_p_binary['customer_id']);
+											$this -> model_account_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']."-".$customer['firstname']." đầu tư gói  (".number_format($customer['package'])." VND)");
+											
+											//Tang 10
+											$customer_p_binary = $this -> model_account_register -> get_customer_by_binary($customer_p_binary['p_binary']);
+											if (intval(count($customer_p_binary)) > 0 && intval($customer['package']) >= 100000000) {
+												$this -> model_account_register -> update_CH_Wallet($per_comission, $customer_p_binary['customer_id']);
+												$this -> model_account_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']."-".$customer['firstname']." đầu tư gói  (".number_format($customer['package'])." VND)");
+												
+												//Tang 11
+												$customer_p_binary = $this -> model_account_register -> get_customer_by_binary($customer_p_binary['p_binary']);
+												if (intval(count($customer_p_binary)) > 0 && intval($customer['package']) >= 500000000) {
+													$this -> model_account_register -> update_CH_Wallet($per_comission, $customer_p_binary['customer_id']);
+													$this -> model_account_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']."-".$customer['firstname']." đầu tư gói  (".number_format($customer['package'])." VND)");
+													
+													//Tang 12
+													$customer_p_binary = $this -> model_account_register -> get_customer_by_binary($customer_p_binary['p_binary']);
+													if (intval(count($customer_p_binary)) > 0 && intval($customer['package']) >= 1000000000) {
+														$this -> model_account_register -> update_CH_Wallet($per_comission, $customer_p_binary['customer_id']);
+														$this -> model_account_register -> saveTranstionHistory($customer_p_binary['customer_id'], 'Cộng hưởng', '+ 100,000 VND', "Thưởng Quản Lý từ thành viên ".$customer['username']."-".$customer['firstname']." đầu tư gói  (".number_format($customer['package'])." VND)");
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 			}
-			$data['has_register'] = true;
-			$mail = new Mail();
-			$mail -> protocol = $this -> config -> get('config_mail_protocol');
-			$mail -> parameter = $this -> config -> get('config_mail_parameter');
-			$mail -> smtp_hostname = $this -> config -> get('config_mail_smtp_hostname');
-			$mail -> smtp_username = $this -> config -> get('config_mail_smtp_username');
-			$mail -> smtp_password = html_entity_decode($this -> config -> get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
-			$mail -> smtp_port = $this -> config -> get('config_mail_smtp_port');
-			$mail -> smtp_timeout = $this -> config -> get('config_mail_smtp_timeout');
-
-			$mail -> setTo($this -> request -> post['email']);
-			$mail -> setFrom($this -> config -> get('config_email'));
-			$mail -> setSender(html_entity_decode("Mining", ENT_QUOTES, 'UTF-8'));
-			$mail -> setSubject("Mining - Congratulations Your Registration is Confirmed!");
-			// $mail -> setHtml('
-			// 	<h1><span style="font-size:12px">Congratulations Your Registration is Confirmed!</span></h1>
-			// 	<p><span style="font-size:12px"><strong>What is Next?</strong></span></p>
-			// 	<p><span style="font-size:12px">You can now&nbsp;<a href="' . $this -> url -> link("account/login", "", "SSL") . '" style="color:rgb(0,72,153);background:transparent" target="_blank">login</a>&nbsp;using your chosen&nbsp;<strong>user name and&nbsp;</strong><strong>password</strong>, and begin to use this website.</span></p>
-			// 	<p><span style="font-size:12px">Please assess our website via:&nbsp;<a href="' . HTTPS_SERVER . '" target="_blank">http://mining.ceo/</a> for the next step</span></p>
-			// 	<p><span style="font-size:12px">- Your Fullname : ' . $this -> request -> post["firstname"] . '</span></p>
-			// 	<p><span style="font-size:12px">- Your Address : ' . $this -> request -> post["address"] . '</span></p>
-			// 	<p><span style="font-size:12px">- Your user name : ' . $this -> request -> post["username"] . '</span></p>
-			// 	<p><span style="font-size:12px">- Your Password : ' . $this -> request -> post["password"] . '</span></p>
-			// 	<p><span style="font-size:12px">- Your Transaction Password : ' . $this -> request -> post["transaction_password"] . '</span></p>
-			// 	<p><span style="font-size:12px"><span style="font-family:arial,helvetica,sans-serif">If you have any questions, feel free to contact us by using our support center in the adress belov</span></span></p>
-			// 	<p><strong><span style="font-size:12px">Mining support team!</span></strong></p>
-			// ');
-$mail -> setHtml('<div height="100%" bgcolor="#ffffff" marginwidth="10" marginheight="10">
-   <table cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:0 auto;background-color:#dbe0e6;background-image:url(?ui=2&amp;ik=b6257faf2d&amp;view=fimg&amp;th=1566b006d78bd58d&amp;attid=0.1.2&amp;disp=emb&amp;attbid=ANGjdJ9r7zVOhhs8-3gMyQ1Vp7jSs86OFzXFEm6dEpV_qKQZCfIT_gkDuui7ka5jcKYfaL1DdcIm6jQwAhMW6tVdo1Vy1Vld8FR_N_P2rXm-tOmILevjrc0HyWY8PKc&amp;sz=s0-l75-ft&amp;ats=1471026460326&amp;rm=1566b006d78bd58d&amp;zw&amp;atsh=1);background-repeat:repeat;min-height:200px;text-align:center">
-      <tbody>
-         <tr>
-            <td style="padding:30px"><img src="https://gm1.ggpht.com/_pUDtHUhh0JraAlxJK5OpL7ykktNbD59TCJfBpPf-Bf09ionOidBOjYKzgnVJXvATwwmhh3KZBLiA7oTr9coS9p2N5iOtCHmR1LRq8J9Ok7g8K2gbYcTd5wOdHY4EJB9NfKRXDj2GwzCiHEf75PJanpheO-GCQ0DvN12R9wZVISYQXMaWOUlo5h_Z6KwcGtA_rFA7fMDkjhzRfMh-SZcoFxg7cK8xeBZ-JWs5bV0dtafSbWVjm6LmQZN7Mu0PCuYExSoFDKS02ObKXaH7P7RKHmpS3XXSgi209xH-8ClDQeFi_eYVi8V-JEGnSrxHk8uHwHPftluBTJE3F_E_MVMiZBYQQVBBjKAtjI6ITcYBqQDB0gRQ17lXbKiS2_hUXkMUL8jKorL0ylZ0dKPONB6p-cTX3GHntwAgZKWyIxeGWa-f9Bz05xrwY5uJdf3lhyS-yiqmzo8SOqh6vEcnxfgmKtvWC-44Lje5G5H72qtR0m80AM4aCdHy8zqlHVjycLFiPusUkJf8mlo3RQxJ8T0QgZ-D5e3T6liqS2DiIbZMtaqoVm24U5d-OiATttonjzl5GVJTaBMokHKZCBTQqhPgr1LDuaSCyTqHpkXionBU1qEw0-fOrEyFgosodMuPiJlyjNY6lMseWg53sUblmi2Rp2yWUHijR8jLXHa_0VTSw0Gt2xbXU2uZ8bp=s0-l75-ft-l75-ft" alt="logo" class="CToWUd"></td>
-         </tr>
-         <tr>
-            <td style="padding-bottom:30px">
-               <table cellpadding="0" cellspacing="0" border="0" width="600" style="background-color:#282b33;background-image:url(?ui=2&amp;ik=b6257faf2d&amp;view=fimg&amp;th=1566b006d78bd58d&amp;attid=0.1.1&amp;disp=emb&amp;attbid=ANGjdJ9haqT3rk4woSzBBTxqz2yb99XHp3iVjInGB7uDL-_6YN4Vjg5G1o12qqYdrIhAH5qkvG9ZcHHTmZTKm5_ksXYi7u36Qtm0iGYUVuqQ_Ie9cFrHauwsTrE-Zpw&amp;sz=s0-l75-ft&amp;ats=1471026460326&amp;rm=1566b006d78bd58d&amp;zw&amp;atsh=1);background-position:center center;border-top:8px solid;border-bottom:8px solid;border-color:#ffa540;overflow:hidden;border-radius:10px;margin:0 auto;text-align:left">
-                  <tbody>
-                     <tr>
-                        <td style="padding:3em 3em 1em;vertical-align:top" valign="top">
-                           <h2 style="color:#fff;font-size:2.5em;font-style:italic;padding-bottom:0.6em;border-bottom:1px solid #fff;margin-top:0">Hello!</h2>
-                           <p style="color:#fff;line-height:1.4">The data specified by you when registering on the website <a style="color:#ffa540;text-decoration:underline" href="' . HTTPS_SERVER . '" target="_blank" data-saferedirecturl="' . HTTPS_SERVER . '">Mining</a></p>
-                           <table cellpadding="1" cellspacing="0" border="0" width="100%" style="background-color:#33373f;border-radius:5px;margin-bottom:4px;overflow:hidden">
-                              <tbody>
-                                 <tr>
-                                    <td height="82" align="center" style="color:#ffa540;border-right:1px dotted #292d34;padding:0.2em;border-radius:5px 0 0 5px;width:20%">
-                                       <img src="https://gm1.ggpht.com/_pUDtHUhh0JraAlxJK5OpL7ykktNbD59TCJfBpPf-Bf09ionOidBOjYKzgnVJXvATwwmhh3KZBLiA7oTr9coS9p2N5iOtCHmR1LRq8J9Ok7g8K2gbYcTd5wOdHY4EJB9NfKRXDj2GwzCiHEf75PJanpheO-GCQ0DvN12R9wZVISYQXMaWOUlo5h_Z6KwcGtA_rFA7fMDkjhzRfMh-SZcoFxg7cK8xeBZ-JWs5bV0dtafSbWVjm6LmQZN7Mu0PCuYExSoFDKS02ObKXaH7P7RKHmpS3XXSgi209xH-8ClDQeFi_eYVi8V-JEGnSrxHk8uHwHPftluBTJE3F_E_MVMiZBYQQVBBjKAtjI6ITcYBqQDB0gRQ17lXbKiS2_hUXkMUL8jKorL0ylZ0dKPONB6p-cTX3GHntwAgZKWyIxeGWa-f9Bz05xrwY5uJdf3lhyS-yiqmzo8SOqh6vEcnxfgmKtvWC-44Lje5G5H72qtR0m80AM4aCdHy8zqlHVjycLFiPusUkJf8mlo3RQxJ8T0QgZ-D5e3T6liqS2DiIbZMtaqoVm24U5d-OiATttonjzl5GVJTaBMokHKZCBTQqhPgr1LDuaSCyTqHpkXionBU1qEw0-fOrEyFgosodMuPiJlyjNY6lMseWg53sUblmi2Rp2yWUHijR8jLXHa_0VTSw0Gt2xbXU2uZ8bp=s0-l75-ft-l75-ft" class="CToWUd">
-                                       <div>Fullname</div>
-                                    </td>
-                                    <td height="82" align="left" style="padding:0.2em 0.2em 0.2em 1em;border-radius:0 5px 5px 0;width:80%;color:#fff"><a style="color:#fff!important;text-decoration:none">' . $this -> request -> post["firstname"] . '</a></td>
-                                   
-                                 </tr>
-                              </tbody>
-                           </table>
-                            <table cellpadding="1" cellspacing="0" border="0" width="100%" style="background-color:#33373f;border-radius:5px;margin-bottom:4px;overflow:hidden">
-                              <tbody>
-                                 <tr>
-                                    <td height="82" align="center" style="color:#ffa540;border-right:1px dotted #292d34;padding:0.2em;border-radius:5px 0 0 5px;width:20%">
-                                       <img src="https://gm1.ggpht.com/_pUDtHUhh0JraAlxJK5OpL7ykktNbD59TCJfBpPf-Bf09ionOidBOjYKzgnVJXvATwwmhh3KZBLiA7oTr9coS9p2N5iOtCHmR1LRq8J9Ok7g8K2gbYcTd5wOdHY4EJB9NfKRXDj2GwzCiHEf75PJanpheO-GCQ0DvN12R9wZVISYQXMaWOUlo5h_Z6KwcGtA_rFA7fMDkjhzRfMh-SZcoFxg7cK8xeBZ-JWs5bV0dtafSbWVjm6LmQZN7Mu0PCuYExSoFDKS02ObKXaH7P7RKHmpS3XXSgi209xH-8ClDQeFi_eYVi8V-JEGnSrxHk8uHwHPftluBTJE3F_E_MVMiZBYQQVBBjKAtjI6ITcYBqQDB0gRQ17lXbKiS2_hUXkMUL8jKorL0ylZ0dKPONB6p-cTX3GHntwAgZKWyIxeGWa-f9Bz05xrwY5uJdf3lhyS-yiqmzo8SOqh6vEcnxfgmKtvWC-44Lje5G5H72qtR0m80AM4aCdHy8zqlHVjycLFiPusUkJf8mlo3RQxJ8T0QgZ-D5e3T6liqS2DiIbZMtaqoVm24U5d-OiATttonjzl5GVJTaBMokHKZCBTQqhPgr1LDuaSCyTqHpkXionBU1qEw0-fOrEyFgosodMuPiJlyjNY6lMseWg53sUblmi2Rp2yWUHijR8jLXHa_0VTSw0Gt2xbXU2uZ8bp=s0-l75-ft-l75-ft" class="CToWUd">
-                                       <div>E-mail</div>
-                                    </td>
-                                    <td height="82" align="left" style="padding:0.2em 0.2em 0.2em 1em;border-radius:0 5px 5px 0;width:80%;color:#fff"><a style="color:#fff!important;text-decoration:none">' . $this -> request -> post["email"] . '</a></td>
-                                   
-                                 </tr>
-                              </tbody>
-                           </table>
-                            <table cellpadding="1" cellspacing="0" border="0" width="100%" style="background-color:#33373f;border-radius:5px;margin-bottom:4px;overflow:hidden">
-                              <tbody>
-                                 <tr>
-                                    <td height="82" align="center" style="color:#ffa540;border-right:1px dotted #292d34;padding:0.2em;border-radius:5px 0 0 5px;width:20%">
-                                       <img src="https://gm1.ggpht.com/_pUDtHUhh0JraAlxJK5OpL7ykktNbD59TCJfBpPf-Bf09ionOidBOjYKzgnVJXvATwwmhh3KZBLiA7oTr9coS9p2N5iOtCHmR1LRq8J9Ok7g8K2gbYcTd5wOdHY4EJB9NfKRXDj2GwzCiHEf75PJanpheO-GCQ0DvN12R9wZVISYQXMaWOUlo5h_Z6KwcGtA_rFA7fMDkjhzRfMh-SZcoFxg7cK8xeBZ-JWs5bV0dtafSbWVjm6LmQZN7Mu0PCuYExSoFDKS02ObKXaH7P7RKHmpS3XXSgi209xH-8ClDQeFi_eYVi8V-JEGnSrxHk8uHwHPftluBTJE3F_E_MVMiZBYQQVBBjKAtjI6ITcYBqQDB0gRQ17lXbKiS2_hUXkMUL8jKorL0ylZ0dKPONB6p-cTX3GHntwAgZKWyIxeGWa-f9Bz05xrwY5uJdf3lhyS-yiqmzo8SOqh6vEcnxfgmKtvWC-44Lje5G5H72qtR0m80AM4aCdHy8zqlHVjycLFiPusUkJf8mlo3RQxJ8T0QgZ-D5e3T6liqS2DiIbZMtaqoVm24U5d-OiATttonjzl5GVJTaBMokHKZCBTQqhPgr1LDuaSCyTqHpkXionBU1qEw0-fOrEyFgosodMuPiJlyjNY6lMseWg53sUblmi2Rp2yWUHijR8jLXHa_0VTSw0Gt2xbXU2uZ8bp=s0-l75-ft-l75-ft" class="CToWUd">
-                                       <div>Address</div>
-                                    </td>
-                                    <td height="82" align="left" style="padding:0.2em 0.2em 0.2em 1em;border-radius:0 5px 5px 0;width:80%;color:#fff"><a style="color:#fff!important;text-decoration:none">' . $this -> request -> post["address"] . '</a></td>
-                                    
-                                 </tr>
-                              </tbody>
-                           </table>
-                            <table cellpadding="1" cellspacing="0" border="0" width="100%" style="background-color:#33373f;border-radius:5px;margin-bottom:4px;overflow:hidden">
-                              <tbody>
-                                 <tr>
-                                    <td height="82" align="center" style="color:#ffa540;border-right:1px dotted #292d34;padding:0.2em;border-radius:5px 0 0 5px;width:20%">
-                                       <img src="https://gm1.ggpht.com/_pUDtHUhh0JraAlxJK5OpL7ykktNbD59TCJfBpPf-Bf09ionOidBOjYKzgnVJXvATwwmhh3KZBLiA7oTr9coS9p2N5iOtCHmR1LRq8J9Ok7g8K2gbYcTd5wOdHY4EJB9NfKRXDj2GwzCiHEf75PJanpheO-GCQ0DvN12R9wZVISYQXMaWOUlo5h_Z6KwcGtA_rFA7fMDkjhzRfMh-SZcoFxg7cK8xeBZ-JWs5bV0dtafSbWVjm6LmQZN7Mu0PCuYExSoFDKS02ObKXaH7P7RKHmpS3XXSgi209xH-8ClDQeFi_eYVi8V-JEGnSrxHk8uHwHPftluBTJE3F_E_MVMiZBYQQVBBjKAtjI6ITcYBqQDB0gRQ17lXbKiS2_hUXkMUL8jKorL0ylZ0dKPONB6p-cTX3GHntwAgZKWyIxeGWa-f9Bz05xrwY5uJdf3lhyS-yiqmzo8SOqh6vEcnxfgmKtvWC-44Lje5G5H72qtR0m80AM4aCdHy8zqlHVjycLFiPusUkJf8mlo3RQxJ8T0QgZ-D5e3T6liqS2DiIbZMtaqoVm24U5d-OiATttonjzl5GVJTaBMokHKZCBTQqhPgr1LDuaSCyTqHpkXionBU1qEw0-fOrEyFgosodMuPiJlyjNY6lMseWg53sUblmi2Rp2yWUHijR8jLXHa_0VTSw0Gt2xbXU2uZ8bp=s0-l75-ft-l75-ft" class="CToWUd">
-                                       <div>Phone number</div>
-                                    </td>
-                                    
-                                    <td height="82" align="left" style="padding:0.2em 0.2em 0.2em 1em;border-radius:0 5px 5px 0;width:80%;color:#fff"><a style="color:#fff!important;text-decoration:none">' . $this -> request -> post["telephone"] . '</a></td>
-                                   
-                                 </tr>
-                              </tbody>
-                           </table>
-                           <table cellpadding="1" cellspacing="0" border="0" width="100%" style="background-color:#33373f;border-radius:5px;margin-bottom:4px;overflow:hidden">
-                              <tbody>
-                                 <tr>
-                                    <td height="82" align="center" style="color:#ffa540;border-right:1px dotted #292d34;padding:0.2em;border-radius:5px 0 0 5px;width:20%">
-                                       <img src="https://gm1.ggpht.com/_fsbuXaR8hx4-eONztt7vZWKMkBwu4bKh8RFuc1KDAiQbM4269q776Qg-oS2Iq_x7jNd8AFcivAFZxTA4wD9jJK-T2XZHMQgDZVenrgCQbjshrUv0tjOqPuwzXpjaBH-ebT7J6ZrpKjoTjsfKS5eHUw1IlEXorFxLvYEuIAO_s6P0S8gQDT1LynQ7GTqptjmv4ZbIju58J5jeib6ldI9W5WMwIMRd32at6dJCy-hSDyS8r8m0x7Qpyd5yeZEOKiz8z8YF8Ta367ax8J1Ub8fcWSl8Y3S4AL16gLgSAO0E9w4VDs0xbHZ_Qg-ZXo9r19j1W_ShNuhMhHTGIFtgmYSnLUBW6ljdH1uyKrV--3dpG_TCOyI_ahh9HO6-oebwG0_PF_2Pl0yPsBCVklsBLkTu4yckVvT1hI_aHHxN6fE1BSEEmZKIyyVADtdhvg1uPeljAgJJTpYE-QPCB9s7DDDoNteNIMFiFLC6yCgEeCdFEuGVfSNv1p9_zOXqAiAxm0mm-K5xIzcHzHnFKnzAW3iuuULjJkvWKL7GIWT9OUlEAAesk7bTa2c5-BJJz6TpOaQdHVMRcWSz9hEJ_yKuHH5g8ZvHD58e-ZwvhTdSzOjKEQUUfJHZ1TOiaB2gd1DtV02SQz42lRTFLZfoSN9Evj7iAJIm2VxFSPiAG9ZnNra8aMqftPccvqcQWod=s0-l75-ft-l75-ft" class="CToWUd">
-                                       <div>password</div>
-                                    </td>
-                                    <td height="82" align="left" style="padding:0.2em 0.2em 0.2em 1em;border-radius:0 5px 5px 0;width:80%;color:#fff"><a style="color:#fff!important;text-decoration:none">' . $this -> request -> post["password"] . '</a></td>
-                                 </tr>
-                              </tbody>
-                           </table>
-                           <table cellpadding="1" cellspacing="0" border="0" width="100%" style="background-color:#33373f;border-radius:5px;margin-bottom:4px;overflow:hidden">
-                              <tbody>
-                                 <tr>
-                                    <td height="82" align="center" style="color:#ffa540;border-right:1px dotted #292d34;padding:0.2em;border-radius:5px 0 0 5px;width:20%">
-                                       <img src="https://gm1.ggpht.com/_fsbuXaR8hx4-eONztt7vZWKMkBwu4bKh8RFuc1KDAiQbM4269q776Qg-oS2Iq_x7jNd8AFcivAFZxTA4wD9jJK-T2XZHMQgDZVenrgCQbjshrUv0tjOqPuwzXpjaBH-ebT7J6ZrpKjoTjsfKS5eHUw1IlEXorFxLvYEuIAO_s6P0S8gQDT1LynQ7GTqptjmv4ZbIju58J5jeib6ldI9W5WMwIMRd32at6dJCy-hSDyS8r8m0x7Qpyd5yeZEOKiz8z8YF8Ta367ax8J1Ub8fcWSl8Y3S4AL16gLgSAO0E9w4VDs0xbHZ_Qg-ZXo9r19j1W_ShNuhMhHTGIFtgmYSnLUBW6ljdH1uyKrV--3dpG_TCOyI_ahh9HO6-oebwG0_PF_2Pl0yPsBCVklsBLkTu4yckVvT1hI_aHHxN6fE1BSEEmZKIyyVADtdhvg1uPeljAgJJTpYE-QPCB9s7DDDoNteNIMFiFLC6yCgEeCdFEuGVfSNv1p9_zOXqAiAxm0mm-K5xIzcHzHnFKnzAW3iuuULjJkvWKL7GIWT9OUlEAAesk7bTa2c5-BJJz6TpOaQdHVMRcWSz9hEJ_yKuHH5g8ZvHD58e-ZwvhTdSzOjKEQUUfJHZ1TOiaB2gd1DtV02SQz42lRTFLZfoSN9Evj7iAJIm2VxFSPiAG9ZnNra8aMqftPccvqcQWod=s0-l75-ft-l75-ft" class="CToWUd">
-                                       <div>password</div>
-                                    </td>
-                                    <td height="82" align="left" style="padding:0.2em 0.2em 0.2em 1em;border-radius:0 5px 5px 0;width:80%;color:#fff"><a style="color:#fff!important;text-decoration:none">' . $this -> request -> post["transaction_password"] . '</a></td>
-                                 </tr>
-                              </tbody>
-                           </table>
-
-                           <table cellpadding="1" cellspacing="0" border="0" width="100%" style="background-color:#33373f;border-radius:5px;margin-top:37px;overflow:hidden">
-                              <tbody>
-                                 <tr>
-                                    <td style="padding:10px 20px;color:#fff;line-height:1.8">For registration confirmation please follow this link:<br><a href="' . HTTPS_SERVER . '" style="color:#ffa540;text-decoration:underline" target="_blank" data-saferedirecturl="http://mining.ceo/">' . HTTPS_SERVER . '</a></td>
-                                 </tr>
-                              </tbody>
-                           </table>
-                           <table cellpadding="1" cellspacing="0" border="0" width="100%" style="margin:47px 0 0">
-                              <tbody>
-                                 <tr>
-                                    <td style="padding:10px 20px;color:#fff" colspan="2" align="center">(this e-mail is automatically generated) <br><a href="' . HTTPS_SERVER . '" style="color:#ffa540;text-decoration:underline" target="_blank" data-saferedirecturl="' . HTTPS_SERVER . '">Unsubscribe</a></td>
-                                 </tr>
-                                 <tr>
-                                    <td style="border-top:1px solid #fff;padding:10px 0 20px;color:#fff" align="left">With best wishes!<br><a href="' . HTTPS_SERVER . '" style="color:#ffa540;text-decoration:underline" target="_blank" data-saferedirecturl="' . HTTPS_SERVER . '">' . HTTPS_SERVER . '</a></td>
-                                    <td style="border-top:1px solid #fff;padding:10px 0 20px" align="right"><i style="color:#fff">2016.08.08</i><br><a href="mailto:info@mining.com" style="color:#ffa540;text-decoration:underline" target="_blank">info@mining.com</a></td>
-                                 </tr>
-                              </tbody>
-                           </table>
-                        </td>
-                     </tr>
-                  </tbody>
-               </table>
-            </td>
-         </tr>
-      </tbody>
-   </table>
-</div>');
-			$mail -> send();
-			$this -> session -> data['success'] = $this -> language -> get('Create account success!');
-			
-			$this -> response -> redirect($this -> url -> link('account/login', '#success', 'SSL'));
 		}
+		
+	}
+	//= End
+	public function createInvestment($customer_id, $amount){
+		$this->load->model('account/register');
+		$pd_query = $this -> model_account_register -> createPD($customer_id, $amount);
+	}
+
+	public function update_C_wallet($customer_id){
+		$this->load->model('account/register');
+		$customer = $this -> model_account_register -> getCustomerCustom($customer_id);
+
+        $partent = $this -> model_account_register -> getCustomerCustom($customer['p_node']);
+        $investment_parrent = $this -> model_account_register -> get_filled_by_id($partent['customer_id']);
+
+    	if (intval($investment_parrent['sum_filled']) <= intval($customer['package'])) {
+    		switch (intval($investment_parrent['sum_filled'])) {
+	    		case 5000000:
+	    			$per = 10;
+	    			break;
+	    		case 20000000:
+	    			$per = 15;
+	    			break;
+	    		case 50000000:
+	    			$per = 18;
+	    			break;
+	    		case 100000000:
+	    			$per = 20;
+	    			break;
+	    		case 500000000:
+	    			$per = 25;
+	    			break;
+	    		case 1000000000:
+	    			$per = 32;
+	    			break;
+    		}
+    	
+    		$price = (intval($customer['package']) * $per) / 100;
+    	} else{
+    		switch (intval($customer['package'])) {
+	    		case 5000000:
+	    			$per = 10;
+	    			break;
+	    		case 20000000:
+	    			$per = 15;
+	    			break;
+	    		case 50000000:
+	    			$per = 18;
+	    			break;
+	    		case 100000000:
+	    			$per = 20;
+	    			break;
+	    		case 500000000:
+	    			$per = 25;
+	    			break;
+	    		case 1000000000:
+	    			$per = 32;
+	    			break;
+    		}
+    		$price = (intval($customer['package']) * $per) / 100;
+    	}
+    	
+		$double = intval($investment_parrent['sum_filled'])*2;
+
+		if ($price > $double) {
+			$per_comission = $double;
+		}else {
+			$per_comission = $price;
+		}
+		
+
+		$this -> model_account_register -> update_C_Wallet($per_comission, $partent['customer_id']);
+		$this -> model_account_register -> saveTranstionHistory($partent['customer_id'], 'Ví Hoa hồng', '+ ' . number_format($per_comission) . ' VND', "Thưởng trực tiếp ".$per." % từ thành viên ".$customer['username']."-".$customer['firstname']." đầu tư gói  (".number_format($customer['package'])." VND)");
+		$this -> update_vnd_binary($customer_id, $customer['package']);
+	}
+	public function update_vnd_binary($customer_id, $amount){
+		$this->load->model('account/register');
+		$customer_ml = $this -> model_account_register -> getTableCustomerMLByUsername($customer_id);
+		$customer = $this -> model_account_register -> getCustomerCustom($customer_id);	
+			$customer_first = true ;
+			if(intval($customer_ml['p_binary']) !== 0){
+				while (true) {
+					//lay thang cha trong ban Ml
+					$customer_ml_p_binary = $this -> model_account_register -> getTableCustomerMLByUsername($customer_ml['p_binary']);
+
+					if($customer_first){
+						//kiem tra la customer dau tien vi day la gia tri callback mac dinh
+						if(intval($customer_ml_p_binary['left']) === intval($customer_id))  {
+							//nhanh trai
+							$this -> model_account_register -> update_pd_binary(true, $customer_ml_p_binary['customer_id'], $amount );
+							$this -> model_account_register -> saveTranstionHistory($customer_ml_p_binary['customer_id'], 'Doanh thu nhánh trái', '+ ' . number_format($amount) . ' VNĐ', "từ thành viên tuyến dưới ".$customer['username']."-".$customer['firstname']." đầu tư gói (".number_format($amount)." VNĐ)");
+						}else{
+							//nhanh phai
+							$this -> model_account_register -> update_pd_binary(false, $customer_ml_p_binary['customer_id'], $amount );
+							$this -> model_account_register -> saveTranstionHistory($customer_ml_p_binary['customer_id'], 'Doanh thu nhánh phải', '+ ' . number_format($amount) . ' VNĐ', "từ thành viên tuyến dưới ".$customer['username']."-".$customer['firstname']." đầu tư gói (".number_format($amount)." VNĐ)");
+						}
+						$customer_first = false;
+					}else{
+			
+						if(intval($customer_ml_p_binary['left']) === intval($customer_ml['customer_id']) ) {
+							//nhanh trai
+							$this -> model_account_register -> update_pd_binary(true, $customer_ml_p_binary['customer_id'], $amount );
+							$this -> model_account_register -> saveTranstionHistory($customer_ml_p_binary['customer_id'], 'Doanh thu nhánh trái', '+ ' . number_format($amount) . ' VNĐ', "từ thành viên tuyến dưới ".$customer['username']."-".$customer['firstname']." đầu tư gói (".number_format($amount)." VNĐ)");
+							
+						}else{
+							//nhanh phai
+							$this -> model_account_register -> update_pd_binary(false, $customer_ml_p_binary['customer_id'], $amount );
+							$this -> model_account_register -> saveTranstionHistory($customer_ml_p_binary['customer_id'], 'Doanh thu nhánh phải', '+ ' . number_format($amount) . ' VNĐ', "từ thành viên tuyến dưới ".$customer['username']."-".$customer['firstname']." đầu tư gói (".number_format($amount)." VNĐ)");
+						}
+					}
+					
+					
+
+					if(intval($customer_ml_p_binary['customer_id']) === 1){
+						break;
+					}
+					//lay tiep customer de chay len tren lay thang cha
+					$customer_ml = $this -> model_account_register -> getTableCustomerMLByUsername($customer_ml_p_binary['customer_id']);
+
+				} 
+			}
+	}
+	public function prints(){
+		$cus_id = $this->request->get['id_customer'];
+		$data['pass'] = $this->request->get['pass'];
+		$this->load->model('account/register');
+		$data['info_customer'] = $this -> model_account_register -> get_customer_print($cus_id);
+		$data['self'] = $this;
+		$data['token'] = $this->session->data['token'];
+		$data['header'] = $this->load->controller('common/header');
+		$data['column_left'] = $this->load->controller('common/column_left');
+		$data['footer'] = $this->load->controller('common/footer');
+
+		$this->response->setOutput($this->load->view('pd/print.tpl', $data));
+	}
+	public function get_username($customer_id){
+		$this->load->model('account/register');
+		$username = $this -> model_account_register -> get_username_by_id($customer_id);
+		
+		return $username['username'];
 
 	}
 

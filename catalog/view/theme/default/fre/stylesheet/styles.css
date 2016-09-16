@@ -3354,3 +3354,7 @@ footer div + div span
 	}
 	
 }
+.alertify.ajs-resizable:not(.ajs-maximized) .ajs-dialog {
+    min-width: 548px;
+    min-height: 300px;
+}

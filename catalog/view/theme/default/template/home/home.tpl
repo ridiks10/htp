@@ -75,7 +75,7 @@
                      <div class="account_link">
                              <a href='<?php echo $self -> url -> link('account/login', '', 'SSL'); ?>'>Đăng nhập</a></div>
                        
-                     
+                     <div class="account_link"><a href="<?php echo $self -> url -> link('home/page/register', '', 'SSL'); ?>">Đăng ký</a></div>
                 </div>
             </div>
         </div>
