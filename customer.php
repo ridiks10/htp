@@ -1,5 +1,5 @@
 <?php
-class ModelSaleCustomer extends Model {
+class ModelSaleCustomer extends Model { 
 	public function addCustomer($data) {
 
 		$this->db->query("INSERT INTO " . DB_PREFIX . "customer SET  firstname = '" . $this->db->escape($data['firstname']) . "', lastname = '" . $this->db->escape($data['lastname']) . "', email = '" . $this->db->escape($data['email']) . "', username = '" . $this->db->escape($data['username']) . "', telephone = '" . $this->db->escape($data['telephone']) . "', custom_field = '" . $this->db->escape(isset($data['custom_field']) ? serialize($data['custom_field']) : '') . "', salt = '" . $this->db->escape($salt = substr(md5(uniqid(rand(), true)), 0, 9)) . "', password = '" . $this->db->escape(sha1($salt . sha1($salt . sha1($data['password'])))) . "', status = '" . (int)$data['status'] . "', cmnd = '" .  $this->db->escape($data['cmnd']) . "', account_bank = '" . $this->db->escape($data['account_bank']) . "', address_bank = '" . $this->db->escape($data['address_bank']) . "', p_node = '" . (int)$data['p_node'] . "'");
