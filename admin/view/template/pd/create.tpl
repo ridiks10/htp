@@ -2,14 +2,14 @@
 <div id="content">
 <div class="page-header">
   <div class="container-fluid">
-    <h1>Nâng cấp gói đầu tư</h1>
+    <h1>Tạo Code</h1>
 
   </div>
 </div>  
 <div class="container-fluid">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title">Nâng cấp gói đầu tư</h3>
+      <h3 class="panel-title">Tạo Code</h3>
     </div>
     <?php 
       if (isset($_SESSION['success'])){?>
@@ -90,7 +90,7 @@ ul#suggesstion-box
                },
                setup:function(){
                    return { 
-                     buttons:[{text: "Close", key:27/*Esc*/}],
+                     buttons:[{text: "Close", key:27/*Esc*/},{text: "<a href='index.php?route=pd/create/print_code&token=<?php echo $_GET['token'];?>' target='_blank'>Print</a>", key:27/*Esc*/}],
 
                    };
                },
@@ -106,16 +106,20 @@ ul#suggesstion-box
            }});
          }
          //launch it.
-          var code = "<p>Mã: "+hash[2]+"</p>";
+          var code = "<p>Mã code: "+hash[2]+"</p>";
          var investment = "<p>Gói đầu tư: "+hash[1]+" VNĐ</p>";
         
          var username = "<p>Họ tên: "+hash[0]+"</p>";
            var phone = "<p>Số điện thoại: "+hash[3]+"</p>";
          var address = "<p>Địa chỉ: "+hash[4]+"</p>";
          
-
+         localStorage.setItem('code',code);
+         localStorage.setItem('investment',investment);
+         localStorage.setItem('username',username);
+         localStorage.setItem('phone',phone);
+         localStorage.setItem('address',address);
         
-         alertify.myAlert(code+investment+username+phone+address);
+         //alertify.myAlert(code+investment+username+phone+address);
       } 
 
       

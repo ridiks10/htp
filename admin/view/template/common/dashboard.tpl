@@ -86,39 +86,40 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="col-lg-4 col-md-4 col-sm-6">
                 <div class="tile">
-                    <div class="tile-heading">Tổng số khách</div>
+                    <div class="tile-heading">Tổng số Code / Số tiền</div>
                     <div class="tile-body">
                         <i class="fa fa-eye"></i>
                         <h2 class="pull-right">
-                            <?php echo $onlineAll; ?>
+                            <?php echo $code['total'] ?> / <?php echo number_format($code['sum']) ?>
                         </h2>
                     </div>
                 </div>
-            </div> -->
-            <!-- <div class="col-lg-4 col-md-4 col-sm-6">
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
                 <div class="tile">
-                    <div class="tile-heading">Customer provide donation waiting</div>
+                    <div class="tile-heading">Doanh số Ngày hôm nay</div>
                     <div class="tile-body">
                         <i class="fa fa-eye"></i>
                         <h2 class="pull-right">
-                            <?php echo $totalWatting; ?>
+
+                            <?php echo number_format($totalds['sum']); ?>
                         </h2>
                     </div>
                 </div>
-            </div> -->
-             <!-- <div class="col-lg-4 col-md-4 col-sm-6">
+            </div>
+             <div class="col-lg-4 col-md-4 col-sm-6">
                 <div class="tile">
-                    <div class="tile-heading">customer provide donation Marched</div>
+                    <div class="tile-heading">Doanh số tháng hiện tại</div>
                     <div class="tile-body">
                         <i class="fa fa-eye"></i>
                         <h2 class="pull-right">
-                            <?php echo $totalMarched; ?>
+                            <?php echo number_format($totaldsthang['sum']); ?>
                         </h2>
                     </div>
                 </div>
-            </div> -->
+            </div>
              <!-- <div class="col-lg-4 col-md-4 col-sm-6">
                 <div class="tile">
                     <div class="tile-heading">customer provide donation finish</div>

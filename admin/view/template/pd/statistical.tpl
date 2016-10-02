@@ -9,7 +9,7 @@
 <div class="container-fluid">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title">Thống kê</h3>
+      <h3 class="panel-title show_button">Thống kê</h3>
     
     </div>
       <div class="clearfix" style="margin-top: 20px;"></div>
@@ -33,7 +33,7 @@
       <thead>
         <tr>
           <th>Tính lãi</th>
-          <th>Xuất excel</th>
+          <th style="display:none">Xuất excel</th>
         </tr>
       </thead>
       <tbody>
@@ -42,15 +42,15 @@
             <?php
               if (count($show_button_hoahong) > 0) {
             ?>
-              <a onclick="return confirm('Bạn có chắc chắn không?')" class="click_" href="index.php?route=report/exportCustomerid/getPD90Before&token=<?php echo $_GET['token'];?>">
-              <button type="button" class="btn btn-success">Tính lãi</button>
+              <a onclick="return confirm('Bạn có chắc chắn không?')" class="click" href="index.php?route=report/exportCustomerid/getPD90Before&token=<?php echo $_GET['token'];?>">
+              <button type="button" class="btn btn-success">Tính lãi tĩnh (Hằng ngày)</button>
               </a>
             <?php } else { ?>
               
               <h1 class="countdown" data-countdown="<?php echo $get_time_button_hoahong['date_finish'];?>"></h1>
             <?php } ?>
           </td>
-          <td>
+          <td style="display:none">
             <?php
               if (count($show_button_export) > 0) {
             ?>
@@ -60,6 +60,7 @@
           <?php } ?>
           </td>
         </tr>
+        
       </tbody>
     </table>
     <div class="clearfix" style="margin-top: 30px;"></div>
@@ -77,7 +78,7 @@
               if (count($show_button_laitructiep) > 0) {
             ?>
               <a onclick="return confirm('Bạn có chắc chắn không?')" class="click" href="index.php?route=report/exportCustomerid/export_c_wallet&token=<?php echo $_GET['token'];?>">
-              <button type="button" class="btn btn-warning">Tính lãi trực tiếp</button>
+              <button type="button" class="btn btn-warning">Tính lãi trực tiếp (Hằng ngày)</button>
               </a>
             <?php } else { ?>
               
@@ -89,7 +90,7 @@
               if (count($show_button_binary) > 0) {
             ?>
               <a onclick="return confirm('Bạn có chắc chắn không?')" class="click" href="index.php?route=report/exportCustomerid/export_commission_binary&token=<?php echo $_GET['token'];?>">
-              <button type="button" class="btn btn-warning">Tính hoa hồng cân nhánh</button>
+              <button type="button" class="btn btn-warning">Tính hoa hồng cân nhánh (15,30)</button>
               </a>
             <?php } else { ?>
               
@@ -99,15 +100,36 @@
         </tr>
       </tbody>
     </table>
-    
+    <br><br>
+    <table>
+      <tr>
+        <th>Xuất lãi Tĩnh</th><th>Xuất Cộng Hưởng</th>
+      </tr>
+      <tr>
+        <td>
+          <a onclick="return confirm('Bạn có chắc chắn không?')" class="click" href="index.php?route=report/exportCustomerid/export_r_wallet&token=<?php echo $_GET['token'];?>">
+            <button type="button" class="btn btn-primary">Xuất lãi Tĩnh (30)</button>
+          </a>
+        </td>
+        <td>
+          <a onclick="return confirm('Bạn có chắc chắn không?')" class="click" href="index.php?route=report/exportCustomerid/export_ch_wallet&token=<?php echo $_GET['token'];?>">
+            <button type="button" class="btn btn-primary">Xuất Cộng hưởng (30)</button>
+          </a>
+        </td>
+      </tr>
+    </table>
       </div>
     </div>
   </div>
 </div>
 
 <script type="text/javascript">
+
 $('.click').click(function() {
   jQuery(this).hide();  
+});
+$('.show_button').click(function(){
+  $('.click').show();
 });
 </script>
 <?php echo $footer; ?>
@@ -130,6 +152,9 @@ $('.click').click(function() {
   }
   table td h1{
     color: red;
+  }
+  .click{
+    display: none;
   }
 </style>
 

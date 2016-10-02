@@ -107,14 +107,14 @@
 			
 	   
 		<h5>ID: <span><?php echo $info_customer['username'] ?></span></h5>
-		<h5>Mật khẩu: <span><?php echo $pass; ?></span></h5>
+		<h5>Mật khẩu: <span class="password"><?php echo $pass; ?></span></h5>
 	    <h5>Họ và tên: <?php echo $info_customer['firstname'] ?></h5>
 	      
 
 	    <h5>Địa chỉ: <?php echo $info_customer['address_cmnd'] ?></h5>
 	      
 
-	    <h5>Ẻmail: <?php echo $info_customer['email'] ?></h5>
+	    <h5>Email: <?php echo $info_customer['email'] ?></h5>
 	      
 	    <h5 >Số điện thoại: <?php echo $info_customer['telephone'] ?></h5>
 	     

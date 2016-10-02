@@ -1,26 +1,12 @@
 <ul id="menu">
-<?php if ($_SESSION['user_id'] == 1) {?>
   <li id="dashboard"><a href="<?php echo $home; ?>"><i class="fa fa-dashboard fa-fw"></i> <span><?php echo $text_dashboard; ?></span></a></li>
-<?php } ?>
-  <li id="dashboard"><a href="index.php?route=pd/history&token=<?php echo $_GET['token'];?>"><i class="fa fa-dashboard fa-fw"></i> <span>Chỉnh sửa thông tin</span></a></li>
 
-<?php if ($_SESSION['user_id'] == 1) {?>
 
-  <!--<li id="news" ><a href="<?php echo $simple_blog_article; ?>"><i class="fa fa-dashboard fa-fw"></i> <span>Tin Tức</span></a></li>
-
-  <li id="mn_statistical" ><a href="<?php echo $thongke; ?>"><i class="fa fa-dashboard fa-fw"></i> <span> Statistical </span></a></li> -->
+  <li id="news" ><a href="<?php echo $simple_blog_article; ?>"><i class="fa fa-dashboard fa-fw"></i> <span>Tin Tức</span></a></li>
+  <li id="mn_statistical" ><a href="<?php echo $thongke; ?>"><i class="fa fa-dashboard fa-fw"></i> <span> Statistical </span></a></li>
   <li id="mn_statistical" ><a href="<?php echo $dangky; ?>"><i class="fa fa-user fa-fw"></i> <span> Đăng Ký Thành Viên </span></a></li>
     <li id="mn_statistical" ><a href="<?php echo $personal; ?>"><i class="fa fa-user fa-fw"></i> <span> Cây nhị phân </span></a></li>
-<?php } ?>
-
   <li id="mn_statistical" ><a href="<?php echo $upgrade; ?>"><i class="fa fa-user fa-fw"></i> <span> Nâng cấp gói đầu tư </span></a></li>
-  <?php if ($_SESSION['user_id'] == 1) {?>
-  <li id="mn_statistical" ><a target="_blank" href="index.php?route=pd/personalcustom&token=<?php echo $_GET['token'];?>&name="><i class="fa fa-user fa-fw"></i> <span> Cây custom </span></a></li>
-  <li id="" ><a target="_blank" href="index.php?route=pd/registercustom/prints&token=<?php echo $_GET['token'];?>&username=&pass=&update=0"><i class="fa fa-user fa-fw"></i> <span> IN </span></a></li>
-<?php } ?>
-
-    <li id="" ><a href="<?php echo $create_code; ?>"><i class="fa fa-user fa-fw"></i> <span> Tạo Mã </span></a></li>
-<?php if ($_SESSION['user_id'] == 1) {?>
 
   <?php /* ?>
   <li id="news"><a class="parent"><i class="fa fa-puzzle-piece fa-fw"></i> <span><?php echo $text_simple_blog; ?></span></a>
@@ -125,7 +111,6 @@
   <li id="system"><a href="<?php echo $statistical;?>"><i class="fa fa-book fa-fw" aria-hidden="true"></i> <span>Thống kê</span></a>
 
   </li>
-
      <?php /*?>
 
     <ul>
@@ -275,7 +260,6 @@
     </ul>
   </li>
   <?php */?>
-  <?php } ?>
 </ul>
 <script type="text/javascript">
   jQuery('#auto_walet_c').click(function(){
