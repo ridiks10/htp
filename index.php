@@ -1,4 +1,6 @@
 <?php
+
+
 // Version
 define('VERSION', '2.0.3.1');
 
@@ -12,6 +14,7 @@ if (!defined('DIR_APPLICATION')) {
 	header('Location: install/index.php');
 	exit;
 }
+
 
 // VirtualQMOD
 require_once('./vqmod/vqmod.php');

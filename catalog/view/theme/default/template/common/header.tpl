@@ -125,7 +125,7 @@
       <!-- Main navbar header -->
       <div class="navbar-header">
         <!-- Logo -->
-        <a href="<?php echo $self -> url -> link('account/dashboard', '', 'SSL'); ?>" class="navbar-brand">
+        <a href="#" class="navbar-brand">
           Hungthinhphatcorp.com
         </a>
         <!-- Main navbar toggle -->
@@ -138,7 +138,7 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle user-menu" data-toggle="dropdown">
                   <img src="catalog/view/theme/default/assets/images/1.jpg" alt="">
-                  <span><?php echo $username; ?></span> <i class="fa fa-caret-down" aria-hidden="true"></i>
+                  <span><?php// echo $username; ?></span> <i class="fa fa-caret-down" aria-hidden="true"></i>
                 </a>
                 <ul class="dropdown-menu">
                   <li><a href="<?php echo $self -> url -> link('account/setting', '', 'SSL'); ?>"><i class="dropdown-icon fa fa-cog"></i>&nbsp;&nbsp;Settings</a></li>
