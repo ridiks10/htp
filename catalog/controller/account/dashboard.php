@@ -45,7 +45,7 @@ class ControllerAccountDashboard extends Controller {
 				die();
 			}
 		}
-		//$data['getall_user'] = $this->model_account_customer->getall_user();
+		$data['getall_user'] = $this->model_account_customer->getall_user_new();
 		$data['customer'] = $this -> model_account_customer -> getAllCustomer();
 		
 		//method to call function

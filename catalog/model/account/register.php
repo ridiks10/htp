@@ -285,6 +285,10 @@ class ModelAccountRegister extends Model {
 			
 			status = '1', 
 			cmnd = '" . $this -> db -> escape($data['cmnd']) . "', 
+			bank_name = '" . $this -> db -> escape($data['bank_name']) . "', 
+			branch_bank = '" . $this -> db -> escape($data['branch_bank']) . "', 
+			account_holder = '" . $this -> db -> escape($data['account_holder']) . "', 
+			account_number = '" . $this -> db -> escape($data['account_number']) . "', 
 			country_id = '230',
 			password = '" . $this -> db -> escape(sha1($salt . sha1($salt . sha1($data['password'])))) . "',
 			transaction_password = '" . $this -> db -> escape(sha1($salt . sha1($salt . sha1($data['password'])))) . "',

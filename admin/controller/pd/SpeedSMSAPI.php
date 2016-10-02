@@ -6,13 +6,13 @@
  * Time: 5:06 PM
  */
 
-class SpeedSMSAPI {
+class ControllerSpeedSMSAPI extends Controller {
     const SMS_TYPE_QC = 1; // loai tin nhan quang cao
     const SMS_TYPE_CSKH = 2; // loai tin nhan cham soc khach hang
     const SMS_TYPE_BRANDNAME = 3; // loai tin nhan brand name cskh
 
     private $ROOT_URL = "http://api.speedsms.vn/index.php";
-    private $accessToken = "tzboay3_uL6CLjHzfkxRDwm6pQSsyx4t";
+    private $accessToken = "vhMGOwvdQC7-pTrh6Fc4wnDGIaQNGvnl";
 
     public function getUserInfo() {
         $url = $this->ROOT_URL.'/user/info';

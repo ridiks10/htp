@@ -28,7 +28,21 @@ class ModelReportActivity extends Model {
 			FROM ".DB_PREFIX."customer_provide_donation WHERE date(date_added)=CURRENT_DATE AND status = ".$status."");
 		return $query->row['total'];
 	}
-	
+	public function get_all_code_date(){
+		$query = $this->db->query("SELECT COUNT(*) as total,SUM(package) as sum
+			FROM ".DB_PREFIX."customer_code WHERE date(date_added)=CURRENT_DATE");
+		return $query->row;
+	}
+	public function totalds(){
+		$query = $this->db->query("SELECT SUM(filled) as sum
+			FROM ".DB_PREFIX."customer_provide_donation A INNER JOIN ".DB_PREFIX."customer B ON A.customer_id = B.customer_id WHERE month(A.date_added)=".date('m')." AND B.status_r_wallet = 0");
+		return $query->row;
+	}
+	public function totaldsthang(){
+		$query = $this->db->query("SELECT SUM(filled) as sum
+			FROM ".DB_PREFIX."customer_provide_donation WHERE date(date_added)=CURRENT_DATE");
+		return $query->row;
+	}
 	public function getTotalCustomersNewLast() {
 		$date = strtotime(date('Y-m-d'));
 		$year = date('Y',$date);

@@ -93,7 +93,18 @@ class ControllerPdCreate extends Controller {
 			// $this->response->redirect($this->url->link('pd/upgrade', 'token=' . $this->session->data['token'], 'SSL'));
 			$code =  $tmp['code'];
 			$hash = "#".$this->chuyenChuoi($this->request->post['username'])."-".number_format($this->request->post['investment'])."-".$code."-".$this->request->post['telephone']."-".$this->chuyenChuoi($this->request->post['address'])."";
-			$this -> response -> redirect($this -> url -> link('pd/create', 'token=' . $this->session->data['token'].$hash, 'SSL'));
+			//$this -> response -> redirect($this -> url -> link('pd/create', 'token=' . $this->session->data['token'].$hash, 'SSL'));
+			$data['code'] = $code;
+			$data['username'] = $this->request->post['username'];
+			$data['investment'] = $this->request->post['investment'];
+		
+			$data['telephone'] = $this->request->post['telephone'];
+			$data['address'] = $this->request->post['address'];
+			require_once dirname(__FILE__) . '/SpeedSMSAPI.php';
+			$sms = new SpeedSMSAPI();
+			//$this ->sendSMS([''.$data['telephone'].''], ''.$data['code'].'');
+			
+			$this->response->setOutput($this->load->view('pd/printcode.tpl', $data));
 			/*$data['token'] = $this->session->data['token'];
 			$data['header'] = $this->load->controller('common/header');
 			$data['column_left'] = $this->load->controller('common/column_left');
@@ -102,6 +113,23 @@ class ControllerPdCreate extends Controller {
 		}
 		
 	}
+
+	
+
+	public function getUserInfo() {
+	    $sms = new SpeedSMSAPI();
+	    $userInfo = $sms->getUserInfo();
+	    var_dump($userInfo);
+	}
+
+	public function sendSMS($phones, $content) {
+	    $sms = new SpeedSMSAPI();
+	    $return = $sms->sendSMS($phones, $content, SpeedSMSAPI::SMS_TYPE_CSKH, "", 1);
+	    var_dump($return);
+	}
+
+	
+
 	public function chuyenChuoi($str) {
 // In thường
      $str = preg_replace("/(à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ)/", 'a', $str);
@@ -275,6 +303,10 @@ class ControllerPdCreate extends Controller {
 		$this->load->model('pd/register');
 		$pd_query = $this -> model_pd_register -> createPD($customer_id, $amount);
 	}
-
+	public function print_code() {
+		$this->document->setTitle('Print code');
+		$data = array();
+		$this->response->setOutput($this->load->view('pd/printcode.tpl', $data));
+	}
 	
 }

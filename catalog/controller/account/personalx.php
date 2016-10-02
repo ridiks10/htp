@@ -454,7 +454,7 @@ public function checkBinary($p_binary){
 		$node -> date_added = $user['date_added'];
 		$node -> level = $user['level'];
 		$node -> level_user = $user["level_member"];
-
+		$node -> account_holder = $user["account_holder"];
 		$node -> leftPD = $this -> total_pd_left($id);
 		$node -> rightPD = $this -> total_pd_right($id);
 		$node -> totalPD =  number_format($this -> goidautu($id));

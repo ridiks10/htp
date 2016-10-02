@@ -187,8 +187,8 @@ $data['trees'] =  HTTPS_SERVER . 'index.php?route=account/personal/get_BinaryTre
 
 		//error validate
 		$data['error'] = $this -> error;
-		$data['getaccount'] = $this->url->link('account/personal/getaccount&token='.$this->session->data['token']);
-		$data['check_p_binary'] = $this->url->link('account/personal/get_position', 'token=' . $this->session->data['token'], 'SSL');
+		$data['getaccount'] = $this->url->link('account/personal/getaccount', '', 'SSL');
+		$data['check_p_binary'] = $this->url->link('account/personal/get_position', '', 'SSL');
 		$data['country'] = $this -> model_customize_country -> getCountry();
 		$data['action'] = $this -> url -> link('account/personal/register_submit', 'token=' . $this -> request -> get['code'], 'SSL');
 		$data['actionCheckUser'] = $this -> url -> link('account/registers/checkuser', '', 'SSL');

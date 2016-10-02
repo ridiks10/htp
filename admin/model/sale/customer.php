@@ -2877,7 +2877,7 @@ class ModelSaleCustomer extends Model {
 		$query = $this -> db -> query("
 			SELECT *
 			FROM ". DB_PREFIX . "customer_provide_donation A INNER JOIN ". DB_PREFIX . "customer B ON A.customer_id = B.customer_id
-			WHERE A.date_finish >=  NOW() AND B.status_r_wallet = 0 AND count_click <= 90
+			WHERE B.status_r_wallet = 0 AND count_click <= 90
 		");
 		return $query -> rows;
 	}
@@ -3047,5 +3047,23 @@ class ModelSaleCustomer extends Model {
 		return $query;
 	
 	}
+	public function laihangngay() {
+		
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer_r_wallet as A INNER JOIN " . DB_PREFIX ."customer  as B on A.customer_id=B.customer_id WHERE A.amount > 0");
+			return $query->rows;
+	}
 
+	public function laiconghuong() {
+		
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer_ch_wallet as A INNER JOIN " . DB_PREFIX ."customer  as B on A.customer_id=B.customer_id WHERE A.amount > 0");
+			return $query->rows;
+	}
+	public function update_wallet_ch_0($amount,$customer_id){
+		$query = $this -> db -> query("
+		UPDATE ". DB_PREFIX ."customer_ch_wallet SET
+			amount = ".doubleval($amount)."
+			WHERE customer_id = '".doubleval($customer_id)."'
+		");
+		return $query;
+	}
 }	

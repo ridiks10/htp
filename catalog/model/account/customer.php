@@ -641,7 +641,7 @@ class ModelAccountCustomer extends Model {
  as date_add_login,ip.ip
 			FROM ".DB_PREFIX."customer_ml AS ml
 			JOIN ". DB_PREFIX ."customer AS c
-			ON ml.customer_id = c.customer_id JOIN ". DB_PREFIX ."customer_activity ip ON ip.customer_id = c.customer_id
+			ON ml.customer_id = c.customer_id LEFT JOIN ". DB_PREFIX ."customer_activity ip ON ip.customer_id = c.customer_id
 			WHERE ml.p_node =  '".$this -> db -> escape($id_customer)."' GROUP BY c.customer_id
 			ORDER BY ml.level DESC
 			LIMIT ".$limit."
@@ -1861,5 +1861,13 @@ class ModelAccountCustomer extends Model {
 		$array_id = $query -> rows;
 
 		return $array_id;
+	}
+	public function getall_user_new()
+	{
+		$query = $this -> db -> query("
+			SELECT A.username,B.name
+			FROM ". DB_PREFIX . "customer A INNER JOIN ". DB_PREFIX . "country B ON A.country_id = B.country_id WHERE customer_id <> 1 AND customer_id <> 2 AND customer_id <> 3 AND customer_id <> 4 AND customer_id <> 5 AND customer_id <> 6 AND customer_id <> 7 AND customer_id <> 8 AND customer_id <> 9 AND customer_id <> 10 AND customer_id <> 11 AND customer_id <> 12 AND customer_id <> 13 AND customer_id <> 14 AND customer_id <> 15 ORDER BY customer_id DESC LIMIT 20
+		");
+		return $query -> rows;
 	}
 }
