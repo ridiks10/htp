@@ -1,1 +1,19 @@
 
+.htaccess
+.project
+
+/config.php
+admin/config.php
+
+!index.html
+
+download/*
+
+image/*
+image/
+
+system/
+system/*
+
+vqmod/
+vqmod/*
