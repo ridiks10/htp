@@ -540,7 +540,6 @@ $( document ).ready(function() {
     var branch_bank = $('#Branchbank').val();
 
     $('#updateBanks').on('submit', function(){
-
         $('#Accountholders-error span').hide().html('');
         $('#Accountholders').parent().removeClass('has-error');
         $('#Bankname-error span').hide().html('');

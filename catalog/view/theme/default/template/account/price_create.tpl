@@ -64,7 +64,7 @@
                     <div class="deposite_time_triangle">
                     </div>
                     <div class="deposite_info">
-                       <span>Lãi / 90 ngày: <?php echo number_format('28000000') ?> VNĐ</span>
+                       <span>Lãi / 90 ngày: <?php echo number_format('28800000') ?> VNĐ</span>
                         <span>Tái đầu tư / ngày: <?php echo number_format('7200000') ?> VNĐ</span>
                         <span>2% mỗi ngày</span>
                     </div>

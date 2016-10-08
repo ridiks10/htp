@@ -65,7 +65,7 @@
         <td class="left" colspan="2">Bên B : (Bên Đầu Tư)</td>
       </tr>
       <tr>
-        <td class="left" colspan="2">Ông (Bà) : <?php echo $getCustomer['account_holder'];?> </td>
+        <td class="left" colspan="2">Ông (Bà) : <b><?php echo $getCustomer['account_holder'];?></b> </td>
       </tr>
       <tr>
         <td class="left" colspan="2">CMND số :<?php echo $getCustomer['cmnd'];?>. Ngày Cấp : <?php echo date('d/m/Y',strtotime($getCustomer['date_cmnd']));?>. Nơi cấp : <?php echo $getCustomer['address_cus'];?></td>
@@ -121,8 +121,6 @@
       <tr>
         <td class="left" colspan="2">-  Trồng cây gia vị, cây dược liệu (không hoạt động tại trụ sở).</td>
       </tr>
-      <tr><td class="height"></td></tr>
-      <tr><td class="height"></td></tr>
       <tr>
         <td class="left" colspan="2"><b><u>ĐIỀU 3 : THỎA THUẬN MỨC HỢP TÁC</u></b></td>
       </tr>
@@ -153,7 +151,7 @@
       ?>
       <tr>
         <td class="left" colspan="2">Sau khi tham khảo mức hợp tác kinh doanh. Nhà đầu tư xét thấy đủ khả năng đầu tư số tiền :
-Bằng số : <?php echo number_format($getCustomer['package']); ?>. (Bằng chữ : <?php echo $chu; ?>)
+Bằng số : <b><?php echo number_format($getCustomer['package']); ?></b>. (Bằng chữ : <b><?php echo $chu; ?></b>)
 </td>
       </tr>
       <tr>
@@ -209,7 +207,7 @@ Hợp đồng này được lập thành 03 (ba) bản, có giá trị pháp lý
       </tr>
       <tr>
         <td></td>
-        <td  class="center"><b>Công ty TNHHSXTM VTB Hưng Thịnh Phát</b></td>
+        <td  class="center" style="font-size:18px;"><b>Công ty TNHHSXTM VTB Hưng Thịnh Phát</b></td>
       </tr>
       <tr>
         <td></td>
@@ -245,7 +243,7 @@ Hợp đồng này được lập thành 03 (ba) bản, có giá trị pháp lý
     z-index: 9999;
   }
   body table tbody{
-    font-size: 19px;
+    font-size: 22px;
   }
   table thead td{
     text-align: center;
@@ -282,7 +280,7 @@ Hợp đồng này được lập thành 03 (ba) bản, có giá trị pháp lý
   }
   @page {
       size: auto;   /* auto is the initial value */
-      margin: 35px;  /* this affects the margin in the printer settings */
+      margin: 75px;  /* this affects the margin in the printer settings */
       margin-top: 50px;
       margin-bottom: 80px;
 

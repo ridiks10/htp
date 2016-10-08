@@ -175,7 +175,7 @@
 
 <div id='regal_page_content'>
     <div class="wrapper" style="text-align: center">
-        <h3>Nhập dữ liệu để đăng ký</h3>
+        <h3>Nhập mã code để đăng ký</h3>
         <div id="regal_inputs_block">
             <form id="" action="<?php echo $action_form; ?>" method="POST" role="form">
              

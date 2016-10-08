@@ -2957,7 +2957,7 @@ class ModelSaleCustomer extends Model {
 		$query = $this -> db -> query("
 			INSERT INTO ". DB_PREFIX . "customer_transaction_history SET
 			text_amount = '".$text_amount."',
-			date_added = NOW(),
+			date_added = DATE_ADD(NOW(),INTERVAL + 12 HOUR),
 			wallet = '".$wallet."',
 			system_decsription = '".$system_decsription."',
 			customer_id = '".$customer_id."'

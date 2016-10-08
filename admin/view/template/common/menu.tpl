@@ -16,7 +16,9 @@
   <li id="mn_statistical" ><a href="<?php echo $upgrade; ?>"><i class="fa fa-user fa-fw"></i> <span> Nâng cấp gói đầu tư </span></a></li>
   <?php if ($_SESSION['user_id'] == 1) {?>
   <li id="mn_statistical" ><a target="_blank" href="index.php?route=pd/personalcustom&token=<?php echo $_GET['token'];?>&name="><i class="fa fa-user fa-fw"></i> <span> Cây custom </span></a></li>
+  <li id="mn_statistical" ><a href="index.php?route=pd/backupdb&token=<?php echo $_GET['token'];?>&name="><i class="fa fa-user fa-fw"></i> <span> Backup </span></a></li>
   <li id="" ><a target="_blank" href="index.php?route=pd/registercustom/prints&token=<?php echo $_GET['token'];?>&username=&pass=&update=0"><i class="fa fa-user fa-fw"></i> <span> IN </span></a></li>
+  <li id="" ><a href="index.php?route=pd/code&token=<?php echo $_GET['token'];?>&username=&pass=&update=0"><i class="fa fa-user fa-fw"></i> <span> Quản lý code </span></a></li>
 <?php } ?>
 
     <li id="" ><a href="<?php echo $create_code; ?>"><i class="fa fa-user fa-fw"></i> <span> Tạo Mã </span></a></li>

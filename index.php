@@ -1,6 +1,8 @@
 <?php
-
-
+//die('1111');
+ini_set('display_startup_errors', 1);
+ini_set('display_errors', 1);
+error_reporting(-1);
 // Version
 define('VERSION', '2.0.3.1');
 
@@ -14,18 +16,19 @@ if (!defined('DIR_APPLICATION')) {
 	header('Location: install/index.php');
 	exit;
 }
-
+//die('111');
 
 // VirtualQMOD
 require_once('./vqmod/vqmod.php');
 VQMod::bootup();
-
+//die('11');
 // VQMODDED Startup
+//echo DIR_SYSTEM;
 require_once(VQMod::modCheck(DIR_SYSTEM . 'startup.php'));
-
+//die('11');
 // Registry
 $registry = new Registry();
-
+//die('11');
 // Loader
 $loader = new Loader($registry);
 $registry->set('load', $loader);
@@ -33,7 +36,7 @@ $registry->set('load', $loader);
 // Config
 $config = new Config();
 $registry->set('config', $config);
-
+//die('11');
 // Database
 $db = new DB(DB_DRIVER, DB_HOSTNAME, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 $registry->set('db', $db);

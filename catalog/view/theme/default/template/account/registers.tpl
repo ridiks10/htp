@@ -165,11 +165,73 @@
                   </div>
                   <div class="control-group ">
                      <div class="controls">
+                        <label for="">Tên ngân hàng</label>
+                           <input class="form-control" required="required" placeholder='Tên ngân hàng' name="bank_name" id="bank_name">
+                           <span id="bank_name-error" class="field-validation-error" style="display: none;">
+                           <span>Vui lòng nhập tên ngân hàng</span>
+                           </span>
+                       
+                     </div>
+                  </div>
+                  <div class="control-group ">
+                     <div class="controls">
+                        <label for="">Chi nhánh ngân hàng</label>
+                           <input class="form-control" required="required" placeholder='Chi nhánh ngân hàng' name="branch_bank" id="branch_bank">
+                          <span id="branch_bank-error" class="field-validation-error" style="display: none;">
+                           <span>Vui lòng nhập chi nhánh ngân hàng</span>
+                           </span>
+                       
+                     </div>
+                  </div>
+                  <div class="control-group ">
+                     <div class="controls">
+                        <label for="">Tên tài khoản ngân hàng</label>
+                           <input class="form-control" required="required" placeholder='Tên tài khoản ngân hàng' name="account_holder" id="account_holder">
+                           <span id="account_holder-error" class="field-validation-error" style="display: none;">
+                           <span>Vui lòng nhập tên tài khoản ngân hàng</span>
+                           </span>
+                       
+                     </div>
+                  </div>
+                  <div class="control-group ">
+                     <div class="controls">
+                        <label for="">Số tài khoản</label>
+                           <input class="form-control" required="required" placeholder='Số tài khoản' name="account_number" id="account_number">
+                            <span id="account_number-error" class="field-validation-error" style="display: none;">
+                           <span id="account_number-error">Vui lòng nhập số Số tài khoản.</span>
+                           </span>
+                       
+                     </div>
+                  </div>
+                  <div class="control-group ">
+                     <div class="controls">
                        
                         <label for="">Số CMND</label>
-                           <input class="form-control" placeholder='CMND' name="cmnd" id="cmnd" data-link="<?php echo $actionCheckCmnd; ?>">
+                           <input class="form-control" required="true" placeholder='CMND' name="cmnd" id="cmnd" data-link="<?php echo $actionCheckCmnd; ?>">
                            <span id="cmnd-error" class="field-validation-error" style="display: none;">
                            <span id="CardId-error">Vui lòng nhập số CMND.</span>
+                           </span>
+                       
+                     </div>
+                  </div>
+                  <div class="control-group ">
+                     <div class="controls">
+                       
+                        <label for="">Ngày cấp</label>
+                           <input class="form-control" placeholder='Ngày cấp' required="true" type="date" name="date_cmnd" id="date_cmnd" data-link="<?php echo $actionCheckCmnd; ?>">
+                           <span id="cmnd-error" class="field-validation-error" style="display: none;">
+                           <span id="CardId-error">Vui lòng nhập ngày cấp.</span>
+                           </span>
+                       
+                     </div>
+                  </div>
+                  <div class="control-group ">
+                     <div class="controls">
+                       
+                        <label for="">Nơi cấp</label>
+                           <input class="form-control" required="true" placeholder='Nơi cấp CMND' name="address_cus" id="address_cus" data-link="<?php echo $actionCheckCmnd; ?>">
+                           <span id="cmnd-error" class="field-validation-error" style="display: none;">
+                           <span id="CardId-error">Vui lòng nhập nơi cấp CMND.</span>
                            </span>
                        
                      </div>
@@ -234,31 +296,34 @@
         <h3>THÔNG TIN ĐĂNG KÝ CÂY HỆ THỐNG</h3>
       
         <div class="">
-          <label for="">Người bảo trợ</label>
+          <label for="">Người bảo trợ (ID)</label>
 
           <input type="text" autocomplete="off" class="form-control" id="p_node" name="p_node" placeholder="Người bảo trợ">
           <ul id="suggesstion-box" class="list-group"></ul>
 
-           <span id="p_node-error" class="field-validation-error">
+            <span id="p_node-error" class="field-validation-error" style="display: none;">
+            <span>Vui lòng nhập ID người bảo trợ</span>
               <span></span>
           </span>
         </div>
        
     
         <div class="">
-          <label for="">Nhánh</label>
+          <label for="">Người chỉ định (ID)</label>
           <input type="text" class="form-control" id="p_binary" name="p_binary" placeholder="Nhánh" required="required">
          <!--   <ul id="p_binary-box" class="list-group"></ul> -->
-          <span id="p_binary-error" class="field-validation-error">
-              <span></span>
+          <span id="p_binary-error" class="field-validation-error" style="display: none;">
+            <span>Vui lòng nhập ID người chỉ định</span>
           </span>
         </div>
         <div class="">
-          <label for="">Vị trí</label>
+          <label for="">Vị trí (Trái/Phải)</label>
           <select name="postion" id="postion" class="form-control" required="required" data-link="<?php echo $check_p_binary; ?>">
             <option value="">Chọn vị trí</option>
            
           </select>
+          <span id="postion-error" class="field-validation-error" style="display: none;">
+            <span>Vui lòng chọn ví trí</span>
         </div>
         </div>
         <div class="col-md-6 col-md-offset-5">

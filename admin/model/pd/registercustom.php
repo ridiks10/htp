@@ -910,5 +910,32 @@ class ModelPdRegistercustom extends Model {
 		}
 		return $floor;
 	}
+	public function child_customer($child_customer){
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer
+			WHERE customer_id IN (".$child_customer.")
+		");
+		return $query -> rows;
+	}
+	public function get_all_code($limit, $offset){
 
+		$query = $this -> db -> query("
+			SELECT A.*, B.username, B.firstname
+			FROM  ".DB_PREFIX."customer_code A LEFT JOIN ".DB_PREFIX."customer B ON B.code_active = A.code
+			ORDER BY A.date_added DESC
+			LIMIT ".$limit."
+			OFFSET ".$offset."
+		");
+		
+		return $query -> rows;
+	}
+	public function get_count_code(){
+
+		$query = $this -> db -> query("
+			SELECT count(*) as number
+			FROM  ".DB_PREFIX."customer_code 
+		");
+		return $query -> row;
+	}
 }

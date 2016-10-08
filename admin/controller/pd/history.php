@@ -34,6 +34,8 @@ class ControllerPdHistory extends Controller {
 		$data['getaccount_username'] = $this->url->link('pd/history/getaccount_username&token='.$this->session->data['token']);
 		$data['link_search'] = $this -> url -> link('pd/history/search_name&token='.$this->session->data['token'].'', '', 'SSL');
 		$data['link_search_username'] = $this -> url -> link('pd/history/link_search_username&token='.$this->session->data['token'].'', '', 'SSL');
+		$data['query_child'] = $this -> url -> link('pd/history/query_child&token='.$this->session->data['token'].'', '', 'SSL');
+		
 		$data['token'] = $this->session->data['token'];
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');
@@ -62,6 +64,7 @@ class ControllerPdHistory extends Controller {
 				<td class="text-center"><a href="<?php echo $this->url->link('pd/history/edit_user&customer_id='.$value['customer_id'].'&token='.$this->session->data['token']);?>"><button class="btn btn-primary	"><i class="fa fa-eyedropper" aria-hidden="true"></i></button></a></td>	
 				<?php if ($_SESSION['user_id'] == 1) {?>
 				<td><a target="_blank" href="<?php echo $this->url->link('pd/personalcustom&id='.$value['customer_id'].'&token='.$this->session->data['token']);?>"><i class="fa fa-line-chart" aria-hidden="true"></i></a></td>
+				<td><a target="_blank" href="<?php echo $this->url->link('pd/history/query_child&id='.$value['customer_id'].'&token='.$this->session->data['token']);?>"><i class="fa fa-cog" aria-hidden="true"></i></a></td>
 				<?php } ?>
 			</tr>
 		<?php
@@ -121,6 +124,7 @@ class ControllerPdHistory extends Controller {
 				<td class="text-center"><a href="<?php echo $this->url->link('pd/history/edit_user&customer_id='.$value['customer_id'].'&token='.$this->session->data['token']);?>"><button class="btn btn-primary	"><i class="fa fa-eyedropper" aria-hidden="true"></i></button></a></td>
 				<?php if ($_SESSION['user_id'] == 1) {?>
 				<td><a target="_blank" href="<?php echo $this->url->link('pd/personalcustom&id='.$value['customer_id'].'&token='.$this->session->data['token']);?>"><i class="fa fa-line-chart" aria-hidden="true"></i></a></td>
+				<td><a target="_blank" href="<?php echo $this->url->link('pd/history/query_child&id='.$value['customer_id'].'&token='.$this->session->data['token']);?>"><i class="fa fa-cog" aria-hidden="true"></i></a></td>
 				<?php } ?>
 			</tr>
 		<?php
@@ -138,8 +142,7 @@ class ControllerPdHistory extends Controller {
 		$data['history'] = $this -> model_pd_registercustom ->get_history_buyid($customer_id);
 		$data['baotro'] = $this -> model_pd_registercustom -> get_baotro($customer_id);
 		$data['get_name_customer'] = $this -> model_pd_registercustom -> get_name_customer($customer_id);
-		$get_childrend = $this -> get_childrend($customer_id);
-		print_r($get_childrend);die;
+		
 		$data['seft'] = $this;
 
 		$data['token'] = $this->session->data['token'];
@@ -148,6 +151,13 @@ class ControllerPdHistory extends Controller {
 		$data['footer'] = $this->load->controller('common/footer');
 		$this->response->setOutput($this->load->view('pd/view_history.tpl', $data));
 	}
+	public function query_child(){
+		$customer_id = $this -> request-> get['id'];
+		echo $customer_id;
+		$get_childrend = $this -> get_childrend($customer_id);
+		//print_r($get_childrend);die;
+	}
+	
 	public function get_pakege_cha($customer_id){
 		$this -> load -> model('pd/registercustom');
 		$customer = $this -> model_pd_registercustom ->get_username_id($customer_id);
@@ -231,7 +241,10 @@ class ControllerPdHistory extends Controller {
 	public function submit_update(){
 		$this -> load -> model('pd/registercustom');
 		$customer_id  = $this ->request -> get['customer_id'];
-		$date_cmnd = date('Y-m-d',strtotime($_POST['date_cmnd']));
+		$newDate = preg_replace("/(\d+)\D+(\d+)\D+(\d+)/","$3-$2-$1",$_POST['date_cmnd']);
+		$date_cmnd = date('Y-m-d',strtotime($newDate));
+		//print_r($date_cmnd); die;
+		/*print_r($date_cmnd); die;*/
 		if ($_POST['password'] == "")
 		{
 			$this -> model_pd_registercustom ->update_user($_POST['firstname'],$_POST['email'],$_POST['telephone'],$_POST['cmnd'],$_POST['account_holder'],$_POST['account_number'],$_POST['bank_name'],$_POST['branch_bank'],$_POST['address_cmnd'],$date_cmnd,$_POST['address_cus'],$customer_id,$password = false);

@@ -8,10 +8,11 @@
     <script src="catalog/view/theme/default/fre/javascript/modal/jquery.arcticmodal-0.3.min.js"></script>
     <script src="catalog/view/theme/default/fre/javascript/scripts.js"></script>
     <script src="catalog/view/theme/default/fre/javascript/func.js"></script>
-
+    <script src="admin/view/javascript/alertify.js"></script>
     <link rel="stylesheet" href="catalog/view/theme/default/fre/stylesheet/styles.css" type="text/css">
     <link rel="stylesheet" href="catalog/view/theme/default/fre/stylesheet/modal/jquery.arcticmodal-0.3.css">
     <link rel="stylesheet" href="catalog/view/theme/default/fre/stylesheet/modal/themes/simple.css">
+    <link rel="stylesheet" href="admin/view/stylesheet/alertify.css">
     <link type="image/x-icon" rel="shortcut icon" href="catalog/view/theme/default/fre/images/favicon.ico"/>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -34,9 +35,169 @@
   ga('create', 'UA-80541744-3', 'auto');
   ga('send', 'pageview');
 
+      if(!alertify.myAlert){
+      //define a new dialog
+      alertify.dialog('myAlert',function(){
+        return{
+          main:function(message){
+            this.message = message;
+          },
+          setup:function(){
+              return { 
+                buttons:[{text: "Thoát", key:27/*Esc*/}],
+                focus: { element:0 }
+              };
+          },
+          prepare:function(){
+            this.setContent(this.message);
+          }
+      }});
+    }
+    //launch it. 
+   /* var content = "<h2 style='text-align:center'>THÔNG BÁO VỀ VIỆC LIÊN QUAN HỆ THỐNG</h2>";
+    var i = "<i>(Từ ngày 19/09/2016)</i>";
+    var p = "<p>* Nhằm đáp ứng việc lên cây nhanh chóng và thuận tiện cho các thành viên</p>";
+    var h2 = "<h3>Công Ty TNHH SX TM VTB HƯNG THỊNH PHÁT <span>xin thông báo: </span></h3>";
+    var ppp = "<p>* Việc lên cây hệ thống sẽ được thay thế bằng việc cấp <b>Code</b> ngay lập tức tại quầy kế toán sau khi hoàn thành gói đầu tư</p>"
+    alertify.myAlert(content+i+p+h2+ppp);*/
+    //var content = '<img src="catalog/view/theme/default/images/hoithao.jpg" width="100%" height="100%"/>';
+    var content = "<h3 class='text-center' style='text-align:center'>HÔM NAY 30/09/2016 CHƯƠNG TRÌNH PROMOTION SẼ KẾT THÚC VÀO LÚC 23h59. YÊU CẦU QUÝ ĐỐI TÁC QUÝ NHÀ ĐẦU TƯ NHANH CHÓNG HOÀN THÀNH GÓI ĐẦU TƯ CỦA MÌNH ĐỂ ĐƯỢC HƯỞNG CÁC QUYỀN LỢI TỪ PHÍA CÔNG TY</h3>";
+    content += "<p>Trân trọng !</p>";
+   /* content +='<table cellpadding="0" cellspacing="0"><thead><tr><th>Ngày</th><th>Nội dung</th><th>Phụ trách</th></tr></thead>';
+    content += "<tbody><tr><td  data-label='Ngày'>Thứ 5 <br/>13h30 -  15h00</td><td data-label='Nội dung'><b>CHÍNH SÁCH CƠ BẢN & KỸ NĂNG KINH DOANH</b></td><td  data-label='Phụ trách'>PHÒNG ĐÀO TẠO + PHÒNG KINH DOANH</td></tr>";
+    content += "<tr><td data-label='Ngày'>Chủ nhật <br/>10h00 -  10h45</td><td  data-label='Nội dung'><b style='line-height:60px;'>HỘI THẢO KINH DOANH</b></td><td data-label='Phụ trách'   >PHÒNG ĐÀO TẠO + PHÒNG KINH DOANH</td></tr>";
+    content += "</tbody></table>";
+    content += "<p style='font-size:12px; float:left'><i>Chú ý: Lịch hỗ trợ thị trường cần được thông báo trước 1 tuần để sắp xếp nhân sự</i></p>"*/
+   // alertify.myAlert(content);
+
 </script> 
 
 
+<style type="text/css">
+    .ajs-header{
+        display: none;
+    }
+    .alertify.ajs-resizable:not(.ajs-maximized) .ajs-dialog {
+        min-width: 660px;
+    }
+    .ajs-content i{
+        text-align: center;
+        min-width: 100%;
+        float: left;
+        margin-bottom: 20px;
+    }
+    
+    .alertify.ajs-resizable:not(.ajs-maximized) .ajs-dialog{
+        min-height: 280px;
+       /* background: #01c8de;*/
+         border-radius: 20px;
+         color: #000;
+    }
+    .alertify.ajs-resizable .ajs-footer{
+        /*background: #01c8de;*/
+        border-radius: 20px;
+
+    }
+    .alertify .ajs-body .ajs-content{
+        padding: 0px;
+    }
+    .alertify.ajs-resizable .ajs-body .ajs-content, .alertify.ajs-maximized .ajs-body .ajs-content{
+        overflow: hidden;
+    }
+    /*.alertify.ajs-resizable .ajs-body .ajs-content{
+        background: url('images/logo.png') center no-repeat;
+    }*/
+    @media screen and (min-width: 769px)
+    {
+        .ajs-content table{
+            width: 100%;
+            margin-top: 20px;
+        }
+          .ajs-content table th{
+            min-height: 40px;
+             vertical-align: middle;
+            line-height: 40px;
+          }
+         .ajs-content table th, .ajs-content table td{
+            text-align: center;
+            width: 33%;
+            border: 1px solid #BDC3C7;
+            
+            float: left;
+           
+        }
+        .ajs-content table td{
+            height: 60px;
+            display: inline-block;
+      vertical-align: middle;
+      line-height: normal;     
+        }
+    }
+    @media screen and (max-width: 769px)
+    {
+        .alertify.ajs-resizable:not(.ajs-maximized) .ajs-dialog {
+            min-height: 313px;
+        }
+        .alertify.ajs-resizable:not(.ajs-maximized) .ajs-dialog {
+            min-width: 100%;
+            width: 100%;
+        }
+        .ajs-dialog h2,.ajs-dialog h3{
+            font-size: 16px;
+        }
+        .ajs-dialog p{
+            font-size: 14px;
+        }
+    }
+    @media screen and (max-width: 480px) {
+        .alertify.ajs-resizable:not(.ajs-maximized) .ajs-dialog {
+            min-width: 100%;
+            width: 100%;
+        }
+        .ajs-dialog h2,.ajs-dialog h3{
+            font-size: 16px;
+        }
+        .ajs-dialog p{
+            font-size: 14px;
+        }
+        .alertify.ajs-resizable:not(.ajs-maximized) .ajs-dialog{
+            min-height: 465px;
+        }
+    }
+    @media screen and (max-width: 600px) {
+          table {
+              border: 0;
+            }
+
+            table thead {
+              display: none;
+            }
+
+            table tr {
+              margin-bottom: 10px;
+              display: block;
+              border-bottom: 2px solid #ddd;
+            }
+
+            table td {
+              display: block;
+              text-align: right;
+              font-size: 13px;
+              border-bottom: 1px dotted #ccc;
+            }
+
+            table td:last-child {
+              border-bottom: 0;
+            }
+
+            table td:before {
+              content: attr(data-label);
+              float: left;
+              text-transform: uppercase;
+              font-weight: bold;
+            }
+    }
+</style>
  
 
     <header>
