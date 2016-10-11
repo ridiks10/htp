@@ -16,6 +16,7 @@
     <link type="image/x-icon" rel="shortcut icon" href="catalog/view/theme/default/fre/images/favicon.ico"/>
     
     <script src="catalog/view/javascript/lightgallery.js"></script>
+    <script src="catalog/view/javascript/jquery.lazyloadxt.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, intial-scale=1">
     
@@ -235,7 +236,13 @@
 
     </div>
 
-
+    <script>
+    $(window).on('ajaxComplete', function() {
+        setTimeout(function() {
+            $(window).lazyLoadXT();
+        }, 50);
+    });
+    </script>
      
 
 
