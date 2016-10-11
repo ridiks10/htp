@@ -182,107 +182,71 @@
     <div class="wrapper">
         <div class="demo-gallery">
             <ul id="lightgallery" class="list-unstyled row">
-                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="catalog/view/theme/default/images/promotion/DSC_1074.JPG" data-src="catalog/view/theme/default/images/promotion/DSC_1074.JPG" data-sub-html="<h4>Promotion trao vàng</h4><p>Đại hội của đầu tháng 10.</p>">
+                <li class="col-xs-6 col-sm-4 col-md-4" data-responsive="catalog/view/theme/default/images/promotion/DSC_1074.JPG" data-src="catalog/view/theme/default/images/promotion/DSC_1074.JPG" data-sub-html="<h4>Promotion trao vàng</h4><p>Đại hội của đầu tháng 10.</p>">
                     <a href="">
                         <img class="img-responsive" src="catalog/view/theme/default/images/promotion/DSC_1074.JPG">
                     </a>
                 </li>
-               <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="catalog/view/theme/default/images/promotion/DSC_1075.JPG" data-src="catalog/view/theme/default/images/promotion/DSC_1075.JPG" data-sub-html="<h4>Promotion trao vàng</h4><p>Đại hội của đầu tháng 10.</p>">
+               <li class="col-xs-6 col-sm-4 col-md-4" data-responsive="catalog/view/theme/default/images/promotion/DSC_1075.JPG" data-src="catalog/view/theme/default/images/promotion/DSC_1075.JPG" data-sub-html="<h4>Promotion trao vàng</h4><p>Đại hội của đầu tháng 10.</p>">
                     <a href="">
                         <img class="img-responsive" src="catalog/view/theme/default/images/promotion/DSC_1075.JPG">
                     </a>
                 </li>
-                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="catalog/view/theme/default/images/promotion/DSC_1077.JPG" data-src="catalog/view/theme/default/images/promotion/DSC_1077.JPG" data-sub-html="<h4>Promotion trao vàng</h4><p>Đại hội của đầu tháng 10.</p>">
+                <li class="col-xs-6 col-sm-4 col-md-4" data-responsive="catalog/view/theme/default/images/promotion/DSC_1077.JPG" data-src="catalog/view/theme/default/images/promotion/DSC_1077.JPG" data-sub-html="<h4>Promotion trao vàng</h4><p>Đại hội của đầu tháng 10.</p>">
                     <a href="">
                         <img class="img-responsive" src="catalog/view/theme/default/images/promotion/DSC_1077.JPG">
                     </a>
                 </li>
-                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="catalog/view/theme/default/images/promotion/DSC_1079.JPG" data-src="catalog/view/theme/default/images/promotion/DSC_1079.JPG" data-sub-html="<h4>Promotion trao vàng</h4><p>Đại hội của đầu tháng 10.</p>">
+                <li class="col-xs-6 col-sm-4 col-md-4" data-responsive="catalog/view/theme/default/images/promotion/DSC_1079.JPG" data-src="catalog/view/theme/default/images/promotion/DSC_1079.JPG" data-sub-html="<h4>Promotion trao vàng</h4><p>Đại hội của đầu tháng 10.</p>">
                     <a href="">
                         <img class="img-responsive" src="catalog/view/theme/default/images/promotion/DSC_1079.JPG">
                     </a>
                 </li>
-                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="catalog/view/theme/default/images/promotion/DSC_1083.JPG" data-src="catalog/view/theme/default/images/promotion/DSC_1083.JPG" data-sub-html="<h4>Promotion trao vàng</h4><p>Đại hội của đầu tháng 10.</p>">
+                <li class="col-xs-6 col-sm-4 col-md-4" data-responsive="catalog/view/theme/default/images/promotion/DSC_1083.JPG" data-src="catalog/view/theme/default/images/promotion/DSC_1083.JPG" data-sub-html="<h4>Promotion trao vàng</h4><p>Đại hội của đầu tháng 10.</p>">
                     <a href="">
                         <img class="img-responsive" src="catalog/view/theme/default/images/promotion/DSC_1083.JPG">
                     </a>
                 </li>
-                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="catalog/view/theme/default/images/promotion/DSC_1088.JPG" data-src="catalog/view/theme/default/images/promotion/DSC_1088.JPG" data-sub-html="<h4>Promotion trao vàng</h4><p>Đại hội của đầu tháng 10.</p>">
+                <li class="col-xs-6 col-sm-4 col-md-4" data-responsive="catalog/view/theme/default/images/promotion/DSC_1088.JPG" data-src="catalog/view/theme/default/images/promotion/DSC_1088.JPG" data-sub-html="<h4>Promotion trao vàng</h4><p>Đại hội của đầu tháng 10.</p>">
                     <a href="">
                         <img class="img-responsive" src="catalog/view/theme/default/images/promotion/DSC_1088.JPG">
                     </a>
                 </li>
-                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="catalog/view/theme/default/images/promotion/DSC_1092.JPG" data-src="catalog/view/theme/default/images/promotion/DSC_1092.JPG" data-sub-html="<h4>Promotion trao vàng</h4><p>Đại hội của đầu tháng 10.</p>">
-                    <a href="">
-                        <img class="img-responsive" src="catalog/view/theme/default/images/promotion/DSC_1092.JPG">
-                    </a>
-                </li>
-                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="catalog/view/theme/default/images/promotion/DSC_1095.JPG" data-src="catalog/view/theme/default/images/promotion/DSC_1095.JPG" data-sub-html="<h4>Promotion trao vàng</h4><p>Đại hội của đầu tháng 10.</p>">
+               
+                <li class="col-xs-6 col-sm-4 col-md-4" data-responsive="catalog/view/theme/default/images/promotion/DSC_1095.JPG" data-src="catalog/view/theme/default/images/promotion/DSC_1095.JPG" data-sub-html="<h4>Promotion trao vàng</h4><p>Đại hội của đầu tháng 10.</p>">
                     <a href="">
                         <img class="img-responsive" src="catalog/view/theme/default/images/promotion/DSC_1095.JPG">
                     </a>
                 </li>
-                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="catalog/view/theme/default/images/promotion/DSC_1096.JPG" data-src="catalog/view/theme/default/images/promotion/DSC_1096.JPG" data-sub-html="<h4>Promotion trao vàng</h4><p>Đại hội của đầu tháng 10.</p>">
+                <li class="col-xs-6 col-sm-4 col-md-4" data-responsive="catalog/view/theme/default/images/promotion/DSC_1096.JPG" data-src="catalog/view/theme/default/images/promotion/DSC_1096.JPG" data-sub-html="<h4>Promotion trao vàng</h4><p>Đại hội của đầu tháng 10.</p>">
                     <a href="">
                         <img class="img-responsive" src="catalog/view/theme/default/images/promotion/DSC_1096.JPG">
                     </a>
                 </li>
                 
-                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="catalog/view/theme/default/images/promotion/DSC_1117.JPG" data-src="catalog/view/theme/default/images/promotion/DSC_1117.JPG" data-sub-html="<h4>Promotion trao vàng</h4><p>Đại hội của đầu tháng 10.</p>">
+                <li class="col-xs-6 col-sm-4 col-md-4" data-responsive="catalog/view/theme/default/images/promotion/DSC_1117.JPG" data-src="catalog/view/theme/default/images/promotion/DSC_1117.JPG" data-sub-html="<h4>Promotion trao vàng</h4><p>Đại hội của đầu tháng 10.</p>">
                     <a href="">
                         <img class="img-responsive" src="catalog/view/theme/default/images/promotion/DSC_1117.JPG">
                     </a>
                 </li>
-                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="catalog/view/theme/default/images/promotion/DSC_1120.JPG" data-src="catalog/view/theme/default/images/promotion/DSC_1120.JPG" data-sub-html="<h4>Promotion trao vàng</h4><p>Đại hội của đầu tháng 10.</p>">
+                <li class="col-xs-6 col-sm-4 col-md-4" data-responsive="catalog/view/theme/default/images/promotion/DSC_1120.JPG" data-src="catalog/view/theme/default/images/promotion/DSC_1120.JPG" data-sub-html="<h4>Promotion trao vàng</h4><p>Đại hội của đầu tháng 10.</p>">
                     <a href="">
                         <img class="img-responsive" src="catalog/view/theme/default/images/promotion/DSC_1120.JPG">
                     </a>
                 </li>
-                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="catalog/view/theme/default/images/promotion/DSC_1121.JPG" data-src="catalog/view/theme/default/images/promotion/DSC_1121.JPG" data-sub-html="<h4>Promotion trao vàng</h4><p>Đại hội của đầu tháng 10.</p>">
+                <li class="col-xs-6 col-sm-4 col-md-4" data-responsive="catalog/view/theme/default/images/promotion/DSC_1121.JPG" data-src="catalog/view/theme/default/images/promotion/DSC_1121.JPG" data-sub-html="<h4>Promotion trao vàng</h4><p>Đại hội của đầu tháng 10.</p>">
                     <a href="">
                         <img class="img-responsive" src="catalog/view/theme/default/images/promotion/DSC_1121.JPG">
                     </a>
                 </li>
-                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="catalog/view/theme/default/images/promotion/DSC_1124.JPG" data-src="catalog/view/theme/default/images/promotion/DSC_1124.JPG" data-sub-html="<h4>Promotion trao vàng</h4><p>Đại hội của đầu tháng 10.</p>">
-                    <a href="">
-                        <img class="img-responsive" src="catalog/view/theme/default/images/promotion/DSC_1124.JPG">
-                    </a>
-                </li>
-                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="catalog/view/theme/default/images/promotion/DSC_1126.JPG" data-src="catalog/view/theme/default/images/promotion/DSC_1126.JPG" data-sub-html="<h4>Promotion trao vàng</h4><p>Đại hội của đầu tháng 10.</p>">
-                    <a href="">
-                        <img class="img-responsive" src="catalog/view/theme/default/images/promotion/DSC_1126.JPG">
-                    </a>
-                </li>
-                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="catalog/view/theme/default/images/promotion/DSC_1127.JPG" data-src="catalog/view/theme/default/images/promotion/DSC_1127.JPG" data-sub-html="<h4>Promotion trao vàng</h4><p>Đại hội của đầu tháng 10.</p>">
+                <li class="col-xs-6 col-sm-4 col-md-4" data-responsive="catalog/view/theme/default/images/promotion/DSC_1127.JPG" data-src="catalog/view/theme/default/images/promotion/DSC_1127.JPG" data-sub-html="<h4>Promotion trao vàng</h4><p>Đại hội của đầu tháng 10.</p>">
                     <a href="">
                         <img class="img-responsive" src="catalog/view/theme/default/images/promotion/DSC_1127.JPG">
                     </a>
                 </li>
-                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="catalog/view/theme/default/images/promotion/DSC_1133.JPG" data-src="catalog/view/theme/default/images/promotion/DSC_1133.JPG" data-sub-html="<h4>Promotion trao vàng</h4><p>Đại hội của đầu tháng 10.</p>">
-                    <a href="">
-                        <img class="img-responsive" src="catalog/view/theme/default/images/promotion/DSC_1133.JPG">
-                    </a>
-                </li>
-                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="catalog/view/theme/default/images/promotion/DSC_1135.JPG" data-src="catalog/view/theme/default/images/promotion/DSC_1135.JPG" data-sub-html="<h4>Promotion trao vàng</h4><p>Đại hội của đầu tháng 10.</p>">
-                    <a href="">
-                        <img class="img-responsive" src="catalog/view/theme/default/images/promotion/DSC_1135.JPG">
-                    </a>
-                </li>
-                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="catalog/view/theme/default/images/promotion/DSC_1135.JPG" data-src="catalog/view/theme/default/images/promotion/DSC_1135.JPG" data-sub-html="<h4>Promotion trao vàng</h4><p>Đại hội của đầu tháng 10.</p>">
-                    <a href="">
-                        <img class="img-responsive" src="catalog/view/theme/default/images/promotion/DSC_1135.JPG">
-                    </a>
-                </li>
-                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="catalog/view/theme/default/images/promotion/DSC_1136.JPG" data-src="catalog/view/theme/default/images/promotion/DSC_1136.JPG" data-sub-html="<h4>Promotion trao vàng</h4><p>Đại hội của đầu tháng 10.</p>">
-                    <a href="">
-                        <img class="img-responsive" src="catalog/view/theme/default/images/promotion/DSC_1136.JPG">
-                    </a>
-                </li>
-                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="catalog/view/theme/default/images/promotion/DSC_1137.JPG" data-src="catalog/view/theme/default/images/promotion/DSC_1137.JPG" data-sub-html="<h4>Promotion trao vàng</h4><p>Đại hội của đầu tháng 10.</p>">
-                    <a href="">
-                        <img class="img-responsive" src="catalog/view/theme/default/images/promotion/DSC_1137.JPG">
-                    </a>
-                </li>
+                
+                
+               
             </ul>
         </div>
 
