@@ -266,7 +266,7 @@ $controller->addPreAction(new Action('common/seo_url'));
 if (isset($request->get['route'])) {
 	$action = new Action($request->get['route']);
 } else {
-	$action = new Action('home/page/news');
+	$action = new Action('home/page');
 }
 
 // Dispatch
