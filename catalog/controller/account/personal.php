@@ -188,6 +188,7 @@ $data['trees'] =  HTTPS_SERVER . 'index.php?route=account/personal/get_BinaryTre
 		//error validate
 		$data['error'] = $this -> error;
 		$data['getaccount'] = $this->url->link('account/personal/getaccount', '', 'SSL');
+		$data['getaccount_pbinary'] = $this->url->link('account/personal/getaccount_pbinary', '', 'SSL');
 		$data['check_p_binary'] = $this->url->link('account/personal/get_position', '', 'SSL');
 		$data['country'] = $this -> model_customize_country -> getCountry();
 		$data['action'] = $this -> url -> link('account/personal/register_submit', 'token=' . $this -> request -> get['code'], 'SSL');
@@ -214,11 +215,25 @@ $data['trees'] =  HTTPS_SERVER . 'index.php?route=account/personal/get_BinaryTre
 			
 			if (count($tree) > 0) {
 				foreach ($tree as $value) {
-					 echo '<li class="list-group-item" onClick="selectU(' . "'" . $value['name'] . "'" . ');">' . $value['name'] . '</li>';
+					 echo '<li class="list-group-item" onClick="selectU(' . "'" . $value['name']  . "'" . ');">' . $value['name']."-".$value['firstname'] . '</li>';
 				}
 			}
 		}
 	}
+
+	public function getaccount_pbinary() {
+		if ($this -> request -> post['keyword']) {
+			$this -> load -> model('account/customer');
+			$tree = $this -> model_account_customer -> getCustomLikes($this -> request -> post['keyword']);
+			
+			if (count($tree) > 0) {
+				foreach ($tree as $value) {
+					 echo '<li class="list-group-item" onClick="select_binary(' . "'" . $value['name']  . "'" . ');">' . $value['name']."-".$value['firstname'] . '</li>';
+				}
+			}
+		}
+	}
+
 public function get_position($p_binary){
 		$this -> load -> model('account/customer');
 		$p_binary = $this -> request -> get['p_binary'];
@@ -228,15 +243,15 @@ public function get_position($p_binary){
 		if (!empty($check_p_binary)) {
 			$html ='';
 			if (intval($check_p_binary['left']) === 0 && intval($check_p_binary['right']) === 0 ) {
-				$html .= '<option value="">Chọn vị trí</option>';
+				
 	            $html .= '<option value="left">Trái</option>';
 	            $html .= '<option value="right">Phải</option>';
 			} elseif (intval($check_p_binary['left']) === 0 && intval($check_p_binary['right']) !== 0 ) {
-				$html .= '<option value="">Chọn vị trí</option>';
+				
 	            $html .= '<option value="left">Trái</option>';
 	            
 			} elseif (intval($check_p_binary['left']) !== 0 && intval($check_p_binary['right']) === 0 ) {
-				$html .= '<option value="">Chọn vị trí</option>';
+				
 	            $html .= '<option value="right">Phải</option>';
 			}
 			$json['html'] = $html;

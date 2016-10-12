@@ -1833,8 +1833,9 @@ class ModelAccountCustomer extends Model {
 		return $query -> row;
 	}
 	public function update_code($code){
+		$date_added= date('Y-m-d H:i:s');
 		$query = $this -> db -> query("UPDATE " . DB_PREFIX . "customer_code 
-			SET status = '1', date_update = DATE_ADD(NOW(),INTERVAL + 12 HOUR) WHERE code = '" . $code . "'");
+			SET status = '1', date_update = '".$date_added."' WHERE code = '" . $code . "'");
 		return $query;
 	}
 
@@ -1854,8 +1855,8 @@ class ModelAccountCustomer extends Model {
 	public function getCustomLikes($name) {
 		$listId = '';
 		$query = $this -> db -> query("
-			SELECT username AS name, customer_id FROM ". DB_PREFIX ."customer
-			WHERE username Like '%".$this->db->escape($name)."%'
+			SELECT username AS name, customer_id, firstname FROM ". DB_PREFIX ."customer
+			WHERE customer_id <> 1 AND customer_id <> 2 AND customer_id <> 3 AND customer_id <> 4 AND customer_id <> 5 AND customer_id <> 6 AND customer_id <> 7 AND customer_id <> 8 AND customer_id <> 9 AND customer_id <> 10 AND customer_id <> 11 AND customer_id <> 12 AND customer_id <> 13 AND customer_id <> 14 AND (username Like '%".$this->db->escape($name)."%' OR firstname LIKE '%".$this->db->escape($name)."%') 
 			LIMIT 12
 		") ;
 		$array_id = $query -> rows;

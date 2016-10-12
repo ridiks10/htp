@@ -76,16 +76,16 @@
    label{
       margin-top: 10px;
    }
-   ul#suggesstion-box {
+   ul#suggesstion-box,ul#suggesstion {
     position: absolute;
     width: 94%;
     background: #fff;
     color: #000;
 }
-#suggesstion-box li.list-group-item {
+#suggesstion-box li.list-group-item,#suggesstion li.list-group-item {
     cursor: pointer;
 }
-#suggesstion-box li.list-group-item:hover {
+#suggesstion-box li.list-group-item:hover,#suggesstion li.list-group-item:hover {
     background: #626f78;
     cursor: pointer;
     color: #fff;
@@ -310,7 +310,8 @@
     
         <div class="">
           <label for="">Người chỉ định (ID)</label>
-          <input type="text" class="form-control" id="p_binary" name="p_binary" placeholder="Nhánh" required="required">
+          <input type="text" autocomplete="off"  class="form-control" id="p_binary" name="p_binary" placeholder="Nhánh" required="required">
+          <ul id="suggesstion" class="list-group"></ul>
          <!--   <ul id="p_binary-box" class="list-group"></ul> -->
           <span id="p_binary-error" class="field-validation-error" style="display: none;">
             <span>Vui lòng nhập ID người chỉ định</span>
@@ -357,11 +358,11 @@
 <script type="text/javascript">
    
    $(function() {
-       $('#p_binary').on('keyup', function() {
+      /*$('#p_binary').on("input propertychang", function() {
           $('#postion').empty();
 
            $.ajax({
-                url: $('#postion').data('link'),
+              url: $('#postion').data('link'),
                type : 'GET',
                 data : {
                             p_binary : $('#p_binary').val()
@@ -369,16 +370,18 @@
              
                success : function(result) {
                   result = $.parseJSON(result);
-   $('#postion').empty();
+              $('#postion').empty();
                   $('#postion').append(result.html);
                }
            });
            return false;
-       });
+       });*/
+       
    });
 
     $(document).ready(function(){
-        $("#p_node").keyup(function(){
+        $('#p_node').on("input propertychang", function() {
+        
             $.ajax({
             type: "POST",
             url: "<?php echo $getaccount;?>",
@@ -390,10 +393,52 @@
             }
             });
         });
+
+        $('#p_binary').on("input propertychang", function() {
+            
+            $.ajax({
+            type: "POST",
+            url: "<?php echo $getaccount_pbinary;?>",
+            data:'keyword='+$(this).val(),        
+            success: function(data){
+                $("#suggesstion").show();
+                $("#suggesstion").html(data);
+                $("#p_binary").css("background","#FFF");            
+            }
+            });
+        });
+        $('#p_binary').on("input propertychang", function() {
+          show_postion();
+        });
     }); 
     function selectU(val) {
         $("#p_node").val(val);
         $("#suggesstion-box").hide();
+    }
+    function select_binary(val) {
+        $("#p_binary").val(val);
+        $("#suggesstion").hide();
+        $('#postion').empty();
+        show_postion();  
+         
+    }
+
+    function show_postion(){
+      $('#postion').empty();
+      $.ajax({
+            url: $('#postion').data('link'),
+             type : 'GET',
+              data : {
+                          p_binary : $('#p_binary').val()
+                     },
+           
+             success : function(result) {
+                result = $.parseJSON(result);
+            $('#postion').empty();
+                $('#postion').append(result.html);
+             }
+         });
+         return false;
     }
    </script>
 
