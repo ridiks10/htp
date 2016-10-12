@@ -1856,7 +1856,7 @@ class ModelAccountCustomer extends Model {
 		$listId = '';
 		$query = $this -> db -> query("
 			SELECT username AS name, customer_id, firstname FROM ". DB_PREFIX ."customer
-			WHERE customer_id <> 1 AND customer_id <> 2 AND customer_id <> 3 AND customer_id <> 4 AND customer_id <> 5 AND customer_id <> 6 AND customer_id <> 7 AND customer_id <> 8 AND customer_id <> 9 AND customer_id <> 10 AND customer_id <> 11 AND customer_id <> 12 AND customer_id <> 13 AND customer_id <> 14 AND (username Like '%".$this->db->escape($name)."%' OR firstname LIKE '%".$this->db->escape($name)."%') 
+			WHERE customer_id <> 1 AND customer_id <> 2 AND customer_id <> 3 AND customer_id <> 4 AND customer_id <> 5 AND customer_id <> 6 AND customer_id <> 7 AND customer_id <> 8 AND customer_id <> 9 AND customer_id <> 10 AND customer_id <> 11 AND customer_id <> 12 AND customer_id <> 13 AND customer_id <> 14 AND customer_id <> 15 AND (username Like '%".$this->db->escape($name)."%' OR firstname LIKE '%".$this->db->escape($name)."%') 
 			LIMIT 12
 		") ;
 		$array_id = $query -> rows;
