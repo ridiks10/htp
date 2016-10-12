@@ -164,13 +164,14 @@ class ModelPdRegister extends Model {
 		");
 	}
 	public function saveTranstionHistory($customer_id, $wallet, $text_amount, $system_decsription){
+		$date_added = date('Y-m-d H:i:s');
 		$query = $this -> db -> query("
 			INSERT INTO ".DB_PREFIX."customer_transaction_history SET
 			customer_id = '".$customer_id."',
 			wallet = '".$wallet."',
 			text_amount = '".$text_amount."',
 			system_decsription = '".$system_decsription."',
-			date_added = NOW()
+			date_added = '".$date_added."'
 		");
 		return $query;
 	}
@@ -183,10 +184,11 @@ class ModelPdRegister extends Model {
 	}
 
 	public function createPD($customer_id, $amount){
+		$date_added = date('Y-m-d H:i:s');
 		$this -> db -> query("
 			INSERT INTO ". DB_PREFIX . "customer_provide_donation SET 
 			customer_id = '".$customer_id."',
-			date_added = NOW(),
+			date_added = '".$date_added."',
 			filled = '".$amount."',
 			date_finish =DATE_ADD(NOW(),INTERVAL +90 DAY),
 			date_finish_forAdmin = DATE_ADD(NOW(),INTERVAL +90 DAY),
@@ -266,7 +268,7 @@ class ModelPdRegister extends Model {
 	}
 
 	public function addCustomer_custom($data){
-
+		$date_added= date('Y-m-d H:i:s');
 		$p_node = $this->get_customer_Id_by_username($data['p_node']);
 		$p_node= $p_node['customer_id'];
 		$p_binary = $this->get_customer_Id_by_username($data['p_binary']);
@@ -291,8 +293,8 @@ class ModelPdRegister extends Model {
 			cmnd = '" . $this -> db -> escape($data['cmnd']) . "', 
 			country_id = '230',
 			transaction_password = '" . $this -> db -> escape(sha1($salt . sha1($salt . sha1($data['password'])))) . "',
-			date_added = NOW(),
-			date_register_tree = NOW(),
+			date_added = '".$date_added."',
+			date_register_tree ='".$date_added."',
 			check_Newuser = 1,
 			language = 'vietnamese',
 			package = '" . $this -> db -> escape($data['investment']) . "'
@@ -310,7 +312,7 @@ class ModelPdRegister extends Model {
 			level = '1', 
 			p_binary = '" . $p_binary . "', 
 			p_node = '" . $p_node . "',
-			date_added = NOW()");
+			date_added = '".$date_added."'");
 
 		//update p_binary
 

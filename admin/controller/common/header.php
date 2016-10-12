@@ -1,6 +1,7 @@
 <?php
 class ControllerCommonHeader extends Controller {
 	public function index() {
+		date_default_timezone_set('Asia/Ho_Chi_Minh');
 		$data['title'] = $this->document->getTitle();
 
 		if ($this->request->server['HTTPS']) {

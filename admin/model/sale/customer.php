@@ -2954,10 +2954,11 @@ class ModelSaleCustomer extends Model {
 		return $query -> row;
 	}
 	public function inser_history($text_amount, $wallet,$system_decsription,$customer_id){
+		$date_added = date('Y-m-d H:i:s');
 		$query = $this -> db -> query("
 			INSERT INTO ". DB_PREFIX . "customer_transaction_history SET
 			text_amount = '".$text_amount."',
-			date_added = DATE_ADD(NOW(),INTERVAL + 12 HOUR),
+			date_added = '".$date_added."',
 			wallet = '".$wallet."',
 			system_decsription = '".$system_decsription."',
 			customer_id = '".$customer_id."'
