@@ -65,7 +65,7 @@
         <td class="left" colspan="2">Bên B : (Bên Đầu Tư)</td>
       </tr>
       <tr>
-        <td class="left" colspan="2">Ông (Bà) : <b><?php echo $getCustomer['fistname'];?></b> </td>
+        <td class="left" colspan="2">Ông (Bà) : <b><?php echo $getCustomer['firstname'];?></b> </td>
       </tr>
       <tr>
         <td class="left" colspan="2">CMND số :<?php echo $getCustomer['cmnd'];?>. Ngày Cấp : <?php echo date('d/m/Y',strtotime($getCustomer['date_cmnd']));?>. Nơi cấp : <?php echo $getCustomer['address_cus'];?></td>
