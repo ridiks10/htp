@@ -2200,6 +2200,9 @@ ul#suggesstion-box li:hover{
   #logo_login{
     left: 15% !important;
   }
+  .theme-default #main-navbar .dropdown-menu>li>a{
+    color: #fff;
+  }
 }
 .bg-binary{
   background-color: rgba(247, 176, 62, 0.77);
