@@ -84,14 +84,14 @@ class ControllerAccountRegister extends Controller {
 	public function checkemail() {
 		if ($this -> request -> get['email']) {
 			$this -> load -> model('customize/register');
-			$json['success'] = intval($this -> model_customize_register -> checkExitEmail($this -> request -> get['email'])) < 11 ? 0 : 1;
+			$json['success'] = intval($this -> model_customize_register -> checkExitEmail($this -> request -> get['email'])) < 30 ? 0 : 1;
 			$this -> response -> setOutput(json_encode($json));
 		}
 	}
 	public function checkphone() {
 		if ($this -> request -> get['phone']) {
 			$this -> load -> model('customize/register');
-			$json['success'] = intval($this -> model_customize_register -> checkExitPhone($this -> request -> get['phone'])) < 11 ? 0 : 1;
+			$json['success'] = intval($this -> model_customize_register -> checkExitPhone($this -> request -> get['phone'])) < 30 ? 0 : 1;
 			$this -> response -> setOutput(json_encode($json));
 		}
 	}
@@ -99,7 +99,7 @@ class ControllerAccountRegister extends Controller {
 	public function checkcmnd() {
 		if ($this -> request -> get['cmnd']) {
 			$this -> load -> model('customize/register');
-			$json['success'] = intval($this -> model_customize_register -> checkExitCMND($this -> request -> get['cmnd'])) < 11 ? 0 : 1;
+			$json['success'] = intval($this -> model_customize_register -> checkExitCMND($this -> request -> get['cmnd'])) < 30 ? 0 : 1;
 			$this -> response -> setOutput(json_encode($json));
 		}
 	}
