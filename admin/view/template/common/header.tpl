@@ -44,7 +44,7 @@
 <?php } ?>
 </head>
 <body >
-
+<div class="loading"></div>
 <div id="container">
 
 <header id="header" class="navbar navbar-static-top">

@@ -17,7 +17,17 @@ class ModelPdRegistercustom extends Model {
 		return $query -> row;
 	}
 
-	//====Tai
+	public function load_date($date)
+	{
+		$date = date('Y-m-d',strtotime($date));
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer WHERE date_register_tree >= '".$date." 00:00:00' AND date_register_tree <= '".$date." 23:59:59'
+			ORDER BY customer_id DESC
+		");
+		
+		return $query -> rows;
+	}
 	public function get_customer_print($id_customer){
 		$query = $this -> db -> query("
 			SELECT c.*, pd.filled, pd.date_finish_forAdmin, pd.date_finish as pd_date_finish, pd.date_added as pd_date_added, ml.p_binary

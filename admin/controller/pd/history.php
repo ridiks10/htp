@@ -35,7 +35,7 @@ class ControllerPdHistory extends Controller {
 		$data['link_search'] = $this -> url -> link('pd/history/search_name&token='.$this->session->data['token'].'', '', 'SSL');
 		$data['link_search_username'] = $this -> url -> link('pd/history/link_search_username&token='.$this->session->data['token'].'', '', 'SSL');
 		$data['query_child'] = $this -> url -> link('pd/history/query_child&token='.$this->session->data['token'].'', '', 'SSL');
-		
+		$data['load_date'] = $this -> url -> link('pd/history/load_date&token='.$this->session->data['token'].'', '', 'SSL');
 		$data['token'] = $this->session->data['token'];
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');
@@ -57,6 +57,40 @@ class ControllerPdHistory extends Controller {
 				<td><?php echo $value['username'];?></td>
 				<td><?php echo $value['firstname'];?></td>
 				<td><?php echo number_format($get_filled_by_id['sum_filled']);?></td>
+				<td class="text-center"><i class="fa fa-circle  <?php echo ($value['status_r_wallet'] == 1) ? "text-danger" : "text-success" ?>" aria-hidden="true"></i></td>
+				<td><?php echo $value['date_register_tree'];?></td>
+				<td><?php echo number_format($value['total_pd_left'])."/".number_format($value['total_pd_right']);?></td>
+				<td><?php echo $this->getCustomer($value['p_node']);?></td>
+				<td class="text-center"><a href="<?php echo $this->url->link('pd/history/view_history&customer_id='.$value['customer_id'].'&token='.$this->session->data['token']);?>"><button class="btn btn-success"><i class="fa fa-external-link" aria-hidden="true"></i></button></a></td>
+				<td class="text-center"><a href="<?php echo $this->url->link('pd/history/edit_user&customer_id='.$value['customer_id'].'&token='.$this->session->data['token']);?>"><button class="btn btn-primary	"><i class="fa fa-eyedropper" aria-hidden="true"></i></button></a></td>	
+				
+				<td><a target="_blank" href="<?php echo $this->url->link('pd/personalcustom&id='.$value['customer_id'].'&token='.$this->session->data['token']);?>"><i class="fa fa-line-chart" aria-hidden="true"></i></a></td>
+				
+				<td><a target="_blank" href="<?php echo $this->url->link('pd/history/query_child&id='.$value['customer_id'].'&token='.$this->session->data['token']);?>"><i class="fa fa-cog" aria-hidden="true"></i></a></td>
+				
+			</tr>
+		<?php
+		}
+
+	}
+
+
+	public function load_date(){
+		$date = $this -> request ->post['date'];
+		$this -> load -> model('pd/registercustom');
+
+		$get_name_customer = $this -> model_pd_registercustom -> load_date($date);
+		//print_r($get_name_customer); die;
+		$i = 1;
+		foreach ($get_name_customer as $value) {
+			$get_filled_by_id = $this -> model_pd_registercustom -> get_filled_by_id($value['customer_id']);
+		?>
+			<tr>
+				<td><?php echo $i++;?></td>
+				<td><?php echo $value['username'];?></td>
+				<td><?php echo $value['firstname'];?></td>
+				<td><?php echo number_format($get_filled_by_id['sum_filled']);?></td>
+				<td class="text-center"><i class="fa fa-circle  <?php echo ($value['status_r_wallet'] == 1) ? "text-danger" : "text-success" ?>" aria-hidden="true"></i></td>
 				<td><?php echo $value['date_register_tree'];?></td>
 				<td><?php echo number_format($value['total_pd_left'])."/".number_format($value['total_pd_right']);?></td>
 				<td><?php echo $this->getCustomer($value['p_node']);?></td>
@@ -118,6 +152,7 @@ class ControllerPdHistory extends Controller {
 				<td><?php echo $value['username'];?></td>
 				<td><?php echo $value['firstname'];?></td>
 				<td><?php echo number_format($get_filled_by_id['sum_filled']);?></td>
+				<td class="text-center"><i class="fa fa-circle  <?php echo ($value['status_r_wallet'] == 1) ? "text-danger" : "text-success" ?>" aria-hidden="true"></i></td>
 				<td><?php echo $value['date_register_tree'];?></td>
 				<td><?php echo number_format($value['total_pd_left'])." / ".number_format($value['total_pd_right']);?></td>
 				<td><?php echo $this->getCustomer($value['p_node']);?></td>
