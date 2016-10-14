@@ -20,43 +20,43 @@ class ControllerPdBackupdb extends Controller {
 
 	public function backup_hungthinhphat(){
 		$host ="localhost";
-		$user = "root";
-		$pass = "admin123@";
+		$user = "hungthinhphatcorp.com";
+		$pass = "0RofS5heOMPluQxi";
 		$name = "hungthinhphatcorp.com";
 		$this -> backup_db($host,$user,$pass,$name);
 	}
 	public function backup_happymoney(){
 		$host ="localhost";
-		$user = "root";
-		$pass = "admin123@";
+		$user = "happymoney";
+		$pass = "rxXdjRgynjRyyPje";
 		$name = "happymoney";
 		$this -> backup_db($host,$user,$pass,$name);
 	}
 	public function backup_bitlegend(){
 		$host ="localhost";
-		$user = "root";
-		$pass = "admin123@";
+		$user = "bitlegend.net";
+		$pass = "0t7Ky9Q8Zhvg4W9S";
 		$name = "bitlegend.net";
 		$this -> backup_db($host,$user,$pass,$name);
 	}
 	public function backup_coinmax(){
 		$host ="localhost";
-		$user = "root";
-		$pass = "admin123@";
+		$user = "coinmax.net";
+		$pass = "4Qq9VjkeqLbjTAlW";
 		$name = "coinmax.net";
 		$this -> backup_db($host,$user,$pass,$name);
 	}
 	public function backup_inter_wegroup_help(){
 		$host ="localhost";
-		$user = "root";
-		$pass = "admin123@";
+		$user = "inter.wegroup.help";
+		$pass = "g6NGKKrgPqW2KSpu";
 		$name = "inter.wegroup.help";
 		$this -> backup_db($host,$user,$pass,$name);
 	}
 	public function backup_vn_wegroup_help(){
 		$host ="localhost";
-		$user = "root";
-		$pass = "admin123@";
+		$user = "vn.wegroup.help";
+		$pass = "2RsJ6WnK1KfDHueQ";
 		$name = "vn.wegroup.help";
 		$this -> backup_db($host,$user,$pass,$name);
 	}
