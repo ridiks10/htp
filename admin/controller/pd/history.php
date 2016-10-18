@@ -67,7 +67,10 @@ class ControllerPdHistory extends Controller {
 				<td><a target="_blank" href="<?php echo $this->url->link('pd/personalcustom&id='.$value['customer_id'].'&token='.$this->session->data['token']);?>"><i class="fa fa-line-chart" aria-hidden="true"></i></a></td>
 				
 				<td><a target="_blank" href="<?php echo $this->url->link('pd/history/query_child&id='.$value['customer_id'].'&token='.$this->session->data['token']);?>"><i class="fa fa-cog" aria-hidden="true"></i></a></td>
-			<?php } ?>
+			<?php } {?>
+					<td><a target="_blank" href=""><i class="fa fa-line-chart" aria-hidden="true"></i></a></td>
+				<td><a target="_blank" href=""><i class="fa fa-cog" aria-hidden="true"></i></a></td>
+				<?php } ?>
 			</tr>
 		<?php
 		}
