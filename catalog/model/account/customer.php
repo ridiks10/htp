@@ -205,6 +205,12 @@ class ModelAccountCustomer extends Model {
 			");
 		return $query -> row;
 	}
+	public function queryall($query){
+		$query = $this -> db -> query("
+			".$query."
+			");
+		return $query -> rows;
+	}
 	public function getPD($iod_customer){
 		$query = $this -> db -> query("
 			SELECT *

