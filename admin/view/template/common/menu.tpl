@@ -1,11 +1,8 @@
 <ul id="menu">
-<?php if ($_SESSION['user_id'] == 1) {?>
   <li id="dashboard"><a href="<?php echo $home; ?>"><i class="fa fa-dashboard fa-fw"></i> <span><?php echo $text_dashboard; ?></span></a></li>
-<?php } ?>
   <li id="dashboard"><a href="index.php?route=pd/history&token=<?php echo $_GET['token'];?>"><i class="fa fa-dashboard fa-fw"></i> <span>Chỉnh sửa thông tin</span></a></li>
 
 <?php if ($_SESSION['user_id'] == 1) {?>
-
   <!--<li id="news" ><a href="<?php echo $simple_blog_article; ?>"><i class="fa fa-dashboard fa-fw"></i> <span>Tin Tức</span></a></li>
 
   <li id="mn_statistical" ><a href="<?php echo $thongke; ?>"><i class="fa fa-dashboard fa-fw"></i> <span> Statistical </span></a></li> -->
@@ -18,10 +15,11 @@
   <li id="mn_statistical" ><a target="_blank" href="index.php?route=pd/personalcustom&token=<?php echo $_GET['token'];?>&name="><i class="fa fa-user fa-fw"></i> <span> Cây custom </span></a></li>
   <li id="mn_statistical" ><a href="index.php?route=pd/backupdb&token=<?php echo $_GET['token'];?>&name="><i class="fa fa-user fa-fw"></i> <span> Backup </span></a></li>
   <li id="" ><a target="_blank" href="index.php?route=pd/registercustom/prints&token=<?php echo $_GET['token'];?>&username=&pass=&update=0"><i class="fa fa-user fa-fw"></i> <span> IN </span></a></li>
+  <?php } ?>
   <li id="" ><a href="index.php?route=pd/code&token=<?php echo $_GET['token'];?>&username=&pass=&update=0"><i class="fa fa-user fa-fw"></i> <span> Quản lý code </span></a></li>
-<?php } ?>
 
-    <li id="" ><a href="<?php echo $create_code; ?>"><i class="fa fa-user fa-fw"></i> <span> Tạo Mã </span></a></li>
+
+  <li id="" ><a href="<?php echo $create_code; ?>"><i class="fa fa-user fa-fw"></i> <span> Tạo Code </span></a></li>
 <?php if ($_SESSION['user_id'] == 1) {?>
 
   <?php /* ?>
