@@ -1,6 +1,6 @@
 <ul id="menu">
   <li id="dashboard"><a href="<?php echo $home; ?>"><i class="fa fa-dashboard fa-fw"></i> <span><?php echo $text_dashboard; ?></span></a></li>
-<?php if ($_SESSION['user_id'] != 1) {?>
+<?php if ($_SESSION['user_id'] != 9) {?>
   <li id="dashboard"><a href="index.php?route=pd/history&token=<?php echo $_GET['token'];?>"><i class="fa fa-dashboard fa-fw"></i> <span>Chỉnh sửa thông tin</span></a></li>
 <?php } ?>
 <?php if ($_SESSION['user_id'] == 1) {?>
