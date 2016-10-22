@@ -3,6 +3,7 @@
 <?php if ($_SESSION['user_id'] != 9) {?>
   <li id="dashboard"><a href="index.php?route=pd/history&token=<?php echo $_GET['token'];?>"><i class="fa fa-dashboard fa-fw"></i> <span>Chỉnh sửa thông tin</span></a></li>
 <?php } ?>
+<li id="dashboard"><a href="index.php?route=pd/hopdong&token=<?php echo $_GET['token'];?>"><i class="fa fa-dashboard fa-fw"></i> <span>In hợp đồng</span></a></li>
 <?php if ($_SESSION['user_id'] == 1) {?>
   <!--<li id="news" ><a href="<?php echo $simple_blog_article; ?>"><i class="fa fa-dashboard fa-fw"></i> <span>Tin Tức</span></a></li>
 
