@@ -86,7 +86,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-6">
+            <!-- <div class="col-lg-4 col-md-4 col-sm-6">
                 <div class="tile">
                     <div class="tile-heading">Tổng số Code / Số tiền</div>
                     <div class="tile-body">
@@ -119,7 +119,7 @@
                         </h2>
                     </div>
                 </div>
-            </div>
+            </div> -->
              <!-- <div class="col-lg-4 col-md-4 col-sm-6">
                 <div class="tile">
                     <div class="tile-heading">customer provide donation finish</div>
