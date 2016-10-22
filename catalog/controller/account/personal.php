@@ -381,10 +381,11 @@ public function get_position($p_binary){
 
 				//$this->response->redirect($this->url->link('pd/register', 'token=' . $this->session->data['token'], 'SSL'));
 			
-					
+					// hoa hồng trực tiếp
 					$this->update_C_wallet($cus_id);
 					$p_binary = $this -> model_account_register -> get_customer_Id_by_username($this->request->post['p_binary']);
 					$p_binary= $p_binary['customer_id'];
+					//cộng hưởng
 					$this -> get_customer_by_binary($cus_id, $p_binary);
 				
 				
