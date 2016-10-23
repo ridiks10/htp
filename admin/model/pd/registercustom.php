@@ -948,4 +948,13 @@ class ModelPdRegistercustom extends Model {
 		");
 		return $query -> row;
 	}
+
+	public function gettoltal_package($child_customer){
+		$query = $this -> db -> query("
+			SELECT sum(filled) as number
+			FROM  ".DB_PREFIX."customer A INNER JOIN  ".DB_PREFIX."customer_provide_donation B ON A.customer_id = B.customer_id 
+			WHERE A.customer_id IN (".$child_customer.") AND A.status_r_wallet = 0
+		");
+		return $query -> row['number'];
+	}
 }

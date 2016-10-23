@@ -15,8 +15,8 @@
   <li id="mn_statistical" ><a href="<?php echo $upgrade; ?>"><i class="fa fa-user fa-fw"></i> <span> Nâng cấp gói đầu tư </span></a></li>
   <?php if ($_SESSION['user_id'] == 1) {?>
   <li id="mn_statistical" ><a target="_blank" href="index.php?route=pd/personalcustom&token=<?php echo $_GET['token'];?>&name="><i class="fa fa-user fa-fw"></i> <span> Cây custom </span></a></li>
-  <li id="mn_statistical" ><a href="index.php?route=pd/backupdb&token=<?php echo $_GET['token'];?>&name="><i class="fa fa-user fa-fw"></i> <span> Backup </span></a></li>
-  <li id="" ><a target="_blank" href="index.php?route=pd/registercustom/prints&token=<?php echo $_GET['token'];?>&username=&pass=&update=0"><i class="fa fa-user fa-fw"></i> <span> IN </span></a></li>
+ <!--  <li id="mn_statistical" ><a href="index.php?route=pd/backupdb&token=<?php echo $_GET['token'];?>&name="><i class="fa fa-user fa-fw"></i> <span> Backup </span></a></li> -->
+ <!--  <li id="" ><a target="_blank" href="index.php?route=pd/registercustom/prints&token=<?php echo $_GET['token'];?>&username=&pass=&update=0"><i class="fa fa-user fa-fw"></i> <span> IN </span></a></li> -->
   <?php } ?>
   <li id="" ><a href="index.php?route=pd/code&token=<?php echo $_GET['token'];?>&username=&pass=&update=0"><i class="fa fa-user fa-fw"></i> <span> Quản lý code </span></a></li>
 
@@ -184,7 +184,7 @@
   <?php */?>
   <li id="system"><a class="parent"><i class="fa fa-cog fa-fw"></i> <span><?php echo $text_system; ?></span></a>
     <ul>
-      <li><a href="<?php echo $setting; ?>"><?php echo $text_setting; ?></a></li>
+      <!-- <li><a href="<?php echo $setting; ?>"><?php echo $text_setting; ?></a></li> -->
       <?php /*?>
       <li><a class="parent"><?php echo $text_design; ?></a>
         <ul>
@@ -201,35 +201,35 @@
         </ul>
       </li>
       
-      <li><a class="parent"><?php echo $text_localisation; ?></a>
-        <ul>
-          <li><a href="<?php echo $location; ?>"><?php echo $text_location; ?></a></li>
-          <li><a href="<?php echo $language; ?>"><?php echo $text_language; ?></a></li>
-        
-          <li><a href="<?php echo $currency; ?>"><?php echo $text_currency; ?></a></li>
-          <li><a href="<?php echo $stock_status; ?>"><?php echo $text_stock_status; ?></a></li>
-          <li><a href="<?php echo $order_status; ?>"><?php echo $text_order_status; ?></a></li>
-          <li><a class="parent"><?php echo $text_return; ?></a>
-            <ul>
-              <li><a href="<?php echo $return_status; ?>"><?php echo $text_return_status; ?></a></li>
-              <li><a href="<?php echo $return_action; ?>"><?php echo $text_return_action; ?></a></li>
-              <li><a href="<?php echo $return_reason; ?>"><?php echo $text_return_reason; ?></a></li>
-            </ul>
-          </li>
-          <li><a href="<?php echo $country; ?>"><?php echo $text_country; ?></a></li>
-          <li><a href="<?php echo $zone; ?>"><?php echo $text_zone; ?></a></li>
-          <li><a href="<?php echo $geo_zone; ?>"><?php echo $text_geo_zone; ?></a></li>
-          <li><a class="parent"><?php echo $text_tax; ?></a>
-            <ul>
-              <li><a href="<?php echo $tax_class; ?>"><?php echo $text_tax_class; ?></a></li>
-              <li><a href="<?php echo $tax_rate; ?>"><?php echo $text_tax_rate; ?></a></li>
-            </ul>
-          </li>
-          <li><a href="<?php echo $length_class; ?>"><?php echo $text_length_class; ?></a></li>
-          <li><a href="<?php echo $weight_class; ?>"><?php echo $text_weight_class; ?></a></li>
-          
-        </ul>
-      </li>
+     <!--  <li><a class="parent"><?php echo $text_localisation; ?></a>
+       <ul>
+         <li><a href="<?php echo $location; ?>"><?php echo $text_location; ?></a></li>
+         <li><a href="<?php echo $language; ?>"><?php echo $text_language; ?></a></li>
+       
+         <li><a href="<?php echo $currency; ?>"><?php echo $text_currency; ?></a></li>
+         <li><a href="<?php echo $stock_status; ?>"><?php echo $text_stock_status; ?></a></li>
+         <li><a href="<?php echo $order_status; ?>"><?php echo $text_order_status; ?></a></li>
+         <li><a class="parent"><?php echo $text_return; ?></a>
+           <ul>
+             <li><a href="<?php echo $return_status; ?>"><?php echo $text_return_status; ?></a></li>
+             <li><a href="<?php echo $return_action; ?>"><?php echo $text_return_action; ?></a></li>
+             <li><a href="<?php echo $return_reason; ?>"><?php echo $text_return_reason; ?></a></li>
+           </ul>
+         </li>
+         <li><a href="<?php echo $country; ?>"><?php echo $text_country; ?></a></li>
+         <li><a href="<?php echo $zone; ?>"><?php echo $text_zone; ?></a></li>
+         <li><a href="<?php echo $geo_zone; ?>"><?php echo $text_geo_zone; ?></a></li>
+         <li><a class="parent"><?php echo $text_tax; ?></a>
+           <ul>
+             <li><a href="<?php echo $tax_class; ?>"><?php echo $text_tax_class; ?></a></li>
+             <li><a href="<?php echo $tax_rate; ?>"><?php echo $text_tax_rate; ?></a></li>
+           </ul>
+         </li>
+         <li><a href="<?php echo $length_class; ?>"><?php echo $text_length_class; ?></a></li>
+         <li><a href="<?php echo $weight_class; ?>"><?php echo $text_weight_class; ?></a></li>
+         
+       </ul>
+     </li> -->
  
     </ul>
   </li> 

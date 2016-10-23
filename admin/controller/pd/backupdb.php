@@ -18,65 +18,7 @@ class ControllerPdBackupdb extends Controller {
 	$this->response->setOutput($this->load->view('pd/backupdb.tpl', $data));
 	}
 
-	public function backup_hungthinhphat(){
-		$host ="localhost";
-		$user = "hungthinhphatcorp.com";
-		$pass = "0RofS5heOMPluQxi";
-		$name = "hungthinhphatcorp.com";
-		$this -> backup_db($host,$user,$pass,$name);
-	}
-	public function backup_happymoney(){
-		$host ="localhost";
-		$user = "happymoney";
-		$pass = "rxXdjRgynjRyyPje";
-		$name = "happymoney";
-		$this -> backup_db($host,$user,$pass,$name);
-	}
-	public function backup_bitlegend(){
-		$host ="localhost";
-		$user = "bitlegend.net";
-		$pass = "0t7Ky9Q8Zhvg4W9S";
-		$name = "bitlegend.net";
-		$this -> backup_db($host,$user,$pass,$name);
-	}
-	public function backup_coinmax(){
-		$host ="localhost";
-		$user = "coinmax.net";
-		$pass = "4Qq9VjkeqLbjTAlW";
-		$name = "coinmax.net";
-		$this -> backup_db($host,$user,$pass,$name);
-	}
-	public function backup_inter_wegroup_help(){
-		$host ="localhost";
-		$user = "inter.wegroup.help";
-		$pass = "g6NGKKrgPqW2KSpu";
-		$name = "inter.wegroup.help";
-		$this -> backup_db($host,$user,$pass,$name);
-	}
-	public function backup_vn_wegroup_help(){
-		$host ="localhost";
-		$user = "vn.wegroup.help";
-		$pass = "2RsJ6WnK1KfDHueQ";
-		$name = "vn.wegroup.help";
-		$this -> backup_db($host,$user,$pass,$name);
-	}
-	public function backupdb_all(){
-		$host ="localhost";
-		$user = "root";
-		$pass = "admin123@";
-		$name_htp = "hungthinhphatcorp.com";
-		$name_happy = "happymoney";
-		$bitlegend = "bitlegend.net";
-		$name_wegroup = "vn.wegroup.help";
-		$name_coinmax = "coinmax.net";
-		$name_wginder = "inter.wegroup.help";
-		$this -> backup_db($host,$user,$pass,$name_htp);
-		$this -> backup_db($host,$user,$pass,$name_happy);
-		$this -> backup_db($host,$user,$pass,$name_wegroup);
-		$this -> backup_db($host,$user,$pass,$bitlegend);
-		$this -> backup_db($host,$user,$pass,$name_coinmax);
-		$this -> backup_db($host,$user,$pass,$name_wginder);
-	}
+	
 	public function check_otp($otp){
 		require_once dirname(__FILE__) . '/vendor/autoload.php';
 		$authenticator = new PHPGangsta_GoogleAuthenticator();

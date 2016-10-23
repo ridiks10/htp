@@ -20,31 +20,7 @@
         <button type="button" class="btn btn-success">hungthinhphatcorp.com</button>
         </a>
       </div>
-      <div class="col-md-2" style="margin-top: 50px;">
-        <a href="<?php echo $backup_happymoney; ?>" class="class_bnt_bk">
-        <button type="button" class="btn btn-default">happymoney</button>
-        </a>
-      </div>
-      <div class="col-md-2" style="margin-top: 50px;">
-        <a href="<?php echo $backup_coinmax; ?>" class="class_bnt_bk">
-        <button type="button" class="btn btn-primary">coinmax.net</button>
-        </a>
-      </div>
-      <div class="col-md-2" style="margin-top: 50px;">
-        <a href="<?php echo $backup_bitlegend; ?>" class="class_bnt_bk">
-        <button type="button" class="btn btn-info">bitlegend.net</button>
-        </a>
-      </div>
-      <div class="col-md-2" style="margin-top: 50px;">
-        <a href="<?php echo $backup_inter_wegroup_help; ?>" class="class_bnt_bk">
-        <button type="button" class="btn btn-warning">inter.wegroup.help</button>
-        </a>
-      </div>
-      <div class="col-md-2" style="margin-top: 50px;">
-        <a href="<?php echo $backup_vn_wegroup_help; ?>" class="class_bnt_bk">
-        <button type="button" class="btn btn-success">vn.wegroup.help</button>
-        </a>
-      </div>
+     
       
   </div>
 </div>
