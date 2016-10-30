@@ -44,7 +44,7 @@
             <td><?php echo $i; ?></td>
             <td><?php echo $value['name']; ?></td>
             <td><?php echo number_format($value['package']); ?></td>
-            <?php if ($_SESSION['user_id'] == 1 ) { ?>
+            <?php if ($_SESSION['user_id'] == 1 || $_SESSION['user_id'] == 11 ) { ?>
               <td><?php echo $value['code']; ?></td>
             <?php } else { ?>
             <td><?php echo "....".substr($value['code'],-7); ?></td>

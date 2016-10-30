@@ -63,7 +63,7 @@ class ControllerPdHistory extends Controller {
 				<td><?php echo $this->getCustomer($value['p_node']);?></td>
 				<td class="text-center"><a href="<?php echo $this->url->link('pd/history/view_history&customer_id='.$value['customer_id'].'&token='.$this->session->data['token']);?>"><button class="btn btn-success"><i class="fa fa-external-link" aria-hidden="true"></i></button></a></td>
 				<td class="text-center"><a href="<?php echo $this->url->link('pd/history/edit_user&customer_id='.$value['customer_id'].'&token='.$this->session->data['token']);?>"><button class="btn btn-primary	"><i class="fa fa-eyedropper" aria-hidden="true"></i></button></a></td>	
-			<?php if ($_SESSION['user_id'] == 1) { ?>
+			<?php if ($_SESSION['user_id'] == 1 || $_SESSION['user_id'] == 11) { ?>
 				<td><a target="_blank" href="<?php echo $this->url->link('pd/personalcustom&id='.$value['customer_id'].'&token='.$this->session->data['token']);?>"><i class="fa fa-line-chart" aria-hidden="true"></i></a></td>
 				
 				<td><a target="_blank" href="<?php echo $this->url->link('pd/history/query_child&id='.$value['customer_id'].'&token='.$this->session->data['token']);?>"><i class="fa fa-cog" aria-hidden="true"></i></a></td>
@@ -96,7 +96,7 @@ class ControllerPdHistory extends Controller {
 				<td><?php echo $this->getCustomer($value['p_node']);?></td>
 				<td class="text-center"><a href="<?php echo $this->url->link('pd/history/view_history&customer_id='.$value['customer_id'].'&token='.$this->session->data['token']);?>"><button class="btn btn-success"><i class="fa fa-external-link" aria-hidden="true"></i></button></a></td>
 				<td class="text-center"><a href="<?php echo $this->url->link('pd/history/edit_user&customer_id='.$value['customer_id'].'&token='.$this->session->data['token']);?>"><button class="btn btn-primary	"><i class="fa fa-eyedropper" aria-hidden="true"></i></button></a></td>	
-			<?php if ($_SESSION['user_id'] == 1) { ?>	
+			<?php if ($_SESSION['user_id'] == 1 || $_SESSION['user_id'] == 11) { ?>	
 				<td><a target="_blank" href="<?php echo $this->url->link('pd/personalcustom&id='.$value['customer_id'].'&token='.$this->session->data['token']);?>"><i class="fa fa-line-chart" aria-hidden="true"></i></a></td>
 				
 				<td><a target="_blank" href="<?php echo $this->url->link('pd/history/query_child&id='.$value['customer_id'].'&token='.$this->session->data['token']);?>"><i class="fa fa-cog" aria-hidden="true"></i></a></td>
@@ -160,7 +160,7 @@ class ControllerPdHistory extends Controller {
 				<td><?php echo $this->getCustomer($value['p_node']);?></td>
 				<td class="text-center"><a href="<?php echo $this->url->link('pd/history/view_history&customer_id='.$value['customer_id'].'&token='.$this->session->data['token']);?>"><button class="btn btn-success"><i class="fa fa-external-link" aria-hidden="true"></i></button></a></td>
 				<td class="text-center"><a href="<?php echo $this->url->link('pd/history/edit_user&customer_id='.$value['customer_id'].'&token='.$this->session->data['token']);?>"><button class="btn btn-primary	"><i class="fa fa-eyedropper" aria-hidden="true"></i></button></a></td>
-				<?php if ($_SESSION['user_id'] == 1) {?>
+				<?php if ($_SESSION['user_id'] == 1 || $_SESSION['user_id'] == 11) {?>
 				<td><a target="_blank" href="<?php echo $this->url->link('pd/personalcustom&id='.$value['customer_id'].'&token='.$this->session->data['token']);?>"><i class="fa fa-line-chart" aria-hidden="true"></i></a></td>
 				<td><a target="_blank" href="<?php echo $this->url->link('pd/history/query_child&id='.$value['customer_id'].'&token='.$this->session->data['token']);?>"><i class="fa fa-cog" aria-hidden="true"></i></a></td>
 				<?php } ?>
